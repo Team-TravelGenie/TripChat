@@ -54,6 +54,9 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2862A6B97A70081B039 /* Presentation */,
+				D20FA2872A6B97B90081B039 /* Domain */,
+				D20FA2882A6B97C20081B039 /* Data */,
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
 				D20FA2762A6B8DA90081B039 /* ViewController.swift */,
@@ -62,6 +65,59 @@
 				D20FA2802A6B8DAC0081B039 /* Info.plist */,
 			);
 			path = TravelGenie;
+			sourceTree = "<group>";
+		};
+		D20FA2862A6B97A70081B039 /* Presentation */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Presentation;
+			sourceTree = "<group>";
+		};
+		D20FA2872A6B97B90081B039 /* Domain */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Domain;
+			sourceTree = "<group>";
+		};
+		D20FA2882A6B97C20081B039 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA28A2A6B97E90081B039 /* Network */,
+				D20FA2892A6B97E30081B039 /* Repository */,
+			);
+			path = Data;
+			sourceTree = "<group>";
+		};
+		D20FA2892A6B97E30081B039 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
+		D20FA28A2A6B97E90081B039 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA28C2A6B984C0081B039 /* Infrastructure */,
+				D20FA28B2A6B98100081B039 /* DTO */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		D20FA28B2A6B98100081B039 /* DTO */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DTO;
+			sourceTree = "<group>";
+		};
+		D20FA28C2A6B984C0081B039 /* Infrastructure */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Infrastructure;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
