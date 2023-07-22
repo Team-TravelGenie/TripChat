@@ -21,6 +21,8 @@
 		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
 		D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */; };
 		D20FA2A22A6BC8650081B039 /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* DefaultRepository.swift */; };
+		D20FA2A82A6BD4830081B039 /* LabelDetectionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* LabelDetectionRequestModel.swift */; };
+		D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
 		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA2A12A6BC8650081B039 /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
+		D20FA2A72A6BD4830081B039 /* LabelDetectionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDetectionRequestModel.swift; sourceTree = "<group>"; };
+		D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +77,7 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2A92A6BE3370081B039 /* Extension */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
@@ -121,6 +126,7 @@
 		D20FA28A2A6B97E90081B039 /* Network */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2A62A6BD30F0081B039 /* RequestModel */,
 				D20FA28B2A6B98100081B039 /* DTO */,
 				D20FA28C2A6B984C0081B039 /* Infrastructure */,
 			);
@@ -176,6 +182,22 @@
 				D20FA2762A6B8DA90081B039 /* ViewController.swift */,
 			);
 			path = Main;
+			sourceTree = "<group>";
+		};
+		D20FA2A62A6BD30F0081B039 /* RequestModel */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA2A72A6BD4830081B039 /* LabelDetectionRequestModel.swift */,
+			);
+			path = RequestModel;
+			sourceTree = "<group>";
+		};
+		D20FA2A92A6BE3370081B039 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -254,6 +276,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20FA2A82A6BD4830081B039 /* LabelDetectionRequestModel.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* VisionLabelAPI.swift in Sources */,
 				D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
@@ -263,6 +286,7 @@
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* DefaultRepository.swift in Sources */,
+				D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 			);
