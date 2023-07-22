@@ -16,6 +16,10 @@
 		D20FA2912A6B99B40081B039 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D20FA2902A6B99B40081B039 /* Moya */; };
 		D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */; };
 		D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */; };
+		D20FA2982A6BB9340081B039 /* VisionLabelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */; };
+		D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */; };
+		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
+		D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +33,10 @@
 		D20FA28D2A6B98AC0081B039 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMoyaProvider.swift; sourceTree = "<group>"; };
 		D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTargetType.swift; sourceTree = "<group>"; };
+		D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionLabelAPI.swift; sourceTree = "<group>"; };
+		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
+		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
+		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -47,6 +55,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2712A6B8DA90081B039 /* TravelGenie */,
+				D20FA29E2A6BC69D0081B039 /* Secrets */,
 				D20FA2702A6B8DA90081B039 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,6 +94,7 @@
 		D20FA2872A6B97B90081B039 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA29B2A6BBA010081B039 /* Entity */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -117,6 +127,7 @@
 		D20FA28B2A6B98100081B039 /* DTO */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */,
 			);
 			path = DTO;
 			sourceTree = "<group>";
@@ -124,11 +135,36 @@
 		D20FA28C2A6B984C0081B039 /* Infrastructure */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2962A6BB8F90081B039 /* API */,
 				D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */,
 				D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */,
 				D20FA28D2A6B98AC0081B039 /* NetworkService.swift */,
 			);
 			path = Infrastructure;
+			sourceTree = "<group>";
+		};
+		D20FA2962A6BB8F90081B039 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		D20FA29B2A6BBA010081B039 /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */,
+			);
+			path = Entity;
+			sourceTree = "<group>";
+		};
+		D20FA29E2A6BC69D0081B039 /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */,
+			);
+			path = Secrets;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -207,10 +243,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D20FA2982A6BB9340081B039 /* VisionLabelAPI.swift in Sources */,
+				D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */,
+				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
+				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 			);
