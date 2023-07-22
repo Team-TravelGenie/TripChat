@@ -11,8 +11,20 @@ import Moya
 final class DefaultRepository {
     private let networkService = NetworkService()
     
-    func requestDetectedImageLabel(completion: @escaping (Result<DetectedImageLabel, Error>) -> Void) -> Cancellable {
-        networkService.request(VisionLabelAPI.labelDetection) { result in
+    func requestDetectedImageLabel(
+        _ content: String,
+        completion: @escaping (Result<DetectedImageLabel, Error>) -> Void
+    ) -> Cancellable {
+        // TODO: usecase 생성하도록 수정
+        let requestModel = LabelDetectionRequestModel(
+            requests: [
+                Request(image: Image(content: content),
+                        features: [Feature()]
+                       )
+            ]
+        )
+        
+        return networkService.request(VisionLabelAPI.labelDetection(requestModel)) { result in
             switch result {
             case .success(let response):
                 let mappedResponse = response.mapToAIDectectedImageLabel(from: response)

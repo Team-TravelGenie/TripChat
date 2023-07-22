@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum VisionLabelAPI {
-    case labelDetection
+    case labelDetection(LabelDetectionRequestModel)
 }
 
 extension VisionLabelAPI: DecodableTargetType {
@@ -35,19 +35,10 @@ extension VisionLabelAPI: DecodableTargetType {
     
     var task: Moya.Task {
         switch self {
-        case .labelDetection:
-            let bodyParameters: [String: Any] = [
-                "requests": [
-                    "image": ["content": "https://i.pinimg.com/originals/a1/ac/b3/a1acb395f6cc80e039ddd9758926df71.jpg"],
-                    "features": [
-                        ["maxResults": 10, "type": "LABEL_DETECTION"]
-                    ]
-                ]
-            ]
-            
+        case .labelDetection(let labelDectectionRequestModel):
             return .requestCompositeParameters(
-                bodyParameters: bodyParameters,
-                bodyEncoding: URLEncoding.queryString,
+                bodyParameters: labelDectectionRequestModel.toDictionary(),
+                bodyEncoding: JSONEncoding(options: .prettyPrinted),
                 urlParameters: ["key": SecretStorage().apiKey]
             )
         }
