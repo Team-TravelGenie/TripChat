@@ -78,7 +78,6 @@
 				D20FA2882A6B97C20081B039 /* Data */,
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
-				D20FA2762A6B8DA90081B039 /* ViewController.swift */,
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
 				D20FA2802A6B8DAC0081B039 /* Info.plist */,
@@ -89,6 +88,7 @@
 		D20FA2862A6B97A70081B039 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				D20FA2A32A6BC9B20081B039 /* Main */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -168,6 +168,14 @@
 				D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */,
 			);
 			path = Secrets;
+			sourceTree = "<group>";
+		};
+		D20FA2A32A6BC9B20081B039 /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA2762A6B8DA90081B039 /* ViewController.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
