@@ -39,8 +39,8 @@ extension LandmarkDetectionDTO.Response.LandmarkAnnotation {
 
 extension LandmarkDetectionDTO.Response.LandmarkAnnotation.BoundingPoly {
     struct Vertex: Decodable {
-        let x: Int
-        let y: Int
+        let x: Int?
+        let y: Int?
     }
 }
 
