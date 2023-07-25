@@ -11,6 +11,7 @@ class ViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        requestDetectionImageLabelTest()
         requestDetectionLandmarkTest()
     }
 }
@@ -19,7 +20,8 @@ class ViewController: UIViewController {
 extension ViewController {
     func requestDetectionImageLabelTest() {
         let repo = GoogleVisionRepository()
-        let imageToBase64StringEncoding = base64Encoding()
+        let sampleImage = UIImage(named: "samsungGalaxyLogo")!
+        let imageToBase64StringEncoding = base64Encoding(image: sampleImage)
         
         repo.requestImageLabelDetection(imageToBase64StringEncoding) { result in
             switch result {
@@ -33,7 +35,8 @@ extension ViewController {
     
     func requestDetectionLandmarkTest() {
         let repo = GoogleVisionRepository()
-        let imageToBase64StringEncoding = base64Encoding()
+        let placeImage = UIImage(named: "charlesBridge")!
+        let imageToBase64StringEncoding = base64Encoding(image: placeImage)
         
         repo.requestLandmarkDetection(imageToBase64StringEncoding) { result in
             switch result {
@@ -45,9 +48,8 @@ extension ViewController {
         }
     }
     
-    func base64Encoding() -> String {
-        guard let image = UIImage(named: "samsungGalaxyLogo"),
-              let data = image.pngData() else { return "" }
+    func base64Encoding(image: UIImage) -> String {
+        guard let data = image.pngData() else { return "" }
          return data.base64EncodedString()
     }
 }
