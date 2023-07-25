@@ -26,7 +26,7 @@ final class DefaultRepository {
         return networkService.request(GoogleVisionLabelDetectionAPI.labelDetection(requestModel)) { result in
             switch result {
             case .success(let response):
-                let mappedResponse = response.mapToDetectedImageLabel(from: response)
+                let mappedResponse = response.mapToDetectedImageLabel()
                 completion(.success(mappedResponse))
             case .failure(let error):
                 completion(.failure(error))
