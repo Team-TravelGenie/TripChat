@@ -25,8 +25,8 @@ extension LabelDetectionDTO.Response {
 }
 
 extension LabelDetectionDTO {
-    func mapToLabel(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Label {
-        return Label(
+    func mapToLabel(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Keyword {
+        return Keyword(
             name: annotation.description,
             confidence: annotation.score)
     }

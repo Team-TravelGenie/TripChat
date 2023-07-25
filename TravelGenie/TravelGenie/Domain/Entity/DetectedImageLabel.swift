@@ -8,10 +8,10 @@
 import Foundation
 
 struct DetectedImageLabel {
-    let labels: [Label]
+    let labels: [Keyword]
 }
 
-struct Label {
+struct Keyword {
     let name: String
     let confidence: Double
 }
