@@ -53,3 +53,17 @@ extension MultiMoyaProvider {
     }
 }
 
+/*
+ // MARK: 디버깅메서드 : Json을 prettyPrint Dictionary로 프린트합니다.
+ 
+func jsonToPrettyPrintString(data: Data) {
+    if let json = try! JSONSerialization.jsonObject(with: data, options: []) as? [String: Any] {
+        
+        if let prettyPrintedData = try? JSONSerialization.data(withJSONObject: json, options: .prettyPrinted),
+           let prettyPrintedString = String(data: prettyPrintedData, encoding: .utf8) {
+            // Print the pretty printed JSON string
+            print(prettyPrintedString)
+        }
+    }
+}
+*/
