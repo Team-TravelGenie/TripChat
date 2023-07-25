@@ -15,10 +15,10 @@ final class DefaultRepository {
         _ content: String,
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void
     ) -> Cancellable {
-        let requestModel = LabelDetectionRequestModel(
+        let requestModel = GoogleVisionDetectionRequestModel(
             requests: [
                 Request(content: Content(base64EncodedImageData: content),
-                        features: [Feature()]
+                        features: [Feature(type: "LABEL_DETECTION")]
                        )
             ]
         )

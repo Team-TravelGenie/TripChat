@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LabelDetectionRequestModel: Encodable {
+struct GoogleVisionDetectionRequestModel: Encodable {
     let requests: [Request]
 }
 
@@ -25,9 +25,9 @@ struct Feature: Encodable {
     let maxResults: Int
     let type: String
     
-    init() {
+    init(type: String) {
+        self.type = type
         self.maxResults = 10
-        self.type = "LABEL_DETECTION"
     }
 }
 

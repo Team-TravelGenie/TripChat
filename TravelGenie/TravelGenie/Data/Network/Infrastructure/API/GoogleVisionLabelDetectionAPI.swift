@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum GoogleVisionLabelDetectionAPI {
-    case labelDetection(LabelDetectionRequestModel)
+    case labelDetection(GoogleVisionDetectionRequestModel)
 }
 
 extension GoogleVisionLabelDetectionAPI: DecodableTargetType {
