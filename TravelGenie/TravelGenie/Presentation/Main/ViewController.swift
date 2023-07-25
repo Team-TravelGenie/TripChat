@@ -18,7 +18,7 @@ class ViewController: UIViewController {
 // MARK: TestMethod 사용 후 제거
 extension ViewController {
     func requestTest() {
-        let repo = DefaultRepository()
+        let repo = GoogleVisionRepository()
         let imageToBase64StringEncoding = base64Encoding()
         
         repo.requestImageLabelDetection(imageToBase64StringEncoding) { result in

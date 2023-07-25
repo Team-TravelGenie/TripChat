@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-final class DefaultRepository {
+final class GoogleVisionRepository {
     private let networkService = NetworkService()
     
     func requestImageLabelDetection(

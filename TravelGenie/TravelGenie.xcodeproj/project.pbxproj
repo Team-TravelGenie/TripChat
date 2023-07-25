@@ -20,7 +20,7 @@
 		D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */; };
 		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
 		D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */; };
-		D20FA2A22A6BC8650081B039 /* DefaultRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* DefaultRepository.swift */; };
+		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionDetectionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionDetectionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */; };
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
@@ -43,7 +43,7 @@
 		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
 		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
-		D20FA2A12A6BC8650081B039 /* DefaultRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultRepository.swift; sourceTree = "<group>"; };
+		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionDetectionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionDetectionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
@@ -124,7 +124,7 @@
 		D20FA2892A6B97E30081B039 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D20FA2A12A6BC8650081B039 /* DefaultRepository.swift */,
+				D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -295,7 +295,7 @@
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
-				D20FA2A22A6BC8650081B039 /* DefaultRepository.swift in Sources */,
+				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
