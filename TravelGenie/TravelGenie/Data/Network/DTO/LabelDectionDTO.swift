@@ -19,8 +19,10 @@ extension LabelDetectionDTO {
 
 extension LabelDetectionDTO.Response {
     struct LabelAnnotation: Decodable {
-        let mid, description: String
-        let score, topicality: Double
+        let mid: String
+        let description: String
+        let score: Double
+        let topicality: Double
     }
 }
 
