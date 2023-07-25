@@ -14,6 +14,11 @@ struct LabelDetectionRequestModel: Encodable {
 struct Request: Encodable {
     let content: Content
     let features: [Feature]
+    
+    enum CodingKeys: String, CodingKey {
+        case content = "image"
+        case features
+    }
 }
 
 struct Feature: Encodable {
@@ -28,4 +33,8 @@ struct Feature: Encodable {
 
 struct Content: Encodable {
     let base64EncodedImageData: String
+    
+    enum CodingKeys: String, CodingKey {
+        case base64EncodedImageData = "content"
+    }
 }
