@@ -25,6 +25,7 @@
 		D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */; };
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
+		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,6 +48,7 @@
 		D20FA2AA2A6BE34D0081B039 /* Encodable+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+Ext.swift"; sourceTree = "<group>"; };
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
+		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -170,6 +172,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */,
+				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				D20FA2A22A6BC8650081B039 /* DefaultRepository.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+Ext.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
+				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 			);
