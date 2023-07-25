@@ -59,8 +59,8 @@ extension LandmarkDetectionDTO {
             confidence: annotation.score)
     }
     
-    func mapToDetectedLandmark(from response: LandmarkDetectionDTO) -> DetectedLandmark {
-        let allAnnotation = response.responses.flatMap { $0.landmarkAnnotations }
+    func mapToDetectedLandmark() -> DetectedLandmark {
+        let allAnnotation = self.responses.flatMap { $0.landmarkAnnotations }
         let landmarks = allAnnotation.map(mapToLandmark)
         
         return DetectedLandmark(landmarks: landmarks)

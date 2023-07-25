@@ -33,4 +33,29 @@ final class DefaultRepository {
             }
         }
     }
+    
+    func requestLandmarkDetection(
+        _ content: String,
+        completion: @escaping (Result<DetectedLandmark, Error>) -> Void
+    ) -> Cancellable {
+        let requestModel = GoogleVisionDetectionRequestModel(
+            requests: [
+                Request(
+                    content: Content(base64EncodedImageData: content),
+                    features: [
+                        Feature(type: "LANDMARK_DETECTION")
+                    ])
+            ])
+        
+        return networkService.request(GoogleVisionLandmarkDetectionAPI.landmarkDetection(requestModel)) { result in
+            switch result {
+            case .success(let response):
+                let mappedResponse = response.mapToDetectedLandmark()
+                completion(.success(mappedResponse))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
+    
 }
