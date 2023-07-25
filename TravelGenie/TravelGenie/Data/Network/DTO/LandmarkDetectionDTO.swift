@@ -51,3 +51,18 @@ extension LandmarkDetectionDTO.Response.LandmarkAnnotation.Location {
     }
 }
 
+// MARK: Mapping
+extension LandmarkDetectionDTO {
+    private func mapToLandmark(annotation: LandmarkDetectionDTO.Response.LandmarkAnnotation) -> Landmark {
+        return Landmark(
+            place: annotation.description,
+            confidence: annotation.score)
+    }
+    
+    func mapToDetectedLandmark(from response: LandmarkDetectionDTO) -> DetectedLandmark {
+        let allAnnotation = response.responses.flatMap { $0.landmarkAnnotations }
+        let landmarks = allAnnotation.map(mapToLandmark)
+        
+        return DetectedLandmark(landmarks: landmarks)
+    }
+}
