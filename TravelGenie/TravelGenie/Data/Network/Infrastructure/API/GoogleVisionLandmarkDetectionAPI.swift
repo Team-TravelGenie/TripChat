@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum GoogleVisionLandmarkDetectionAPI {
-    case landmarkDetection
+    case landmarkDetection(GoogleVisionDetectionRequestModel)
 }
 
 extension GoogleVisionLandmarkDetectionAPI: DecodableTargetType {
@@ -31,7 +31,13 @@ extension GoogleVisionLandmarkDetectionAPI: DecodableTargetType {
     }
     
     var task: Moya.Task {
-        return .requestPlain
+        switch self {
+        case .landmarkDetection(let googleVisionDetectionRequestModel):
+            return .requestCompositeParameters(
+                bodyParameters: googleVisionDetectionRequestModel.toDictionary(),
+                bodyEncoding: JSONEncoding(options: .prettyPrinted),
+                urlParameters: ["key": SecretStorage().apiKey])
+        }
     }
     
     var headers: [String : String]? {
