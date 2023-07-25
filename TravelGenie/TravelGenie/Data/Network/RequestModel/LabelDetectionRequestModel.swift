@@ -12,7 +12,7 @@ struct LabelDetectionRequestModel: Encodable {
 }
 
 struct Request: Encodable {
-    let image: Image
+    let content: Content
     let features: [Feature]
 }
 
@@ -26,6 +26,6 @@ struct Feature: Encodable {
     }
 }
 
-struct Image: Encodable {
-    let content: String
+struct Content: Encodable {
+    let imageBase64: String
 }

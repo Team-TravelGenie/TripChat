@@ -18,7 +18,7 @@ final class DefaultRepository {
         // TODO: usecase 생성하도록 수정
         let requestModel = LabelDetectionRequestModel(
             requests: [
-                Request(image: Image(content: content),
+                Request(content: Content(imageBase64: content),
                         features: [Feature()]
                        )
             ]
