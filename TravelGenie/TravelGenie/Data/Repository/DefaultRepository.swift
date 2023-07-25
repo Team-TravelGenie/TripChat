@@ -17,7 +17,7 @@ final class DefaultRepository {
     ) -> Cancellable {
         let requestModel = LabelDetectionRequestModel(
             requests: [
-                Request(content: Content(imageBase64: content),
+                Request(content: Content(base64EncodedImageData: content),
                         features: [Feature()]
                        )
             ]

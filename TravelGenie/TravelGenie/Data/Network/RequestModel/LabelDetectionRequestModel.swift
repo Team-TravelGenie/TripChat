@@ -27,5 +27,5 @@ struct Feature: Encodable {
 }
 
 struct Content: Encodable {
-    let imageBase64: String
+    let base64EncodedImageData: String
 }
