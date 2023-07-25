@@ -7,8 +7,20 @@
 
 import Foundation
 
+enum RequestType: String, Encodable {
+    case labelDetection = "LABEL_DETECTION"
+    case landmarkDetection = "LANDMARK_DETECTION"
+}
+
 struct GoogleVisionDetectionRequestModel: Encodable {
     let requests: [Request]
+    
+    init(base64EncodedImageData: String, requestType: RequestType) {
+        let content = Content(base64EncodedImageData: base64EncodedImageData)
+        let feature = Feature(type: requestType)
+        let request = Request(content: content, features: [feature])
+        self.requests = [request]
+    }
 }
 
 struct Request: Encodable {
@@ -23,9 +35,9 @@ struct Request: Encodable {
 
 struct Feature: Encodable {
     let maxResults: Int
-    let type: String
+    let type: RequestType
     
-    init(type: String) {
+    init(type: RequestType) {
         self.type = type
         self.maxResults = 10
     }
