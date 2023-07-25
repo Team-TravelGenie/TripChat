@@ -11,22 +11,26 @@ struct LabelDetectionDTO: Decodable {
     let responses: [Response]
 }
 
-struct Response: Decodable {
-    let labelAnnotations: [LabelAnnotation]
+extension LabelDetectionDTO {
+    struct Response: Decodable {
+        let labelAnnotations: [LabelAnnotation]
+    }
 }
 
-struct LabelAnnotation: Decodable {
-    let mid, description: String
-    let score, topicality: Double
+extension LabelDetectionDTO.Response {
+    struct LabelAnnotation: Decodable {
+        let mid, description: String
+        let score, topicality: Double
+    }
 }
 
 extension LabelDetectionDTO {
-    func mapToLabel(annotation: LabelAnnotation) -> Label {
+    func mapToLabel(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Label {
         return Label(name: annotation.description,
                      confidence: annotation.score)
     }
     
-    func mapToAIDectectedImageLabel(from response: LabelDetectionDTO) -> DetectedImageLabel {
+    func mapToDetectedImageLabel(from response: LabelDetectionDTO) -> DetectedImageLabel {
         let allAnnotations = response.responses.flatMap { $0.labelAnnotations }
         let labels = allAnnotations.map(mapToLabel)
         

@@ -27,7 +27,7 @@ final class DefaultRepository {
         return networkService.request(VisionLabelAPI.labelDetection(requestModel)) { result in
             switch result {
             case .success(let response):
-                let mappedResponse = response.mapToAIDectectedImageLabel(from: response)
+                let mappedResponse = response.mapToDetectedImageLabel(from: response)
                 completion(.success(mappedResponse))
             case .failure(let error):
                 completion(.failure(error))
