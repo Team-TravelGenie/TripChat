@@ -16,12 +16,8 @@ final class GoogleVisionRepository {
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void
     ) -> Cancellable {
         let requestModel = GoogleVisionDetectionRequestModel(
-            requests: [
-                Request(content: Content(base64EncodedImageData: content),
-                        features: [Feature(type: "LABEL_DETECTION")]
-                       )
-            ]
-        )
+            base64EncodedImageData: content,
+            requestType: .labelDetection)
         
         return networkService.request(GoogleVisionLabelDetectionAPI.labelDetection(requestModel)) { result in
             switch result {
@@ -39,14 +35,9 @@ final class GoogleVisionRepository {
         completion: @escaping (Result<DetectedLandmark, Error>) -> Void
     ) -> Cancellable {
         let requestModel = GoogleVisionDetectionRequestModel(
-            requests: [
-                Request(
-                    content: Content(base64EncodedImageData: content),
-                    features: [
-                        Feature(type: "LANDMARK_DETECTION")
-                    ])
-            ])
-        
+            base64EncodedImageData: content,
+            requestType: .landmarkDetection)
+    
         return networkService.request(GoogleVisionLandmarkDetectionAPI.landmarkDetection(requestModel)) { result in
             switch result {
             case .success(let response):
