@@ -16,7 +16,7 @@
 		D20FA2912A6B99B40081B039 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D20FA2902A6B99B40081B039 /* Moya */; };
 		D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */; };
 		D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */; };
-		D20FA2982A6BB9340081B039 /* VisionLabelAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */; };
+		D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */; };
 		D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */; };
 		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
 		D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */; };
@@ -36,7 +36,7 @@
 		D20FA28D2A6B98AC0081B039 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMoyaProvider.swift; sourceTree = "<group>"; };
 		D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTargetType.swift; sourceTree = "<group>"; };
-		D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionLabelAPI.swift; sourceTree = "<group>"; };
+		D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLabelDetectionAPI.swift; sourceTree = "<group>"; };
 		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
 		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 		D20FA2962A6BB8F90081B039 /* API */ = {
 			isa = PBXGroup;
 			children = (
-				D20FA2972A6BB9340081B039 /* VisionLabelAPI.swift */,
+				D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -277,7 +277,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D20FA2A82A6BD4830081B039 /* LabelDetectionRequestModel.swift in Sources */,
-				D20FA2982A6BB9340081B039 /* VisionLabelAPI.swift in Sources */,
+				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,

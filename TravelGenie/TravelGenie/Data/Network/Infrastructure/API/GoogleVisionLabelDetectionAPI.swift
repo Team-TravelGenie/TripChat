@@ -8,11 +8,11 @@
 import Foundation
 import Moya
 
-enum VisionLabelAPI {
+enum GoogleVisionLabelDetectionAPI {
     case labelDetection(LabelDetectionRequestModel)
 }
 
-extension VisionLabelAPI: DecodableTargetType {
+extension GoogleVisionLabelDetectionAPI: DecodableTargetType {
     typealias ResultType = LabelDetectionDTO
     
     var baseURL: URL {
