@@ -15,7 +15,6 @@ final class DefaultRepository {
         _ content: String,
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void
     ) -> Cancellable {
-        // TODO: usecase 생성하도록 수정
         let requestModel = LabelDetectionRequestModel(
             requests: [
                 Request(content: Content(imageBase64: content),
