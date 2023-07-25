@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct LabelDetectionDTO: Codable {
+struct LabelDetectionDTO: Decodable {
     let responses: [Response]
 }
 
-struct Response: Codable {
+struct Response: Decodable {
     let labelAnnotations: [LabelAnnotation]
 }
 
-struct LabelAnnotation: Codable {
+struct LabelAnnotation: Decodable {
     let mid, description: String
     let score, topicality: Double
 }
