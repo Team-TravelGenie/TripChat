@@ -7,16 +7,16 @@
 
 import Foundation
 
-struct LabelDetectionRequestModel: Codable {
+struct LabelDetectionRequestModel: Encodable {
     let requests: [Request]
 }
 
-struct Request: Codable {
+struct Request: Encodable {
     let image: Image
     let features: [Feature]
 }
 
-struct Feature: Codable {
+struct Feature: Encodable {
     let maxResults: Int
     let type: String
     
@@ -26,6 +26,6 @@ struct Feature: Codable {
     }
 }
 
-struct Image: Codable {
+struct Image: Encodable {
     let content: String
 }
