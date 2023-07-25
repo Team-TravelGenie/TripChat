@@ -11,7 +11,7 @@ import Moya
 final class DefaultRepository {
     private let networkService = NetworkService()
     
-    func requestDetectedImageLabel(
+    func requestImageLabelDetection(
         _ content: String,
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void
     ) -> Cancellable {

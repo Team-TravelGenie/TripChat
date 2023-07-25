@@ -21,7 +21,7 @@ extension ViewController {
         let repo = DefaultRepository()
         let imageToBase64StringEncoding = base64Encoding()
         
-        repo.requestDetectedImageLabel(imageToBase64StringEncoding) { result in
+        repo.requestImageLabelDetection(imageToBase64StringEncoding) { result in
             switch result {
             case .success(let response):
                 print(response)
