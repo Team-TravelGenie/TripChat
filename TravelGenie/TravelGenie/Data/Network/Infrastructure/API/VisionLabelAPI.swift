@@ -13,7 +13,7 @@ enum VisionLabelAPI {
 }
 
 extension VisionLabelAPI: DecodableTargetType {
-    typealias ResultType = LabelDetectionResponse
+    typealias ResultType = LabelDetectionDTO
     
     var baseURL: URL {
         return URL(string: "https://vision.googleapis.com")!

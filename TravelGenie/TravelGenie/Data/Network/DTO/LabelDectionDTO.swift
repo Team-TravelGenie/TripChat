@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LabelDetectionResponse: Codable {
+struct LabelDetectionDTO: Codable {
     let responses: [Response]
 }
 
@@ -20,13 +20,13 @@ struct LabelAnnotation: Codable {
     let score, topicality: Double
 }
 
-extension LabelDetectionResponse {
+extension LabelDetectionDTO {
     func mapToLabel(annotation: LabelAnnotation) -> Label {
         return Label(name: annotation.description,
                      confidence: annotation.score)
     }
     
-    func mapToAIDectectedImageLabel(from response: LabelDetectionResponse) -> DetectedImageLabel {
+    func mapToAIDectectedImageLabel(from response: LabelDetectionDTO) -> DetectedImageLabel {
         let allAnnotations = response.responses.flatMap { $0.labelAnnotations }
         let labels = allAnnotations.map(mapToLabel)
         
