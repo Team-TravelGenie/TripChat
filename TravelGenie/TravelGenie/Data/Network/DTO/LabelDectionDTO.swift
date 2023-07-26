@@ -26,16 +26,17 @@ extension LabelDetectionDTO.Response {
     }
 }
 
+// MARK: Mapping
 extension LabelDetectionDTO {
-    func mapToLabel(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Keyword {
+    private func mapToKeyword(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Keyword {
         return Keyword(
             name: annotation.description,
             confidence: annotation.score)
     }
     
-    func mapToDetectedImageLabel(from response: LabelDetectionDTO) -> DetectedImageLabel {
-        let allAnnotations = response.responses.flatMap { $0.labelAnnotations }
-        let labels = allAnnotations.map(mapToLabel)
+    func mapToDetectedImageLabel() -> DetectedImageLabel {
+        let allAnnotations = self.responses.flatMap { $0.labelAnnotations }
+        let labels = allAnnotations.map(mapToKeyword)
         
         return DetectedImageLabel(labels: labels)
     }

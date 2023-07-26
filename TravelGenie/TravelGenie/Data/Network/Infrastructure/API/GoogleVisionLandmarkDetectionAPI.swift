@@ -1,46 +1,42 @@
 //
-//  VisionLabelAPI.swift
+//  GoogleVisionLandmarkDetectionAPI.swift
 //  TravelGenie
 //
-//  Created by 서현웅 on 2023/07/22.
+//  Created by 서현웅 on 2023/07/26.
 //
 
 import Foundation
 import Moya
 
-enum GoogleVisionLabelDetectionAPI {
-    case labelDetection(GoogleVisionDetectionRequestModel)
+enum GoogleVisionLandmarkDetectionAPI {
+    case landmarkDetection(GoogleVisionDetectionRequestModel)
 }
 
-extension GoogleVisionLabelDetectionAPI: DecodableTargetType {
-    typealias ResultType = LabelDetectionDTO
+extension GoogleVisionLandmarkDetectionAPI: DecodableTargetType {
+    typealias ResultType = LandmarkDetectionDTO
     
     var baseURL: URL {
         return URL(string: "https://vision.googleapis.com")!
     }
     
     var path: String {
-        switch self {
-        case .labelDetection:
-            return "/v1/images:annotate"
-        }
+        return "/v1/images:annotate"
     }
     
     var method: Moya.Method {
         switch self {
-        case .labelDetection:
+        case .landmarkDetection:
             return .post
         }
     }
     
     var task: Moya.Task {
         switch self {
-        case .labelDetection(let labelDectectionRequestModel):
+        case .landmarkDetection(let googleVisionDetectionRequestModel):
             return .requestCompositeParameters(
-                bodyParameters: labelDectectionRequestModel.toDictionary(),
+                bodyParameters: googleVisionDetectionRequestModel.toDictionary(),
                 bodyEncoding: JSONEncoding(options: .prettyPrinted),
-                urlParameters: ["key": SecretStorage().apiKey]
-            )
+                urlParameters: ["key": SecretStorage().apiKey])
         }
     }
     
