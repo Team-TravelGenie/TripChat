@@ -133,19 +133,19 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A62A6BD30F0081B039 /* RequestModel */,
-				D20FA28B2A6B98100081B039 /* DTO */,
+				D20FA28B2A6B98100081B039 /* ResponseModel */,
 				D20FA28C2A6B984C0081B039 /* Infrastructure */,
 			);
 			path = Network;
 			sourceTree = "<group>";
 		};
-		D20FA28B2A6B98100081B039 /* DTO */ = {
+		D20FA28B2A6B98100081B039 /* ResponseModel */ = {
 			isa = PBXGroup;
 			children = (
 				D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */,
 				D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */,
 			);
-			path = DTO;
+			path = ResponseModel;
 			sourceTree = "<group>";
 		};
 		D20FA28C2A6B984C0081B039 /* Infrastructure */ = {

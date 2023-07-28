@@ -27,6 +27,7 @@ extension LabelDetectionDTO.Response {
 }
 
 // MARK: Mapping
+
 extension LabelDetectionDTO {
     private func mapToKeyword(annotation: LabelDetectionDTO.Response.LabelAnnotation) -> Keyword {
         return Keyword(
