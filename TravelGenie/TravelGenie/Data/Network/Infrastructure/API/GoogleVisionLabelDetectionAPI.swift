@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum GoogleVisionLabelDetectionAPI {
-    case labelDetection(GoogleVisionDetectionRequestModel)
+    case labelDetection(GoogleVisionRequestModel)
 }
 
 extension GoogleVisionLabelDetectionAPI: DecodableTargetType {
@@ -39,8 +39,7 @@ extension GoogleVisionLabelDetectionAPI: DecodableTargetType {
             return .requestCompositeParameters(
                 bodyParameters: labelDectectionRequestModel.toDictionary(),
                 bodyEncoding: JSONEncoding(options: .prettyPrinted),
-                urlParameters: ["key": SecretStorage().apiKey]
-            )
+                urlParameters: ["key": SecretStorage().apiKey])
         }
     }
     

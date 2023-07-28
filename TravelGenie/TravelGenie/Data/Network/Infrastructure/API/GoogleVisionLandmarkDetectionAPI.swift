@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum GoogleVisionLandmarkDetectionAPI {
-    case landmarkDetection(GoogleVisionDetectionRequestModel)
+    case landmarkDetection(GoogleVisionRequestModel)
 }
 
 extension GoogleVisionLandmarkDetectionAPI: DecodableTargetType {
