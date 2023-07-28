@@ -35,8 +35,9 @@ final class MultiMoyaProvider: MoyaProvider<MultiTarget> {
 extension MultiMoyaProvider {
     func requestDecoded<T: DecodableTargetType>(
         _ target: T,
-        completion: @escaping (Result<T.ResultType, MoyaError>) -> Void
-    ) -> Cancellable {
+        completion: @escaping (Result<T.ResultType, MoyaError>) -> Void)
+        -> Cancellable
+    {
         request(.target(target)) { result in
             switch result {
             case .success(let response):

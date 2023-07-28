@@ -13,9 +13,9 @@ final class NetworkService {
     
     func request<T: DecodableTargetType>(
         _ target: T,
-        completion: @escaping (Result<T.ResultType, MoyaError>)
-        -> Void
-    ) -> Cancellable {
+        completion: @escaping (Result<T.ResultType, MoyaError>) -> Void)
+        -> Cancellable
+    {
         provider.requestDecoded(target) { result in
             switch result {
             case .success(let responseModel):
