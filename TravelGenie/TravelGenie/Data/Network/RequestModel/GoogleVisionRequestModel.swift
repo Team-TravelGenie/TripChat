@@ -1,5 +1,5 @@
 //
-//  LabelDetectionRequestModel.swift
+//  VisionRequestModel.swift
 //  TravelGenie
 //
 //  Created by 서현웅 on 2023/07/22.
@@ -12,7 +12,7 @@ enum RequestType: String, Encodable {
     case landmarkDetection = "LANDMARK_DETECTION"
 }
 
-struct GoogleVisionDetectionRequestModel: Encodable {
+struct GoogleVisionRequestModel: Encodable {
     let requests: [Request]
     
     init(base64EncodedImageData: String, requestType: RequestType) {

@@ -13,10 +13,10 @@ final class GoogleVisionRepository {
     
     func requestImageLabelDetection(
         _ content: String,
-        let requestModel = GoogleVisionDetectionRequestModel(
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void)
         -> Cancellable
     {
+        let requestModel = GoogleVisionRequestModel(
             base64EncodedImageData: content,
             requestType: .labelDetection)
         
@@ -33,10 +33,10 @@ final class GoogleVisionRepository {
     
     func requestLandmarkDetection(
         _ content: String,
-        let requestModel = GoogleVisionDetectionRequestModel(
         completion: @escaping (Result<DetectedLandmark, Error>) -> Void)
         -> Cancellable
     {
+        let requestModel = GoogleVisionRequestModel(
             base64EncodedImageData: content,
             requestType: .landmarkDetection)
         
