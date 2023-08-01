@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		57684BF52A73C7EE008AB8C9 /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57684BF42A73C7EE008AB8C9 /* OpenAISwift */; };
+		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2762A6B8DA90081B039 /* ViewController.swift */; };
@@ -57,7 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				57684BF52A73C7EE008AB8C9 /* OpenAISwift in Frameworks */,
+				57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */,
 				D20FA2912A6B99B40081B039 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -229,7 +229,7 @@
 			name = TravelGenie;
 			packageProductDependencies = (
 				D20FA2902A6B99B40081B039 /* Moya */,
-				57684BF42A73C7EE008AB8C9 /* OpenAISwift */,
+				57C1FFFB2A78CBAA00A664FD /* OpenAISwift */,
 			);
 			productName = TravelGenie;
 			productReference = D20FA26F2A6B8DA90081B039 /* TravelGenie.app */;
@@ -261,7 +261,7 @@
 			mainGroup = D20FA2662A6B8DA90081B039;
 			packageReferences = (
 				D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */,
-				57684BF32A73C7EE008AB8C9 /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 			);
 			productRefGroup = D20FA2702A6B8DA90081B039 /* Products */;
 			projectDirPath = "";
@@ -516,12 +516,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		57684BF32A73C7EE008AB8C9 /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
+		57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/adamrushy/OpenAISwift";
+			repositoryURL = "https://github.com/marcoboerner/OpenAISwift";
 			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.4.0;
+				branch = main;
+				kind = branch;
 			};
 		};
 		D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */ = {
@@ -535,9 +535,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		57684BF42A73C7EE008AB8C9 /* OpenAISwift */ = {
+		57C1FFFB2A78CBAA00A664FD /* OpenAISwift */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 57684BF32A73C7EE008AB8C9 /* XCRemoteSwiftPackageReference "OpenAISwift" */;
+			package = 57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
 		};
 		D20FA2902A6B99B40081B039 /* Moya */ = {
