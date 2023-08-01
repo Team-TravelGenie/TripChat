@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
+		57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2762A6B8DA90081B039 /* ViewController.swift */; };
@@ -20,7 +21,6 @@
 		D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */; };
 		D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */; };
 		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
-		D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */; };
 		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
@@ -30,6 +30,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -43,7 +44,6 @@
 		D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLabelDetectionAPI.swift; sourceTree = "<group>"; };
 		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
-		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecretStorage.swift; path = ../Secrets/SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
@@ -65,11 +65,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57C1FFFD2A78CFCD00A664FD /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */,
+			);
+			name = Secrets;
+			path = TravelGenie/Secrets;
+			sourceTree = SOURCE_ROOT;
+		};
 		D20FA2662A6B8DA90081B039 = {
 			isa = PBXGroup;
 			children = (
 				D20FA2712A6B8DA90081B039 /* TravelGenie */,
-				D20FA29E2A6BC69D0081B039 /* Secrets */,
 				D20FA2702A6B8DA90081B039 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -85,10 +93,11 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
-				D20FA2A92A6BE3370081B039 /* Extension */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
+				D20FA2A92A6BE3370081B039 /* Extension */,
+				57C1FFFD2A78CFCD00A664FD /* Secrets */,
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
@@ -177,15 +186,6 @@
 				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		D20FA29E2A6BC69D0081B039 /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */,
-			);
-			name = Secrets;
-			path = ../Secrets;
 			sourceTree = "<group>";
 		};
 		D20FA2A32A6BC9B20081B039 /* Main */ = {
@@ -293,7 +293,6 @@
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
-				D20FA2A02A6BC6BC0081B039 /* SecretStorage.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
@@ -304,6 +303,7 @@
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
+				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 			);
