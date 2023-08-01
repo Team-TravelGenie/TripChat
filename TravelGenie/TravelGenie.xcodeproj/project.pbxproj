@@ -43,7 +43,7 @@
 		D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLabelDetectionAPI.swift; sourceTree = "<group>"; };
 		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
-		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
+		D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SecretStorage.swift; path = ../Secrets/SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
@@ -184,7 +184,8 @@
 			children = (
 				D20FA29F2A6BC6BC0081B039 /* SecretStorage.swift */,
 			);
-			path = Secrets;
+			name = Secrets;
+			path = ../Secrets;
 			sourceTree = "<group>";
 		};
 		D20FA2A32A6BC9B20081B039 /* Main */ = {
