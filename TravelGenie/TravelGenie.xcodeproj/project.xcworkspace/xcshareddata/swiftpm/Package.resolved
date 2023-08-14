@@ -19,6 +19,15 @@
       }
     },
     {
+      "identity" : "openaiswift",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/marcoboerner/OpenAISwift",
+      "state" : {
+        "branch" : "main",
+        "revision" : "db672dfa61a04d36ce52d862557bda2798a3328d"
+      }
+    },
+    {
       "identity" : "reactiveswift",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/ReactiveCocoa/ReactiveSwift.git",
