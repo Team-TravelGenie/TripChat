@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
@@ -30,6 +31,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */,
+				57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -300,6 +303,7 @@
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
+				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
