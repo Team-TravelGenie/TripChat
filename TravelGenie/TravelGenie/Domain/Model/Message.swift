@@ -28,13 +28,30 @@ struct Message: MessageType {
     
     init(
         text: String,
-        sender: SenderType, messageId: String, sendtDate: Date) {
-        self.init(kind: .text(text), sender: sender, messageId: messageId, sentDate: <#T##Date#>)
+        sender: SenderType,
+        messageId: String,
+        sentDate: Date)
+    {
+        self.init(
+            kind: .text(text),
+            sender: sender,
+            messageId: messageId,
+            sentDate: sentDate)
     }
 }
 
 extension Message {
     static let MockMessage: [Message] = [
+        Message(
+            text: "Test 1 (Text Kind) Message.",
+            sender: Sender(name: .user),
+            messageId: UUID().uuidString,
+            sentDate: Date().addingTimeInterval(TimeInterval(-5000))),
         
+        Message(
+            text: "Test 2 (Text Kind) Message.",
+            sender: Sender(name: .user),
+            messageId: UUID().uuidString,
+            sentDate: Date().addingTimeInterval(TimeInterval(-3000))),
     ]
 }
