@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */; };
+		573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFC2A8BAE4100116D2D /* Coordinator.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -32,6 +34,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinationFinishDelegate.swift; sourceTree = "<group>"; };
+		573BCCFC2A8BAE4100116D2D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -78,6 +82,16 @@
 			path = Application;
 			sourceTree = "<group>";
 		};
+		573BCCFA2A8BAE4100116D2D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */,
+				573BCCFC2A8BAE4100116D2D /* Coordinator.swift */,
+			);
+			name = Common;
+			path = TravelGenie/Common;
+			sourceTree = SOURCE_ROOT;
+		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -120,6 +134,7 @@
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
+				573BCCFA2A8BAE4100116D2D /* Common */,
 				D20FA2A92A6BE3370081B039 /* Extensions */,
 				573BCCF92A8BADA400116D2D /* Application */,
 				57C100162A8B91CF00A664FD /* Resources */,
@@ -323,6 +338,8 @@
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
+				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
+				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
