@@ -25,4 +25,16 @@ struct Message: MessageType {
         self.messageId = messageId
         self.sentDate = sentDate
     }
+    
+    init(
+        text: String,
+        sender: SenderType, messageId: String, sendtDate: Date) {
+        self.init(kind: .text(text), sender: sender, messageId: messageId, sentDate: <#T##Date#>)
+    }
+}
+
+extension Message {
+    static let MockMessage: [Message] = [
+        
+    ]
 }
