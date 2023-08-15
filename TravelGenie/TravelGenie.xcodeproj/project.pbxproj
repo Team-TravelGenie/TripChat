@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
+		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
@@ -32,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
+		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -70,6 +72,7 @@
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				57C100182A8B91E700A664FD /* Color.swift */,
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
 				D20FA2802A6B8DAC0081B039 /* Info.plist */,
@@ -319,6 +322,7 @@
 				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
+				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
