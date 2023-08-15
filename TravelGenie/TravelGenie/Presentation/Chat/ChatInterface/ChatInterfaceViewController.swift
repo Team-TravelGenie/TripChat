@@ -22,6 +22,23 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
+        customizeMessagesCollectionViewLayout()
+    }
+    
+    private func customizeMessagesCollectionViewLayout() {
+        let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+        
+        layout?.setMessageOutgoingAvatarSize(.zero)
+        layout?.setMessageOutgoingMessageTopLabelAlignment(
+            LabelAlignment(
+                textAlignment: .right,
+                textInsets: .zero))
+        layout?.setMessageOutgoingMessageBottomLabelAlignment(
+            LabelAlignment(
+                textAlignment: .right,
+                textInsets: .zero))
+        layout?.setMessageIncomingAvatarPosition(
+            AvatarPosition(vertical: .messageTop))
     }
 }
 
