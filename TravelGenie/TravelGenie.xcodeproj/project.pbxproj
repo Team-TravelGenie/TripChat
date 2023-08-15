@@ -67,6 +67,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		57C100162A8B91CF00A664FD /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
+				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
+				D20FA2802A6B8DAC0081B039 /* Info.plist */,
+			);
+			name = Resources;
+			path = ../Resources;
+			sourceTree = "<group>";
+		};
 		57C1FFFD2A78CFCD00A664FD /* Secrets */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,9 +113,7 @@
 				57C1FFFD2A78CFCD00A664FD /* Secrets */,
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
-				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
-				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
-				D20FA2802A6B8DAC0081B039 /* Info.plist */,
+				57C100162A8B91CF00A664FD /* Resources */,
 			);
 			path = TravelGenie;
 			sourceTree = "<group>";
