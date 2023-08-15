@@ -20,6 +20,7 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func setupMessagesCollectionViewAttributes() {
         messagesCollectionView.messagesDataSource = self
+        messagesCollectionView.messagesDisplayDelegate = self
     }
 }
 
@@ -34,5 +35,55 @@ extension ChatInterfaceViewController: MessagesDataSource {
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
         return messageList.count
+    }
+}
+
+extension ChatInterfaceViewController: MessagesDisplayDelegate {
+    
+    func textColor(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> UIColor
+    {
+        return isFromCurrentSender(message: message) ? .black : .blue // 색상반영부
+    }
+    
+    func backgroundColor(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> UIColor
+    {
+        return isFromCurrentSender(message: message) ? .black : .blue // 색상반영부
+    }
+    
+    func messageStyle(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> MessageStyle
+    {
+        return .none
+    }
+    
+    func configureAvatarView(
+        _ avatarView: AvatarView,
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+    {
+        let avatarImage = UIImage(systemName: "cloud") // 아바타반영부
+        let avatar = Avatar(image: avatarImage)
+        avatarView.set(avatar: avatar)
+    }
+    
+    func configureMediaMessageImageView(
+        _ imageView: UIImageView,
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+    {
+        // TODO: kind - PhotoCell, CustomCell(Swipe) 타입에 대해서 Cache 구현
     }
 }
