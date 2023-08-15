@@ -33,15 +33,15 @@
 
 /* Begin PBXFileReference section */
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
-		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = ../TravelGenie/Resources/Color/Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		D20FA2762A6B8DA90081B039 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../TravelGenie/Resources/Assets.xcassets; sourceTree = "<group>"; };
 		D20FA27E2A6B8DAC0081B039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		D20FA2802A6B8DAC0081B039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D20FA2802A6B8DAC0081B039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../TravelGenie/Resources/Info.plist; sourceTree = "<group>"; };
 		D20FA28D2A6B98AC0081B039 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMoyaProvider.swift; sourceTree = "<group>"; };
 		D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTargetType.swift; sourceTree = "<group>"; };
@@ -335,6 +335,7 @@
 				D20FA27E2A6B8DAC0081B039 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
+			path = ../TravelGenie/Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -463,7 +464,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
@@ -491,7 +492,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Resources/Info.plist;
+				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = "";
