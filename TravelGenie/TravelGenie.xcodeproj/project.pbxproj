@@ -31,6 +31,7 @@
 		D2E3AA302A8B66560049DDEF /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */; };
 		D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */; };
 		D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA362A8B85AB0049DDEF /* Sender.swift */; };
+		D2E3AA392A8B87630049DDEF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA382A8B87630049DDEF /* Message.swift */; };
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
@@ -61,6 +62,7 @@
 		D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewController.swift; sourceTree = "<group>"; };
 		D2E3AA362A8B85AB0049DDEF /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		D2E3AA382A8B87630049DDEF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
@@ -269,6 +271,7 @@
 			isa = PBXGroup;
 			children = (
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
+				D2E3AA382A8B87630049DDEF /* Message.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
+				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
