@@ -26,6 +26,8 @@
 		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
+		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
+		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
@@ -51,6 +53,8 @@
 		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
+		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
@@ -124,6 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A32A6BC9B20081B039 /* Main */,
+				D2E3AA242A8B61DA0049DDEF /* Chat */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -226,6 +231,15 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D2E3AA242A8B61DA0049DDEF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -315,11 +329,13 @@
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
+				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);
