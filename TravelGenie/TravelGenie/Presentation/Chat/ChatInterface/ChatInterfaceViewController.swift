@@ -15,7 +15,7 @@ class ChatInterfaceViewController: MessagesViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        setupMessagesCollectionViewAttributes()
     }
     
     private func setupMessagesCollectionViewAttributes() {
