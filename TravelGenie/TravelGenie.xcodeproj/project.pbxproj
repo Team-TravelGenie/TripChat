@@ -12,6 +12,7 @@
 		573BCD032A8BAF7600116D2D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD002A8BAF7600116D2D /* HomeViewModel.swift */; };
 		573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD012A8BAF7600116D2D /* HomeViewController.swift */; };
 		573BCD052A8BAF7600116D2D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */; };
+		573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD062A8BAFE300116D2D /* AppCoordinator.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -42,6 +43,7 @@
 		573BCD002A8BAF7600116D2D /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
 		573BCD012A8BAF7600116D2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
+		573BCD062A8BAFE300116D2D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			children = (
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
+				573BCD062A8BAFE300116D2D /* AppCoordinator.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -356,6 +359,7 @@
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
+				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
