@@ -8,7 +8,7 @@
 import UIKit
 import MessageKit
 
-final class ChatViewController: UIViewController {
+final class ChatViewController: ChatInterfaceViewController {
 
     private let viewModel: ChatViewModel
     
