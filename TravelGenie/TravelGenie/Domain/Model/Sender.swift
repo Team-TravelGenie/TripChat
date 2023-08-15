@@ -17,8 +17,8 @@ struct Sender: SenderType {
     var senderId: String
     var displayName: String
     
-    init(senderId: String, displayName: SenderName) {
-        self.senderId = senderId
-        self.displayName = displayName.rawValue
+    init(name senderName: SenderName) {
+        self.senderId = senderName.rawValue
+        self.displayName = senderName.rawValue
     }
 }
