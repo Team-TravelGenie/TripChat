@@ -22,6 +22,13 @@ final class AppCoordinator: Coordinator {
     func start() {
         window?.rootViewController = navigationController
         window?.makeKeyAndVisible()
+        homeFlow(navigationController: navigationController)
+    }
+    
+    private func homeFlow(navigationController: UINavigationController) {
+        let homeCoordinator = HomeCoordinator(finishDelegate: self, navigationController: navigationController)
+        childCoordinators.append(homeCoordinator)
+        homeCoordinator.start()
     }
 }
 
