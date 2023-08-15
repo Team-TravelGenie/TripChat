@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */; };
 		573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFC2A8BAE4100116D2D /* Coordinator.swift */; };
+		573BCD032A8BAF7600116D2D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD002A8BAF7600116D2D /* HomeViewModel.swift */; };
+		573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD012A8BAF7600116D2D /* HomeViewController.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -36,6 +38,8 @@
 /* Begin PBXFileReference section */
 		573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinationFinishDelegate.swift; sourceTree = "<group>"; };
 		573BCCFC2A8BAE4100116D2D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		573BCD002A8BAF7600116D2D /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
+		573BCD012A8BAF7600116D2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -92,6 +96,15 @@
 			path = TravelGenie/Common;
 			sourceTree = SOURCE_ROOT;
 		};
+		573BCCFF2A8BAF7600116D2D /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				573BCD002A8BAF7600116D2D /* HomeViewModel.swift */,
+				573BCD012A8BAF7600116D2D /* HomeViewController.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -146,6 +159,7 @@
 		D20FA2862A6B97A70081B039 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				573BCCFF2A8BAF7600116D2D /* Home */,
 				D20FA2A32A6BC9B20081B039 /* Main */,
 			);
 			path = Presentation;
@@ -334,6 +348,7 @@
 				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
+				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
@@ -343,6 +358,7 @@
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
+				573BCD032A8BAF7600116D2D /* HomeViewModel.swift in Sources */,
 				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
