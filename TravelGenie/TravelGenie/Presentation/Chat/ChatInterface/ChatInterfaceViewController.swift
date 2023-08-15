@@ -21,6 +21,7 @@ class ChatInterfaceViewController: MessagesViewController {
     private func setupMessagesCollectionViewAttributes() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
+        messagesCollectionView.messagesLayoutDelegate = self
     }
 }
 
@@ -85,5 +86,43 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
     {
         // TODO: kind - PhotoCell, CustomCell(Swipe) 타입에 대해서 Cache 구현
+    }
+}
+
+extension ChatInterfaceViewController: MessagesLayoutDelegate {
+    func cellTopLabelHeight(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CGFloat
+    {
+        return 20
+    }
+    
+    func cellBottomLabelHeight(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CGFloat
+    {
+        return 20
+    }
+    
+    func messageTopLabelHeight(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CGFloat
+    {
+        return 15
+    }
+    
+    func messageBottomLabelHeight(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CGFloat
+    {
+        return 15
     }
 }
