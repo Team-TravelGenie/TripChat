@@ -69,6 +69,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		573BCCF92A8BADA400116D2D /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
+				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -108,13 +117,12 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
+				573BCCF92A8BADA400116D2D /* Application */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
 				D20FA2A92A6BE3370081B039 /* Extension */,
 				57C1FFFD2A78CFCD00A664FD /* Secrets */,
-				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
-				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
 				57C100162A8B91CF00A664FD /* Resources */,
 			);
 			path = TravelGenie;
