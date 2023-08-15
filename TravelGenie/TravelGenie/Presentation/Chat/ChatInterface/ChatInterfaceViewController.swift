@@ -9,7 +9,10 @@ import UIKit
 import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController {
-
+    
+    private let defaultSender: Sender = Sender(name: .user)
+    var messageList: [Message] = [Message]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,15 +24,15 @@ class ChatInterfaceViewController: MessagesViewController {
 }
 
 extension ChatInterfaceViewController: MessagesDataSource {
-    var currentSender: MessageKit.SenderType {
-        <#code#>
+    var currentSender: SenderType {
+        return defaultSender
     }
     
-    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessageKit.MessagesCollectionView) -> MessageKit.MessageType {
-        <#code#>
+    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+        return messageList[indexPath.row]
     }
     
-    func numberOfSections(in messagesCollectionView: MessageKit.MessagesCollectionView) -> Int {
-        <#code#>
+    func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
+        return messageList.count
     }
 }
