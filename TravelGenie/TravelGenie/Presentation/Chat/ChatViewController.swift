@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import MessageKit
 
 final class ChatViewController: UIViewController {
 
