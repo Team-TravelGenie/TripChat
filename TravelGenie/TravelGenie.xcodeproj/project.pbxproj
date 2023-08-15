@@ -19,7 +19,6 @@
 		57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
-		D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2762A6B8DA90081B039 /* ViewController.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
 		D20FA27F2A6B8DAC0081B039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */; };
 		D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA28D2A6B98AC0081B039 /* NetworkService.swift */; };
@@ -50,7 +49,6 @@
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D20FA2762A6B8DA90081B039 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20FA27E2A6B8DAC0081B039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20FA2802A6B8DAC0081B039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -166,7 +164,6 @@
 			isa = PBXGroup;
 			children = (
 				573BCCFF2A8BAF7600116D2D /* Home */,
-				D20FA2A32A6BC9B20081B039 /* Main */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -243,14 +240,6 @@
 				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
 			);
 			path = Entity;
-			sourceTree = "<group>";
-		};
-		D20FA2A32A6BC9B20081B039 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				D20FA2762A6B8DA90081B039 /* ViewController.swift */,
-			);
-			path = Main;
 			sourceTree = "<group>";
 		};
 		D20FA2A62A6BD30F0081B039 /* RequestModel */ = {
@@ -351,7 +340,6 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
-				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
