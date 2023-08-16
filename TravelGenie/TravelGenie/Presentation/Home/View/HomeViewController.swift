@@ -15,6 +15,7 @@ final class HomeViewController: UIViewController {
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
     private let chatListButton = HomeMenuButton()
+    private let lineView = LineView()
     
     // MARK: Lifecycle
     
@@ -41,6 +42,7 @@ final class HomeViewController: UIViewController {
         configureBodyTextView()
         configureChatButton()
         configureChatListButton()
+        configureLineView()
     }
     
     private func configureLayout() {
@@ -99,5 +101,9 @@ final class HomeViewController: UIViewController {
             .headline("최근대화", color: .black, weight: .bold)
         chatListButton.setImage(UIImage(named: "search"), for: .normal)
         chatListButton.setAttributedTitle(chatListButtonTitle, for: .normal)
+    }
+    
+    private func configureLineView() {
+        lineView.setLineWith(color: .blueGrayLine, weight: 1)
     }
 }
