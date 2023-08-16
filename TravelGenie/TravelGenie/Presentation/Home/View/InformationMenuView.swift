@@ -29,7 +29,7 @@ final class InformationMenuView: UIView {
     
     func setTitle(with value: String) {
         titleLabel.attributedText = NSMutableAttributedString()
-            .body(value, color: .blueGrayFont, weight: .regular)
+            .text(value, font: .bodyRegular, color: .blueGrayFont)
     }
     
     // MARK: Private

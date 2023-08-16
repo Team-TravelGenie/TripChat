@@ -108,29 +108,29 @@ final class HomeViewController: UIViewController {
     private func configureMainTextView() {
         mainTextView.isScrollEnabled = false
         mainTextView.attributedText = NSMutableAttributedString()
-            .largeTitle("AI", color: .primary, weight: .bold)
-            .largeTitle("와 함께\n", color: .black, weight: .bold)
-            .largeTitle("여행", color: .primary, weight: .bold)
-            .largeTitle(" 하실래요?", color: .black, weight: .bold)
+            .text("AI", font: .largeTitle, color: .primary)
+            .text("와 함께\n", font: .largeTitle, color: .black)
+            .text("여행", font: .largeTitle, color: .primary)
+            .text(" 하실래요?", font: .largeTitle, color: .black)
     }
     
     private func configureBodyTextView() {
         bodyTextView.isScrollEnabled = false
         bodyTextView.attributedText = NSMutableAttributedString()
-            .body("오늘은 어디로 여행을 떠나고 싶나요?\n", color: .grayFont, weight: .regular)
-            .body("사진을 보내주시면 추천 해 드릴게요!", color: .grayFont, weight: .regular)
+            .text("오늘은 어디로 여행을 떠나고 싶나요?\n", font: .bodyRegular, color: .grayFont)
+            .text("사진을 보내주시면 추천 해 드릴게요!", font: .bodyRegular, color: .grayFont)
     }
     
     private func configureChatButton() {
         let chatButtonTitle = NSMutableAttributedString()
-            .headline("채팅하기", color: .black, weight: .bold)
+            .text("채팅하기", font: .headline, color: .black)
         chatButton.setImage(UIImage(named: "chat"), for: .normal)
         chatButton.setAttributedTitle(chatButtonTitle, for: .normal)
     }
     
     private func configureChatListButton() {
         let chatListButtonTitle = NSMutableAttributedString()
-            .headline("최근대화", color: .black, weight: .bold)
+            .text("최근대화", font: .headline, color: .black)
         chatListButton.setImage(UIImage(named: "search"), for: .normal)
         chatListButton.setAttributedTitle(chatListButtonTitle, for: .normal)
     }

@@ -13,7 +13,7 @@
 		573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD012A8BAF7600116D2D /* HomeViewController.swift */; };
 		573BCD052A8BAF7600116D2D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */; };
 		573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD062A8BAFE300116D2D /* AppCoordinator.swift */; };
-		573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+.swift */; };
+		573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */; };
 		573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */; };
 		573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0E2A8CD1AC00116D2D /* LineView.swift */; };
 		573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD102A8CD40F00116D2D /* InformationMenuView.swift */; };
@@ -48,7 +48,7 @@
 		573BCD012A8BAF7600116D2D /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeCoordinator.swift; sourceTree = "<group>"; };
 		573BCD062A8BAFE300116D2D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
+		573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+text.swift"; sourceTree = "<group>"; };
 		573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		573BCD0E2A8CD1AC00116D2D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		573BCD102A8CD40F00116D2D /* InformationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationMenuView.swift; sourceTree = "<group>"; };
@@ -284,7 +284,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */,
-				573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+.swift */,
+				573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -379,7 +379,7 @@
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
-				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+.swift in Sources */,
+				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
