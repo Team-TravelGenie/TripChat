@@ -37,6 +37,7 @@
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
+		D2FFEF8C2A8D28E200B41DBC /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFEF8B2A8D28E200B41DBC /* NSMutableAttributedString+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +70,7 @@
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
+		D2FFEF8B2A8D28E200B41DBC /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -230,6 +232,7 @@
 		D20FA2A92A6BE3370081B039 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D2FFEF8B2A8D28E200B41DBC /* NSMutableAttributedString+.swift */,
 				D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */,
 			);
 			path = Extension;
@@ -370,6 +373,7 @@
 			files = (
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
+				D2FFEF8C2A8D28E200B41DBC /* NSMutableAttributedString+.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
