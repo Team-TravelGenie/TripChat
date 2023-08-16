@@ -18,7 +18,10 @@ class SystemMessageCell: UICollectionViewCell {
         
         label.textAlignment = .left
         label.numberOfLines = .zero
+        label.textColor = .blueGrayFont
+        label.font = UIFont.systemFont(ofSize: 15)
         label.text = Constant.welcomeText
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
     }()
@@ -36,17 +39,10 @@ class SystemMessageCell: UICollectionViewCell {
     
     private func configureLayout() {
         contentView.addSubview(welcomeMessageLabel)
-        welcomeMessageLabel.frame = contentView.bounds
+        
+        NSLayoutConstraint.activate([
+            welcomeMessageLabel.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.95),
+            welcomeMessageLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        ])
     }
-    
-//    open func configure(with message: MessageType, at _: IndexPath, and _: MessagesCollectionView) {
-//        // Do stuff
-//        switch message.kind {
-//        case .custom(let data):
-//            guard let systemMessage = data as? String else { return }
-//            label.text = systemMessage
-//        default:
-//            break
-//        }
-//    }
 }
