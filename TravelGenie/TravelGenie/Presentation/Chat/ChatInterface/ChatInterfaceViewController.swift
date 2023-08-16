@@ -48,7 +48,7 @@ extension ChatInterfaceViewController: MessagesDataSource {
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messageList[indexPath.row]
+        return messageList[indexPath.section]
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
@@ -82,7 +82,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> MessageStyle
     {
-        return .none
+        return .bubble
     }
     
     func configureAvatarView(
