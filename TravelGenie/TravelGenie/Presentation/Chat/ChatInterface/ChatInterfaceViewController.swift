@@ -199,6 +199,14 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
 
 import PhotosUI
 
+/*
+ NOTE:
+ 1. 현재, PHPickerViewController로 사진 고르는 작업을 처리하였습니다. (이유? 사용자권한을 받지않아도 되는 간편성에)
+ 2. 하지만, PHPickerViewController는 UI의 Custom을 제한하고있습니다.
+ 3. 현님이 제공한 UI로 구현하려면 UIImagePicker로 변경하여 작업해야 할 것으로 보이네요
+ - 일단은 기능작업이 우선이라고 판단하여 [사진을 Pick하고, 채팅을 진행한다] 라는 것에 초점을 맞추고 작업을 진행해보고, ImagePicker로 추후에 변경하겠습니다.
+ */
+
 extension ChatInterfaceViewController: ButtonCellDelegate, PHPickerViewControllerDelegate {
     func didTapButton(in _: UICollectionViewCell) {
         presentPHPicekrViewController()
