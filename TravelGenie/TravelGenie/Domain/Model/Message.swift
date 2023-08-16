@@ -5,7 +5,7 @@
 //  Created by 서현웅 on 2023/08/15.
 //
 
-import Foundation
+import UIKit
 import MessageKit
 
 struct Message: MessageType {
@@ -38,7 +38,37 @@ struct Message: MessageType {
             messageId: messageId,
             sentDate: sentDate)
     }
+    
+    init(
+        image: UIImage,
+        sender: SenderType,
+        messageId: String,
+        sentDate: Date)
+    {
+        let mediaItem = ImageMediaItem(image: image)
+        self.init(
+            kind: .photo(mediaItem),
+            sender: sender,
+            messageId: messageId,
+            sentDate: sentDate)
+    }
 }
+
+// MARK: Content MediaItem(s)
+
+private struct ImageMediaItem: MediaItem {
+    var url: URL?
+    var image: UIImage?
+    var placeholderImage: UIImage
+    var size: CGSize
+    
+    init(image: UIImage) {
+        self.image = image
+        size = CGSize(width: 240, height: 240) // 사진별로 사이즈 달라지도록 설정해줘야할 듯?
+        placeholderImage = UIImage()
+    }
+}
+
 
 extension Message {
     static let MockMessage: [Message] = [
