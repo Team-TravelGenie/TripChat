@@ -78,7 +78,9 @@ class ChatInterfaceViewController: MessagesViewController {
             case .systemMessage:
                 return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
             case .welcomeMessage:
-                return messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
+                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
+                cell.delegate = self
+                return cell
             }
         }
 
@@ -192,5 +194,11 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         -> CGFloat
     {
         return 15
+    }
+}
+
+extension ChatInterfaceViewController: ButtonCellDelegate {
+    func didTapButton(in _: UICollectionViewCell) {
+        print("ABC")
     }
 }
