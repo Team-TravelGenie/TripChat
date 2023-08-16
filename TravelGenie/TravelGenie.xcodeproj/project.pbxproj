@@ -38,6 +38,7 @@
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
 		D2FFEF8C2A8D28E200B41DBC /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFEF8B2A8D28E200B41DBC /* NSMutableAttributedString+.swift */; };
+		D2FFEF8E2A8D2AD800B41DBC /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFEF8D2A8D2AD800B41DBC /* Font.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -71,6 +72,7 @@
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
 		D2FFEF8B2A8D28E200B41DBC /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
+		D2FFEF8D2A8D2AD800B41DBC /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -90,6 +92,7 @@
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2FFEF8D2A8D2AD800B41DBC /* Font.swift */,
 				57C100182A8B91E700A664FD /* Color.swift */,
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
@@ -394,6 +397,7 @@
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				D2FFEF8E2A8D2AD800B41DBC /* Font.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
