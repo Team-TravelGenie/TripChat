@@ -11,7 +11,7 @@ import MessageKit
 class ChatInterfaceViewController: MessagesViewController {
     enum MessagesDefaultSection: Int {
         case systemMessage = 0
-        case welcomeMessage = 1
+        case welcomeMessage = 2
     }
     
     private let defaultSender: Sender = Sender(name: .user)
@@ -28,6 +28,7 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         customizeMessagesCollectionViewLayout()
         cellResistration()
+        ConfiguremessagesCollectionViewBackgroundColor()
     }
     
     private func customizeMessagesCollectionViewLayout() {
@@ -48,6 +49,11 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func cellResistration() {
         messagesCollectionView.register(SystemMessageCell.self)
+        messagesCollectionView.register(ButtonCell.self)
+    }
+    
+    private func ConfiguremessagesCollectionViewBackgroundColor() {
+        messagesCollectionView.backgroundColor = .blueGrayBackground
     }
     
     override func collectionView(
@@ -70,10 +76,9 @@ class ChatInterfaceViewController: MessagesViewController {
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {
             case .systemMessage:
-                let cell = messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
-                return cell
+                return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
             case .welcomeMessage:
-                <#code#>
+                return messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
             }
         }
 
