@@ -64,7 +64,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UIColor
     {
-        return isFromCurrentSender(message: message) ? .black : .blue // 색상반영부
+        return isFromCurrentSender(message: message) ? .white : .black
     }
     
     func backgroundColor(
@@ -73,7 +73,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UIColor
     {
-        return isFromCurrentSender(message: message) ? .black : .blue // 색상반영부
+        return isFromCurrentSender(message: message) ? .primary : .tertiary
     }
     
     func messageStyle(
@@ -91,8 +91,9 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView)
     {
-        let avatarImage = UIImage(systemName: "cloud") // 아바타반영부
+        let avatarImage = UIImage(named: "chat")
         let avatar = Avatar(image: avatarImage)
+        avatarView.backgroundColor = .white
         avatarView.set(avatar: avatar)
     }
     

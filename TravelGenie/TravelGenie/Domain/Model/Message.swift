@@ -43,6 +43,12 @@ struct Message: MessageType {
 extension Message {
     static let MockMessage: [Message] = [
         Message(
+            text: "Hi I am Ai Bot",
+            sender: Sender(name: .ai),
+            messageId: UUID().uuidString,
+            sentDate: Date().addingTimeInterval(TimeInterval(-7000))),
+        
+        Message(
             text: "Test 1 (Text Kind) Message.",
             sender: Sender(name: .user),
             messageId: UUID().uuidString,
