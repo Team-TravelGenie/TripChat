@@ -14,10 +14,14 @@ final class AppCoordinator: Coordinator {
     var finishDelegate: CoordinationFinishDelegate? = nil
     var navigationController: UINavigationController
     
+    // MARK: Lifecycle
+    
     init(window: UIWindow?, navigationController: UINavigationController) {
         self.window = window
         self.navigationController = navigationController
     }
+    
+    // MARK: Internal
     
     func start() {
         window?.rootViewController = navigationController
@@ -25,11 +29,15 @@ final class AppCoordinator: Coordinator {
         homeFlow(navigationController: navigationController)
     }
     
+    // MARK: Private
+    
     private func homeFlow(navigationController: UINavigationController) {
         let homeCoordinator = HomeCoordinator(finishDelegate: self, navigationController: navigationController)
         childCoordinators.append(homeCoordinator)
         homeCoordinator.start()
     }
 }
+
+// MARK: - AppCoordinator + CoordinationFinishDelegate
 
 extension AppCoordinator: CoordinationFinishDelegate { }

@@ -13,10 +13,14 @@ final class HomeCoordinator: Coordinator {
     var finishDelegate: CoordinationFinishDelegate?
     var navigationController: UINavigationController
     
+    // MARK: Lifecycle
+    
     init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController) {
         self.finishDelegate = finishDelegate
         self.navigationController = navigationController
     }
+    
+    // MARK: Internal
     
     func start() {
         let homeViewModel = HomeViewModel()
