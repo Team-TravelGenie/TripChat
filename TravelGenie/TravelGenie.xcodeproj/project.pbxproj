@@ -16,6 +16,7 @@
 		573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+.swift */; };
 		573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */; };
 		573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0E2A8CD1AC00116D2D /* LineView.swift */; };
+		573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD102A8CD40F00116D2D /* InformationMenuView.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -49,6 +50,7 @@
 		573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+.swift"; sourceTree = "<group>"; };
 		573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		573BCD0E2A8CD1AC00116D2D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
+		573BCD102A8CD40F00116D2D /* InformationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationMenuView.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -129,6 +131,7 @@
 				573BCD012A8BAF7600116D2D /* HomeViewController.swift */,
 				573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */,
 				573BCD0E2A8CD1AC00116D2D /* LineView.swift */,
+				573BCD102A8CD40F00116D2D /* InformationMenuView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 				573BCD032A8BAF7600116D2D /* HomeViewModel.swift in Sources */,
 				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);

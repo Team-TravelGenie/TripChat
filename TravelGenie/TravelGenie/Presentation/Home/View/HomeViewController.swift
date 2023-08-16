@@ -15,7 +15,15 @@ final class HomeViewController: UIViewController {
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
     private let chatListButton = HomeMenuButton()
+    private let termsOfUsageView = InformationMenuView()
+    private let privacyView = InformationMenuView()
     private let lineView = LineView()
+    private let informationStackView: UIStackView = {
+        let stackView = UIStackView()
+        stackView.axis = .vertical
+        stackView.alignment = .fill
+        return stackView
+    }()
     
     // MARK: Lifecycle
     
@@ -32,6 +40,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         configureSubviews()
+        configureHierarchy()
         configureLayout()
     }
         
@@ -43,6 +52,12 @@ final class HomeViewController: UIViewController {
         configureChatButton()
         configureChatListButton()
         configureLineView()
+        configureInformationMenu()
+    }
+    
+    private func configureHierarchy() {
+        [mainTextView, bodyTextView, chatButton, chatListButton, informationStackView].forEach { view.addSubview($0) }
+        [termsOfUsageView, lineView, privacyView].forEach { informationStackView.addArrangedSubview($0) }
     }
     
     private func configureLayout() {
@@ -70,6 +85,23 @@ final class HomeViewController: UIViewController {
             chatListButton.leadingAnchor.constraint(equalTo: chatButton.trailingAnchor, constant: 12),
             chatListButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
             chatListButton.widthAnchor.constraint(equalTo: chatButton.widthAnchor),
+        ])
+        
+        informationStackView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            informationStackView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
+            informationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            informationStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+        ])
+        
+        termsOfUsageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            termsOfUsageView.heightAnchor.constraint(equalToConstant: 56),
+        ])
+        
+        privacyView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            privacyView.heightAnchor.constraint(equalToConstant: 56),
         ])
     }
     
@@ -105,5 +137,10 @@ final class HomeViewController: UIViewController {
     
     private func configureLineView() {
         lineView.setLineWith(color: .blueGrayLine, weight: 1)
+    }
+    
+    private func configureInformationMenu() {
+        termsOfUsageView.setTitle(with: "서비스 이용약관")
+        privacyView.setTitle(with: "개인정보처리방침")
     }
 }
