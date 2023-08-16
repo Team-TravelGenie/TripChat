@@ -13,6 +13,11 @@ final class HomeViewController: UIViewController {
     
     private let mainTextView = UITextView()
     private let bodyTextView = UITextView()
+    private let chatButton = HomeMenuButton()
+    private let chatListButton = HomeMenuButton()
+    
+    // MARK: Lifecycle
+    
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -34,6 +39,8 @@ final class HomeViewController: UIViewController {
     private func configureSubviews() {
         configureMainTextView()
         configureBodyTextView()
+        configureChatButton()
+        configureChatListButton()
     }
     
     private func configureLayout() {
@@ -47,6 +54,20 @@ final class HomeViewController: UIViewController {
         NSLayoutConstraint.activate([
             bodyTextView.topAnchor.constraint(equalTo: mainTextView.bottomAnchor),
             bodyTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+        ])
+        
+        chatButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chatButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 32),
+            chatButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+        ])
+        
+        chatListButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chatListButton.topAnchor.constraint(equalTo: chatButton.topAnchor),
+            chatListButton.leadingAnchor.constraint(equalTo: chatButton.trailingAnchor, constant: 12),
+            chatListButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            chatListButton.widthAnchor.constraint(equalTo: chatButton.widthAnchor),
         ])
     }
     
@@ -64,5 +85,19 @@ final class HomeViewController: UIViewController {
         bodyTextView.attributedText = NSMutableAttributedString()
             .body("오늘은 어디로 여행을 떠나고 싶나요?\n", color: .grayFont, weight: .regular)
             .body("사진을 보내주시면 추천 해 드릴게요!", color: .grayFont, weight: .regular)
+    }
+    
+    private func configureChatButton() {
+        let chatButtonTitle = NSMutableAttributedString()
+            .headline("채팅하기", color: .black, weight: .bold)
+        chatButton.setImage(UIImage(named: "chat"), for: .normal)
+        chatButton.setAttributedTitle(chatButtonTitle, for: .normal)
+    }
+    
+    private func configureChatListButton() {
+        let chatListButtonTitle = NSMutableAttributedString()
+            .headline("최근대화", color: .black, weight: .bold)
+        chatListButton.setImage(UIImage(named: "search"), for: .normal)
+        chatListButton.setAttributedTitle(chatListButtonTitle, for: .normal)
     }
 }
