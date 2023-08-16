@@ -25,6 +25,8 @@
 		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
+		D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23037772A8C65E40017950E /* SystemMessageCell.swift */; };
+		D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* ButtonCell.swift */; };
 		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
 		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
 		D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2E3AA2C2A8B64740049DDEF /* MessageKit */; };
@@ -40,7 +42,6 @@
 /* Begin PBXFileReference section */
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
-		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -57,6 +58,8 @@
 		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
+		D23037772A8C65E40017950E /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
+		D25E3EC52A8C7038006AD283 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
@@ -92,15 +95,6 @@
 			);
 			path = Resources;
 			sourceTree = "<group>";
-		};
-		57C1FFFD2A78CFCD00A664FD /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */,
-			);
-			name = Secrets;
-			path = TravelGenie/Secrets;
-			sourceTree = SOURCE_ROOT;
 		};
 		D20FA2662A6B8DA90081B039 = {
 			isa = PBXGroup;
@@ -241,9 +235,27 @@
 			path = Extension;
 			sourceTree = "<group>";
 		};
+		D23037752A8C61A80017950E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D23037762A8C65B20017950E /* DefaultSystemSectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D23037772A8C65E40017950E /* SystemMessageCell.swift */,
+				D25E3EC52A8C7038006AD283 /* ButtonCell.swift */,
+			);
+			path = DefaultSystemSectionCell;
+			sourceTree = "<group>";
+		};
 		D2E3AA242A8B61DA0049DDEF /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				D23037752A8C61A80017950E /* Cell */,
 				D2E3AA312A8B83350049DDEF /* ChatInterface */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
@@ -368,6 +380,7 @@
 				D2E3AA302A8B66560049DDEF /* SecretStorage.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
@@ -378,6 +391,7 @@
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
+				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,10 @@ final class ChatViewController: ChatInterfaceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        messageList = Message.MockMessage
+        print(messageList)
+        messagesCollectionView.reloadData()
+        title = "채팅"
     }
     
     init(viewModel: ChatViewModel) {
