@@ -8,32 +8,13 @@
 import UIKit
 import MessageKit
 
-class ChatInterfaceViewController: MessagesViewController {
-    enum MessagesDefaultSection: Int {
-        case systemMessage = 0
-        case welcomeMessage = 2
-    }
-    
-    private let defaultSender: Sender = Sender(name: .user)
+class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
+    let defaultSender: Sender = Sender(name: .user)
     var messageList: [Message] = [Message]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupMessagesCollectionViewAttributes()
-    }
-    
-    private func insertPhotoMessage(image: UIImage, sender: SenderType) {
-        let message = Message(image: image, sender: sender, messageId: UUID().uuidString, sentDate: Date())
-        
-        insertMessage(message)
-    }
-        
-    private func insertMessage(_ message: Message) {
-        messageList.append(message)
-        
-        DispatchQueue.main.async {
-            self.messagesCollectionView.reloadData()
-        }
     }
     
     private func setupMessagesCollectionViewAttributes() {
@@ -42,7 +23,7 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.messagesLayoutDelegate = self
         customizeMessagesCollectionViewLayout()
         cellResistration()
-        ConfiguremessagesCollectionViewBackgroundColor()
+        configureMessagesCollectionViewBackgroundColor()
     }
     
     private func customizeMessagesCollectionViewLayout() {
@@ -66,46 +47,13 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.register(ButtonCell.self)
     }
     
-    private func ConfiguremessagesCollectionViewBackgroundColor() {
+    private func configureMessagesCollectionViewBackgroundColor() {
         messagesCollectionView.backgroundColor = .blueGrayBackground
     }
     
-    override func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath)
-        -> UICollectionViewCell
-    {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
-        // Very important to check this when overriding `cellForItemAt`
-        // Super method will handle returning the typing indicator cell
-        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
-            return super.collectionView(collectionView, cellForItemAt: indexPath)
-        }
-        
-        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        
-        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
-            switch defaultSection {
-            case .systemMessage:
-                return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
-            case .welcomeMessage:
-                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
-                cell.delegate = self
-                return cell
-            }
-        }
-
-//        if case .custom = message.kind {
-//            let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
-//            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
-//            return cell
-//        }
-        return super.collectionView(collectionView, cellForItemAt: indexPath)
+    func didTapButton(in cell: UICollectionViewCell) {
+        print("Button Did Tapped!")
     }
-    
 }
 
 extension ChatInterfaceViewController: MessagesDataSource {
@@ -208,76 +156,5 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         -> CGFloat
     {
         return 15
-    }
-}
-
-import PhotosUI
-
-/*
- NOTE:
- 1. 현재, PHPickerViewController로 사진 고르는 작업을 처리하였습니다. (이유? 사용자권한을 받지않아도 되는 간편성에)
- 2. 하지만, PHPickerViewController는 UI의 Custom을 제한하고있습니다.
- 3. 현님이 제공한 UI로 구현하려면 UIImagePicker로 변경하여 작업해야 할 것으로 보이네요
- - 일단은 기능작업이 우선이라고 판단하여 [사진을 Pick하고, 채팅을 진행한다] 라는 것에 초점을 맞추고 작업을 진행해보고, ImagePicker로 추후에 변경하겠습니다.
- */
-
-extension ChatInterfaceViewController: ButtonCellDelegate, PHPickerViewControllerDelegate {
-    func didTapButton(in _: UICollectionViewCell) {
-        presentPHPicekrViewController()
-    }
-    
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
-        if results.isEmpty {
-            self.dismiss(animated: true)
-        } else {
-            self.dismiss(animated: true) {
-                self.getImage(results: results) { image in
-                    guard let image else { return }
-                    self.insertPhotoMessage(image: image, sender: self.defaultSender)
-                }
-            }
-        }
-    }
-    
-    private func presentPHPicekrViewController() {
-        let configuration = setupPHPicekrConfiguration()
-        let phPickerViewController = PHPickerViewController(configuration: configuration)
-        
-        phPickerViewController.delegate = self
-        phPickerViewController.modalPresentationStyle = .pageSheet
-        
-        if let sheet = phPickerViewController.sheetPresentationController {
-            sheet.detents = [.medium()]
-        }
-        
-        present(phPickerViewController, animated: true)
-    }
-    
-    private func setupPHPicekrConfiguration() -> PHPickerConfiguration {
-        var configuration = PHPickerConfiguration(photoLibrary: .shared())
-        
-        configuration.filter = .images
-        configuration.preferredAssetRepresentationMode = .current
-        configuration.selectionLimit = 1
-        
-        return configuration
-    }
-    
-    private func getImage(results: [PHPickerResult], completion: @escaping (UIImage?) -> Void) {
-        var formattedImage: UIImage?
-        guard let itemProvider = results.first?.itemProvider else { return }
-        
-        if itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    DispatchQueue.main.async {
-                        formattedImage = image as? UIImage
-                        completion(formattedImage)
-                    }
-                }
-            })
-        }
     }
 }
