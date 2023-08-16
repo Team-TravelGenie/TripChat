@@ -9,6 +9,10 @@ import UIKit
 import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController {
+    enum MessagesDefaultSection: Int {
+        case systemMessage = 0
+        case welcomeMessage = 1
+    }
     
     private let defaultSender: Sender = Sender(name: .user)
     var messageList: [Message] = [Message]()
@@ -23,6 +27,7 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messagesLayoutDelegate = self
         customizeMessagesCollectionViewLayout()
+        cellResistration()
     }
     
     private func customizeMessagesCollectionViewLayout() {
@@ -40,6 +45,46 @@ class ChatInterfaceViewController: MessagesViewController {
         layout?.setMessageIncomingAvatarPosition(
             AvatarPosition(vertical: .messageTop))
     }
+    
+    private func cellResistration() {
+        messagesCollectionView.register(SystemMessageCell.self)
+    }
+    
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell
+    {
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Datasource error")
+        }
+        
+        // Very important to check this when overriding `cellForItemAt`
+        // Super method will handle returning the typing indicator cell
+        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
+            return super.collectionView(collectionView, cellForItemAt: indexPath)
+        }
+        
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        
+        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
+            switch defaultSection {
+            case .systemMessage:
+                let cell = messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
+                return cell
+            case .welcomeMessage:
+                <#code#>
+            }
+        }
+
+//        if case .custom = message.kind {
+//            let cell = messagesCollectionView.dequeueReusableCell(CustomCell.self, for: indexPath)
+//            cell.configure(with: message, at: indexPath, and: messagesCollectionView)
+//            return cell
+//        }
+        return super.collectionView(collectionView, cellForItemAt: indexPath)
+    }
+    
 }
 
 extension ChatInterfaceViewController: MessagesDataSource {
