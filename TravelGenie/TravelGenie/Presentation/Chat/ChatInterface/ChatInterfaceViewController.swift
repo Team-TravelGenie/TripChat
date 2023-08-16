@@ -22,6 +22,20 @@ class ChatInterfaceViewController: MessagesViewController {
         setupMessagesCollectionViewAttributes()
     }
     
+    private func insertPhotoMessage(image: UIImage, sender: SenderType) {
+        let message = Message(image: image, sender: sender, messageId: UUID().uuidString, sentDate: Date())
+        
+        insertMessage(message)
+    }
+        
+    private func insertMessage(_ message: Message) {
+        messageList.append(message)
+        
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadData()
+        }
+    }
+    
     private func setupMessagesCollectionViewAttributes() {
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesDisplayDelegate = self
@@ -217,8 +231,10 @@ extension ChatInterfaceViewController: ButtonCellDelegate, PHPickerViewControlle
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true) {
-                guard let formattedImage = self.getImage(results: results) else { return }
-                // TODO: 골라온사진 여기서 처리
+                self.getImage(results: results) { image in
+                    guard let image else { return }
+                    self.insertPhotoMessage(image: image, sender: self.defaultSender)
+                }
             }
         }
     }
@@ -247,20 +263,21 @@ extension ChatInterfaceViewController: ButtonCellDelegate, PHPickerViewControlle
         return configuration
     }
     
-    private func getImage(results: [PHPickerResult]) -> UIImage? {
+    private func getImage(results: [PHPickerResult], completion: @escaping (UIImage?) -> Void) {
         var formattedImage: UIImage?
-        guard let itemProvider = results.first?.itemProvider else { return nil }
+        guard let itemProvider = results.first?.itemProvider else { return }
         
         if itemProvider.canLoadObject(ofClass: UIImage.self) {
             itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
                 if let error = error {
                     print(error.localizedDescription)
                 } else {
-                    formattedImage = image as? UIImage
+                    DispatchQueue.main.async {
+                        formattedImage = image as? UIImage
+                        completion(formattedImage)
+                    }
                 }
             })
         }
-        
-        return formattedImage
     }
 }
