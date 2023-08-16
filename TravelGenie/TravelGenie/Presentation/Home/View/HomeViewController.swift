@@ -10,11 +10,6 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
     init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -22,5 +17,9 @@ final class HomeViewController: UIViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
     }
 }
