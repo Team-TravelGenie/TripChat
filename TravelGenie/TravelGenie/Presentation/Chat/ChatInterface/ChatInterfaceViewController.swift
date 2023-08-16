@@ -197,8 +197,62 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
     }
 }
 
-extension ChatInterfaceViewController: ButtonCellDelegate {
+import PhotosUI
+
+extension ChatInterfaceViewController: ButtonCellDelegate, PHPickerViewControllerDelegate {
     func didTapButton(in _: UICollectionViewCell) {
-        print("ABC")
+        presentPHPicekrViewController()
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        if results.isEmpty {
+            self.dismiss(animated: true)
+        } else {
+            self.dismiss(animated: true) {
+                guard let formattedImage = self.getImage(results: results) else { return }
+                // TODO: 골라온사진 여기서 처리
+            }
+        }
+    }
+    
+    private func presentPHPicekrViewController() {
+        let configuration = setupPHPicekrConfiguration()
+        let phPickerViewController = PHPickerViewController(configuration: configuration)
+        
+        phPickerViewController.delegate = self
+        phPickerViewController.modalPresentationStyle = .pageSheet
+        
+        if let sheet = phPickerViewController.sheetPresentationController {
+            sheet.detents = [.medium()]
+        }
+        
+        present(phPickerViewController, animated: true)
+    }
+    
+    private func setupPHPicekrConfiguration() -> PHPickerConfiguration {
+        var configuration = PHPickerConfiguration(photoLibrary: .shared())
+        
+        configuration.filter = .images
+        configuration.preferredAssetRepresentationMode = .current
+        configuration.selectionLimit = 1
+        
+        return configuration
+    }
+    
+    private func getImage(results: [PHPickerResult]) -> UIImage? {
+        var formattedImage: UIImage?
+        guard let itemProvider = results.first?.itemProvider else { return nil }
+        
+        if itemProvider.canLoadObject(ofClass: UIImage.self) {
+            itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else {
+                    formattedImage = image as? UIImage
+                }
+            })
+        }
+        
+        return formattedImage
     }
 }
