@@ -128,6 +128,13 @@ final class HomeViewController: UIViewController {
         chatButton.setAttributedTitle(chatButtonTitle, for: .normal)
     }
     
+    private func configureChatButtonAction() {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.didTapNewChatButton()
+        }
+        chatButton.addAction(action, for: .allTouchEvents)
+    }
+    
     private func configureChatListButton() {
         let chatListButtonTitle = NSMutableAttributedString()
             .text("최근대화", font: .headline, color: .black)
@@ -137,6 +144,12 @@ final class HomeViewController: UIViewController {
     
     private func configureLineView() {
         lineView.setLineWith(color: .blueGrayLine, weight: 1)
+    private func configureChatListButtonAction() {
+        let action = UIAction { [weak self] _ in
+            self?.viewModel.didTapChatListButton()
+        }
+        chatListButton.addAction(action, for: .allTouchEvents)
+    }
     }
     
     private func configureInformationMenu() {

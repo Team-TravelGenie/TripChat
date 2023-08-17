@@ -10,4 +10,12 @@ import Foundation
 final class HomeViewModel {
     
     weak var coordinator: HomeCoordinator?
+    
+    func didTapNewChatButton() {
+        coordinator?.newChatFlow()
+    }
+    
+    func didTapChatListButton() {
+        coordinator?.chatListFlow()
+    }
 }

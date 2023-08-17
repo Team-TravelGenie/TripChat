@@ -27,4 +27,12 @@ final class HomeCoordinator: Coordinator {
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         navigationController.pushViewController(homeViewController, animated: false)
     }
+    
+    func newChatFlow() {
+        // TODO: - NewChat Coordinator 생성, childCoordinators에 append, coordinator.start() 호출
+    }
+    
+    func chatListFlow() {
+        // TODO: - ChatList Coordinator 생성, childCoordinators에 append, coordinator.start() 호출
+    }
 }
