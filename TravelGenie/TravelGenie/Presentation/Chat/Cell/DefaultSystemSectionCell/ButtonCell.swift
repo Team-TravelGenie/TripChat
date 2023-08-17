@@ -11,7 +11,7 @@ protocol ButtonCellDelegate: AnyObject {
     func didTapButton()
 }
 
-class ButtonCell: UICollectionViewCell {
+final class ButtonCell: UICollectionViewCell {
     enum Constant {
         static let buttonText = "이미지 업로드"
     }
