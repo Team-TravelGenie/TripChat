@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol ButtonCellDelegate {
+protocol ButtonCellDelegate: AnyObject {
     func didTapButton()
 }
 
@@ -16,7 +16,7 @@ class ButtonCell: UICollectionViewCell {
         static let buttonText = "이미지 업로드"
     }
     
-    var delegate: ButtonCellDelegate?
+    weak var delegate: ButtonCellDelegate?
     
     private let uploadButton: UIButton = {
         let button = UIButton()
