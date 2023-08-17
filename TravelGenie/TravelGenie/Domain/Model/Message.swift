@@ -64,19 +64,20 @@ struct Message: MessageType {
 
 // MARK: Content MediaItem(s)
 
-private struct ImageMediaItem: MediaItem {
-    var url: URL?
-    var image: UIImage?
-    var placeholderImage: UIImage
-    var size: CGSize
-    
-    init(image: UIImage) {
-        self.image = image
-        size = CGSize(width: 240, height: 240) // 사진별로 사이즈 달라지도록 설정해줘야할 듯?
-        placeholderImage = UIImage()
+extension Message {
+    fileprivate struct ImageMediaItem: MediaItem {
+        var url: URL?
+        var image: UIImage?
+        var placeholderImage: UIImage
+        var size: CGSize
+        
+        init(image: UIImage) {
+            self.image = image
+            size = CGSize(width: 240, height: 240) // 사진별로 사이즈 달라지도록 설정해줘야할 듯?
+            placeholderImage = UIImage()
+        }
     }
 }
-
 
 extension Message {
     static let MockMessage: [Message] = [
