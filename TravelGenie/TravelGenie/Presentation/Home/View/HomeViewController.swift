@@ -11,6 +11,7 @@ final class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
     
+    private let planeImageView = UIImageView()
     private let mainTextView = UITextView()
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
@@ -47,6 +48,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        configurePlaneImageView()
         configureMainTextView()
         configureBodyTextView()
         configureChatButton()
@@ -56,10 +58,17 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureHierarchy() {
-        [mainTextView, bodyTextView, chatButton, chatListButton, bottomMenuTableView, coverView].forEach { view.addSubview($0) }
+        [planeImageView, mainTextView, bodyTextView, chatButton, chatListButton, bottomMenuTableView, coverView]
+            .forEach { view.addSubview($0) }
     }
     
     private func configureLayout() {
+        planeImageView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            planeImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
+            planeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+        
         mainTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             mainTextView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
@@ -103,8 +112,14 @@ final class HomeViewController: UIViewController {
         ])
     }
     
+    private func configurePlaneImageView() {
+        let image = UIImage(named: "plane")
+        planeImageView.image = image
+    }
+    
     private func configureMainTextView() {
         mainTextView.isScrollEnabled = false
+        mainTextView.backgroundColor = .clear
         mainTextView.attributedText = NSMutableAttributedString()
             .text("AI", font: .largeTitle, color: .primary)
             .text("와 함께\n", font: .largeTitle, color: .black)
@@ -114,6 +129,7 @@ final class HomeViewController: UIViewController {
     
     private func configureBodyTextView() {
         bodyTextView.isScrollEnabled = false
+        bodyTextView.backgroundColor = .clear
         bodyTextView.attributedText = NSMutableAttributedString()
             .text("오늘은 어디로 여행을 떠나고 싶나요?\n", font: .bodyRegular, color: .grayFont)
             .text("사진을 보내주시면 추천 해 드릴게요!", font: .bodyRegular, color: .grayFont)
