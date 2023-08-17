@@ -8,7 +8,7 @@
 import UIKit
 
 protocol ButtonCellDelegate {
-    func didTapButton(in cell: UICollectionViewCell)
+    func didTapButton()
 }
 
 class ButtonCell: UICollectionViewCell {
@@ -43,9 +43,7 @@ class ButtonCell: UICollectionViewCell {
     
     private func configureButtonAction() {
         let buttonAction = UIAction { [weak self] _ in
-            guard let self else { return }
-            
-            self.delegate?.didTapButton(in: self)
+            self?.delegate?.didTapButton()
         }
         
         uploadButton.addAction(buttonAction, for: .touchUpInside)

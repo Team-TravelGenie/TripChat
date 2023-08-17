@@ -59,7 +59,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         messagesCollectionView.backgroundColor = .blueGrayBackground
     }
     
-    func didTapButton(in cell: UICollectionViewCell) {
+    func didTapButton() {
         print("Button Did Tapped!")
     }
 }

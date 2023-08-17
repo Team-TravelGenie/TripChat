@@ -56,7 +56,7 @@ final class ChatViewController: ChatInterfaceViewController {
         return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
-    override func didTapButton(in _: UICollectionViewCell) {
+    override func didTapButton() {
         presentPHPicekrViewController()
     }
     
