@@ -15,7 +15,6 @@
 		573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD062A8BAFE300116D2D /* AppCoordinator.swift */; };
 		573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */; };
 		573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */; };
-		573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0E2A8CD1AC00116D2D /* LineView.swift */; };
 		573BCD152A8D21E800116D2D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD142A8D21E800116D2D /* Font.swift */; };
 		573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */; };
 		573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */; };
@@ -51,7 +50,6 @@
 		573BCD062A8BAFE300116D2D /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+text.swift"; sourceTree = "<group>"; };
 		573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
-		573BCD0E2A8CD1AC00116D2D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		573BCD142A8D21E800116D2D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuItem.swift; sourceTree = "<group>"; };
@@ -135,7 +133,6 @@
 			children = (
 				573BCD012A8BAF7600116D2D /* HomeViewController.swift */,
 				573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */,
-				573BCD0E2A8CD1AC00116D2D /* LineView.swift */,
 				573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */,
 			);
 			path = View;
@@ -374,7 +371,6 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
-				573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
