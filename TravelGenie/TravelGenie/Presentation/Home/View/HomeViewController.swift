@@ -15,15 +15,8 @@ final class HomeViewController: UIViewController {
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
     private let chatListButton = HomeMenuButton()
-    private let termsOfUsageView = InformationMenuView()
-    private let privacyView = InformationMenuView()
-    private let lineView = LineView()
-    private let informationStackView: UIStackView = {
-        let stackView = UIStackView()
-        stackView.axis = .vertical
-        stackView.alignment = .fill
-        return stackView
-    }()
+    private let bottomMenuTableView = UITableView(frame: .zero, style: .plain)
+    private let coverView = UIView()
     
     // MARK: Lifecycle
     
@@ -51,13 +44,12 @@ final class HomeViewController: UIViewController {
         configureBodyTextView()
         configureChatButton()
         configureChatListButton()
-        configureLineView()
-        configureInformationMenu()
+        configureBottomMenuTableView()
+        configureCoverView()
     }
     
     private func configureHierarchy() {
-        [mainTextView, bodyTextView, chatButton, chatListButton, informationStackView].forEach { view.addSubview($0) }
-        [termsOfUsageView, lineView, privacyView].forEach { informationStackView.addArrangedSubview($0) }
+        [mainTextView, bodyTextView, chatButton, chatListButton, bottomMenuTableView, coverView].forEach { view.addSubview($0) }
     }
     
     private func configureLayout() {
@@ -87,21 +79,20 @@ final class HomeViewController: UIViewController {
             chatListButton.widthAnchor.constraint(equalTo: chatButton.widthAnchor),
         ])
         
-        informationStackView.translatesAutoresizingMaskIntoConstraints = false
+        bottomMenuTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            informationStackView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
-            informationStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            informationStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            bottomMenuTableView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
+            bottomMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            bottomMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            bottomMenuTableView.heightAnchor.constraint(equalToConstant: 112),
         ])
         
-        termsOfUsageView.translatesAutoresizingMaskIntoConstraints = false
+        coverView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            termsOfUsageView.heightAnchor.constraint(equalToConstant: 56),
-        ])
-        
-        privacyView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            privacyView.heightAnchor.constraint(equalToConstant: 56),
+            coverView.bottomAnchor.constraint(equalTo: bottomMenuTableView.bottomAnchor),
+            coverView.leadingAnchor.constraint(equalTo: bottomMenuTableView.leadingAnchor),
+            coverView.widthAnchor.constraint(equalTo: bottomMenuTableView.widthAnchor),
+            coverView.heightAnchor.constraint(equalToConstant: 1),
         ])
     }
     
@@ -142,18 +133,44 @@ final class HomeViewController: UIViewController {
         chatListButton.setAttributedTitle(chatListButtonTitle, for: .normal)
     }
     
-    private func configureLineView() {
-        lineView.setLineWith(color: .blueGrayLine, weight: 1)
     private func configureChatListButtonAction() {
         let action = UIAction { [weak self] _ in
             self?.viewModel.didTapChatListButton()
         }
         chatListButton.addAction(action, for: .allTouchEvents)
     }
+    
+    private func configureBottomMenuTableView() {
+        bottomMenuTableView.delegate = self
+        bottomMenuTableView.dataSource = self
+        bottomMenuTableView.isScrollEnabled = false
+        bottomMenuTableView.separatorColor = .blueGrayLine
+        bottomMenuTableView.separatorInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
+        bottomMenuTableView.register(BottomMenuCell.self, forCellReuseIdentifier: BottomMenuCell.identifier)
     }
     
-    private func configureInformationMenu() {
-        termsOfUsageView.setTitle(with: "서비스 이용약관")
-        privacyView.setTitle(with: "개인정보처리방침")
+    private func configureCoverView() {
+        coverView.backgroundColor = .white
+    }
+}
+
+// MARK: UITableViewDataSource & UITableViewDelegate
+
+extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.bottomMenus.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BottomMenuCell.identifier, for: indexPath) as? BottomMenuCell else { return UITableViewCell() }
+        cell.setTitle(with: viewModel.bottomMenus[indexPath.row].title)
+
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 56
+    }
+    
     }
 }

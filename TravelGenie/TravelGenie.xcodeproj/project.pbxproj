@@ -16,7 +16,6 @@
 		573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */; };
 		573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */; };
 		573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0E2A8CD1AC00116D2D /* LineView.swift */; };
-		573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD102A8CD40F00116D2D /* InformationMenuView.swift */; };
 		573BCD152A8D21E800116D2D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD142A8D21E800116D2D /* Font.swift */; };
 		573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */; };
 		573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */; };
@@ -53,7 +52,6 @@
 		573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+text.swift"; sourceTree = "<group>"; };
 		573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeMenuButton.swift; sourceTree = "<group>"; };
 		573BCD0E2A8CD1AC00116D2D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
-		573BCD102A8CD40F00116D2D /* InformationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationMenuView.swift; sourceTree = "<group>"; };
 		573BCD142A8D21E800116D2D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuItem.swift; sourceTree = "<group>"; };
@@ -138,7 +136,6 @@
 				573BCD012A8BAF7600116D2D /* HomeViewController.swift */,
 				573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */,
 				573BCD0E2A8CD1AC00116D2D /* LineView.swift */,
-				573BCD102A8CD40F00116D2D /* InformationMenuView.swift */,
 				573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */,
 			);
 			path = View;
@@ -400,7 +397,6 @@
 				573BCD032A8BAF7600116D2D /* HomeViewModel.swift in Sources */,
 				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
-				573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);
