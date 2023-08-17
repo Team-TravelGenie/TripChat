@@ -10,7 +10,7 @@ import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     let defaultSender: Sender = Sender(name: .user)
-    var messageList: MessageList = MessageList()
+    var messageStorage: MessageStorage = MessageStorage()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,7 +19,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     }
     
     private func bind() {
-        messageList.didChangedMessageList = {
+        messageStorage.didChangedMessageList = {
             self.messagesCollectionView.reloadData()
         }
     }
@@ -69,11 +69,11 @@ extension ChatInterfaceViewController: MessagesDataSource {
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messageList.sectionOfMessageList(indexPath.section)
+        return messageStorage.sectionOfMessageList(indexPath.section)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messageList.count
+        return messageStorage.count
     }
 }
 

@@ -77,7 +77,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
                     guard let image else { return }
                     let message = self.viewModel.makePhotoMessage(image)
                     
-                    self.messageList.insertMessage(message)
+                    self.messageStorage.insertMessage(message)
                 }
             }
         }
