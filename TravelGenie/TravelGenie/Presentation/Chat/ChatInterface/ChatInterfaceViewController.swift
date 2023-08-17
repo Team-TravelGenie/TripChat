@@ -10,7 +10,7 @@ import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     let defaultSender: Sender = Sender(name: .user)
-    var messageList: [Message] = [Message]()
+    var messageList: MessageList = MessageList()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +62,7 @@ extension ChatInterfaceViewController: MessagesDataSource {
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messageList[indexPath.section]
+        return messageList.sectionOfMessageList(indexPath.section)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {

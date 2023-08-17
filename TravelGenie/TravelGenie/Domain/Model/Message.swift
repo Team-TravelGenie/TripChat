@@ -52,6 +52,14 @@ struct Message: MessageType {
             messageId: messageId,
             sentDate: sentDate)
     }
+    
+    init(sender: SenderType) {
+        self.init(
+            text: "",
+            sender: sender,
+            messageId: UUID().uuidString,
+            sentDate: Date())
+    }
 }
 
 // MARK: Content MediaItem(s)
