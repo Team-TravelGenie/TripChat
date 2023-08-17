@@ -14,7 +14,14 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         setupMessagesCollectionViewAttributes()
+    }
+    
+    private func bind() {
+        messageList.didChangedMessageList = {
+            self.messagesCollectionView.reloadData()
+        }
     }
     
     private func setupMessagesCollectionViewAttributes() {
