@@ -22,7 +22,7 @@ final class MessageStorage {
         return messageList.count
     }
     
-    var didChangedMessageList: (() -> ())?
+    var didChangedMessageList: (() -> Void)?
     
     init() {
         self.messageList = setupDefaultMessage()
