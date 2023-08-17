@@ -14,7 +14,6 @@ final class ChatViewModel {
         return Message(
             image: image,
             sender: self.user,
-            messageId: UUID().uuidString,
             sentDate: Date())
     }
 }

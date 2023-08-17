@@ -46,7 +46,7 @@ final class MessageStorage {
     private func setupDefaultMessage() -> [Message] {
         let defaultMessages = [
             Message(sender: Sender(name: .ai)),
-            Message(text: Constant.welcomeText, sender: Sender(name: .ai), messageId: "", sentDate: Date()),
+            Message(text: Constant.welcomeText, sender: Sender(name: .ai), sentDate: Date()),
             Message(sender: Sender(name: .ai))
         ]
         

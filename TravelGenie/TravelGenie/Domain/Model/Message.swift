@@ -14,38 +14,41 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     
+    // MARK: Text Kind Init
+    
     init(
         text: String,
         sender: SenderType,
-        messageId: String,
         sentDate: Date)
     {
         self.init(
             kind: .text(text),
             sender: sender,
-            messageId: messageId,
+            messageId: UUID().uuidString,
             sentDate: sentDate)
     }
+    
+    // MARK: Photo Kind Init
     
     init(
         image: UIImage,
         sender: SenderType,
-        messageId: String,
         sentDate: Date)
     {
         let mediaItem = ImageMediaItem(image: image)
         self.init(
             kind: .photo(mediaItem),
             sender: sender,
-            messageId: messageId,
+            messageId: UUID().uuidString,
             sentDate: sentDate)
     }
+    
+    // MARK: Blank Init (default Message에 사용됨)
     
     init(sender: SenderType) {
         self.init(
             text: "",
             sender: sender,
-            messageId: UUID().uuidString,
             sentDate: Date())
     }
     
@@ -77,26 +80,4 @@ extension Message {
             placeholderImage = UIImage()
         }
     }
-}
-
-extension Message {
-    static let MockMessage: [Message] = [
-        Message(
-            text: "Test 1 (Text Kind) Message.",
-            sender: Sender(name: .user),
-            messageId: UUID().uuidString,
-            sentDate: Date().addingTimeInterval(TimeInterval(-8000))),
-        
-        Message(
-            text: "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!",
-            sender: Sender(name: .ai),
-            messageId: UUID().uuidString,
-            sentDate: Date().addingTimeInterval(TimeInterval(-7000))),
-        
-        Message(
-            text: "Test 2 (Text Kind) Message.",
-            sender: Sender(name: .user),
-            messageId: UUID().uuidString,
-            sentDate: Date().addingTimeInterval(TimeInterval(-3000))),
-    ]
 }
