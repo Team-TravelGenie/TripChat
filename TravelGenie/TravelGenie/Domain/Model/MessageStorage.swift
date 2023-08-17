@@ -38,7 +38,7 @@ final class MessageStorage {
         return defaultMessages
     }
     
-    // MARK: 외부함수 - (메시지값 변경)
+    // MARK: 외부함수 - (메시지값 변경 / 읽기)
     
     func insertMessage(_ message: Message) {
         messageList.append(message)

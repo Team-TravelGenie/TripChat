@@ -19,9 +19,7 @@ final class ChatViewController: ChatInterfaceViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        messagesCollectionView.reloadData()
-        title = "채팅"
+        setupNavigation()
     }
     
     init(viewModel: ChatViewModel) {
@@ -38,13 +36,11 @@ final class ChatViewController: ChatInterfaceViewController {
             fatalError("Datasource error")
         }
         
-        // Very important to check this when overriding `cellForItemAt`
-        // Super method will handle returning the typing indicator cell
         guard !isSectionReservedForTypingIndicator(indexPath.section) else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
-        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
         
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {
@@ -64,6 +60,9 @@ final class ChatViewController: ChatInterfaceViewController {
         presentPHPicekrViewController()
     }
     
+    private func setupNavigation() {
+        title = "채팅"
+    }
 }
 
 // MARK: PHPickerViewControllerDelegate 관련

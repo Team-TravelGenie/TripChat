@@ -31,6 +31,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         customizeMessagesCollectionViewLayout()
         cellResistration()
         configureMessagesCollectionViewBackgroundColor()
+        messagesCollectionView.reloadData()
     }
     
     private func customizeMessagesCollectionViewLayout() {
