@@ -14,18 +14,6 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     
-    private init(
-        kind: MessageKind,
-        sender: SenderType,
-        messageId: String,
-        sentDate: Date)
-    {
-        self.kind = kind
-        self.sender = sender
-        self.messageId = messageId
-        self.sentDate = sentDate
-    }
-    
     init(
         text: String,
         sender: SenderType,
@@ -59,6 +47,18 @@ struct Message: MessageType {
             sender: sender,
             messageId: UUID().uuidString,
             sentDate: Date())
+    }
+    
+    private init(
+        kind: MessageKind,
+        sender: SenderType,
+        messageId: String,
+        sentDate: Date)
+    {
+        self.kind = kind
+        self.sender = sender
+        self.messageId = messageId
+        self.sentDate = sentDate
     }
 }
 
