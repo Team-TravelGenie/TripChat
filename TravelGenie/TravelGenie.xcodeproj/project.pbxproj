@@ -18,6 +18,7 @@
 		573BCD0F2A8CD1AC00116D2D /* LineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD0E2A8CD1AC00116D2D /* LineView.swift */; };
 		573BCD112A8CD40F00116D2D /* InformationMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD102A8CD40F00116D2D /* InformationMenuView.swift */; };
 		573BCD152A8D21E800116D2D /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD142A8D21E800116D2D /* Font.swift */; };
+		573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */; };
 		573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
@@ -54,6 +55,7 @@
 		573BCD0E2A8CD1AC00116D2D /* LineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LineView.swift; sourceTree = "<group>"; };
 		573BCD102A8CD40F00116D2D /* InformationMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationMenuView.swift; sourceTree = "<group>"; };
 		573BCD142A8D21E800116D2D /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuCell.swift; sourceTree = "<group>"; };
 		573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuItem.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 				573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */,
 				573BCD0E2A8CD1AC00116D2D /* LineView.swift */,
 				573BCD102A8CD40F00116D2D /* InformationMenuView.swift */,
+				573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -382,6 +385,7 @@
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
+				573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */,
 				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
