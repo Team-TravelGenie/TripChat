@@ -10,7 +10,6 @@
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
-		57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2762A6B8DA90081B039 /* ViewController.swift */; };
@@ -26,15 +25,26 @@
 		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
+		D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23037772A8C65E40017950E /* SystemMessageCell.swift */; };
+		D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* ButtonCell.swift */; };
+		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
+		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
+		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
+		D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2E3AA2C2A8B64740049DDEF /* MessageKit */; };
+		D2E3AA302A8B66560049DDEF /* SecretStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */; };
+		D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */; };
+		D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA362A8B85AB0049DDEF /* Sender.swift */; };
+		D2E3AA392A8B87630049DDEF /* Message.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA382A8B87630049DDEF /* Message.swift */; };
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
+		D2FFEF8E2A8D2AD800B41DBC /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFEF8D2A8D2AD800B41DBC /* Font.swift */; };
+		D2FFEF902A8D2BC700B41DBC /* NSMutableAttributedString+text.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2FFEF8F2A8D2BC700B41DBC /* NSMutableAttributedString+text.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
-		57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -51,9 +61,20 @@
 		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
+		D23037772A8C65E40017950E /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
+		D25E3EC52A8C7038006AD283 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
+		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
+		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
+		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
+		D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewController.swift; sourceTree = "<group>"; };
+		D2E3AA362A8B85AB0049DDEF /* Sender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
+		D2E3AA382A8B87630049DDEF /* Message.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Message.swift; sourceTree = "<group>"; };
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
+		D2FFEF8D2A8D2AD800B41DBC /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
+		D2FFEF8F2A8D2BC700B41DBC /* NSMutableAttributedString+text.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSMutableAttributedString+text.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +82,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */,
 				57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */,
 				D20FA2912A6B99B40081B039 /* Moya in Frameworks */,
 			);
@@ -72,6 +94,7 @@
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				D2FFEF8D2A8D2AD800B41DBC /* Font.swift */,
 				57C100182A8B91E700A664FD /* Color.swift */,
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
@@ -79,15 +102,6 @@
 			);
 			path = Resources;
 			sourceTree = "<group>";
-		};
-		57C1FFFD2A78CFCD00A664FD /* Secrets */ = {
-			isa = PBXGroup;
-			children = (
-				57C1FFFE2A78CFCD00A664FD /* SecretStorage.swift */,
-			);
-			name = Secrets;
-			path = TravelGenie/Secrets;
-			sourceTree = SOURCE_ROOT;
 		};
 		D20FA2662A6B8DA90081B039 = {
 			isa = PBXGroup;
@@ -111,8 +125,8 @@
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
+				D2E3AA2E2A8B66560049DDEF /* Secrets */,
 				D20FA2A92A6BE3370081B039 /* Extension */,
-				57C1FFFD2A78CFCD00A664FD /* Secrets */,
 				D20FA2722A6B8DA90081B039 /* AppDelegate.swift */,
 				D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */,
 				57C100162A8B91CF00A664FD /* Resources */,
@@ -124,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A32A6BC9B20081B039 /* Main */,
+				D2E3AA242A8B61DA0049DDEF /* Chat */,
 			);
 			path = Presentation;
 			sourceTree = "<group>";
@@ -131,6 +146,7 @@
 		D20FA2872A6B97B90081B039 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				D2E3AA352A8B85980049DDEF /* Model */,
 				D20FA29B2A6BBA010081B039 /* Entity */,
 			);
 			path = Domain;
@@ -221,9 +237,64 @@
 		D20FA2A92A6BE3370081B039 /* Extension */ = {
 			isa = PBXGroup;
 			children = (
+				D2FFEF8F2A8D2BC700B41DBC /* NSMutableAttributedString+text.swift */,
 				D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */,
 			);
 			path = Extension;
+			sourceTree = "<group>";
+		};
+		D23037752A8C61A80017950E /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		D23037762A8C65B20017950E /* DefaultSystemSectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				D23037772A8C65E40017950E /* SystemMessageCell.swift */,
+				D25E3EC52A8C7038006AD283 /* ButtonCell.swift */,
+			);
+			path = DefaultSystemSectionCell;
+			sourceTree = "<group>";
+		};
+		D2E3AA242A8B61DA0049DDEF /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				D23037752A8C61A80017950E /* Cell */,
+				D2E3AA312A8B83350049DDEF /* ChatInterface */,
+				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		D2E3AA2E2A8B66560049DDEF /* Secrets */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3AA2F2A8B66560049DDEF /* SecretStorage.swift */,
+			);
+			path = Secrets;
+			sourceTree = "<group>";
+		};
+		D2E3AA312A8B83350049DDEF /* ChatInterface */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */,
+			);
+			path = ChatInterface;
+			sourceTree = "<group>";
+		};
+		D2E3AA352A8B85980049DDEF /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
+				D2E3AA382A8B87630049DDEF /* Message.swift */,
+				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -245,6 +316,7 @@
 			packageProductDependencies = (
 				D20FA2902A6B99B40081B039 /* Moya */,
 				57C1FFFB2A78CBAA00A664FD /* OpenAISwift */,
+				D2E3AA2C2A8B64740049DDEF /* MessageKit */,
 			);
 			productName = TravelGenie;
 			productReference = D20FA26F2A6B8DA90081B039 /* TravelGenie.app */;
@@ -277,6 +349,7 @@
 			packageReferences = (
 				D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */,
 				57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */,
+				D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */,
 			);
 			productRefGroup = D20FA2702A6B8DA90081B039 /* Products */;
 			projectDirPath = "";
@@ -305,22 +378,32 @@
 			buildActionMask = 2147483647;
 			files = (
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
+				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
+				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
+				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				D20FA2772A6B8DA90081B039 /* ViewController.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
+				D2FFEF902A8D2BC700B41DBC /* NSMutableAttributedString+text.swift in Sources */,
+				D2E3AA302A8B66560049DDEF /* SecretStorage.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
+				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
+				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
-				57C1FFFF2A78CFCD00A664FD /* SecretStorage.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				D2FFEF8E2A8D2AD800B41DBC /* Font.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
+				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -549,6 +632,14 @@
 				minimumVersion = 15.0.0;
 			};
 		};
+		D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MessageKit/MessageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -561,6 +652,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		D2E3AA2C2A8B64740049DDEF /* MessageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */;
+			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
