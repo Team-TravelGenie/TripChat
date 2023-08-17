@@ -32,12 +32,19 @@ final class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+        bind()
         configureSubviews()
         configureHierarchy()
         configureLayout()
     }
         
     // MARK: Private
+    
+    private func bind() {
+        viewModel.showBottomMenu = { [weak self] item in
+            self?.showTermsDetail(item: item)
+        }
+    }
     
     private func configureSubviews() {
         configureMainTextView()
@@ -152,6 +159,10 @@ final class HomeViewController: UIViewController {
     private func configureCoverView() {
         coverView.backgroundColor = .white
     }
+    
+    private func showTermsDetail(item: BottomMenuItem) {
+        // TODO: - 서비스 이용약관, 개인정보 처리방침 modal
+    }
 }
 
 // MARK: UITableViewDataSource & UITableViewDelegate
@@ -172,5 +183,7 @@ extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
         return 56
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        viewModel.didTapBottomMenuCell(at: indexPath.row)
     }
 }
