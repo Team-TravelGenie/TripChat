@@ -12,14 +12,14 @@ import MessageKit
 final class ChatViewController: ChatInterfaceViewController {
     enum MessagesDefaultSection: Int {
         case systemMessage = 0
-        case welcomeMessage = 2
+        case uploadButtonMessage = 2
     }
     
     private let viewModel: ChatViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        messageList = Message.MockMessage
+        
         messagesCollectionView.reloadData()
         title = "채팅"
     }
@@ -50,7 +50,7 @@ final class ChatViewController: ChatInterfaceViewController {
             switch defaultSection {
             case .systemMessage:
                 return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
-            case .welcomeMessage:
+            case .uploadButtonMessage:
                 let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
                 cell.delegate = self
                 return cell
@@ -64,19 +64,6 @@ final class ChatViewController: ChatInterfaceViewController {
         presentPHPicekrViewController()
     }
     
-    private func insertPhotoMessage(image: UIImage, sender: SenderType) {
-        let message = Message(image: image, sender: sender, messageId: UUID().uuidString, sentDate: Date())
-        
-        insertMessage(message)
-    }
-        
-    private func insertMessage(_ message: Message) {
-        messageList.append(message)
-        
-        DispatchQueue.main.async {
-            self.messagesCollectionView.reloadData()
-        }
-    }
 }
 
 // MARK: PHPickerViewControllerDelegate 관련
@@ -88,7 +75,9 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             self.dismiss(animated: true) {
                 self.getImage(results: results) { image in
                     guard let image else { return }
-                    self.insertPhotoMessage(image: image, sender: self.defaultSender)
+                    let message = self.viewModel.makePhotoMessage(image)
+                    
+                    self.messageList.insertMessage(message)
                 }
             }
         }
