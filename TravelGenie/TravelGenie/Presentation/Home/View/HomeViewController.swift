@@ -140,6 +140,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureMainTextView() {
+        mainTextView.isEditable = false
         mainTextView.isScrollEnabled = false
         mainTextView.backgroundColor = .clear
         mainTextView.attributedText = NSMutableAttributedString()
@@ -150,6 +151,7 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureBodyTextView() {
+        bodyTextView.isEditable = false
         bodyTextView.isScrollEnabled = false
         bodyTextView.backgroundColor = .clear
         bodyTextView.attributedText = NSMutableAttributedString()
