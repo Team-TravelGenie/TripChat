@@ -18,9 +18,15 @@ final class BottomMenuCell: UITableViewCell {
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        selectionStyle = .none
         configureSubviews()
         configureHierarchy()
         configureLayout()
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        titleLabel.text = nil
     }
     
     required init?(coder: NSCoder) {
