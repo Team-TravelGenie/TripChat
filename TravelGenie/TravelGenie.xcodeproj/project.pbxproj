@@ -48,6 +48,9 @@
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
+		D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */; };
+		D2F8C57C2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */; };
+		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -91,6 +94,9 @@
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
+		D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageContentCell.swift; sourceTree = "<group>"; };
+		D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayoutSizeCalculator.swift; sourceTree = "<group>"; };
+		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -311,6 +317,7 @@
 		D23037752A8C61A80017950E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 			);
 			path = Cell;
@@ -352,6 +359,32 @@
 				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2F8C5762A8F47A800AA3BFC /* CustomTagCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
+				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
+				D2F8C5772A8F47BD00AA3BFC /* HigherLayerCell */,
+			);
+			path = CustomTagCell;
+			sourceTree = "<group>";
+		};
+		D2F8C5772A8F47BD00AA3BFC /* HigherLayerCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */,
+			);
+			path = HigherLayerCell;
+			sourceTree = "<group>";
+		};
+		D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */,
+			);
+			path = SizeCalculator;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -439,6 +472,7 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
+				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
@@ -463,6 +497,7 @@
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
+				D2F8C57C2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
@@ -470,6 +505,7 @@
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
+				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
