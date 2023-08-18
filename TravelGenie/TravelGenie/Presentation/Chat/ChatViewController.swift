@@ -20,6 +20,8 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        let message = Message(text: "안녕이건 텍스트셀이에요임시로구현되었답니다.", sender: Sender(name: .ai), sentDate: Date())
+        messageStorage.insertMessage(message)
     }
     
     init(viewModel: ChatViewModel) {
@@ -40,7 +42,14 @@ final class ChatViewController: ChatInterfaceViewController {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
-        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        let message = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        
+        // For Test
+        if indexPath.section == 3 {
+            let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+            cell.configure(with: message, at: indexPath, in: messagesCollectionView, dataSource: messagesDataSource, and: CustomTextLayoutSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout))
+            return cell
+        }
         
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {

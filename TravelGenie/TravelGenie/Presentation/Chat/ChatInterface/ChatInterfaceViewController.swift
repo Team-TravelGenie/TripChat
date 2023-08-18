@@ -53,6 +53,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     private func cellResistration() {
         messagesCollectionView.register(SystemMessageCell.self)
         messagesCollectionView.register(ButtonCell.self)
+        messagesCollectionView.register(CustomTagContentCell.self)
     }
     
     private func configureMessagesCollectionViewBackgroundColor() {

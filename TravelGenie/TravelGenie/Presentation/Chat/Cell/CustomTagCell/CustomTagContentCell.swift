@@ -56,7 +56,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
         
         let textMessageKind = message.kind
         switch textMessageKind {
-        case .text(let text), .emoji(let text):
+        case .text(let text):
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             messageLabel.text = text
             messageLabel.textColor = textColor
