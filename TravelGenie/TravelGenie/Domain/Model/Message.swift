@@ -43,6 +43,22 @@ struct Message: MessageType {
             sentDate: sentDate)
     }
     
+    // MARK: Tag Kind Init
+    
+    init(
+        text: String,
+        tags: [Tag],
+        sender: SenderType,
+        sentDate: Date)
+    {
+        let mediaItem = TagMediaItem(text: text, tags: tags)
+        self.init(
+            kind: .custom(mediaItem),
+            sender: sender,
+            messageId: UUID().uuidString,
+            sentDate: sentDate)
+    }
+    
     // MARK: Blank Init (default Message에 사용됨)
     
     init(sender: SenderType) {
