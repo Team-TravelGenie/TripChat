@@ -13,6 +13,7 @@ final class HomeMenuButton: UIButton {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        isHighlighted = false
         layer.cornerRadius = 12
         layer.masksToBounds = true
         backgroundColor = .grayBackground
