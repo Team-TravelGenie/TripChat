@@ -11,6 +11,8 @@ final class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
     
+    private let scrollView = UIScrollView()
+    private let contentView = UIView()
     private let planeImageView = UIImageView()
     private let mainTextView = UITextView()
     private let bodyTextView = UITextView()
@@ -58,48 +60,67 @@ final class HomeViewController: UIViewController {
     }
     
     private func configureHierarchy() {
+        view.addSubview(scrollView)
+        scrollView.addSubview(contentView)
         [planeImageView, mainTextView, bodyTextView, chatButton, chatListButton, bottomMenuTableView, coverView]
-            .forEach { view.addSubview($0) }
+            .forEach { contentView.addSubview($0) }
     }
     
     private func configureLayout() {
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            scrollView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            scrollView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            scrollView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            scrollView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.topAnchor.constraint(equalTo: scrollView.contentLayoutGuide.topAnchor),
+            contentView.bottomAnchor.constraint(equalTo: scrollView.contentLayoutGuide.bottomAnchor),
+            contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
+            contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
+            contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor),
+        ])
+        
         planeImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            planeImageView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor),
-            planeImageView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+            planeImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            planeImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
         
         mainTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainTextView.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 40),
-            mainTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            mainTextView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 40),
+            mainTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         ])
         
         bodyTextView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bodyTextView.topAnchor.constraint(equalTo: mainTextView.bottomAnchor),
-            bodyTextView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            bodyTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         ])
         
         chatButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chatButton.topAnchor.constraint(equalTo: bodyTextView.bottomAnchor, constant: 32),
-            chatButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
+            chatButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
         ])
         
         chatListButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             chatListButton.topAnchor.constraint(equalTo: chatButton.topAnchor),
             chatListButton.leadingAnchor.constraint(equalTo: chatButton.trailingAnchor, constant: 12),
-            chatListButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            chatListButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             chatListButton.widthAnchor.constraint(equalTo: chatButton.widthAnchor),
         ])
         
         bottomMenuTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottomMenuTableView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
-            bottomMenuTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-            bottomMenuTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+            bottomMenuTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            bottomMenuTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
             bottomMenuTableView.heightAnchor.constraint(equalToConstant: 112),
         ])
         
