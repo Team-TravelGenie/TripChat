@@ -54,6 +54,7 @@
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 		D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */; };
 		D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5842A8F680600AA3BFC /* Tag.swift */; };
+		D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -103,6 +104,7 @@
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextLayoutSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C5842A8F680600AA3BFC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -400,6 +402,7 @@
 		D2F8C5812A8F538500AA3BFC /* TagView */ = {
 			isa = PBXGroup;
 			children = (
+				D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */,
 			);
 			path = TagView;
 			sourceTree = "<group>";
@@ -522,6 +525,7 @@
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,

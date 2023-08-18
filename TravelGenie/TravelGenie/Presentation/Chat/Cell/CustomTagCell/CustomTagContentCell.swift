@@ -9,26 +9,38 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: CustomMessageContentCell {
-    var messageLabel: UILabel = {
+    var tagStorage: [Tag] = []
+    
+    private let tagMessageLabel: UILabel = {
         let label = UILabel()
+        
         label.numberOfLines = 0
-        label.textColor = .brown
         label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
+    }()
+    
+    private lazy var tagCollectionViewCell: UICollectionView = {
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        
+        collectionView.isScrollEnabled = false
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        
+        return collectionView
     }()
     
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        messageLabel.attributedText = nil
-        messageLabel.text = nil
+        tagMessageLabel.text = nil
     }
     
     override func setupSubviews() {
         super.setupSubviews()
         
-        messageContainerView.addSubview(messageLabel)
+        messageContainerView.addSubview(tagMessageLabel)
     }
     
     override func configure(
@@ -50,19 +62,44 @@ final class CustomTagContentCell: CustomMessageContentCell {
         }
         
         let calculator = sizeCalculator as? CustomTextLayoutSizeCalculator
-        messageLabel.frame = calculator?.messageLabelFrame(
+        tagMessageLabel.frame = calculator?.messageLabelFrame(
             for: message,
             at: indexPath) ?? .zero
         
         let textMessageKind = message.kind
         switch textMessageKind {
-        case .text(let text):
+        case .custom(let tagItem):
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            messageLabel.text = text
-            messageLabel.textColor = textColor
+            tagMessageLabel.text
+            tagMessageLabel.textColor = textColor
         default:
             break
         }
     }
+}
+
+extension CustomTagContentCell: UICollectionViewDataSource {
+    func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 2
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return tagStorage.count
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: TagCollectionViewCell.identifier,
+            for: indexPath) as? TagCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        cell.configure(data: tagStorage[indexPath.row].tag)
+        
+        return cell
+    }
+}
+
+extension CustomTagContentCell: UICollectionViewDelegate {
     
 }
