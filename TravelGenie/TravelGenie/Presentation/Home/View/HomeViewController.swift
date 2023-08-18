@@ -164,13 +164,14 @@ final class HomeViewController: UIViewController {
             .text("채팅하기", font: .headline, color: .black)
         chatButton.setImage(UIImage(named: "chat"), for: .normal)
         chatButton.setAttributedTitle(chatButtonTitle, for: .normal)
+        configureChatButtonAction()
     }
     
     private func configureChatButtonAction() {
         let action = UIAction { [weak self] _ in
             self?.viewModel.didTapNewChatButton()
         }
-        chatButton.addAction(action, for: .allTouchEvents)
+        chatButton.addAction(action, for: .touchUpInside)
     }
     
     private func configureChatListButton() {
@@ -178,13 +179,14 @@ final class HomeViewController: UIViewController {
             .text("최근대화", font: .headline, color: .black)
         chatListButton.setImage(UIImage(named: "search"), for: .normal)
         chatListButton.setAttributedTitle(chatListButtonTitle, for: .normal)
+        configureChatListButtonAction()
     }
     
     private func configureChatListButtonAction() {
         let action = UIAction { [weak self] _ in
             self?.viewModel.didTapChatListButton()
         }
-        chatListButton.addAction(action, for: .allTouchEvents)
+        chatListButton.addAction(action, for: .touchUpInside)
     }
     
     private func configureBottomMenuTableView() {
