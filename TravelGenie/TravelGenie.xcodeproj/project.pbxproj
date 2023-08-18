@@ -53,6 +53,7 @@
 		D2F8C57C2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */; };
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 		D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */; };
+		D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5842A8F680600AA3BFC /* Tag.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -101,6 +102,7 @@
 		D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayoutSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextLayoutSizeCalculator.swift; sourceTree = "<group>"; };
+		D2F8C5842A8F680600AA3BFC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -362,6 +364,7 @@
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
 				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
+				D2F8C5842A8F680600AA3BFC /* Tag.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -370,6 +373,7 @@
 			isa = PBXGroup;
 			children = (
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
+				D2F8C5812A8F538500AA3BFC /* TagView */,
 				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 				D2F8C5772A8F47BD00AA3BFC /* HigherLayerCell */,
 			);
@@ -391,6 +395,13 @@
 				D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
+			sourceTree = "<group>";
+		};
+		D2F8C5812A8F538500AA3BFC /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = TagView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -497,6 +508,7 @@
 				573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
+				D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,

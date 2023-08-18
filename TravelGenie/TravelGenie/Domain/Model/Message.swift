@@ -80,4 +80,14 @@ extension Message {
             placeholderImage = UIImage()
         }
     }
+    
+    fileprivate struct TagMediaItem {
+        var text: String
+        var tags: [Tag]
+        
+        init(text: String, tags: [Tag]) {
+            self.text = text
+            self.tags = tags
+        }
+    }
 }
