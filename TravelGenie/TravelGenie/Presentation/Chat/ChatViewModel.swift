@@ -8,6 +8,9 @@
 import UIKit
 
 final class ChatViewModel {
+    
+    weak var coordinator: ChatCoordinator?
+    
     private let user: Sender = Sender(name: .user)
     
     func makePhotoMessage(_ image: UIImage) -> Message {
