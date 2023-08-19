@@ -66,14 +66,12 @@ final class CustomTagContentCell: CustomMessageContentCell {
             for: message,
             at: indexPath) ?? .zero
         
-        let textMessageKind = message.kind
-        switch textMessageKind {
-        case .custom(let tagItem):
+        if case .custom(let tagItem) = message.kind {
+            guard let tagItem = tagItem as? TagItem else { return }
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            tagMessageLabel.text
+            
+            tagMessageLabel.text = tagItem.text
             tagMessageLabel.textColor = textColor
-        default:
-            break
         }
     }
 }
