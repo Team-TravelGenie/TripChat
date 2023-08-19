@@ -9,6 +9,11 @@ import UIKit
 import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
+    enum MessagesDefaultSection: Int {
+        case systemMessage = 0
+        case uploadButtonMessage = 2
+    }
+    
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
     
@@ -16,6 +21,31 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         super.viewDidLoad()
         bind()
         setupMessagesCollectionViewAttributes()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Datasource error")
+        }
+        
+        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
+            return super.collectionView(collectionView, cellForItemAt: indexPath)
+        }
+        
+        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        
+        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
+            switch defaultSection {
+            case .systemMessage:
+                return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
+            case .uploadButtonMessage:
+                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        }
+
+        return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
     private func bind() {
