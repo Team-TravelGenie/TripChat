@@ -57,7 +57,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func cellContentHeight(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGFloat
+        -> CGFloat
     {
         messageContainerSize(
             for: message,
@@ -69,7 +69,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func cellTopLabelSize(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGSize
+        -> CGSize
     {
         return .zero
     }
@@ -77,7 +77,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func cellTopLabelFrame(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGRect
+        -> CGRect
     {
         return .zero
     }
@@ -85,7 +85,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func cellMessageBottomLabelSize(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGSize
+        -> CGSize
     {
         return .zero
     }
@@ -93,7 +93,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func cellMessageBottomLabelFrame(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGRect
+        -> CGRect
     {
         return .zero
     }
@@ -103,7 +103,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
     func messageContainerSize(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGSize
+        -> CGSize
     {
 //        let labelSize = cellMessageBottomLabelSize(
 //            for: message,
@@ -124,7 +124,7 @@ class CustomLayoutSizeCalculator: CellSizeCalculator {
         for message: MessageType,
         at indexPath: IndexPath,
         fromCurrentSender: Bool)
-    -> CGRect
+        -> CGRect
     {
         let y = cellTopLabelSize(
             for: message,

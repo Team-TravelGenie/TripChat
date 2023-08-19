@@ -15,7 +15,7 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
     override func messageContainerSize(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGSize
+        -> CGSize
     {
         let size = super.messageContainerSize(
             for: message,
@@ -37,7 +37,7 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
     func messageLabelSize(
         for message: MessageType,
         at _: IndexPath)
-    -> CGSize
+        -> CGSize
     {
         let attributedText: NSAttributedString
         
@@ -61,7 +61,7 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
     func messageLabelFrame(
         for message: MessageType,
         at indexPath: IndexPath)
-    -> CGRect
+        -> CGRect
     {
         let origin = CGPoint(
             x: cellMessageContentHorizontalPadding / 2,
