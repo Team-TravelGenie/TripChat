@@ -61,7 +61,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
             return
         }
         
-        let calculator = sizeCalculator as? CustomTextLayoutSizeCalculator
+        let calculator = sizeCalculator as? CustomTagLayoutSizeCalculator
         tagMessageLabel.frame = calculator?.messageLabelFrame(
             for: message,
             at: indexPath) ?? .zero

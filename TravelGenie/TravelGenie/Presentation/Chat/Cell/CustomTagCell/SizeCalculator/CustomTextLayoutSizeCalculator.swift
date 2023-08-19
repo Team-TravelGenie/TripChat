@@ -8,7 +8,7 @@
 import MessageKit
 import UIKit
 
-final class CustomTextLayoutSizeCalculator: CustomLayoutSizeCalculator {
+final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
     var messageLabelFont = UIFont.preferredFont(forTextStyle: .body)
     var cellMessageContainerRightSpacing: CGFloat = 16
     

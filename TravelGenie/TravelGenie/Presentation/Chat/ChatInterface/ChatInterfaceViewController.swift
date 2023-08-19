@@ -13,6 +13,9 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         case systemMessage = 0
         case uploadButtonMessage = 2
     }
+
+    private lazy var tagMessageSizeCalculator = CustomTagLayoutSizeCalculator(
+        layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
