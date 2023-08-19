@@ -51,6 +51,27 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
+    func customCell(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> UICollectionViewCell
+    {
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Datasource error")
+        }
+        
+        let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+        cell.configure(
+            with: message,
+            at: indexPath,
+            in: messagesCollectionView,
+            dataSource: messagesDataSource,
+            and: tagMessageSizeCalculator)
+        
+        return cell
+    }
+    
     private func bind() {
         messageStorage.didChangedMessageList = {
             self.messagesCollectionView.reloadData()
