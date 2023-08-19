@@ -13,6 +13,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     private let tagButton: UIButton = {
        let button = UIButton()
         
+        button.titleLabel?.textColor = .black
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button

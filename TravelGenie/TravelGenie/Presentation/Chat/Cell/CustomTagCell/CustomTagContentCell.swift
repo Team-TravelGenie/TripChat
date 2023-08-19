@@ -9,7 +9,11 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: CustomMessageContentCell {
-    var tagStorage: [Tag] = []
+    var tagStorage: [Tag] = [] {
+        didSet {
+            tagCollectionView.reloadData()
+        }
+    }
     
     private let tagMessageLabel: UILabel = {
         let label = UILabel()
@@ -21,12 +25,13 @@ final class CustomTagContentCell: CustomMessageContentCell {
         return label
     }()
     
-    private lazy var tagCollectionViewCell: UICollectionView = {
+    private lazy var tagCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
     }()
@@ -69,7 +74,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            
+            let tags = tagItem.tags
             tagMessageLabel.text = tagItem.text
             tagMessageLabel.textColor = textColor
         }
@@ -77,12 +82,24 @@ final class CustomTagContentCell: CustomMessageContentCell {
 }
 
 extension CustomTagContentCell: UICollectionViewDataSource {
+    fileprivate enum Section: Int {
+        case location
+        case theme
+    }
+    
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         return 2
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return tagStorage.count
+        guard let section = Section(rawValue: section) else { return .zero }
+        
+        switch section {
+        case .location:
+            return 2
+        case .theme:
+            return 6 // 이건 구현방법을 좀 고민해봐야할 듯 합니다.
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -92,7 +109,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(data: tagStorage[indexPath.row].tag)
+        cell.configure(data: tagStorage[indexPath.row].text)
         
         return cell
     }

@@ -8,6 +8,6 @@
 import Foundation
 
 struct Tag {
-    let tag: String
+    let text: String
     let category: Int
 }

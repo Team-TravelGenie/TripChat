@@ -16,7 +16,7 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(text: "안녕이건 텍스트셀이에요임시로구현되었답니다.", sender: Sender(name: .ai), sentDate: Date())
+        let message = Message(text: "안녕난 태그셀이얌", tags: [Tag(text: "안녕나는 태그얌", category: 5)], sender: Sender(name: .ai), sentDate: Date())
         messageStorage.insertMessage(message)
     }
     
