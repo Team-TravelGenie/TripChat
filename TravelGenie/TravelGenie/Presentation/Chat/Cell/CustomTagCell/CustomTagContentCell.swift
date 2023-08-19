@@ -36,6 +36,16 @@ final class CustomTagContentCell: CustomMessageContentCell {
         return collectionView
     }()
     
+    private let submitKeywordButton: UIButton = {
+        let button = UIButton(frame: .zero)
+        
+        button.setTitle("키워드 보내기", for: .normal)
+        button.backgroundColor = .blueGrayBackground
+        button.translatesAutoresizingMaskIntoConstraints = false
+        
+        return button
+    }()
+    
     override func prepareForReuse() {
         super.prepareForReuse()
         
@@ -44,8 +54,10 @@ final class CustomTagContentCell: CustomMessageContentCell {
     
     override func setupSubviews() {
         super.setupSubviews()
+        [tagMessageLabel, tagCollectionView, submitKeywordButton]
+            .forEach { messageContainerView.addSubview($0) }
         
-        messageContainerView.addSubview(tagMessageLabel)
+        configureLayout()
     }
     
     override func configure(
@@ -78,6 +90,26 @@ final class CustomTagContentCell: CustomMessageContentCell {
             tagMessageLabel.text = tagItem.text
             tagMessageLabel.textColor = textColor
         }
+    }
+    
+    private func configureLayout() {
+        NSLayoutConstraint.activate([
+            tagMessageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: 12),
+            tagMessageLabel.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20)
+        ])
+        
+        NSLayoutConstraint.activate([
+            tagCollectionView.topAnchor.constraint(equalTo: tagMessageLabel.bottomAnchor, constant: 12),
+            tagCollectionView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
+            tagCollectionView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
+        ])
+        
+        NSLayoutConstraint.activate([
+            submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
+            submitKeywordButton.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
+            submitKeywordButton.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
+            submitKeywordButton.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -12)
+        ])
     }
 }
 
