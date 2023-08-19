@@ -25,11 +25,15 @@ final class CustomTagContentCell: CustomMessageContentCell {
     }()
     
     private lazy var tagCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
         
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(
+            TagCollectionHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: TagCollectionHeaderView.identifier)
         collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -143,9 +147,32 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(data: tagStorage[indexPath.row].text)
+        cell.configure(data: "국내")
         
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath)
+        -> UICollectionReusableView
+    {
+        guard let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: kind,
+            withReuseIdentifier: TagCollectionHeaderView.identifier,
+            for: indexPath) as? TagCollectionHeaderView else {
+            return UICollectionReusableView()
+        }
+        
+        let headerText: [String] = [
+            "✈️지역",
+            "⛵️테마"
+        ]
+        
+        header.configure(text: headerText[indexPath.section])
+            
+        return header
     }
 }
 
