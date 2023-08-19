@@ -27,6 +27,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
     private lazy var tagCollectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
         
+        collectionView.backgroundColor = .blueGrayBackground2
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -44,7 +45,8 @@ final class CustomTagContentCell: CustomMessageContentCell {
         let button = UIButton(frame: .zero)
         
         button.setTitle("키워드 보내기", for: .normal)
-        button.backgroundColor = .blueGrayBackground
+        button.layer.cornerRadius = 8
+        button.backgroundColor = .blueGrayBackground3
         button.translatesAutoresizingMaskIntoConstraints = false
         
         return button

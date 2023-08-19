@@ -34,12 +34,10 @@ class TagCollectionHeaderView: UICollectionReusableView {
     }
     
     private func configureLayout() {
-        self.backgroundColor = .lightGray
         self.addSubview(titleLabel)
         
         NSLayoutConstraint.activate([
-            titleLabel.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 10) ,
-            titleLabel.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -10) ,
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             titleLabel.centerYAnchor.constraint(equalTo: self.centerYAnchor)
         ])
     }

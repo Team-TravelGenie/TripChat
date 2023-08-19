@@ -150,7 +150,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UIColor
     {
-        return isFromCurrentSender(message: message) ? .primary : .tertiary
+        return isFromCurrentSender(message: message) ? .primary : .blueGrayBackground2
     }
     
     func messageStyle(
