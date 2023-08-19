@@ -199,4 +199,13 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
     {
         return 15
     }
+    
+    func customCellSizeCalculator(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CellSizeCalculator
+    {
+        return tagMessageSizeCalculator
+    }
 }
