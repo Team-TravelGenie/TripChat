@@ -43,10 +43,12 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
         
         let textMessageKind = message.kind
         switch textMessageKind {
-        case .attributedText(let text):
-            attributedText = text
-        case .text(let text), .emoji(let text):
-            attributedText = NSAttributedString(string: text, attributes: [.font: messageLabelFont])
+        case .custom(let tagItem):
+            guard let tagItem = tagItem as? TagItem else {
+                fatalError("Can not find TagItem")
+            }
+            
+            attributedText = NSAttributedString(string: tagItem.text, attributes: [.font: messageLabelFont])
         default:
             fatalError("messageLabelSize received unhandled MessageDataType: \(message.kind)")
         }
