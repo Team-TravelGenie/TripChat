@@ -19,7 +19,6 @@ final class CustomTagContentCell: CustomMessageContentCell {
         let label = UILabel()
         
         label.numberOfLines = 0
-        label.font = UIFont.preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
@@ -31,6 +30,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
         collectionView.isScrollEnabled = false
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         
         return collectionView
@@ -87,7 +87,9 @@ final class CustomTagContentCell: CustomMessageContentCell {
             guard let tagItem = tagItem as? TagItem else { return }
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             let tags = tagItem.tags
-            tagMessageLabel.text = tagItem.text
+            tagStorage = tags
+            tagMessageLabel.attributedText = NSMutableAttributedString()
+                .text(tagItem.text, font: .bodyRegular, color: .black)
             tagMessageLabel.textColor = textColor
         }
     }
