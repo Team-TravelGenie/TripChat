@@ -197,42 +197,6 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
 }
 
 extension ChatInterfaceViewController: MessagesLayoutDelegate {
-    func cellTopLabelHeight(
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView)
-        -> CGFloat
-    {
-        return 20
-    }
-    
-    func cellBottomLabelHeight(
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView)
-        -> CGFloat
-    {
-        return 20
-    }
-    
-    func messageTopLabelHeight(
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView)
-        -> CGFloat
-    {
-        return 15
-    }
-    
-    func messageBottomLabelHeight(
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView)
-        -> CGFloat
-    {
-        return 15
-    }
-    
     func customCellSizeCalculator(
         for message: MessageType,
         at indexPath: IndexPath,
