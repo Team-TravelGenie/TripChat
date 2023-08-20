@@ -18,6 +18,15 @@ final class ChatViewController: ChatInterfaceViewController {
         setupNavigation()
         let message = Message(text: "안녕난 태그셀이얌", tags: [Tag(text: "안녕나는 태그얌", category: 5)], sender: Sender(name: .ai), sentDate: Date())
         messageStorage.insertMessage(message)
+        
+        var recommendations: [RecommendationItem] = []
+        let image = UIImage(systemName: "chevron.left")!
+        let data = image.pngData()!
+        recommendations.append(RecommendationItem(country: "아이폰나라", city: "아이폰시", spot: "아이폰", image: data))
+        recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
+        recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
+        let secondMessage = Message(recommendations: recommendations, sender: Sender(name: .ai), sentDate: Date())
+        messageStorage.insertMessage(secondMessage)
     }
     
     init(viewModel: ChatViewModel) {
