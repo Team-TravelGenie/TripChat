@@ -8,6 +8,8 @@
 import UIKit
 import MessageKit
 
+// 요것도 굳이 CustomMessageContentCell 서브클래싱해서 구현할 필요가 없는 듯 합니다!
+// 제가 구현한 RecommendationCell 참고해보셔영!
 final class CustomTagContentCell: CustomMessageContentCell {
     var tagList: [Tag] = [] {
         didSet {
@@ -71,7 +73,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView,
         dataSource: MessagesDataSource,
-        and sizeCalculator: CustomLayoutSizeCalculator)
+        and sizeCalculator: CustomCellSizeCalculator)
     {
         super.configure(
             with: message,

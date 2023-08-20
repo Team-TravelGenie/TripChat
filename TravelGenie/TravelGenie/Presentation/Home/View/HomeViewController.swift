@@ -193,6 +193,7 @@ final class HomeViewController: UIViewController {
         bottomMenuTableView.delegate = self
         bottomMenuTableView.dataSource = self
         bottomMenuTableView.isScrollEnabled = false
+        bottomMenuTableView.backgroundColor = .clear
         bottomMenuTableView.separatorColor = .blueGrayLine
         bottomMenuTableView.separatorInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
         bottomMenuTableView.register(BottomMenuCell.self, forCellReuseIdentifier: BottomMenuCell.identifier)

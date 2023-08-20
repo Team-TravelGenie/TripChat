@@ -8,7 +8,7 @@
 import MessageKit
 import UIKit
 
-final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
+final class CustomTagLayoutSizeCalculator: CustomCellSizeCalculator {
     var messageLabelFont = UIFont.preferredFont(forTextStyle: .body)
     var cellMessageContainerRightSpacing: CGFloat = 16
     
@@ -23,9 +23,7 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
         let labelSize = messageLabelSize(
             for: message,
             at: indexPath)
-        let selfWidth = labelSize.width +
-        cellMessageContentHorizontalPadding +
-        cellMessageContainerRightSpacing
+        let selfWidth = labelSize.width + cellMessageContainerRightSpacing
         let width = max(selfWidth, size.width)
         let height = size.height + labelSize.height
         
@@ -53,9 +51,7 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
             fatalError("messageLabelSize received unhandled MessageDataType: \(message.kind)")
         }
         
-        let maxWidth = messageContainerMaxWidth -
-        cellMessageContentHorizontalPadding -
-        cellMessageContainerRightSpacing
+        let maxWidth = messageContainerMaxWidth - cellMessageContainerRightSpacing
         
         return attributedText.size(consideringWidth: maxWidth)
     }
@@ -65,16 +61,10 @@ final class CustomTagLayoutSizeCalculator: CustomLayoutSizeCalculator {
         at indexPath: IndexPath)
         -> CGRect
     {
-        let origin = CGPoint(
-            x: cellMessageContentHorizontalPadding / 2,
-            y: cellMessageContentVerticalPadding / 2)
-        let size = messageLabelSize(
-            for: message,
-            at: indexPath)
+        let origin = CGPoint(x: 0, y: 0)
+        let size = messageLabelSize(for: message, at: indexPath)
         
-        return CGRect(
-            origin: origin,
-            size: size)
+        return CGRect(origin: origin, size: size)
     }
 }
 
