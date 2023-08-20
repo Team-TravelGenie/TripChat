@@ -13,7 +13,6 @@ class TagCollectionHeaderView: UICollectionReusableView {
     private let titleLabel: UILabel = {
        let label = UILabel()
         
-        label.textColor = .black
         label.translatesAutoresizingMaskIntoConstraints = false
         
         return label
