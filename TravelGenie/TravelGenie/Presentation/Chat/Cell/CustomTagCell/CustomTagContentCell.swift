@@ -71,7 +71,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView,
         dataSource: MessagesDataSource,
-        and sizeCalculator: CustomLayoutSizeCalculator)
+        and sizeCalculator: CustomCellSizeCalculator)
     {
         super.configure(
             with: message,

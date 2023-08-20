@@ -47,7 +47,7 @@ class CustomMessageContentCell: MessageCollectionViewCell {
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView,
         dataSource: MessagesDataSource,
-        and sizeCalculator: CustomLayoutSizeCalculator)
+        and sizeCalculator: CustomCellSizeCalculator)
     {
         guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
             return
