@@ -58,10 +58,9 @@ class CustomCellSizeCalculator: CellSizeCalculator {
         fromCurrentSender: Bool)
         -> CGRect
     {
-        let size = messageContainerSize(
-            for: message,
-            at: indexPath)
+        let size = messageContainerSize(for: message, at: indexPath)
         let origin: CGPoint
+        
         if fromCurrentSender {
             let x = messagesLayout.itemWidth - size.width
             origin = CGPoint(x: x, y: .zero)

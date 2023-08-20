@@ -146,7 +146,6 @@ extension ChatInterfaceViewController: MessagesDataSource {
 }
 
 extension ChatInterfaceViewController: MessagesDisplayDelegate {
-    
     func textColor(
         for message: MessageType,
         at indexPath: IndexPath,
