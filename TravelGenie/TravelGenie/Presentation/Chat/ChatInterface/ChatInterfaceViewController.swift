@@ -9,6 +9,14 @@ import UIKit
 import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
+    enum MessagesDefaultSection: Int {
+        case systemMessage = 0
+        case uploadButtonMessage = 2
+    }
+
+    private lazy var tagMessageSizeCalculator = CustomTagLayoutSizeCalculator(
+        layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
     
@@ -16,6 +24,52 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         super.viewDidLoad()
         bind()
         setupMessagesCollectionViewAttributes()
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Datasource error")
+        }
+        
+        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
+            return super.collectionView(collectionView, cellForItemAt: indexPath)
+        }
+        
+        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
+        
+        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
+            switch defaultSection {
+            case .systemMessage:
+                return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
+            case .uploadButtonMessage:
+                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
+                cell.delegate = self
+                return cell
+            }
+        }
+
+        return super.collectionView(collectionView, cellForItemAt: indexPath)
+    }
+    
+    func customCell(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> UICollectionViewCell
+    {
+        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+            fatalError("Datasource error")
+        }
+        
+        let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+        cell.configure(
+            with: message,
+            at: indexPath,
+            in: messagesCollectionView,
+            dataSource: messagesDataSource,
+            and: tagMessageSizeCalculator)
+        
+        return cell
     }
     
     private func bind() {
@@ -53,6 +107,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     private func cellResistration() {
         messagesCollectionView.register(SystemMessageCell.self)
         messagesCollectionView.register(ButtonCell.self)
+        messagesCollectionView.register(CustomTagContentCell.self)
     }
     
     private func configureMessagesCollectionViewBackgroundColor() {
@@ -60,7 +115,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     }
     
     func didTapButton() {
-        print("Button Did Tapped!")
+        // [이미지업로드] 버튼 동작을 정의하기위한 메서드, 사용하려는 뷰컨트롤러에서 해당 메서드를 오버라이드하여 사용하세요.
     }
 }
 
@@ -95,7 +150,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UIColor
     {
-        return isFromCurrentSender(message: message) ? .primary : .tertiary
+        return isFromCurrentSender(message: message) ? .primary : .blueGrayBackground2
     }
     
     func messageStyle(
@@ -164,5 +219,14 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         -> CGFloat
     {
         return 15
+    }
+    
+    func customCellSizeCalculator(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CellSizeCalculator
+    {
+        return tagMessageSizeCalculator
     }
 }

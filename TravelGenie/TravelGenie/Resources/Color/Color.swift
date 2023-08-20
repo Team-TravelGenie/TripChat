@@ -18,6 +18,8 @@ private enum Color {
     case blueGrayFont
     case blueGrayLine
     case blueGrayBackground
+    case blueGrayBackground2
+    case blueGrayBackground3
     case alert
     
     var color: UIColor {
@@ -40,5 +42,7 @@ extension UIColor {
     class var blueGrayFont: UIColor { return Color.blueGrayFont.color }
     class var blueGrayLine: UIColor { return Color.blueGrayLine.color }
     class var blueGrayBackground: UIColor { return Color.blueGrayBackground.color }
+    class var blueGrayBackground2: UIColor { return Color.blueGrayBackground2.color }
+    class var blueGrayBackground3: UIColor { return Color.blueGrayBackground3.color }
     class var alert: UIColor { return Color.alert.color }
 }

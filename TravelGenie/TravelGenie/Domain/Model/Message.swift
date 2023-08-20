@@ -43,6 +43,22 @@ struct Message: MessageType {
             sentDate: sentDate)
     }
     
+    // MARK: Tag Kind Init
+    
+    init(
+        text: String,
+        tags: [Tag],
+        sender: SenderType,
+        sentDate: Date)
+    {
+        let mediaItem = TagItem(text: text, tags: tags)
+        self.init(
+            kind: .custom(mediaItem),
+            sender: sender,
+            messageId: UUID().uuidString,
+            sentDate: sentDate)
+    }
+    
     // MARK: Blank Init (default Message에 사용됨)
     
     init(sender: SenderType) {
@@ -62,22 +78,5 @@ struct Message: MessageType {
         self.sender = sender
         self.messageId = messageId
         self.sentDate = sentDate
-    }
-}
-
-// MARK: Content MediaItem(s)
-
-extension Message {
-    fileprivate struct ImageMediaItem: MediaItem {
-        var url: URL?
-        var image: UIImage?
-        var placeholderImage: UIImage
-        var size: CGSize
-        
-        init(image: UIImage) {
-            self.image = image
-            size = CGSize(width: 240, height: 240) // 사진별로 사이즈 달라지도록 설정해줘야할 듯?
-            placeholderImage = UIImage()
-        }
     }
 }

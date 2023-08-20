@@ -49,6 +49,15 @@
 		D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */; };
 		D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */; };
 		D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E810EB2A70427500136F99 /* DetectedLandmark.swift */; };
+		D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B892A9116F6006A5236 /* ContentItem.swift */; };
+		D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B8B2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift */; };
+		D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B8D2A913AF8006A5236 /* TagCollectionHeaderView.swift */; };
+		D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */; };
+		D2F8C57C2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */; };
+		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
+		D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */; };
+		D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5842A8F680600AA3BFC /* Tag.swift */; };
+		D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -93,6 +102,15 @@
 		D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLandmarkDetectionAPI.swift; sourceTree = "<group>"; };
 		D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkDetectionDTO.swift; sourceTree = "<group>"; };
 		D2E810EB2A70427500136F99 /* DetectedLandmark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedLandmark.swift; sourceTree = "<group>"; };
+		D2E81B892A9116F6006A5236 /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
+		D2E81B8B2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
+		D2E81B8D2A913AF8006A5236 /* TagCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionHeaderView.swift; sourceTree = "<group>"; };
+		D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageContentCell.swift; sourceTree = "<group>"; };
+		D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomLayoutSizeCalculator.swift; sourceTree = "<group>"; };
+		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
+		D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextLayoutSizeCalculator.swift; sourceTree = "<group>"; };
+		D2F8C5842A8F680600AA3BFC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
+		D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -313,6 +331,7 @@
 		D23037752A8C61A80017950E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 			);
 			path = Cell;
@@ -353,8 +372,48 @@
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
 				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
+				D2F8C5842A8F680600AA3BFC /* Tag.swift */,
+				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D2F8C5762A8F47A800AA3BFC /* CustomTagCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
+				D2F8C5812A8F538500AA3BFC /* TagView */,
+				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
+				D2F8C5772A8F47BD00AA3BFC /* HigherLayerCell */,
+			);
+			path = CustomTagCell;
+			sourceTree = "<group>";
+		};
+		D2F8C5772A8F47BD00AA3BFC /* HigherLayerCell */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */,
+			);
+			path = HigherLayerCell;
+			sourceTree = "<group>";
+		};
+		D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C57B2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift */,
+				D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */,
+			);
+			path = SizeCalculator;
+			sourceTree = "<group>";
+		};
+		D2F8C5812A8F538500AA3BFC /* TagView */ = {
+			isa = PBXGroup;
+			children = (
+				D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */,
+				D2E81B8D2A913AF8006A5236 /* TagCollectionHeaderView.swift */,
+				D2E81B8B2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift */,
+			);
+			path = TagView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -443,9 +502,12 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
+				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
+				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
+				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
@@ -460,6 +522,7 @@
 				573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
+				D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
@@ -467,13 +530,18 @@
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
+				D2F8C57C2A8F490C00AA3BFC /* CustomLayoutSizeCalculator.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
+				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
+				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

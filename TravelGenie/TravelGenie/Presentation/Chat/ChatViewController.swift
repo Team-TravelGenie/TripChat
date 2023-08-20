@@ -10,16 +10,14 @@ import PhotosUI
 import MessageKit
 
 final class ChatViewController: ChatInterfaceViewController {
-    enum MessagesDefaultSection: Int {
-        case systemMessage = 0
-        case uploadButtonMessage = 2
-    }
     
     private let viewModel: ChatViewModel
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        let message = Message(text: "안녕난 태그셀이얌", tags: [Tag(text: "안녕나는 태그얌", category: 5)], sender: Sender(name: .ai), sentDate: Date())
+        messageStorage.insertMessage(message)
     }
     
     init(viewModel: ChatViewModel) {
@@ -29,31 +27,6 @@ final class ChatViewController: ChatInterfaceViewController {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
-        guard !isSectionReservedForTypingIndicator(indexPath.section) else {
-            return super.collectionView(collectionView, cellForItemAt: indexPath)
-        }
-        
-        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        
-        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
-            switch defaultSection {
-            case .systemMessage:
-                return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
-            case .uploadButtonMessage:
-                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
-                cell.delegate = self
-                return cell
-            }
-        }
-
-        return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
     
     override func didTapButton() {
