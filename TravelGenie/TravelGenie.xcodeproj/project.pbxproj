@@ -20,6 +20,7 @@
 		573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */; };
 		573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD002A8BAF7600116D2D /* HomeViewModel.swift */; };
 		573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD252A8F46B900116D2D /* ChatCoordinator.swift */; };
+		573BCD382A91DA6500116D2D /* RecommendationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD372A91DA6500116D2D /* RecommendationItem.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -74,6 +75,7 @@
 		573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuItem.swift; sourceTree = "<group>"; };
 		573BCD212A8F42DA00116D2D /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		573BCD252A8F46B900116D2D /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		573BCD372A91DA6500116D2D /* RecommendationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationItem.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -307,6 +309,7 @@
 			children = (
 				D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */,
 				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
+				573BCD372A91DA6500116D2D /* RecommendationItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -506,6 +509,7 @@
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
+				573BCD382A91DA6500116D2D /* RecommendationItem.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
