@@ -19,6 +19,7 @@ final class BottomMenuCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
+        backgroundColor = .clear
         configureSubviews()
         configureHierarchy()
         configureLayout()
