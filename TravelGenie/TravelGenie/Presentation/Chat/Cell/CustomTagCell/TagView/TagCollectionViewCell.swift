@@ -16,7 +16,6 @@ class TagCollectionViewCell: UICollectionViewCell {
         button.layer.cornerRadius = 24
         button.layer.borderWidth = 1.0
         button.layer.borderColor = UIColor.blueGrayBackground.cgColor
-        button.setTitleColor(.black, for: .normal)
         button.backgroundColor = .white
         button.translatesAutoresizingMaskIntoConstraints = false
         
