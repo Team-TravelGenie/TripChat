@@ -14,8 +14,10 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         case uploadButtonMessage = 2
     }
 
-    private lazy var tagMessageSizeCalculator = CustomTagLayoutSizeCalculator(
-        layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var tagMessageSizeCalculator
+        = CustomTagLayoutSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var recommendationCellSizeCalculator
+        = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
@@ -61,15 +63,24 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
             fatalError("Datasource error")
         }
         
-        let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-        cell.configure(
-            with: message,
-            at: indexPath,
-            in: messagesCollectionView,
-            dataSource: messagesDataSource,
-            and: tagMessageSizeCalculator)
+        if case let .custom(item) = message.kind {
+            if item is TagItem {
+                let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+                cell.configure(
+                    with: message,
+                    at: indexPath,
+                    in: messagesCollectionView,
+                    dataSource: messagesDataSource,
+                    and: tagMessageSizeCalculator)
+                return cell
+            } else if item is [RecommendationItem] {
+                let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
+                cell.configure(with: message)
+                return cell
+            }
+        }
         
-        return cell
+        return UICollectionViewCell()
     }
     
     private func bind() {
@@ -108,6 +119,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         messagesCollectionView.register(SystemMessageCell.self)
         messagesCollectionView.register(ButtonCell.self)
         messagesCollectionView.register(CustomTagContentCell.self)
+        messagesCollectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.identifier)
     }
     
     private func configureMessagesCollectionViewBackgroundColor() {
@@ -227,6 +239,17 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> CellSizeCalculator
     {
-        return tagMessageSizeCalculator
+        guard case let .custom(item) = message.kind else {
+            return MessageSizeCalculator()
+        }
+        
+        if item is TagItem {
+            return tagMessageSizeCalculator
+
+        } else if item is [RecommendationItem] {
+            return recommendationCellSizeCalculator
+        }
+        
+        return MessageSizeCalculator()
     }
 }
