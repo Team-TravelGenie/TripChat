@@ -59,6 +59,20 @@ struct Message: MessageType {
             sentDate: sentDate)
     }
     
+    // MARK: Recommendation Kind Init
+    
+    init(
+        recommendations: [RecommendationItem],
+        sender: SenderType,
+        sentDate: Date)
+    {
+        self.init(
+            kind: .custom(recommendations),
+            sender: sender,
+            messageId: UUID().uuidString,
+            sentDate: sentDate)
+    }
+    
     // MARK: Blank Init (default Message에 사용됨)
     
     init(sender: SenderType) {
