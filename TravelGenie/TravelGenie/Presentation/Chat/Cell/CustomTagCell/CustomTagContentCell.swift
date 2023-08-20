@@ -9,7 +9,7 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: CustomMessageContentCell {
-    var tagStorage: [Tag] = [] {
+    var tagList: [Tag] = [] {
         didSet {
             tagCollectionView.reloadData()
         }
@@ -93,7 +93,7 @@ final class CustomTagContentCell: CustomMessageContentCell {
             guard let tagItem = tagItem as? TagItem else { return }
             let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
             let tags = tagItem.tags
-            tagStorage = tags
+            tagList = tags
             tagMessageLabel.attributedText = NSMutableAttributedString()
                 .text(tagItem.text, font: .bodyRegular, color: .black)
             tagMessageLabel.textColor = textColor
