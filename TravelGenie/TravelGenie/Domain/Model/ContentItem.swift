@@ -19,7 +19,7 @@ struct ImageMediaItem: MediaItem {
     
     init(image: UIImage) {
         self.image = image
-        size = CGSize(width: 240, height: 240) // 사진별로 사이즈 달라지도록 설정해줘야할 듯?
+        size = image.size // 디자인가이드를 현님에게 받아서 사이즈를 결정해야함
         placeholderImage = UIImage()
     }
 }
