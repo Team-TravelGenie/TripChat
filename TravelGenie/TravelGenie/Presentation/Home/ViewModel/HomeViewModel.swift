@@ -25,6 +25,7 @@ final class HomeViewModel {
         coordinator?.chatListFlow()
     }
     
+    // TODO: 코디네이터 패턴 적용으로 변경
     func didTapBottomMenuCell(at row: Int) {
         showBottomMenu?(bottomMenus[row])
     }

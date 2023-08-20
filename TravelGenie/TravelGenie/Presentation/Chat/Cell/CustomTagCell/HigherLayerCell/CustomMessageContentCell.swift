@@ -8,6 +8,8 @@
 import MessageKit
 import UIKit
 
+// 굳이 이거 서브클래싱해서 CustomTagContentCell을 구현할 필요가 없는 것 같아요!
+// 그냥 UICollectionViewCell을 서브클래싱해서 만들어도 될 것 같아서 얘는 삭제해도 될 것 같습니다~
 class CustomMessageContentCell: MessageCollectionViewCell {
     // MARK: Lifecycle
     
@@ -37,8 +39,7 @@ class CustomMessageContentCell: MessageCollectionViewCell {
     }()
     
     func setupSubviews() {
-        messageContainerView.layer.cornerRadius = 5
-        
+        messageContainerView.layer.cornerRadius = 20
         contentView.addSubview(messageContainerView)
     }
     
