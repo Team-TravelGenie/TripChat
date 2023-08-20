@@ -121,6 +121,9 @@ extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSour
             withReuseIdentifier: RecommendationItemCell.identifier,
             for: indexPath) as? RecommendationItemCell else { return UICollectionViewCell() }
         
+        let item = viewModel.recommendations[indexPath.item]
+        cell.configureContent(with: item)
+        
         return cell
     }
 }
