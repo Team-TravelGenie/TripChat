@@ -26,11 +26,9 @@ struct ImageMediaItem: MediaItem {
 
 // MessageKind - .custom(TagItem) 메시지 컨텐츠
 struct TagItem {
-    var text: String
     var tags: [Tag]
     
-    init(text: String, tags: [Tag]) {
-        self.text = text
+    init(tags: [Tag]) {
         self.tags = tags
     }
 }
