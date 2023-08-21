@@ -59,7 +59,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UICollectionViewCell
     {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+        guard let _ = messagesCollectionView.messagesDataSource else {
             fatalError("Datasource error")
         }
         

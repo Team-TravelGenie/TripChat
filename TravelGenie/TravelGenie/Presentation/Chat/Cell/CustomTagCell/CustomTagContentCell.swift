@@ -155,7 +155,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         case .location:
             return 2
         case .theme:
-            return 6 // 이건 구현방법을 좀 고민해봐야할 듯 합니다.
+            return tagList.count
         }
     }
     
@@ -166,8 +166,16 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(data: "국내")
-        
+        if let section = Section(rawValue: indexPath.section) {
+            switch section {
+            case .location:
+                let defaultTag = ["국내", "해외"]
+                cell.configure(data: defaultTag[indexPath.item])
+            case .theme:
+                cell.configure(data: "안녕하십니까")
+            }
+        }
+
         return cell
     }
     
