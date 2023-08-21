@@ -17,5 +17,9 @@ final class ChatListViewModel {
     
     init(chats: [Chat]) {
         self.chats = chats
+    // MARK: Internal
+    func deleteItem(at row: Int) {
+        
+    }
     }
 }

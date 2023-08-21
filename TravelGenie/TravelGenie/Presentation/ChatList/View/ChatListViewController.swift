@@ -78,4 +78,24 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 84
     }
+    
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let icon: UIImage? = UIGraphicsImageRenderer(size: CGSize(width: 20, height: 20)).image { _ in
+            UIImage(named: "trash")?
+                .withTintColor(.white)
+                .draw(in: CGRect(x: 0, y: 0, width: 20, height: 20))
+        }
+        
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, handler in
+            self.viewModel.deleteItem(at: indexPath.item)
+            handler(true)
+        }
+        
+        deleteAction.image = icon
+        deleteAction.backgroundColor = .alert
+            
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+        
+        return configuration
+    }
 }
