@@ -108,6 +108,9 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
                 textInsets: .zero))
         layout?.setMessageIncomingAvatarPosition(
             AvatarPosition(vertical: .messageTop))
+        layout?.setMessageIncomingAvatarSize(
+            CGSize(width: 40, height: 40))
+        layout?.textMessageSizeCalculator.messageLabelFont = UIFont.systemFont(ofSize: 15, weight: .regular)
     }
     
     private func cellResistration() {
