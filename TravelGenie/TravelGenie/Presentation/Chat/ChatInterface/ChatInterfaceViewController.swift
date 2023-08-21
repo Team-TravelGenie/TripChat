@@ -14,8 +14,8 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         case uploadButtonMessage = 2
     }
 
-    private lazy var tagMessageSizeCalculator
-        = CustomTagLayoutSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var tagMessageCellSizeCalculator
+        = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var recommendationCellSizeCalculator
         = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
@@ -202,7 +202,7 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
         
         if item is TagItem {
-            return tagMessageSizeCalculator
+            return tagMessageCellSizeCalculator
 
         } else if item is [RecommendationItem] {
             return recommendationCellSizeCalculator
