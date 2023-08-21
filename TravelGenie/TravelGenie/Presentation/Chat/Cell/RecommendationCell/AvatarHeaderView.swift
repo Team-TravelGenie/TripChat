@@ -11,7 +11,6 @@ final class AvatarHeaderView: UICollectionReusableView {
     
     static var identifier: String { String(describing: self) }
     
-    private let contentView = UIView()
     private let circleView = UIView()
     private let avatarImageView = UIImageView()
     
