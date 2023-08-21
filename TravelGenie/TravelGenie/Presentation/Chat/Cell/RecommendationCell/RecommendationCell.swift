@@ -101,7 +101,7 @@ extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int)
-    -> Int
+        -> Int
     {
         return viewModel.recommendations.count
     }
@@ -109,7 +109,7 @@ extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSour
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell
+        -> UICollectionViewCell
     {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: RecommendationItemCell.identifier,
@@ -125,7 +125,7 @@ extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSour
         _ collectionView: UICollectionView,
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath)
-    -> UICollectionReusableView
+        -> UICollectionReusableView
     {
         guard kind == UICollectionView.elementKindSectionHeader else {
             return UICollectionReusableView()
@@ -147,7 +147,7 @@ extension RecommendationCell: UICollectionViewDelegateFlowLayout {
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         referenceSizeForHeaderInSection section: Int)
-    -> CGSize
+        -> CGSize
     {
         return CGSizeMake(12 + 40 + 8, 40)
     }
