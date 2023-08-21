@@ -72,7 +72,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureTagCollectionView() {
-        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        tagCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
         tagCollectionView.backgroundColor = .blueGrayBackground2
         tagCollectionView.isScrollEnabled = false
         tagCollectionView.dataSource = self
@@ -115,8 +115,8 @@ final class CustomTagContentCell: UICollectionViewCell {
         messageContainerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             messageContainerView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
-            messageContainerView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.7),
-            messageContainerView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 1)
+            messageContainerView.widthAnchor.constraint(equalToConstant: 244),
+            messageContainerView.heightAnchor.constraint(equalToConstant: 443)
         ])
         
         tagMessageLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -200,13 +200,45 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             "✈️지역",
             "⛵️테마"
         ]
-        
+        header.backgroundColor = .red
         header.configure(text: headerText[indexPath.section])
             
         return header
     }
 }
 
-extension CustomTagContentCell: UICollectionViewDelegate {
+extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize
+    {
+        let text = tagList[indexPath.row].text
+        let font = UIFont.systemFont(ofSize: 15, weight: .regular)
+        let textSize = (text as NSString).size(withAttributes: [.font: font])
+
+        let width = textSize.width + 20
+        let height = textSize.height + 20
+
+        return CGSize(width: width, height: height)
+    }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int)
+        -> CGSize
+    {
+        return CGSize(width: 240, height: 23)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets
+    {
+        return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+    }
 }
