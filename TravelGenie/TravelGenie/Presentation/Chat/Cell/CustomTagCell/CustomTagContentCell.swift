@@ -20,7 +20,8 @@ final class CustomTagContentCell: UICollectionViewCell {
     private let tagMessageLabel = UILabel()
     private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let submitKeywordButton = UIButton()
-        
+    private var messageContainerHeightLayoutConstraint: NSLayoutConstraint?
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -112,13 +113,15 @@ final class CustomTagContentCell: UICollectionViewCell {
             avatarView.heightAnchor.constraint(equalTo: avatarView.widthAnchor)
         ])
         
+        let defaultHeightValue: CGFloat = 500
         messageContainerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             messageContainerView.topAnchor.constraint(equalTo: avatarView.topAnchor),
             messageContainerView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
-            messageContainerView.widthAnchor.constraint(equalToConstant: 244),
-            messageContainerView.heightAnchor.constraint(equalToConstant: 443)
+            messageContainerView.widthAnchor.constraint(equalToConstant: 244)
         ])
+        messageContainerHeightLayoutConstraint = messageContainerView.heightAnchor.constraint(equalToConstant: defaultHeightValue)
+        messageContainerHeightLayoutConstraint?.isActive = true
         
         tagMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -204,7 +207,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             "✈️지역",
             "⛵️테마"
         ]
-        header.backgroundColor = .red
+        
         header.configure(text: headerText[indexPath.section])
             
         return header
@@ -244,5 +247,28 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         -> UIEdgeInsets
     {
         return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath)
+    {
+        updateCollectionViewHeight(tagCollectionView)
+    }
+    
+    private func updateCollectionViewHeight(_ collectionView: UICollectionView) {
+        guard let tagCollectionViewLayout = collectionView.collectionViewLayout as? LeftAlignedCollectionViewFlowLayout else {
+            fatalError("flowLayout Error")
+        }
+        
+        let messageLabelHeight = tagMessageLabel.frame.height
+        let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
+        let submitKeywordButtonHeight = submitKeywordButton.frame.height
+        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
+        
+        if messageContainerHeightLayoutConstraint?.constant != totalContentHeight {
+            messageContainerHeightLayoutConstraint?.constant = totalContentHeight
+        }
     }
 }
