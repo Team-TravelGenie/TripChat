@@ -114,6 +114,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         
         messageContainerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
+            messageContainerView.topAnchor.constraint(equalTo: avatarView.topAnchor),
             messageContainerView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
             messageContainerView.widthAnchor.constraint(equalToConstant: 244),
             messageContainerView.heightAnchor.constraint(equalToConstant: 443)
