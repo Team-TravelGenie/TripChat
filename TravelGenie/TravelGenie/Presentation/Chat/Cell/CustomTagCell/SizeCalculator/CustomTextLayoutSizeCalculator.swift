@@ -28,8 +28,8 @@ final class CustomTagLayoutSizeCalculator: CustomCellSizeCalculator {
         let height = size.height + labelSize.height
         
         return CGSize(
-            width: width,
-            height: height)
+            width: 1000,
+            height: 1000)
     }
     
     func messageLabelSize(
