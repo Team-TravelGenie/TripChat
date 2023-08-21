@@ -10,6 +10,7 @@ import UIKit
 final class ChatListViewController: UIViewController {
     
     private let viewModel: ChatListViewModel
+    private let chatListTableView = UITableView()
     
     init(viewModel: ChatListViewModel) {
         self.viewModel = viewModel
@@ -22,5 +23,59 @@ final class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureViewController()
+        configureSubviews()
+        configureHierarchy()
+        configureLayout()
+    }
+    
+    private func configureViewController() {
+        view.backgroundColor = .white
+    }
+    
+    private func configureSubviews() {
+        configureChatListTableView()
+    }
+    
+    private func configureChatListTableView() {
+        chatListTableView.delegate = self
+        chatListTableView.dataSource = self
+        chatListTableView.backgroundColor = .clear
+        chatListTableView.separatorStyle = .none
+        chatListTableView.register(ChatListCell.self, forCellReuseIdentifier: ChatListCell.identifier)
+    }
+    
+    private func configureHierarchy() {
+        view.addSubview(chatListTableView)
+    }
+    
+    private func configureLayout() {
+        chatListTableView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            chatListTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            chatListTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            chatListTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            chatListTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+    }
+}
+
+extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return viewModel.chats.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: ChatListCell.identifier,
+            for: indexPath) as? ChatListCell else { return UITableViewCell() }
+        
+        cell.configureContents(with: viewModel.chats[indexPath.item])
+        
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 84
     }
 }

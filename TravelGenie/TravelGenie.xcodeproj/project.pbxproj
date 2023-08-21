@@ -23,6 +23,7 @@
 		573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD552A925BA700116D2D /* ChatListViewController.swift */; };
 		573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD592A925C2F00116D2D /* ChatListViewModel.swift */; };
 		573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */; };
+		573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5D2A92618500116D2D /* ChatListCell.swift */; };
 		573BCD602A93167200116D2D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5F2A93167200116D2D /* Chat.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
@@ -81,6 +82,7 @@
 		573BCD552A925BA700116D2D /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		573BCD592A925C2F00116D2D /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
+		573BCD5D2A92618500116D2D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		573BCD5F2A93167200116D2D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
@@ -206,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				573BCD552A925BA700116D2D /* ChatListViewController.swift */,
+				573BCD5D2A92618500116D2D /* ChatListCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -547,6 +550,7 @@
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
+				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
