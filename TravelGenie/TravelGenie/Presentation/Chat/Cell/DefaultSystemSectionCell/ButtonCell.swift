@@ -53,9 +53,10 @@ final class ButtonCell: UICollectionViewCell {
         contentView.addSubview(uploadButton)
         
         NSLayoutConstraint.activate([
-            uploadButton.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 0.95),
-            uploadButton.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.5),
-            uploadButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            uploadButton.widthAnchor.constraint(equalToConstant: 351),
+            uploadButton.heightAnchor.constraint(equalToConstant: 58),
+            uploadButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            uploadButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
         ])
     }
 }

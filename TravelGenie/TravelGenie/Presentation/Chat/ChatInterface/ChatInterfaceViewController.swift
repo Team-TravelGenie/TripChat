@@ -111,7 +111,9 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         layout?.setAvatarLeadingTrailingPadding(8)
         layout?.setMessageIncomingAvatarSize(
             CGSize(width: 40, height: 40))
-        layout?.textMessageSizeCalculator.messageLabelFont = UIFont.systemFont(ofSize: 15, weight: .regular)
+        
+        let bodyRegular = UIFont.systemFont(ofSize: 15, weight: .regular)
+        layout?.textMessageSizeCalculator.messageLabelFont = bodyRegular
     }
     
     private func cellResistration() {
@@ -213,5 +215,17 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
         
         return MessageSizeCalculator()
+    }
+    
+    func textCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator? {
+        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
+            switch defaultSection {
+            case .systemMessage:
+                return SystemMesasgeCellSizeCalculator(layout: messagesCollectionView.messagesCollectionViewFlowLayout)
+            case .uploadButtonMessage:
+                return ButtonMessageCellSizeCalculator(layout: messagesCollectionView.messagesCollectionViewFlowLayout)
+            }
+        }
+        return nil
     }
 }
