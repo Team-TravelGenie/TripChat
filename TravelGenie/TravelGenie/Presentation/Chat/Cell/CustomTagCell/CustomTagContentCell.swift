@@ -72,7 +72,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureTagCollectionView() {
-        tagCollectionView.collectionViewLayout = UICollectionViewFlowLayout()
+        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
         tagCollectionView.backgroundColor = .blueGrayBackground2
         tagCollectionView.isScrollEnabled = false
         tagCollectionView.dataSource = self
@@ -173,10 +173,13 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                let defaultTag = ["국내", "해외"]
-                cell.configure(data: defaultTag[indexPath.item])
+                let defaultTag = [
+                    Tag(text: "국내"),
+                    Tag(text: "해외")
+                ]
+                cell.configure(tag: defaultTag[indexPath.item])
             case .theme:
-                cell.configure(data: tagList[indexPath.item].text)
+                cell.configure(tag: tagList[indexPath.item])
             }
         }
 

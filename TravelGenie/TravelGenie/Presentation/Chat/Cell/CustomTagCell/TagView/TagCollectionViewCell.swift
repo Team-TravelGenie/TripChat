@@ -31,9 +31,10 @@ class TagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(data: String) {
+    func configure(tag: Tag) {
+        let text = tag.text
         let title = NSMutableAttributedString()
-            .text(data, font: .bodyRegular, color: .black)
+            .text("#\(text)", font: .bodyRegular, color: .black)
         
         tagButton.setAttributedTitle(title, for: .normal)
     }
