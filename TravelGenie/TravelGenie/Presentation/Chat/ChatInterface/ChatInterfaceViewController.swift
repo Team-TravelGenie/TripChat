@@ -66,12 +66,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.configure(
-                    with: message,
-                    at: indexPath,
-                    in: messagesCollectionView,
-                    dataSource: messagesDataSource,
-                    and: tagMessageSizeCalculator)
+                cell.configure(with: message)
                 return cell
             } else if item is [RecommendationItem] {
                 let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)

@@ -29,41 +29,19 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     func configure(
-        with message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView,
-        dataSource: MessagesDataSource,
-        and sizeCalculator: CustomCellSizeCalculator)
+        with message: MessageType)
     {
-        guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
-            return
-        }
-        
-        let calculator = sizeCalculator as? CustomTagLayoutSizeCalculator
-        tagMessageLabel.frame = calculator?.messageLabelFrame(
-            for: message,
-            at: indexPath) ?? .zero
-        
-//        messageContainerView.frame.size = sizeCalculator.messageContainerSize(for: message, at: indexPath)
-        messageContainerView.backgroundColor = displayDelegate.backgroundColor(
-            for: message,
-            at: indexPath,
-            in: messagesCollectionView)
-        
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
-            let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            let tags = tagItem.tags
-            tagList = tags
-            tagMessageLabel.attributedText = NSMutableAttributedString()
-                .text(tagItem.text, font: .bodyRegular, color: .black)
-            tagMessageLabel.textColor = textColor
+            
+            tagList = tagItem.tags
         }
     }
     
     private func configureSubviews() {
         configureAvatarView()
         configureMessageContainerView()
+        configureTagMessageLabel()
         configureTagCollectionView()
         configureSubmitButton()
     }
@@ -76,9 +54,17 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureMessageContainerView() {
+        messageContainerView.backgroundColor = .blueGrayBackground2
         messageContainerView.layer.cornerRadius = 20
         messageContainerView.clipsToBounds = true
         messageContainerView.layer.masksToBounds = true
+    }
+    
+    private func configureTagMessageLabel() {
+        let messageLabel = "키워드를 선택해주세요!"
+        
+        tagMessageLabel.attributedText = NSMutableAttributedString()
+            .text(messageLabel, font: .bodyRegular, color: .black)
     }
     
     private func configureTagCollectionView() {
