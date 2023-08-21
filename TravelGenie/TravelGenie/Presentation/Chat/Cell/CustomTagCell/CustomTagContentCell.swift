@@ -9,7 +9,11 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: UICollectionViewCell {
-    var tagList: [Tag] = []
+    var tagList: [Tag] = [] {
+        didSet {
+            tagCollectionView.reloadData()
+        }
+    }
     
     private let avatarView = AvatarView()
     private let messageContainerView = UIView()
@@ -172,7 +176,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
                 let defaultTag = ["국내", "해외"]
                 cell.configure(data: defaultTag[indexPath.item])
             case .theme:
-                cell.configure(data: "안녕하십니까")
+                cell.configure(data: tagList[indexPath.item].text)
             }
         }
 
