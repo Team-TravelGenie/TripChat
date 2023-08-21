@@ -28,6 +28,12 @@ final class ChatListCell: UITableViewCell {
         configureLayout()
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        dateLabel.attributedText = nil
+        tagLabel.attributedText = nil
+    }
+    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
