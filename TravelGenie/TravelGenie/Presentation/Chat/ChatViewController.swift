@@ -16,9 +16,14 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(text: "안녕난 태그셀이얌", tags: [Tag(text: "안녕나는 태그얌", category: 5)], sender: Sender(name: .ai), sentDate: Date())
+        let message = Message(tags: [Tag(text: "안녕"),
+                                     Tag(text: "이건세"),
+                                     Tag(text: "이건네글"),
+                                     Tag(text: "이건다섯글"),
+                                     Tag(text: "이건여섯글자")
+                                    ])
         messageStorage.insertMessage(message)
-        
+                              
         var recommendations: [RecommendationItem] = []
         let image = UIImage(systemName: "chevron.left")!
         let data = image.pngData()!

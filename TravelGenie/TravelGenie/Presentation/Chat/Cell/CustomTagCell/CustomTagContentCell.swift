@@ -214,14 +214,14 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        let text = tagList[indexPath.row].text
-        let font = UIFont.systemFont(ofSize: 15, weight: .regular)
-        let textSize = (text as NSString).size(withAttributes: [.font: font])
+        let numberOfCharactersInTag = tagList[indexPath.item].text.count
+        let defaultHeight: CGFloat = 47 // 고정높이
+        let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
+        let additionalWidthForOneCharacterSize: CGFloat = 13.0
+        
+        let cellWidth = defaultWidth + CGFloat(numberOfCharactersInTag) * additionalWidthForOneCharacterSize
 
-        let width = textSize.width + 20
-        let height = textSize.height + 20
-
-        return CGSize(width: width, height: height)
+        return CGSize(width: cellWidth, height: defaultHeight)
     }
     
     func collectionView(
