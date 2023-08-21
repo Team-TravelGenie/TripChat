@@ -25,6 +25,7 @@
 		573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */; };
 		573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5D2A92618500116D2D /* ChatListCell.swift */; };
 		573BCD602A93167200116D2D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5F2A93167200116D2D /* Chat.swift */; };
+		573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD632A934D4500116D2D /* DateFormatter+shared.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -84,6 +85,7 @@
 		573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
 		573BCD5D2A92618500116D2D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		573BCD5F2A93167200116D2D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
+		573BCD632A934D4500116D2D /* DateFormatter+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+shared.swift"; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -363,6 +365,7 @@
 			children = (
 				D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */,
 				573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */,
+				573BCD632A934D4500116D2D /* DateFormatter+shared.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -568,6 +571,7 @@
 				D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
+				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
