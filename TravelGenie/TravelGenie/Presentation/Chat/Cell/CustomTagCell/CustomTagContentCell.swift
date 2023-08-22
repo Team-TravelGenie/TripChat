@@ -15,12 +15,12 @@ final class CustomTagContentCell: UICollectionViewCell {
         }
     }
     
-    private let avatarView = AvatarView()
-    private let messageContainerView = UIView()
-    private let tagMessageLabel = UILabel()
+    private let tagContentAvatarView = AvatarView()
+    private let messageContentView = UIView()
+    private let defaultMessageLabel = UILabel()
     private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let submitKeywordButton = UIButton()
-    private var messageContainerHeightLayoutConstraint: NSLayoutConstraint?
+    private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -54,21 +54,21 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureAvatarView() {
         let avatarImage = UIImage(named: "chat")
         let avatar = Avatar(image: avatarImage)
-        avatarView.set(avatar: avatar)
-        avatarView.backgroundColor = .white
+        tagContentAvatarView.set(avatar: avatar)
+        tagContentAvatarView.backgroundColor = .white
     }
     
     private func configureMessageContainerView() {
-        messageContainerView.clipsToBounds = true
-        messageContainerView.layer.cornerRadius = 20
-        messageContainerView.layer.masksToBounds = true
-        messageContainerView.backgroundColor = .blueGrayBackground2
+        messageContentView.clipsToBounds = true
+        messageContentView.layer.cornerRadius = 20
+        messageContentView.layer.masksToBounds = true
+        messageContentView.backgroundColor = .blueGrayBackground2
     }
     
     private func configureTagMessageLabel() {
         let messageLabel = "키워드를 선택해주세요!"
         
-        tagMessageLabel.attributedText = NSMutableAttributedString()
+        defaultMessageLabel.attributedText = NSMutableAttributedString()
             .text(messageLabel, font: .bodyRegular, color: .black)
     }
     
@@ -96,51 +96,51 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureHierarchy() {
-        [tagMessageLabel, tagCollectionView, submitKeywordButton]
-            .forEach { messageContainerView.addSubview($0) }
-        [avatarView, messageContainerView]
+        [defaultMessageLabel, tagCollectionView, submitKeywordButton]
+            .forEach { messageContentView.addSubview($0) }
+        [tagContentAvatarView, messageContentView]
             .forEach { contentView.addSubview($0) }
 
     }
     
     private func configureLayout() {
-        avatarView.translatesAutoresizingMaskIntoConstraints = false
+        tagContentAvatarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            avatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            avatarView.widthAnchor.constraint(equalToConstant: 40),
-            avatarView.heightAnchor.constraint(equalTo: avatarView.widthAnchor)
+            tagContentAvatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tagContentAvatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            tagContentAvatarView.widthAnchor.constraint(equalToConstant: 40),
+            tagContentAvatarView.heightAnchor.constraint(equalTo: tagContentAvatarView.widthAnchor)
         ])
         
         let defaultHeightValue: CGFloat = 500
-        messageContainerView.translatesAutoresizingMaskIntoConstraints = false
+        messageContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            messageContainerView.topAnchor.constraint(equalTo: avatarView.topAnchor),
-            messageContainerView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
-            messageContainerView.widthAnchor.constraint(equalToConstant: 244)
+            messageContentView.topAnchor.constraint(equalTo: tagContentAvatarView.topAnchor),
+            messageContentView.leadingAnchor.constraint(equalTo: tagContentAvatarView.trailingAnchor, constant: 8),
+            messageContentView.widthAnchor.constraint(equalToConstant: 244)
         ])
-        messageContainerHeightLayoutConstraint = messageContainerView.heightAnchor.constraint(equalToConstant: defaultHeightValue)
-        messageContainerHeightLayoutConstraint?.isActive = true
+        messageContentViewHeightLayoutConstraint = messageContentView.heightAnchor.constraint(equalToConstant: defaultHeightValue)
+        messageContentViewHeightLayoutConstraint?.isActive = true
         
-        tagMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        defaultMessageLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagMessageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: 12),
-            tagMessageLabel.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20)
+            defaultMessageLabel.topAnchor.constraint(equalTo: messageContentView.topAnchor, constant: 12),
+            defaultMessageLabel.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20)
         ])
 
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagCollectionView.topAnchor.constraint(equalTo: tagMessageLabel.bottomAnchor, constant: 12),
-            tagCollectionView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
-            tagCollectionView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
+            tagCollectionView.topAnchor.constraint(equalTo: defaultMessageLabel.bottomAnchor, constant: 12),
+            tagCollectionView.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
+            tagCollectionView.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
         ])
         
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
-            submitKeywordButton.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
-            submitKeywordButton.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
-            submitKeywordButton.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -12)
+            submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
+            submitKeywordButton.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
+            submitKeywordButton.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -12)
         ])
     }
 }
@@ -270,15 +270,15 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
             fatalError("flowLayout Error")
         }
         
-        let messageLabelHeight = tagMessageLabel.frame.height
+        let messageLabelHeight = defaultMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
         let insetPadding: CGFloat = 20
         let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
         
         // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
-        if messageContainerHeightLayoutConstraint?.constant != totalContentHeight {
-            messageContainerHeightLayoutConstraint?.constant = totalContentHeight
+        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
+            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
         }
     }
 }
