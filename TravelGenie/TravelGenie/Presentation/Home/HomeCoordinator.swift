@@ -30,12 +30,16 @@ final class HomeCoordinator: Coordinator {
     }
     
     func newChatFlow() {
-        let chatCoordinator = ChatCoordinator(navigationController: navigationController)
+        let chatCoordinator = ChatCoordinator(finishDelegate: self, navigationController: navigationController)
         childCoordinators.append(chatCoordinator)
         chatCoordinator.start()
     }
     
     func chatListFlow() {
-        // TODO: - ChatList Coordinator 생성, childCoordinators에 append, coordinator.start() 호출
+        let chatListCoordinator = ChatListCoordinator(finishDelegate: self, navigationController: navigationController)
+        childCoordinators.append(chatListCoordinator)
+        chatListCoordinator.start()
     }
 }
+
+extension HomeCoordinator: CoordinationFinishDelegate { }
