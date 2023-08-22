@@ -59,10 +59,10 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureMessageContainerView() {
-        messageContainerView.backgroundColor = .blueGrayBackground2
-        messageContainerView.layer.cornerRadius = 20
         messageContainerView.clipsToBounds = true
+        messageContainerView.layer.cornerRadius = 20
         messageContainerView.layer.masksToBounds = true
+        messageContainerView.backgroundColor = .blueGrayBackground2
     }
     
     private func configureTagMessageLabel() {
@@ -73,16 +73,16 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureTagCollectionView() {
-        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
-        tagCollectionView.backgroundColor = .blueGrayBackground2
-        tagCollectionView.isScrollEnabled = false
-        tagCollectionView.dataSource = self
         tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
+        tagCollectionView.isScrollEnabled = false
+        tagCollectionView.backgroundColor = .blueGrayBackground2
+        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         tagCollectionView.register(
             TagCollectionHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
             withReuseIdentifier: TagCollectionHeaderView.identifier)
-        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
@@ -90,10 +90,9 @@ final class CustomTagContentCell: UICollectionViewCell {
         let titleLabel = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
         
-        submitKeywordButton.setAttributedTitle(titleLabel, for: .normal)
         submitKeywordButton.layer.cornerRadius = 12
         submitKeywordButton.backgroundColor = .blueGrayBackground3
-        submitKeywordButton.translatesAutoresizingMaskIntoConstraints = false
+        submitKeywordButton.setAttributedTitle(titleLabel, for: .normal)
     }
     
     private func configureHierarchy() {
