@@ -44,28 +44,28 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureSubviews() {
-        configureAvatarView()
-        configureMessageContainerView()
-        configureTagMessageLabel()
-        configureTagCollectionView()
         configureSubmitButton()
+        configureTagCollectionView()
+        configureMessageContentView()
+        configureDefaultMessageLabel()
+        configureTagContentAvatarView()
     }
     
-    private func configureAvatarView() {
+    private func configureTagContentAvatarView() {
         let avatarImage = UIImage(named: "chat")
         let avatar = Avatar(image: avatarImage)
         tagContentAvatarView.set(avatar: avatar)
         tagContentAvatarView.backgroundColor = .white
     }
     
-    private func configureMessageContainerView() {
+    private func configureMessageContentView() {
         messageContentView.clipsToBounds = true
         messageContentView.layer.cornerRadius = 20
         messageContentView.layer.masksToBounds = true
         messageContentView.backgroundColor = .blueGrayBackground2
     }
     
-    private func configureTagMessageLabel() {
+    private func configureDefaultMessageLabel() {
         let messageLabel = "키워드를 선택해주세요!"
         
         defaultMessageLabel.attributedText = NSMutableAttributedString()
