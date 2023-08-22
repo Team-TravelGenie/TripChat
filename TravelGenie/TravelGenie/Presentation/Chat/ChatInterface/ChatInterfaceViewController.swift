@@ -196,7 +196,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
     }
 }
 
-extension ChatInterfaceViewController: MessagesLayoutDelegate {
+extension ChatInterfaceViewController: MessagesLayoutDelegate, ResizeTagMessageContainerDelegate {
     func customCellSizeCalculator(
         for message: MessageType,
         at indexPath: IndexPath,

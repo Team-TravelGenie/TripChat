@@ -35,7 +35,7 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
                 
                 // maxY 값 업데이트, 현재 행의 최대 y 위치를 추적
                 maxY = max(layoutAttribute.frame.maxY, maxY)
-                totalHeight += layoutAttribute.frame.height
+                totalHeight = maxY
             }
             
             // totalHeight에 값을 더해주는 이유는 CustomTagContentCell의 messageContainer를 사이즈를 다시 그려주기 위해서입니다.

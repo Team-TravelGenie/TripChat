@@ -274,8 +274,10 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let messageLabelHeight = tagMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
-        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
+        let insetPadding: CGFloat = 20
+        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
         
+        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
         if messageContainerHeightLayoutConstraint?.constant != totalContentHeight {
             messageContainerHeightLayoutConstraint?.constant = totalContentHeight
         }
