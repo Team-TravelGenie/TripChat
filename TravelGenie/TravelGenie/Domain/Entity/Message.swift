@@ -77,6 +77,8 @@ struct Message: MessageType {
             sentDate: Date())
     }
     
+    // MARK: Private
+    
     private init(
         kind: MessageKind,
         sender: SenderType,

@@ -372,6 +372,8 @@
 				D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */,
 				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
 				573BCD5F2A93167200116D2D /* Chat.swift */,
+				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
+				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
 			);
 			path = Entity;
@@ -439,8 +441,6 @@
 		D2E3AA352A8B85980049DDEF /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
-				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
 			);
 			path = Model;
