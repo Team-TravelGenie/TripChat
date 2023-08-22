@@ -20,17 +20,17 @@
 		573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD022A8BAF7600116D2D /* HomeCoordinator.swift */; };
 		573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD002A8BAF7600116D2D /* HomeViewModel.swift */; };
 		573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD252A8F46B900116D2D /* ChatCoordinator.swift */; };
+		573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */; };
+		573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */; };
+		573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD452A92141500116D2D /* RecommendationCell.swift */; };
+		573BCD482A92146F00116D2D /* RecommendationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */; };
+		573BCD4A2A92149F00116D2D /* RecommendationItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD492A92149F00116D2D /* RecommendationItemCell.swift */; };
 		573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD552A925BA700116D2D /* ChatListViewController.swift */; };
 		573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD592A925C2F00116D2D /* ChatListViewModel.swift */; };
 		573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */; };
 		573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5D2A92618500116D2D /* ChatListCell.swift */; };
 		573BCD602A93167200116D2D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5F2A93167200116D2D /* Chat.swift */; };
 		573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD632A934D4500116D2D /* DateFormatter+shared.swift */; };
-		573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */; };
-		573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */; };
-		573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD452A92141500116D2D /* RecommendationCell.swift */; };
-		573BCD482A92146F00116D2D /* RecommendationCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */; };
-		573BCD4A2A92149F00116D2D /* RecommendationItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD492A92149F00116D2D /* RecommendationItemCell.swift */; };
 		573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD682A9365B300116D2D /* AvatarHeaderView.swift */; };
 		573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
@@ -87,17 +87,17 @@
 		573BCD1C2A8E682200116D2D /* BottomMenuItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomMenuItem.swift; sourceTree = "<group>"; };
 		573BCD212A8F42DA00116D2D /* SecretStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SecretStorage.swift; sourceTree = "<group>"; };
 		573BCD252A8F46B900116D2D /* ChatCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatCoordinator.swift; sourceTree = "<group>"; };
+		573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCellSizeCalculator.swift; sourceTree = "<group>"; };
+		573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
+		573BCD452A92141500116D2D /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
+		573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCellViewModel.swift; sourceTree = "<group>"; };
+		573BCD492A92149F00116D2D /* RecommendationItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationItemCell.swift; sourceTree = "<group>"; };
 		573BCD552A925BA700116D2D /* ChatListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewController.swift; sourceTree = "<group>"; };
 		573BCD592A925C2F00116D2D /* ChatListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListViewModel.swift; sourceTree = "<group>"; };
 		573BCD5B2A925C3700116D2D /* ChatListCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCoordinator.swift; sourceTree = "<group>"; };
 		573BCD5D2A92618500116D2D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		573BCD5F2A93167200116D2D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		573BCD632A934D4500116D2D /* DateFormatter+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+shared.swift"; sourceTree = "<group>"; };
-		573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCellSizeCalculator.swift; sourceTree = "<group>"; };
-		573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
-		573BCD452A92141500116D2D /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
-		573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCellViewModel.swift; sourceTree = "<group>"; };
-		573BCD492A92149F00116D2D /* RecommendationItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationItemCell.swift; sourceTree = "<group>"; };
 		573BCD682A9365B300116D2D /* AvatarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHeaderView.swift; sourceTree = "<group>"; };
 		573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
@@ -210,6 +210,16 @@
 			path = Secrets;
 			sourceTree = "<group>";
 		};
+		573BCD442A92140900116D2D /* RecommendationCell */ = {
+			isa = PBXGroup;
+			children = (
+				573BCD452A92141500116D2D /* RecommendationCell.swift */,
+				573BCD682A9365B300116D2D /* AvatarHeaderView.swift */,
+				573BCD492A92149F00116D2D /* RecommendationItemCell.swift */,
+			);
+			path = RecommendationCell;
+			sourceTree = "<group>";
+		};
 		573BCD542A925B9B00116D2D /* ChatList */ = {
 			isa = PBXGroup;
 			children = (
@@ -235,16 +245,6 @@
 				573BCD592A925C2F00116D2D /* ChatListViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		573BCD442A92140900116D2D /* RecommendationCell */ = {
-			isa = PBXGroup;
-			children = (
-				573BCD452A92141500116D2D /* RecommendationCell.swift */,
-				573BCD682A9365B300116D2D /* AvatarHeaderView.swift */,
-				573BCD492A92149F00116D2D /* RecommendationItemCell.swift */,
-			);
-			path = RecommendationCell;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -401,9 +401,9 @@
 		D23037752A8C61A80017950E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				573BCD442A92140900116D2D /* RecommendationCell */,
 				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
+				573BCD442A92140900116D2D /* RecommendationCell */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
