@@ -8,6 +8,9 @@
 import Foundation
 
 struct Chat {
-    let date: Date
+    let id: UUID
+    let createdAt: Date
     let tags: [String]
+    let recommendations: [String]
+    let messages: [Message]
 }
