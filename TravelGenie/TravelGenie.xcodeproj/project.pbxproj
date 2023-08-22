@@ -35,6 +35,7 @@
 		573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */; };
 		57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B262A94E9B600949D5C /* ChatStorage.swift */; };
 		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
+		57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -104,6 +105,7 @@
 		573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		57462B262A94E9B600949D5C /* ChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStorage.swift; sourceTree = "<group>"; };
 		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
+		57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -256,8 +258,17 @@
 			children = (
 				57462B262A94E9B600949D5C /* ChatStorage.swift */,
 				57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */,
+				57462B2A2A94EB4D00949D5C /* CoreDataStorage */,
 			);
 			path = PersistentStorage;
+			sourceTree = "<group>";
+		};
+		57462B2A2A94EB4D00949D5C /* CoreDataStorage */ = {
+			isa = PBXGroup;
+			children = (
+				57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */,
+			);
+			path = CoreDataStorage;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -325,6 +336,7 @@
 		D20FA2882A6B97C20081B039 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				57462B252A94E93B00949D5C /* PersistentStorage */,
 				D20FA2892A6B97E30081B039 /* Repository */,
 				D20FA28A2A6B97E90081B039 /* Network */,
 			);
@@ -598,6 +610,7 @@
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
+				57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
@@ -622,6 +635,7 @@
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
+				57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
