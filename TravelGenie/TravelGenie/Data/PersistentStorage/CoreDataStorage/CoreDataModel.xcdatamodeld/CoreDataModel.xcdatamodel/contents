@@ -4,9 +4,11 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="messages" optional="YES" attributeType="Transformable" customClassName="[Message]"/>
+        <relationship name="recommendations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecommendationEntity" inverseName="chat" inverseEntity="RecommendationEntity"/>
     </entity>
     <entity name="RecommendationEntity" representedClassName="RecommendationEntity" syncable="YES">
         <attribute name="value" optional="YES" attributeType="String"/>
+        <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="recommendations" inverseEntity="ChatEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
         <attribute name="value" optional="YES" attributeType="String"/>
