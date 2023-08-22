@@ -134,7 +134,7 @@ final class CustomTagContentCell: UICollectionViewCell {
             tagCollectionView.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
         ])
         
-        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        submitKeywordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
             submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
