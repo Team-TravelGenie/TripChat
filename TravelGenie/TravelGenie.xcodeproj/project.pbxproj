@@ -36,6 +36,7 @@
 		57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B262A94E9B600949D5C /* ChatStorage.swift */; };
 		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
 		57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */; };
+		57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -106,6 +107,7 @@
 		57462B262A94E9B600949D5C /* ChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStorage.swift; sourceTree = "<group>"; };
 		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
+		57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -267,6 +269,7 @@
 			isa = PBXGroup;
 			children = (
 				57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */,
+				57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreDataStorage;
 			sourceTree = "<group>";
@@ -597,6 +600,7 @@
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
+				57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
 				57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
@@ -908,6 +912,19 @@
 			productName = MessageKit;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */,
+			);
+			currentVersion = 57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */;
+			path = CoreDataModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = D20FA2672A6B8DA90081B039 /* Project object */;
 }
