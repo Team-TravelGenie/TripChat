@@ -8,117 +8,138 @@
 import UIKit
 import MessageKit
 
-// 요것도 굳이 CustomMessageContentCell 서브클래싱해서 구현할 필요가 없는 듯 합니다!
-// 제가 구현한 RecommendationCell 참고해보셔영!
-final class CustomTagContentCell: CustomMessageContentCell {
+final class CustomTagContentCell: UICollectionViewCell {
     var tagList: [Tag] = [] {
         didSet {
             tagCollectionView.reloadData()
         }
     }
     
-    private let tagMessageLabel: UILabel = {
-        let label = UILabel()
-        
-        label.numberOfLines = 0
-        label.translatesAutoresizingMaskIntoConstraints = false
-        
-        return label
-    }()
+    private let tagContentAvatarView = AvatarView()
+    private let messageContentView = UIView()
+    private let defaultMessageLabel = UILabel()
+    private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+    private let submitKeywordButton = UIButton()
+    private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
-    private lazy var tagCollectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: LeftAlignedCollectionViewFlowLayout())
-        
-        collectionView.backgroundColor = .blueGrayBackground2
-        collectionView.isScrollEnabled = false
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(
-            TagCollectionHeaderView.self,
-            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
-            withReuseIdentifier: TagCollectionHeaderView.identifier)
-        collectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
-        collectionView.translatesAutoresizingMaskIntoConstraints = false
-        
-        return collectionView
-    }()
-    
-    private let submitKeywordButton: UIButton = {
-        let button = UIButton(frame: .zero)
-        
-        button.setTitle("키워드 보내기", for: .normal)
-        button.layer.cornerRadius = 8
-        button.backgroundColor = .blueGrayBackground3
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
-    
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        
-        tagMessageLabel.text = nil
-    }
-    
-    override func setupSubviews() {
-        super.setupSubviews()
-        [tagMessageLabel, tagCollectionView, submitKeywordButton]
-            .forEach { messageContainerView.addSubview($0) }
-        
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        configureSubviews()
+        configureHierarchy()
         configureLayout()
     }
     
-    override func configure(
-        with message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView,
-        dataSource: MessagesDataSource,
-        and sizeCalculator: CustomCellSizeCalculator)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configure(
+        with message: MessageType)
     {
-        super.configure(
-            with: message,
-            at: indexPath,
-            in: messagesCollectionView,
-            dataSource: dataSource,
-            and: sizeCalculator)
-        
-        guard let displayDelegate = messagesCollectionView.messagesDisplayDelegate else {
-            return
-        }
-        
-        let calculator = sizeCalculator as? CustomTagLayoutSizeCalculator
-        tagMessageLabel.frame = calculator?.messageLabelFrame(
-            for: message,
-            at: indexPath) ?? .zero
-        
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
-            let textColor = displayDelegate.textColor(for: message, at: indexPath, in: messagesCollectionView)
-            let tags = tagItem.tags
-            tagList = tags
-            tagMessageLabel.attributedText = NSMutableAttributedString()
-                .text(tagItem.text, font: .bodyRegular, color: .black)
-            tagMessageLabel.textColor = textColor
+            
+            tagList = tagItem.tags
         }
     }
     
+    private func configureSubviews() {
+        configureSubmitButton()
+        configureTagCollectionView()
+        configureMessageContentView()
+        configureDefaultMessageLabel()
+        configureTagContentAvatarView()
+    }
+    
+    private func configureTagContentAvatarView() {
+        let avatarImage = UIImage(named: "chat")
+        let avatar = Avatar(image: avatarImage)
+        tagContentAvatarView.set(avatar: avatar)
+        tagContentAvatarView.backgroundColor = .white
+    }
+    
+    private func configureMessageContentView() {
+        messageContentView.clipsToBounds = true
+        messageContentView.layer.cornerRadius = 20
+        messageContentView.layer.masksToBounds = true
+        messageContentView.backgroundColor = .blueGrayBackground2
+    }
+    
+    private func configureDefaultMessageLabel() {
+        let messageLabel = "키워드를 선택해주세요!"
+        
+        defaultMessageLabel.attributedText = NSMutableAttributedString()
+            .text(messageLabel, font: .bodyRegular, color: .black)
+    }
+    
+    private func configureTagCollectionView() {
+        tagCollectionView.delegate = self
+        tagCollectionView.dataSource = self
+        tagCollectionView.isScrollEnabled = false
+        tagCollectionView.backgroundColor = .blueGrayBackground2
+        tagCollectionView.collectionViewLayout = LeftAlignedCollectionViewFlowLayout()
+        tagCollectionView.register(TagCollectionViewCell.self, forCellWithReuseIdentifier: TagCollectionViewCell.identifier)
+        tagCollectionView.register(
+            TagCollectionHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: TagCollectionHeaderView.identifier)
+        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureSubmitButton() {
+        let titleText = NSMutableAttributedString()
+            .text("키워드 보내기", font: .bodyRegular, color: .black)
+        
+        submitKeywordButton.layer.cornerRadius = 12
+        submitKeywordButton.backgroundColor = .blueGrayBackground3
+        submitKeywordButton.setAttributedTitle(titleText, for: .normal)
+    }
+    
+    private func configureHierarchy() {
+        [defaultMessageLabel, tagCollectionView, submitKeywordButton]
+            .forEach { messageContentView.addSubview($0) }
+        [tagContentAvatarView, messageContentView]
+            .forEach { contentView.addSubview($0) }
+    }
+    
     private func configureLayout() {
+        tagContentAvatarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagMessageLabel.topAnchor.constraint(equalTo: messageContainerView.topAnchor, constant: 12),
-            tagMessageLabel.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20)
+            tagContentAvatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            tagContentAvatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+            tagContentAvatarView.widthAnchor.constraint(equalToConstant: 40),
+            tagContentAvatarView.heightAnchor.constraint(equalTo: tagContentAvatarView.widthAnchor)
         ])
         
+        let defaultHeightValue: CGFloat = 500
+        messageContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagCollectionView.topAnchor.constraint(equalTo: tagMessageLabel.bottomAnchor, constant: 12),
-            tagCollectionView.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
-            tagCollectionView.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
+            messageContentView.topAnchor.constraint(equalTo: tagContentAvatarView.topAnchor),
+            messageContentView.leadingAnchor.constraint(equalTo: tagContentAvatarView.trailingAnchor, constant: 8),
+            messageContentView.widthAnchor.constraint(equalToConstant: 244)
+        ])
+        messageContentViewHeightLayoutConstraint = messageContentView.heightAnchor.constraint(equalToConstant: defaultHeightValue)
+        messageContentViewHeightLayoutConstraint?.isActive = true
+        
+        defaultMessageLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            defaultMessageLabel.topAnchor.constraint(equalTo: messageContentView.topAnchor, constant: 12),
+            defaultMessageLabel.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20)
+        ])
+
+        tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            tagCollectionView.topAnchor.constraint(equalTo: defaultMessageLabel.bottomAnchor, constant: 12),
+            tagCollectionView.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
+            tagCollectionView.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
         ])
         
+        submitKeywordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
-            submitKeywordButton.leadingAnchor.constraint(equalTo: messageContainerView.leadingAnchor, constant: 20),
-            submitKeywordButton.trailingAnchor.constraint(equalTo: messageContainerView.trailingAnchor, constant: -20),
-            submitKeywordButton.bottomAnchor.constraint(equalTo: messageContainerView.bottomAnchor, constant: -12)
+            submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
+            submitKeywordButton.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
+            submitKeywordButton.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -12)
         ])
     }
 }
@@ -140,7 +161,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         case .location:
             return 2
         case .theme:
-            return 6 // 이건 구현방법을 좀 고민해봐야할 듯 합니다.
+            return tagList.count
         }
     }
     
@@ -151,8 +172,19 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionViewCell()
         }
         
-        cell.configure(data: "국내")
-        
+        if let section = Section(rawValue: indexPath.section) {
+            switch section {
+            case .location:
+                let defaultTag = [
+                    Tag(text: "국내"),
+                    Tag(text: "해외")
+                ]
+                cell.configure(tag: defaultTag[indexPath.item])
+            case .theme:
+                cell.configure(tag: tagList[indexPath.item])
+            }
+        }
+
         return cell
     }
     
@@ -180,6 +212,72 @@ extension CustomTagContentCell: UICollectionViewDataSource {
     }
 }
 
-extension CustomTagContentCell: UICollectionViewDelegate {
+extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize
+    {
+        if let section = Section(rawValue: indexPath.section) {
+            switch section {
+            case .location:
+                let twoCharacterCellSize = CGSize(width: 74, height: 47)
+                return twoCharacterCellSize
+            case .theme:
+                let numberOfCharactersInTag = tagList[indexPath.item].text.count
+                let defaultHeight: CGFloat = 47 // 고정높이
+                let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
+                let additionalWidthForOneCharacterSize: CGFloat = 13.0
+                
+                let cellWidth = defaultWidth + CGFloat(numberOfCharactersInTag) * additionalWidthForOneCharacterSize
+                
+                return CGSize(width: cellWidth, height: defaultHeight)
+            }
+        }
+        return CGSize(width: 0, height: 0)
+    }
     
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int)
+        -> CGSize
+    {
+        return CGSize(width: 240, height: 23)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int)
+        -> UIEdgeInsets
+    {
+        return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        willDisplay cell: UICollectionViewCell,
+        forItemAt indexPath: IndexPath)
+    {
+        updateCollectionViewHeight(tagCollectionView)
+    }
+    
+    private func updateCollectionViewHeight(_ collectionView: UICollectionView) {
+        guard let tagCollectionViewLayout = collectionView.collectionViewLayout as? LeftAlignedCollectionViewFlowLayout else {
+            fatalError("flowLayout Error")
+        }
+        
+        let messageLabelHeight = defaultMessageLabel.frame.height
+        let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
+        let submitKeywordButtonHeight = submitKeywordButton.frame.height
+        let insetPadding: CGFloat = 20
+        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
+        
+        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
+        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
+            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
+        }
+    }
 }

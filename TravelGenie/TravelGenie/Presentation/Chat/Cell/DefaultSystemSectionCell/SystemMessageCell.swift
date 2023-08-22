@@ -26,6 +26,7 @@ final class SystemMessageCell: UICollectionViewCell {
     }
     
     private func configureWelcomeMessageTextView() {
+        welcomeMessageTextView.backgroundColor = .blueGrayBackground
         welcomeMessageTextView.isEditable = false
         welcomeMessageTextView.textAlignment = .left
         welcomeMessageTextView.isScrollEnabled = false

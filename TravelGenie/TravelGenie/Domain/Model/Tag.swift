@@ -9,5 +9,4 @@ import Foundation
 
 struct Tag {
     let text: String
-    let category: Int
 }

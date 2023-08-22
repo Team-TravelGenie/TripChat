@@ -14,13 +14,12 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         case uploadButtonMessage = 2
     }
 
-    private lazy var tagMessageSizeCalculator
-        = CustomTagLayoutSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
-    private lazy var recommendationCellSizeCalculator
-        = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
-    
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
+    private lazy var tagMessageCellSizeCalculator
+    = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var recommendationCellSizeCalculator
+    = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -59,19 +58,14 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         in messagesCollectionView: MessagesCollectionView)
         -> UICollectionViewCell
     {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
+        guard let _ = messagesCollectionView.messagesDataSource else {
             fatalError("Datasource error")
         }
         
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.configure(
-                    with: message,
-                    at: indexPath,
-                    in: messagesCollectionView,
-                    dataSource: messagesDataSource,
-                    and: tagMessageSizeCalculator)
+                cell.configure(with: message)
                 return cell
             } else if item is [RecommendationItem] {
                 let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
@@ -113,6 +107,12 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
                 textInsets: .zero))
         layout?.setMessageIncomingAvatarPosition(
             AvatarPosition(vertical: .messageTop))
+        layout?.setAvatarLeadingTrailingPadding(8)
+        layout?.setMessageIncomingAvatarSize(
+            CGSize(width: 40, height: 40))
+        
+        let bodyRegular = UIFont.systemFont(ofSize: 15, weight: .regular)
+        layout?.textMessageSizeCalculator.messageLabelFont = bodyRegular
     }
     
     private func cellResistration() {
@@ -207,12 +207,24 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
         
         if item is TagItem {
-            return tagMessageSizeCalculator
+            return tagMessageCellSizeCalculator
 
         } else if item is [RecommendationItem] {
             return recommendationCellSizeCalculator
         }
         
         return MessageSizeCalculator()
+    }
+    
+    func textCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator? {
+        if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
+            switch defaultSection {
+            case .systemMessage:
+                return SystemMesasgeCellSizeCalculator(layout: messagesCollectionView.messagesCollectionViewFlowLayout)
+            case .uploadButtonMessage:
+                return ButtonMessageCellSizeCalculator(layout: messagesCollectionView.messagesCollectionViewFlowLayout)
+            }
+        }
+        return nil
     }
 }

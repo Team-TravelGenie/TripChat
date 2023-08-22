@@ -54,6 +54,7 @@
 		D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23037772A8C65E40017950E /* SystemMessageCell.swift */; };
 		D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* ButtonCell.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
+		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
 		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
 		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
 		D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2E3AA2C2A8B64740049DDEF /* MessageKit */; };
@@ -69,7 +70,7 @@
 		D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */; };
 		D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */; };
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
-		D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */; };
+		D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */; };
 		D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5842A8F680600AA3BFC /* Tag.swift */; };
 		D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
@@ -122,6 +123,7 @@
 		D23037772A8C65E40017950E /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* ButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCell.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
+		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewController.swift; sourceTree = "<group>"; };
@@ -136,7 +138,7 @@
 		D2F8C5792A8F482D00AA3BFC /* CustomMessageContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMessageContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
-		D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTextLayoutSizeCalculator.swift; sourceTree = "<group>"; };
+		D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C5842A8F680600AA3BFC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -474,8 +476,9 @@
 			children = (
 				D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */,
 				573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */,
-				D2F8C57F2A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift */,
+				D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */,
 				573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */,
+				D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
 			sourceTree = "<group>";
@@ -617,10 +620,11 @@
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
 				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */,
+				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
-				D2F8C5802A8F4BAD00AA3BFC /* CustomTextLayoutSizeCalculator.swift in Sources */,
+				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,

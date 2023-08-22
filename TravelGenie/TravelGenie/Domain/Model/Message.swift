@@ -45,18 +45,13 @@ struct Message: MessageType {
     
     // MARK: Tag Kind Init
     
-    init(
-        text: String,
-        tags: [Tag],
-        sender: SenderType,
-        sentDate: Date)
-    {
-        let mediaItem = TagItem(text: text, tags: tags)
+    init(tags: [Tag]) {
+        let tagItem = TagItem(tags: tags)
         self.init(
-            kind: .custom(mediaItem),
-            sender: sender,
+            kind: .custom(tagItem),
+            sender: Sender(name: .ai),
             messageId: UUID().uuidString,
-            sentDate: sentDate)
+            sentDate: Date())
     }
     
     // MARK: Recommendation Kind Init

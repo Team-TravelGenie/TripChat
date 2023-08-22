@@ -1,16 +1,17 @@
 //
-//  SystemMessageCellSizeCalculator.swift
+//  ButtonMessageCellSizeCalculator.swift
 //  TravelGenie
 //
-//  Created by summercat on 2023/08/20.
+//  Created by 서현웅 on 2023/08/21.
 //
 
+import Foundation
 import MessageKit
-import UIKit
 
-final class SystemMesasgeCellSizeCalculator: CustomCellSizeCalculator {
+final class ButtonMessageCellSizeCalculator: CustomCellSizeCalculator {
     
     override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
         return CGSize(width: messagesLayout.itemWidth, height: 130)
     }
+    
 }
