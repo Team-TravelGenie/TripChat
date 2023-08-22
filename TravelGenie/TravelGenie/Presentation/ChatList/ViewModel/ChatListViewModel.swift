@@ -28,9 +28,9 @@ final class ChatListViewModel {
     // MARK: Private
     
     private func addChat() {
-        let chat1 = Chat(date: Date(), tags: ["바다", "동남아", "휴양지"])
-        let chat2 = Chat(date: Date(), tags: ["바다다", "동남아", "휴양지"])
-        let chat3 = Chat(date: Date(), tags: ["바다다다", "동남아", "휴양지"])
+        let chat1 = Chat(id: UUID(), createdAt: Date(), tags: ["바다", "동남아", "휴양지"], recommendations: [], messages: [])
+        let chat2 = Chat(id: UUID(), createdAt: Date(), tags: ["바다다", "동남아", "휴양지"], recommendations: [], messages: [])
+        let chat3 = Chat(id: UUID(), createdAt: Date(), tags: ["바다다다", "동남아", "휴양지"], recommendations: [], messages: [])
         self.chats.append(chat1)
         self.chats.append(chat2)
         self.chats.append(chat3)
