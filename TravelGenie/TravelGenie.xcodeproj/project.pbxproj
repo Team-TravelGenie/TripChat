@@ -33,6 +33,8 @@
 		573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD632A934D4500116D2D /* DateFormatter+shared.swift */; };
 		573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD682A9365B300116D2D /* AvatarHeaderView.swift */; };
 		573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */; };
+		57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B262A94E9B600949D5C /* ChatStorage.swift */; };
+		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -100,6 +102,8 @@
 		573BCD632A934D4500116D2D /* DateFormatter+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+shared.swift"; sourceTree = "<group>"; };
 		573BCD682A9365B300116D2D /* AvatarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHeaderView.swift; sourceTree = "<group>"; };
 		573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
+		57462B262A94E9B600949D5C /* ChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStorage.swift; sourceTree = "<group>"; };
+		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,6 +249,15 @@
 				573BCD592A925C2F00116D2D /* ChatListViewModel.swift */,
 			);
 			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		57462B252A94E93B00949D5C /* PersistentStorage */ = {
+			isa = PBXGroup;
+			children = (
+				57462B262A94E9B600949D5C /* ChatStorage.swift */,
+				57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */,
+			);
+			path = PersistentStorage;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -573,6 +586,7 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
+				57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
