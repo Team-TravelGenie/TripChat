@@ -10,7 +10,7 @@ import MessageKit
 
 // MARK: Content Item(s)
 
-// MessageKind - .photo 메시지 컨텐츠
+// MARK: MessageKind - .photo 메시지 컨텐츠
 struct ImageMediaItem: MediaItem {
     var url: URL?
     var image: UIImage?
@@ -24,12 +24,22 @@ struct ImageMediaItem: MediaItem {
     }
 }
 
-// MessageKind - .custom(TagItem) 메시지 컨텐츠
+// MARK: MessageKind - .custom(TagItem) 메시지 컨텐츠
+
 struct TagItem {
     var tags: [Tag]
-    
-    init(tags: [Tag]) {
-        self.tags = tags
-    }
 }
 
+struct Tag {
+    let text: String
+}
+
+
+// MARK: MessageKind - .custom(RecommendationItem) 메시지 컨텐츠
+
+struct RecommendationItem {
+    let country: String
+    let city: String
+    let spot: String
+    let image: Data
+}

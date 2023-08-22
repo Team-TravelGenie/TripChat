@@ -26,7 +26,6 @@
 		573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5D2A92618500116D2D /* ChatListCell.swift */; };
 		573BCD602A93167200116D2D /* Chat.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD5F2A93167200116D2D /* Chat.swift */; };
 		573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD632A934D4500116D2D /* DateFormatter+shared.swift */; };
-		573BCD382A91DA6500116D2D /* RecommendationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD372A91DA6500116D2D /* RecommendationItem.swift */; };
 		573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */; };
 		573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */; };
 		573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD452A92141500116D2D /* RecommendationCell.swift */; };
@@ -71,7 +70,6 @@
 		D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */; };
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 		D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */; };
-		D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5842A8F680600AA3BFC /* Tag.swift */; };
 		D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -95,7 +93,6 @@
 		573BCD5D2A92618500116D2D /* ChatListCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatListCell.swift; sourceTree = "<group>"; };
 		573BCD5F2A93167200116D2D /* Chat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chat.swift; sourceTree = "<group>"; };
 		573BCD632A934D4500116D2D /* DateFormatter+shared.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DateFormatter+shared.swift"; sourceTree = "<group>"; };
-		573BCD372A91DA6500116D2D /* RecommendationItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationItem.swift; sourceTree = "<group>"; };
 		573BCD402A91FE7700116D2D /* RecommendationCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCellSizeCalculator.swift; sourceTree = "<group>"; };
 		573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
 		573BCD452A92141500116D2D /* RecommendationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendationCell.swift; sourceTree = "<group>"; };
@@ -139,7 +136,6 @@
 		D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
-		D2F8C5842A8F680600AA3BFC /* Tag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tag.swift; sourceTree = "<group>"; };
 		D2F8C5862A8F6E2700AA3BFC /* TagCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -376,7 +372,7 @@
 				D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */,
 				D2E810EB2A70427500136F99 /* DetectedLandmark.swift */,
 				573BCD5F2A93167200116D2D /* Chat.swift */,
-				573BCD372A91DA6500116D2D /* RecommendationItem.swift */,
+				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -446,8 +442,6 @@
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
 				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
-				D2F8C5842A8F680600AA3BFC /* Tag.swift */,
-				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -585,7 +579,6 @@
 				573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */,
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
-				573BCD382A91DA6500116D2D /* RecommendationItem.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
@@ -610,7 +603,6 @@
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
 				573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */,
-				D2F8C5852A8F680600AA3BFC /* Tag.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
