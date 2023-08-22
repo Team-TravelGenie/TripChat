@@ -8,13 +8,17 @@
 import MessageKit
 import UIKit
 
-// TODO: - 디자인가이드 확인 후 아바타뷰 컬렉션뷰 내부 셀로 처리할 것인지 결정
 final class RecommendationCell: UICollectionViewCell {
+    
+    enum Design {
+        static let leftPadding: CGFloat = 12
+        static let avatarViewSize: CGFloat = 40
+        static let spacing: CGFloat = 8
+    }
     
     static var identifier: String { return String(describing: self) }
     
     private let viewModel = RecommendationCellViewModel()
-    private let avatarView = AvatarView()
     private let containerView = UIView()
     private let recommendationCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     
@@ -44,15 +48,7 @@ final class RecommendationCell: UICollectionViewCell {
     // MARK: Private
     
     private func configureSubviews() {
-        configureAvatarView()
         configureRecommendationColletionView()
-    }
-    
-    private func configureAvatarView() {
-        let avatarImage = UIImage(named: "chat")
-        let avatar = Avatar(image: avatarImage)
-        avatarView.set(avatar: avatar)
-        avatarView.backgroundColor = .white
     }
     
     private func configureRecommendationColletionView() {
@@ -61,6 +57,10 @@ final class RecommendationCell: UICollectionViewCell {
         recommendationCollectionView.dataSource = self
         recommendationCollectionView.backgroundColor = .clear
         recommendationCollectionView.collectionViewLayout = layout
+        recommendationCollectionView.register(
+            AvatarHeaderView.self,
+            forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: AvatarHeaderView.identifier)
         recommendationCollectionView.register(
             RecommendationItemCell.self,
             forCellWithReuseIdentifier: RecommendationItemCell.identifier)
@@ -77,24 +77,16 @@ final class RecommendationCell: UICollectionViewCell {
     }
     
     private func configureHierarchy() {
-        [avatarView, containerView].forEach { contentView.addSubview($0) }
+        contentView.addSubview(containerView)
         containerView.addSubview(recommendationCollectionView)
     }
     
     private func configureLayout() {
-        avatarView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            avatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            avatarView.widthAnchor.constraint(equalToConstant: 40),
-            avatarView.heightAnchor.constraint(equalTo: avatarView.widthAnchor),
-        ])
-        
         containerView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             containerView.topAnchor.constraint(equalTo: contentView.topAnchor),
             containerView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            containerView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
+            containerView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
             containerView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             containerView.heightAnchor.constraint(equalToConstant: 247),
         ])
@@ -112,11 +104,19 @@ final class RecommendationCell: UICollectionViewCell {
 // MARK: UICollectionViewDelegate & UICollectionViewDataSource
 
 extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+        -> Int
+    {
         return viewModel.recommendations.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell
+    {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: RecommendationItemCell.identifier,
             for: indexPath) as? RecommendationItemCell else { return UICollectionViewCell() }
@@ -125,5 +125,38 @@ extension RecommendationCell: UICollectionViewDelegate, UICollectionViewDataSour
         cell.configureContent(with: item)
         
         return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        viewForSupplementaryElementOfKind kind: String,
+        at indexPath: IndexPath)
+        -> UICollectionReusableView
+    {
+        guard kind == UICollectionView.elementKindSectionHeader else {
+            return UICollectionReusableView()
+        }
+        
+        let header = collectionView.dequeueReusableSupplementaryView(
+            ofKind: UICollectionView.elementKindSectionHeader,
+            withReuseIdentifier: AvatarHeaderView.identifier,
+            for: indexPath)
+        
+        return header
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension RecommendationCell: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        referenceSizeForHeaderInSection section: Int)
+        -> CGSize
+    {
+        return CGSizeMake(
+            Design.leftPadding + Design.avatarViewSize + Design.spacing,
+            Design.avatarViewSize)
     }
 }
