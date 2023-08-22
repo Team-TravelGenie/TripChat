@@ -10,6 +10,12 @@ import UIKit
 
 final class RecommendationCell: UICollectionViewCell {
     
+    enum Design {
+        static let leftPadding: CGFloat = 12
+        static let avatarViewSize: CGFloat = 40
+        static let spacing: CGFloat = 8
+    }
+    
     static var identifier: String { return String(describing: self) }
     
     private let viewModel = RecommendationCellViewModel()
@@ -149,6 +155,8 @@ extension RecommendationCell: UICollectionViewDelegateFlowLayout {
         referenceSizeForHeaderInSection section: Int)
         -> CGSize
     {
-        return CGSizeMake(12 + 40 + 8, 40)
+        return CGSizeMake(
+            Design.leftPadding + Design.avatarViewSize + Design.spacing,
+            Design.avatarViewSize)
     }
 }
