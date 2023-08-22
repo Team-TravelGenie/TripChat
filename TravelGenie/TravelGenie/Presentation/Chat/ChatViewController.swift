@@ -16,11 +16,11 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [Tag(text: "아라"),
-                                     Tag(text: "아라아"),
-                                     Tag(text: "아라아라"),
-                                     Tag(text: "아라아라아"),
-                                     Tag(text: "아라아라아라")
+        let message = Message(tags: [Tag(value: "아라"),
+                                     Tag(value: "아라아"),
+                                     Tag(value: "아라아라"),
+                                     Tag(value: "아라아라아"),
+                                     Tag(value: "아라아라아라")
                                     ])
         messageStorage.insertMessage(message)
                               

@@ -32,7 +32,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(tag: Tag) {
-        let text = tag.text
+        let text = tag.value
         let title = NSMutableAttributedString()
             .text("#\(text)", font: .bodyRegular, color: .black)
         

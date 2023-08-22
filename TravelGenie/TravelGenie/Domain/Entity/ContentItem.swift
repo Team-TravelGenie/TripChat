@@ -31,7 +31,7 @@ struct TagItem {
 }
 
 struct Tag {
-    let text: String
+    let value: String
 }
 
 

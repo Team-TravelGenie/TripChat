@@ -176,8 +176,8 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             switch section {
             case .location:
                 let defaultTag = [
-                    Tag(text: "국내"),
-                    Tag(text: "해외")
+                    Tag(value: "국내"),
+                    Tag(value: "해외")
                 ]
                 cell.configure(tag: defaultTag[indexPath.item])
             case .theme:
@@ -225,7 +225,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
                 let twoCharacterCellSize = CGSize(width: 74, height: 47)
                 return twoCharacterCellSize
             case .theme:
-                let numberOfCharactersInTag = tagList[indexPath.item].text.count
+                let numberOfCharactersInTag = tagList[indexPath.item].value.count
                 let defaultHeight: CGFloat = 47 // 고정높이
                 let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
                 let additionalWidthForOneCharacterSize: CGFloat = 13.0
