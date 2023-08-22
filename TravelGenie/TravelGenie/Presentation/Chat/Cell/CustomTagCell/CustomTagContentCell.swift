@@ -87,12 +87,12 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureSubmitButton() {
-        let titleLabel = NSMutableAttributedString()
+        let titleText = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
         
         submitKeywordButton.layer.cornerRadius = 12
         submitKeywordButton.backgroundColor = .blueGrayBackground3
-        submitKeywordButton.setAttributedTitle(titleLabel, for: .normal)
+        submitKeywordButton.setAttributedTitle(titleText, for: .normal)
     }
     
     private func configureHierarchy() {
