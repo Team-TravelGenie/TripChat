@@ -4,8 +4,6 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="messages" optional="YES" attributeType="Transformable" customClassName="[Message]"/>
-        <attribute name="recommendations" optional="YES" attributeType="Transformable" customClassName="[String]"/>
-        <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[String]"/>
     </entity>
     <entity name="RecommendationEntity" representedClassName="RecommendationEntity" syncable="YES">
         <attribute name="chats" optional="YES" attributeType="Transformable" customClassName="[ChatEntity]"/>
