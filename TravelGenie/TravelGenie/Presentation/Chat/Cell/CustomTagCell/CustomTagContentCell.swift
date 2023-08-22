@@ -100,7 +100,6 @@ final class CustomTagContentCell: UICollectionViewCell {
             .forEach { messageContentView.addSubview($0) }
         [tagContentAvatarView, messageContentView]
             .forEach { contentView.addSubview($0) }
-
     }
     
     private func configureLayout() {

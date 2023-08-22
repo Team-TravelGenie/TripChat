@@ -14,13 +14,12 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         case uploadButtonMessage = 2
     }
 
-    private lazy var tagMessageCellSizeCalculator
-        = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
-    private lazy var recommendationCellSizeCalculator
-        = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
-    
     let defaultSender: Sender = Sender(name: .user)
     var messageStorage: MessageStorage = MessageStorage()
+    private lazy var tagMessageCellSizeCalculator
+    = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var recommendationCellSizeCalculator
+    = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     override func viewDidLoad() {
         super.viewDidLoad()
