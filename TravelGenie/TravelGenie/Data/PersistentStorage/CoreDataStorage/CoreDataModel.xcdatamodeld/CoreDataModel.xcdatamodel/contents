@@ -7,4 +7,8 @@
         <attribute name="recommendations" optional="YES" attributeType="Transformable" customClassName="[String]"/>
         <attribute name="tags" optional="YES" attributeType="Transformable" customClassName="[String]"/>
     </entity>
+    <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
+        <attribute name="chats" optional="YES" attributeType="Transformable" customClassName="[ChatEntity]"/>
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
 </model>
