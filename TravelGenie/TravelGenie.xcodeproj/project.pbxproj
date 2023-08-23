@@ -37,6 +37,7 @@
 		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
 		57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */; };
 		57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */; };
+		57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B432A94F92A00949D5C /* MessageKind+description.swift */; };
 		57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B4A2A95B5ED00949D5C /* ChatRepository.swift */; };
 		57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */; };
 		57462B662A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */; };
@@ -118,6 +119,7 @@
 		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		57462B432A94F92A00949D5C /* MessageKind+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageKind+description.swift"; sourceTree = "<group>"; };
 		57462B4A2A95B5ED00949D5C /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatRepository.swift; sourceTree = "<group>"; };
 		57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -310,6 +312,14 @@
 			path = Entity;
 			sourceTree = "<group>";
 		};
+		57462B422A94F91F00949D5C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				57462B432A94F92A00949D5C /* MessageKind+description.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		57462B492A95B5C600949D5C /* RepositoryInterface */ = {
 			isa = PBXGroup;
 			children = (
@@ -384,6 +394,7 @@
 		D20FA2882A6B97C20081B039 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				57462B422A94F91F00949D5C /* Extensions */,
 				57462B252A94E93B00949D5C /* PersistentStorage */,
 				D20FA2892A6B97E30081B039 /* Repository */,
 				D20FA28A2A6B97E90081B039 /* Network */,
@@ -692,6 +703,7 @@
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
+				57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */,
 				57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
