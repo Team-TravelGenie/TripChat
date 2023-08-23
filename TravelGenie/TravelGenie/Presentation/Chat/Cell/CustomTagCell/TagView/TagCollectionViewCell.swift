@@ -60,7 +60,6 @@ class TagCollectionViewCell: UICollectionViewCell {
             guard let self else { return }
             self.tagButton.isSelected.toggle()
             setButtonAttribute(sender: self.tagButton.state)
-            print(self.tagButton.state)
             notifyTagSelection(sender: self.tagButton)
         }
         
