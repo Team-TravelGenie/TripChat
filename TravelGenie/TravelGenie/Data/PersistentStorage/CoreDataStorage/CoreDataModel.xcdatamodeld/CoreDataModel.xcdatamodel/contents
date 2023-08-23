@@ -7,6 +7,14 @@
         <relationship name="recommendations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecommendationEntity" inverseName="chat" inverseEntity="RecommendationEntity"/>
         <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="chat" inverseEntity="TagEntity"/>
     </entity>
+    <entity name="MessageEntity" representedClassName="MessageEntity" syncable="YES">
+        <attribute name="data" optional="YES" attributeType="Binary"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="kind" optional="YES" attributeType="String"/>
+        <attribute name="sender" optional="YES" attributeType="String"/>
+        <attribute name="sentDate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="messages" inverseEntity="ChatEntity"/>
+    </entity>
     <entity name="RecommendationEntity" representedClassName="RecommendationEntity" syncable="YES">
         <attribute name="value" optional="YES" attributeType="String"/>
         <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="recommendations" inverseEntity="ChatEntity"/>
