@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol ChatStorage { }
+protocol ChatStorage {
+    func saveChat(_ chat: Chat)
+}
