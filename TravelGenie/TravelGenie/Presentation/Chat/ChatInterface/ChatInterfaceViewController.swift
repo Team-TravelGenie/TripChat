@@ -63,7 +63,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         }
         
         if case let .custom(item) = message.kind {
-            if item is TagItem {
+            if item is MockTagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
                 cell.configure(with: message)
                 return cell
@@ -206,7 +206,7 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
             return MessageSizeCalculator()
         }
         
-        if item is TagItem {
+        if item is MockTagItem {
             return tagMessageCellSizeCalculator
 
         } else if item is [RecommendationItem] {

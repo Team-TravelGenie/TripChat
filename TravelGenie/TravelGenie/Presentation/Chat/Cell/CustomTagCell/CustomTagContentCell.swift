@@ -9,7 +9,7 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: UICollectionViewCell {
-    var tagList: [Tag] = [] {
+    private var tagStorage: TagStorage = TagStorage() {
         didSet {
             tagCollectionView.reloadData()
         }
@@ -37,9 +37,9 @@ final class CustomTagContentCell: UICollectionViewCell {
         with message: MessageType)
     {
         if case .custom(let tagItem) = message.kind {
-            guard let tagItem = tagItem as? TagItem else { return }
+            guard let tagItem = tagItem as? MockTagItem else { return }
             
-            tagList = tagItem.tags
+            tagStorage.insertTags(tags: tagItem.tags)
         }
     }
     
@@ -159,9 +159,9 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return 2
+            return tagStorage.locationTagList.count
         case .theme:
-            return tagList.count
+            return tagStorage.themeTagList.count
         }
     }
     
@@ -175,13 +175,9 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                let defaultTag = [
-                    Tag(text: "국내"),
-                    Tag(text: "해외")
-                ]
-                cell.configure(tag: defaultTag[indexPath.item])
+                cell.configure(tag: tagStorage.locationTagList[indexPath.item])
             case .theme:
-                cell.configure(tag: tagList[indexPath.item])
+                cell.configure(tag: tagStorage.themeTagList[indexPath.item])
             }
         }
 
@@ -227,7 +223,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
                 let twoCharacterCellSize = CGSize(width: 74, height: 47)
                 return twoCharacterCellSize
             case .theme:
-                let numberOfCharactersInTag = tagList[indexPath.item].text.count
+                let numberOfCharactersInTag = tagStorage.themeTagList[indexPath.item].text.count
                 let defaultHeight: CGFloat = 47 // 고정높이
                 let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
                 let additionalWidthForOneCharacterSize: CGFloat = 13.0

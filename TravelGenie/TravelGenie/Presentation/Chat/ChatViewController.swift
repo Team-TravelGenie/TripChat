@@ -16,12 +16,13 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [Tag(text: "아라"),
-                                     Tag(text: "아라아"),
-                                     Tag(text: "아라아라"),
-                                     Tag(text: "아라아라아"),
-                                     Tag(text: "아라아라아라")
-                                    ])
+        let message = Message(mockTags: [
+            MockTag(category: .theme, text: "안녕"),
+            MockTag(category: .theme, text: "하용"),
+            MockTag(category: .theme, text: "하히"),
+            MockTag(category: .theme, text: "하이2"),
+            MockTag(category: .theme, text: "ㅎ2"),
+        ])
         messageStorage.insertMessage(message)
                               
         var recommendations: [RecommendationItem] = []
