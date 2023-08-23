@@ -48,6 +48,7 @@
 		57462B6B2A95E90700949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B632A95E90700949D5C /* TagEntity+CoreDataProperties.swift */; };
 		57462B6E2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */; };
 		57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */; };
+		57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B702A95F74500949D5C /* MediaItemDAO.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -130,6 +131,7 @@
 		57462B632A95E90700949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57462B702A95F74500949D5C /* MediaItemDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemDAO.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -283,6 +285,7 @@
 				57462B262A94E9B600949D5C /* ChatStorage.swift */,
 				57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */,
 				57462B2A2A94EB4D00949D5C /* CoreDataStorage */,
+				57462B702A95F74500949D5C /* MediaItemDAO.swift */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -675,6 +678,7 @@
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */,
+				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
