@@ -30,7 +30,7 @@ final class ChatViewController: ChatInterfaceViewController {
         recommendations.append(RecommendationItem(country: "아이폰나라", city: "아이폰시", spot: "아이폰", image: data))
         recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
         recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
-        let secondMessage = Message(recommendations: recommendations, sender: Sender(name: .ai), sentDate: Date())
+        let secondMessage = Message(recommendations: recommendations, sentDate: Date())
         messageStorage.insertMessage(secondMessage)
     }
     

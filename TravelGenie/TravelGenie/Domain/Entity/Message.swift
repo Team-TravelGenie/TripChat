@@ -19,52 +19,60 @@ struct Message: MessageType {
     init(
         text: NSAttributedString,
         sender: SenderType,
+        messageId: String = UUID().uuidString,
         sentDate: Date)
     {
         self.init(
             kind: .attributedText(text),
             sender: sender,
-            messageId: UUID().uuidString,
+            messageId: messageId,
             sentDate: sentDate)
     }
     
     // MARK: Photo Kind Init
     
     init(
-        image: UIImage,
+        url: URL? = nil,
+        image: UIImage? = nil,
+        imageData: Data? = nil,
         sender: SenderType,
+        messageId: String = UUID().uuidString,
         sentDate: Date)
     {
-        let mediaItem = ImageMediaItem(image: image)
+        let mediaItem = ImageMediaItem(url: url, image: image, imageData: imageData)
         self.init(
             kind: .photo(mediaItem),
             sender: sender,
-            messageId: UUID().uuidString,
+            messageId: messageId,
             sentDate: sentDate)
     }
     
     // MARK: Tag Kind Init
     
-    init(tags: [Tag]) {
+    init(
+        tags: [Tag],
+        messageId: String = UUID().uuidString,
+        sentDate: Date = Date()
+    ) {
         let tagItem = TagItem(tags: tags)
         self.init(
             kind: .custom(tagItem),
             sender: Sender(name: .ai),
-            messageId: UUID().uuidString,
-            sentDate: Date())
+            messageId: messageId,
+            sentDate: sentDate)
     }
     
     // MARK: Recommendation Kind Init
     
     init(
         recommendations: [RecommendationItem],
-        sender: SenderType,
-        sentDate: Date)
+        messageId: String = UUID().uuidString,
+        sentDate: Date = Date())
     {
         self.init(
             kind: .custom(recommendations),
-            sender: sender,
-            messageId: UUID().uuidString,
+            sender: Sender(name: .ai),
+            messageId: messageId,
             sentDate: sentDate)
     }
     
@@ -72,7 +80,7 @@ struct Message: MessageType {
     
     init(sender: SenderType) {
         self.init(
-            text: "",
+            text: NSAttributedString(),
             sender: sender,
             sentDate: Date())
     }
