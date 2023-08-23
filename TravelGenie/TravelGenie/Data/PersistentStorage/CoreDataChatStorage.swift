@@ -14,4 +14,8 @@ final class CoreDataChatStorage: ChatStorage {
     init(coreDataStorage: CoreDataStorage) {
         self.coreDataStorage = coreDataStorage
     }
+    
+    func saveChat(_ chat: Chat) {
+        coreDataStorage.create(chat)
+    }
 }
