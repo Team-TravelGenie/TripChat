@@ -11,12 +11,14 @@ final class ChatListViewModel {
     
     weak var coordinator: ChatListCoordinator?
     
-    private(set) var chats: [Chat]
+    private let chatUseCase: ChatUseCase
+    
+    private(set) var chats: [Chat] = []
     
     // MARK: Lifecycle
     
-    init(chats: [Chat]) {
-        self.chats = chats
+    init(chatUseCase: ChatUseCase) {
+        self.chatUseCase = chatUseCase
         addChat()
     }
     

@@ -21,8 +21,9 @@ final class ChatListCoordinator: Coordinator {
     }
     
     func start() {
-        // TODO: - 뷰모델에 저장소 주입
-        let viewModel = ChatListViewModel(chats: .init())
+        let viewModel = ChatListViewModel(
+            chatUseCase: DefaultChatUseCase(
+                chatRepository: DefaultChatRepository(chatStorage: CoreDataChatStorage())))
         let chatListViewController = ChatListViewController(viewModel: viewModel)
         viewModel.coordinator = self
         navigationController.pushViewController(chatListViewController, animated: false)
