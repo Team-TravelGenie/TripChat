@@ -10,7 +10,7 @@ import Foundation
 struct MockTag {
     let category: Category
     let text: String
-    let isOn: Bool = false
+    var isOn: Bool = false
 }
 
 struct MockTagItem {

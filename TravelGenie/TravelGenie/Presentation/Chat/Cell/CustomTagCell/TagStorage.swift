@@ -30,6 +30,12 @@ final class TagStorage {
         tags.forEach { tagList.append($0) }
     }
     
+    func updateTagIsOn(text: String, isOn: Bool) {
+        if let index = tagList.firstIndex(where: { $0.text == text }) {
+            tagList[index].isOn = isOn
+        }
+    }
+    
     private func setDefaultTagList() -> [MockTag] {
         let defaultTag = [
             MockTag(category: .location, text: "국내"),
@@ -38,5 +44,4 @@ final class TagStorage {
         
         return defaultTag
     }
-    
 }

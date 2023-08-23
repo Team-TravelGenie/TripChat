@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TagSelectionDelegate: AnyObject {
-    func tagDidSelect(withText text: String)
+    func tagDidSelect(withText text: String, isOn: Bool)
 }
 
 class TagCollectionViewCell: UICollectionViewCell {
@@ -80,12 +80,18 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     private func notifyTagSelection(sender: UIButton) {
-        let selectedRawValue = 5
+        let selectedState = UIButton.State(rawValue: 5)
+        let deselectedState = UIButton.State(rawValue: 1)
         
-        if sender.state.rawValue == selectedRawValue {
-            guard let tagText = sender.titleLabel?.text else { return }
-            
-            delegate?.tagDidSelect(withText: tagText)
+        guard let tagText = sender.titleLabel?.text else { return }
+        
+        switch sender.state {
+        case selectedState:
+            delegate?.tagDidSelect(withText: tagText, isOn: true)
+        case deselectedState:
+            delegate?.tagDidSelect(withText: tagText, isOn: false)
+        default:
+            break
         }
     }
     
