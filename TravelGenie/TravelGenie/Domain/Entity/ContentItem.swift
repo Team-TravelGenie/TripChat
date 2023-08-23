@@ -16,11 +16,23 @@ struct ImageMediaItem: MediaItem {
     var image: UIImage?
     var placeholderImage: UIImage
     var size: CGSize
+    var imageData: Data?
     
-    init(image: UIImage) {
-        self.image = image
-        size = image.size // 디자인가이드를 현님에게 받아서 사이즈를 결정해야함
+    init(url: URL?, image: UIImage? = nil, imageData: Data? = nil) {
+        self.url = url
         placeholderImage = UIImage()
+        
+        if image == nil, imageData != nil {
+            let imageFromData = UIImage(data: imageData!)
+            self.image = imageFromData
+            size = imageFromData?.size ?? .init()
+        } else if image != nil, imageData == nil {
+            let dataFromImage = image?.pngData()
+            self.imageData = dataFromImage
+            size = image!.size
+        } else {
+            size = .init()
+        }
     }
 }
 
