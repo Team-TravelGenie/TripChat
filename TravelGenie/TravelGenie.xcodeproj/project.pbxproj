@@ -37,6 +37,14 @@
 		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
 		57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */; };
 		57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */; };
+		57462B662A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */; };
+		57462B672A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5F2A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift */; };
+		57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B602A95E90700949D5C /* MessageEntity+CoreDataClass.swift */; };
+		57462B692A95E90700949D5C /* MessageEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B612A95E90700949D5C /* MessageEntity+CoreDataProperties.swift */; };
+		57462B6A2A95E90700949D5C /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B622A95E90700949D5C /* TagEntity+CoreDataClass.swift */; };
+		57462B6B2A95E90700949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B632A95E90700949D5C /* TagEntity+CoreDataProperties.swift */; };
+		57462B6E2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */; };
+		57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -108,6 +116,14 @@
 		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
+		57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		57462B5F2A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57462B602A95E90700949D5C /* MessageEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		57462B612A95E90700949D5C /* MessageEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57462B622A95E90700949D5C /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		57462B632A95E90700949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
+		57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -268,10 +284,26 @@
 		57462B2A2A94EB4D00949D5C /* CoreDataStorage */ = {
 			isa = PBXGroup;
 			children = (
+				57462B3F2A94F68700949D5C /* Entity */,
 				57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */,
 				57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreDataStorage;
+			sourceTree = "<group>";
+		};
+		57462B3F2A94F68700949D5C /* Entity */ = {
+			isa = PBXGroup;
+			children = (
+				57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */,
+				57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */,
+				57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */,
+				57462B5F2A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift */,
+				57462B602A95E90700949D5C /* MessageEntity+CoreDataClass.swift */,
+				57462B612A95E90700949D5C /* MessageEntity+CoreDataProperties.swift */,
+				57462B622A95E90700949D5C /* TagEntity+CoreDataClass.swift */,
+				57462B632A95E90700949D5C /* TagEntity+CoreDataProperties.swift */,
+			);
+			path = Entity;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -598,11 +630,13 @@
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
+				57462B6B2A95E90700949D5C /* TagEntity+CoreDataProperties.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
 				57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */,
+				57462B662A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
@@ -610,6 +644,7 @@
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
+				57462B6A2A95E90700949D5C /* TagEntity+CoreDataClass.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
@@ -619,6 +654,7 @@
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */,
+				57462B692A95E90700949D5C /* MessageEntity+CoreDataProperties.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
@@ -633,12 +669,14 @@
 				573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
+				57462B672A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */,
 				573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
+				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
 				57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
@@ -647,6 +685,7 @@
 				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
+				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
@@ -657,6 +696,7 @@
 				D25E3EC62A8C7038006AD283 /* ButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
 				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
+				57462B6E2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift in Sources */,
 				573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
