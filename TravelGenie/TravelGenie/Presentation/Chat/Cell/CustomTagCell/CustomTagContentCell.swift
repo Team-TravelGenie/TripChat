@@ -9,11 +9,7 @@ import UIKit
 import MessageKit
 
 final class CustomTagContentCell: UICollectionViewCell {
-    private var tagStorage: TagStorage = TagStorage() {
-        didSet {
-            tagCollectionView.reloadData()
-        }
-    }
+    private var tagStorage: TagStorage = TagStorage()
     
     private let tagContentAvatarView = AvatarView()
     private let messageContentView = UIView()
