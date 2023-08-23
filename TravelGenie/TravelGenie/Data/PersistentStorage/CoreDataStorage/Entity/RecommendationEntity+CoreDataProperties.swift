@@ -20,7 +20,7 @@ extension RecommendationEntity {
     @NSManaged public var city: String
     @NSManaged public var spot: String
     @NSManaged public var image: Data
-    @NSManaged public var chat: NSSet?
+    @NSManaged public var chat: NSOrderedSet?
 
 }
 
