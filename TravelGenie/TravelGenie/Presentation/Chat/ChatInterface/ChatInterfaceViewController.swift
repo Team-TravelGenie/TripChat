@@ -43,7 +43,7 @@ class ChatInterfaceViewController: MessagesViewController {
             case .systemMessage:
                 return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
             case .uploadButtonMessage:
-                let cell = messagesCollectionView.dequeueReusableCell(ButtonCell.self, for: indexPath)
+                let cell = messagesCollectionView.dequeueReusableCell(UploadButtonCell.self, for: indexPath)
                 cell.delegate = self
                 return cell
             }
@@ -118,7 +118,7 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func cellResistration() {
         messagesCollectionView.register(SystemMessageCell.self)
-        messagesCollectionView.register(ButtonCell.self)
+        messagesCollectionView.register(UploadButtonCell.self)
         messagesCollectionView.register(CustomTagContentCell.self)
         messagesCollectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.identifier)
     }
@@ -127,7 +127,7 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.backgroundColor = .blueGrayBackground
     }
     
-    func didTapButton() {
+    func didTapImageUploadButton() {
         // [이미지업로드] 버튼 동작을 정의하기위한 메서드, 사용하려는 뷰컨트롤러에서 해당 메서드를 오버라이드하여 사용하세요.
     }
     
@@ -234,4 +234,4 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
     }
 }
 
-extension ChatInterfaceViewController: ButtonCellDelegate, TagSubmissionDelegate { }
+extension ChatInterfaceViewController: UploadButtonCellDelegate, TagSubmissionDelegate { }

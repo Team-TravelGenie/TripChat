@@ -44,7 +44,7 @@ final class ChatViewController: ChatInterfaceViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didTapButton() {
+    override func didTapImageUploadButton() {
         presentPHPicekrViewController()
     }
     
