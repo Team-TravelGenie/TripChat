@@ -15,8 +15,10 @@ final class DefaultChatRepository: ChatRepository {
         self.chatStorage = chatStorage
     }
     
-    func saveChat(_ chat: Chat) {
-        chatStorage.saveChat(chat)
+    func saveChat(
+        _ chat: Chat,
+        completion: @escaping (Result<Chat, Error>) -> Void) {
+        chatStorage.saveChat(chat, completion: completion)
     }
     
     func fetchChatList() -> [Chat] {

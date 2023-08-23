@@ -31,7 +31,10 @@ final class CoreDataStorage: ChatStorage {
     
     // MARK: Internal
 
-    func saveChat(_ chat: Chat) {
+    func saveChat(
+        _ chat: Chat,
+        completion: @escaping (Result<Chat, Error>) -> Void)
+    {
         let messages: [Message] = chat.messages
         let chatEntity = ChatEntity(context: context)
         
@@ -54,46 +57,57 @@ final class CoreDataStorage: ChatStorage {
             chatEntity.addToRecommendations(recommendationEntity)
         }
         
-        messages.forEach {
-            var data: Data? = nil
-            let messageEntity = MessageEntity(context: context)
-            messageEntity.setValue(UUID(uuidString: $0.messageId)!, forKey: "id")
-            messageEntity.setValue($0.kind.description, forKey: "kind")
-            messageEntity.setValue($0.sender.displayName, forKey: "sender")
-            messageEntity.setValue($0.sentDate, forKey: "sentDate")
-            
-            switch $0.kind {
-            case .text(let text):
-                data = try? JSONEncoder().encode(text)
-            case .attributedText(let attributedText):
-                data = try? NSKeyedArchiver.archivedData(withRootObject: attributedText, requiringSecureCoding: true)
-            case .photo(let mediaItem):
-                let dao = MediaItemDAO(with: mediaItem)
-                data = try? JSONEncoder().encode(dao)
-            case .custom(let item):
-                if $0.kind.description == "tag" {
-                    let item = item as? TagItem
-                    data = try? JSONEncoder().encode(item)
-                } else if $0.kind.description == "recommendation" {
-                    let item = item as? RecommendationItem
-                    data = try? JSONEncoder().encode(item)
+        do {
+            try messages.forEach {
+                var data: Data? = nil
+                let messageEntity = MessageEntity(context: context)
+                messageEntity.setValue(UUID(uuidString: $0.messageId)!, forKey: "id")
+                messageEntity.setValue($0.kind.description, forKey: "kind")
+                messageEntity.setValue($0.sender.displayName, forKey: "sender")
+                messageEntity.setValue($0.sentDate, forKey: "sentDate")
+                
+                switch $0.kind {
+                case .text(let text):
+                    data = try JSONEncoder().encode(text)
+                case .attributedText(let attributedText):
+                    data = try NSKeyedArchiver.archivedData(withRootObject: attributedText, requiringSecureCoding: true)
+                case .photo(let mediaItem):
+                    let dao = MediaItemDAO(with: mediaItem)
+                    data = try JSONEncoder().encode(dao)
+                case .custom(let item):
+                    if $0.kind.description == "tag" {
+                        let item = item as? TagItem
+                        data = try JSONEncoder().encode(item)
+                    } else if $0.kind.description == "recommendation" {
+                        let item = item as? RecommendationItem
+                        data = try JSONEncoder().encode(item)
+                    }
+                default:
+                    break
                 }
-            default:
-                break
+                
+                messageEntity.setValue(data, forKey: "data")
             }
             
-            messageEntity.setValue(data, forKey: "data")
+            try saveContext()
+            completion(.success(chat))
+        } catch {
+            completion(.failure(error))
         }
-
-        saveContext()
     }
     
-    private func saveContext() {
+        }
+    }
+    
+    
+    // MARK: Private
+    
+    private func saveContext() throws {
         if context.hasChanges {
             do {
                 try context.save()
             } catch {
-                print(StorageError.coreDataSaveFailure(error))
+                throw StorageError.coreDataSaveFailure(error)
             }
         }
     }

@@ -8,5 +8,7 @@
 import Foundation
 
 protocol ChatStorage {
-    func saveChat(_ chat: Chat)
+    func saveChat(
+        _ chat: Chat,
+        completion: @escaping (Result<Chat, Error>) -> Void)
 }

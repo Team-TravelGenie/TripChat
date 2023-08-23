@@ -8,7 +8,9 @@
 import Foundation
 
 protocol ChatUseCase {
-    func saveChat(_ chat: Chat)
+    func saveChat(
+        _ chat: Chat,
+        completion: @escaping (Result<Chat, Error>) -> Void)
 }
 
 final class DefaultChatUseCase: ChatUseCase {
@@ -19,7 +21,10 @@ final class DefaultChatUseCase: ChatUseCase {
         self.chatRepository = chatRepository
     }
     
-    func saveChat(_ chat: Chat) {
-        chatRepository.saveChat(chat)
+    func saveChat(
+        _ chat: Chat,
+        completion: @escaping (Result<Chat, Error>) -> Void)
+    {
+        chatRepository.saveChat(chat, completion: completion)
     }
 }
