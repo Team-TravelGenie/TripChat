@@ -86,8 +86,9 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
                 .draw(in: CGRect(x: 0, y: 0, width: 20, height: 20))
         }
         
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { action, view, handler in
-            self.viewModel.deleteItem(at: indexPath.item)
+        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, handler in
+            self?.viewModel.deleteItem(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .fade)
             handler(true)
         }
         
