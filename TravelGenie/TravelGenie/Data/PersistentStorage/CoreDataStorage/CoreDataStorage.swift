@@ -28,25 +28,29 @@ final class CoreDataStorage: ChatStorage {
     private lazy var context: NSManagedObjectContext = {
         return self.persistentContainer.newBackgroundContext()
     }()
+    
+    // MARK: Internal
 
     func saveChat(_ chat: Chat) {
-        let tags: [String] = chat.tags
         let messages: [Message] = chat.messages
-        let recommendations: [String] = chat.recommendations
         let chatEntity = ChatEntity(context: context)
         
         chatEntity.setValue(chat.id, forKey: "id")
         chatEntity.setValue(chat.createdAt, forKey: "createdAt")
         
-        tags.forEach {
+        chat.tags.tags.forEach {
             let tagEntity = TagEntity(context: context)
-            tagEntity.value = $0
+            tagEntity.setValue($0.value, forKey: "value")
+            tagEntity.setValue($0.isSelected, forKey: "isSelected")
             chatEntity.addToTags(tagEntity)
         }
         
-        recommendations.forEach {
+        chat.recommendations.forEach {
             let recommendationEntity = RecommendationEntity(context: context)
-            recommendationEntity.value = $0
+            recommendationEntity.setValue($0.country, forKey: "country")
+            recommendationEntity.setValue($0.city, forKey: "city")
+            recommendationEntity.setValue($0.spot, forKey: "spot")
+            recommendationEntity.setValue($0.image, forKey: "image")
             chatEntity.addToRecommendations(recommendationEntity)
         }
         
@@ -64,9 +68,6 @@ final class CoreDataStorage: ChatStorage {
             case .attributedText(let attributedText):
                 data = try? NSKeyedArchiver.archivedData(withRootObject: attributedText, requiringSecureCoding: true)
             case .photo(let mediaItem):
-                let dao = MediaItemDAO(with: mediaItem)
-                data = try? JSONEncoder().encode(dao)
-            case .video(let mediaItem):
                 let dao = MediaItemDAO(with: mediaItem)
                 data = try? JSONEncoder().encode(dao)
             case .custom(let item):
