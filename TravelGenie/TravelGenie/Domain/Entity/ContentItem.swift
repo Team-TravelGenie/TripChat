@@ -44,6 +44,12 @@ struct TagItem: Codable {
 
 struct Tag: Codable {
     let value: String
+    let isSelected: Bool
+    
+    init(value: String, isSelected: Bool = false) {
+        self.value = value
+        self.isSelected = isSelected
+    }
 }
 
 
