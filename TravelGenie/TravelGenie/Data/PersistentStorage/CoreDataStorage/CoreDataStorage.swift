@@ -96,6 +96,20 @@ final class CoreDataStorage: ChatStorage {
         }
     }
     
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        let request: NSFetchRequest = ChatEntity.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        request.fetchBatchSize = pageSize
+        
+        do {
+            let result = try context.fetch(request).map { $0.toDomain() }
+            completion(.success(result))
+        } catch {
+            completion(.failure(error))
         }
     }
     

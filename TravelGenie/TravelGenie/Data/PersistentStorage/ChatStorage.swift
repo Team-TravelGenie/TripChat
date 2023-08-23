@@ -11,4 +11,7 @@ protocol ChatStorage {
     func saveChat(
         _ chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
 }

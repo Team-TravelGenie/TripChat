@@ -11,6 +11,9 @@ protocol ChatUseCase {
     func saveChat(
         _ chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
 }
 
 final class DefaultChatUseCase: ChatUseCase {
@@ -27,4 +30,12 @@ final class DefaultChatUseCase: ChatUseCase {
     {
         chatRepository.saveChat(chat, completion: completion)
     }
+    
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        chatRepository.fetchRecentChats(pageSize: pageSize, completion: completion)
+    }
+    
 }

@@ -21,9 +21,11 @@ final class DefaultChatRepository: ChatRepository {
         chatStorage.saveChat(chat, completion: completion)
     }
     
-    func fetchChatList() -> [Chat] {
-        
-        return []
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        chatStorage.fetchRecentChats(pageSize: pageSize, completion: completion)
     }
     
     func fetchChatList(with keyword: String) -> [Chat] {
