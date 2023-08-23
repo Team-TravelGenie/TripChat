@@ -61,25 +61,41 @@ final class ChatListViewController: UIViewController {
 }
 
 extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int
+    {
         return viewModel.chats.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
         guard let cell = tableView.dequeueReusableCell(
             withIdentifier: ChatListCell.identifier,
             for: indexPath) as? ChatListCell else { return UITableViewCell() }
         
-        cell.configureContents(with: viewModel.chats[indexPath.item])
+        cell.configureContents(with: viewModel.chats[indexPath.row])
         
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath)
+        -> CGFloat
+    {
         return 84
     }
     
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+    func tableView(
+        _ tableView: UITableView,
+        trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
+        -> UISwipeActionsConfiguration?
+    {
         let icon: UIImage? = UIGraphicsImageRenderer(size: CGSize(width: 20, height: 20)).image { _ in
             UIImage(named: "trash")?
                 .withTintColor(.white)
