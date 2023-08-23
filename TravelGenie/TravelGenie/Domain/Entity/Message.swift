@@ -14,15 +14,15 @@ struct Message: MessageType {
     var messageId: String
     var sentDate: Date
     
-    // MARK: Text Kind Init
+    // MARK: AttributedText Kind Init
     
     init(
-        text: String,
+        text: NSAttributedString,
         sender: SenderType,
         sentDate: Date)
     {
         self.init(
-            kind: .text(text),
+            kind: .attributedText(text),
             sender: sender,
             messageId: UUID().uuidString,
             sentDate: sentDate)
