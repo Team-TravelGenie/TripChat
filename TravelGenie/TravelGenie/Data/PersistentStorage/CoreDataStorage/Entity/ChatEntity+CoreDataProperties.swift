@@ -6,9 +6,9 @@
 //
 //
 
-import Foundation
 import CoreData
-
+import Foundation
+import MessageKit
 
 extension ChatEntity {
 
@@ -95,4 +95,126 @@ extension ChatEntity {
 
 extension ChatEntity : Identifiable {
 
+}
+
+// MARK: Mapping to Domain
+extension ChatEntity {
+    func toDomain() -> Chat {
+        var tagList: [Tag] = []
+        var messageList: [Message] = []
+        var recommendationList: [RecommendationItem] = []
+        
+        tags.array.forEach {
+            if let tagEntity = $0 as? TagEntity {
+                let tag = Tag(
+                    value: tagEntity.value,
+                    isSelected: tagEntity.isSelected)
+                tagList.append(tag)
+            }
+        }
+        
+        recommendations.array.forEach {
+            if let recommendationEntity = $0 as? RecommendationEntity {
+                let recommendation = RecommendationItem(
+                    country: recommendationEntity.country,
+                    city: recommendationEntity.city,
+                    spot: recommendationEntity.spot,
+                    image: recommendationEntity.image)
+                recommendationList.append(recommendation)
+            }
+        }
+        
+        messages.array.forEach {
+            if let messageEntity = $0 as? MessageEntity {
+                let messageKind: String = messageEntity.kind
+                let senderName = SenderName(rawValue: messageEntity.sender)
+                let sender = Sender(name: senderName ?? .ai)
+                var messageModel = Message(sender: sender)
+                
+                if messageKind == "attributedText" {
+                    messageModel = createAttributedTextMessage(
+                        with: messageEntity,
+                        sender: sender)
+                } else if messageKind == "photo" {
+                    messageModel = createPhotoMessage(
+                        with: messageEntity,
+                        sender: sender)
+                } else if messageKind == "tag" {
+                    messageModel = createTagMessage(
+                        with: messageEntity,
+                        tagList: tagList)
+                } else if messageKind == "recommendation" {
+                    messageModel = createRecommendationMessage(
+                        with: messageEntity,
+                        recommendationList: recommendationList)
+                }
+                
+                messageList.append(messageModel)
+            }
+        }
+        
+        return Chat(
+            id: id,
+            createdAt: createdAt,
+            tags: TagItem(tags: tagList),
+            recommendations: recommendationList,
+            messages: messageList
+        )
+    }
+    
+    private func createAttributedTextMessage(
+        with entity: MessageEntity,
+        sender: Sender)
+        -> Message
+    {
+        let decodedData = try? NSKeyedUnarchiver.unarchivedObject(
+            ofClass: NSAttributedString.self,
+            from: entity.data ?? .init())
+        
+        return Message(
+            text: decodedData ?? .init(),
+            sender: sender,
+            messageId: entity.id.uuidString,
+            sentDate: entity.sentDate)
+    }
+    
+    private func createPhotoMessage(
+        with entity: MessageEntity,
+        sender: Sender)
+        -> Message
+    {
+        let decodedData = try? JSONDecoder().decode(
+            MediaItemDAO.self,
+            from: entity.data ?? .init())
+        let url = URL(string: decodedData?.URLString ?? .init())
+        
+        return Message(
+            url: url,
+            imageData: decodedData?.imageData,
+            sender: sender,
+            messageId: entity.id.uuidString,
+            sentDate: entity.sentDate)
+    }
+    
+    private func createTagMessage(
+        with entity: MessageEntity,
+        tagList: [Tag])
+        -> Message
+    {
+        return Message(
+            tags: tagList,
+            messageId: entity.id.uuidString,
+            sentDate: entity.sentDate)
+    }
+    
+    private func createRecommendationMessage(
+        with entity: MessageEntity,
+        recommendationList: [RecommendationItem])
+        -> Message
+    {
+        return Message(
+            recommendations: recommendationList,
+            messageId: entity.id.uuidString,
+            sentDate: entity.sentDate)
+    }
 }
