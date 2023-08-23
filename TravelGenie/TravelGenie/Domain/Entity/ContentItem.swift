@@ -26,18 +26,18 @@ struct ImageMediaItem: MediaItem {
 
 // MARK: MessageKind - .custom(TagItem) 메시지 컨텐츠
 
-struct TagItem {
+struct TagItem: Codable {
     var tags: [Tag]
 }
 
-struct Tag {
+struct Tag: Codable {
     let value: String
 }
 
 
 // MARK: MessageKind - .custom(RecommendationItem) 메시지 컨텐츠
 
-struct RecommendationItem {
+struct RecommendationItem: Codable {
     let country: String
     let city: String
     let spot: String
