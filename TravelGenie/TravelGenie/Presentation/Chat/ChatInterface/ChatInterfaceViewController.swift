@@ -8,7 +8,7 @@
 import UIKit
 import MessageKit
 
-class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
+class ChatInterfaceViewController: MessagesViewController {
     enum MessagesDefaultSection: Int {
         case systemMessage = 0
         case uploadButtonMessage = 2
@@ -65,6 +65,7 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
         if case let .custom(item) = message.kind {
             if item is MockTagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+                cell.delegate = self
                 cell.configure(with: message)
                 return cell
             } else if item is [RecommendationItem] {
@@ -128,6 +129,10 @@ class ChatInterfaceViewController: MessagesViewController, ButtonCellDelegate {
     
     func didTapButton() {
         // [이미지업로드] 버튼 동작을 정의하기위한 메서드, 사용하려는 뷰컨트롤러에서 해당 메서드를 오버라이드하여 사용하세요.
+    }
+    
+    func submitSelectedTags(_ selectedTagList: [MockTag]) {
+        print(selectedTagList)
     }
 }
 
@@ -228,3 +233,5 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         return nil
     }
 }
+
+extension ChatInterfaceViewController: ButtonCellDelegate, TagSubmissionDelegate { }

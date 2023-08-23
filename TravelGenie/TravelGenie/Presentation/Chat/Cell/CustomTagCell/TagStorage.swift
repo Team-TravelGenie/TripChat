@@ -22,8 +22,16 @@ final class TagStorage {
         return tagList.filter { $0.category == .theme }
     }
     
+    private var selectedTagList: [MockTag] {
+        return tagList.filter { $0.isOn == true }
+    }
+    
     init() {
         self.tagList = setDefaultTagList()
+    }
+    
+    func getSelectedList() -> [MockTag]? {
+        return selectedTagList.isEmpty ? nil : selectedTagList
     }
     
     func insertTags(tags: [MockTag]) {

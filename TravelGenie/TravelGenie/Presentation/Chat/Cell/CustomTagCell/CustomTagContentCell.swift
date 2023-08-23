@@ -8,7 +8,13 @@
 import UIKit
 import MessageKit
 
+protocol TagSubmissionDelegate: AnyObject {
+    func submitSelectedTags(_ selectedTagList: [MockTag])
+}
+
 final class CustomTagContentCell: UICollectionViewCell {
+    weak var delegate: TagSubmissionDelegate?
+    
     private var tagStorage: TagStorage = TagStorage()
     
     private let tagContentAvatarView = AvatarView()
@@ -40,7 +46,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     private func configureSubviews() {
-        configureSubmitButton()
+        configureSubmitKeywordButton()
         configureTagCollectionView()
         configureMessageContentView()
         configureDefaultMessageLabel()
@@ -82,13 +88,28 @@ final class CustomTagContentCell: UICollectionViewCell {
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func configureSubmitButton() {
+    private func configureSubmitKeywordButton() {
         let titleText = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
         
+        configureSubmitKeywordButtonAction()
         submitKeywordButton.layer.cornerRadius = 12
         submitKeywordButton.backgroundColor = .blueGrayBackground3
         submitKeywordButton.setAttributedTitle(titleText, for: .normal)
+    }
+    
+    private func configureSubmitKeywordButtonAction() {
+        let buttonAction = UIAction { [weak self] _ in
+            guard let self,
+                  let selectedList = tagStorage.getSelectedList() else {
+                print("선택된 태그 없음.")
+                return
+            }
+            
+            self.delegate?.submitSelectedTags(selectedList)
+        }
+        
+        submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }
     
     private func configureHierarchy() {
