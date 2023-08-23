@@ -12,9 +12,7 @@ final class CoreDataStorage: ChatStorage {
     
     static let shared = CoreDataStorage()
     
-    private lazy var persistentContainer: NSPersistentContainer = {
-        MessageDAOTransformer.register()
-        
+    private lazy var persistentContainer: NSPersistentContainer = {        
         let container = NSPersistentContainer(name: "CoreDataModel")
         container.loadPersistentStores { description, error in
             if let error = error as NSError? {
