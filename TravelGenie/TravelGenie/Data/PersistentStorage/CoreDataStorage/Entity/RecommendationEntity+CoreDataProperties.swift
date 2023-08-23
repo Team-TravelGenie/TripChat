@@ -16,7 +16,10 @@ extension RecommendationEntity {
         return NSFetchRequest<RecommendationEntity>(entityName: "RecommendationEntity")
     }
 
-    @NSManaged public var value: String
+    @NSManaged public var country: String
+    @NSManaged public var city: String
+    @NSManaged public var spot: String
+    @NSManaged public var image: Data
     @NSManaged public var chat: NSSet?
 
 }

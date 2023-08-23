@@ -16,7 +16,10 @@
         <relationship name="chat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="messages" inverseEntity="ChatEntity"/>
     </entity>
     <entity name="RecommendationEntity" representedClassName="RecommendationEntity" syncable="YES">
-        <attribute name="value" optional="YES" attributeType="String"/>
+        <attribute name="city" optional="YES" attributeType="String"/>
+        <attribute name="country" optional="YES" attributeType="String"/>
+        <attribute name="image" optional="YES" attributeType="Binary"/>
+        <attribute name="spot" optional="YES" attributeType="String"/>
         <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="recommendations" inverseEntity="ChatEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
