@@ -8,8 +8,8 @@
 import Foundation
 
 protocol ChatUseCase {
-    func saveChat(
-        _ chat: Chat,
+    func save(
+        chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
     func fetchRecentChats(
         pageSize: Int,
@@ -27,11 +27,11 @@ final class DefaultChatUseCase: ChatUseCase {
         self.chatRepository = chatRepository
     }
     
-    func saveChat(
-        _ chat: Chat,
+    func save(
+        chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
     {
-        chatRepository.saveChat(chat, completion: completion)
+        chatRepository.save(chat: chat, completion: completion)
     }
     
     func fetchRecentChats(

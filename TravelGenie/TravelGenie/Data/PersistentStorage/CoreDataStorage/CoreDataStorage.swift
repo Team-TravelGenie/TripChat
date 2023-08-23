@@ -31,8 +31,8 @@ final class CoreDataStorage: ChatStorage {
     
     // MARK: Internal
 
-    func saveChat(
-        _ chat: Chat,
+    func save(
+        chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
     {
         let messages: [Message] = chat.messages
