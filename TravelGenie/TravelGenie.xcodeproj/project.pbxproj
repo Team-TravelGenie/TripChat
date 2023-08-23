@@ -123,6 +123,7 @@
 		57462B432A94F92A00949D5C /* MessageKind+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageKind+description.swift"; sourceTree = "<group>"; };
 		57462B4A2A95B5ED00949D5C /* ChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRepository.swift; sourceTree = "<group>"; };
 		57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultChatRepository.swift; sourceTree = "<group>"; };
+		57462B5A2A95E12A00949D5C /* StorageError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageError.swift; sourceTree = "<group>"; };
 		57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B5F2A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B602A95E90700949D5C /* MessageEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -295,6 +296,7 @@
 			children = (
 				57462B3F2A94F68700949D5C /* Entity */,
 				57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */,
+				57462B5A2A95E12A00949D5C /* StorageError.swift */,
 				57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */,
 			);
 			path = CoreDataStorage;
@@ -718,6 +720,7 @@
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */,
