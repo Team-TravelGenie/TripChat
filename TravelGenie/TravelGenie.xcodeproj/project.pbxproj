@@ -40,6 +40,7 @@
 		57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B432A94F92A00949D5C /* MessageKind+description.swift */; };
 		57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B4A2A95B5ED00949D5C /* ChatRepository.swift */; };
 		57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */; };
+		57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5A2A95E12A00949D5C /* StorageError.swift */; };
 		57462B662A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5E2A95E90700949D5C /* RecommendationEntity+CoreDataClass.swift */; };
 		57462B672A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B5F2A95E90700949D5C /* RecommendationEntity+CoreDataProperties.swift */; };
 		57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B602A95E90700949D5C /* MessageEntity+CoreDataClass.swift */; };
@@ -49,6 +50,7 @@
 		57462B6E2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */; };
 		57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */; };
 		57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B702A95F74500949D5C /* MediaItemDAO.swift */; };
+		57462B742A96001700949D5C /* ChatUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B732A96001700949D5C /* ChatUseCase.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
@@ -133,6 +135,7 @@
 		57462B6C2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B6D2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ChatEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B702A95F74500949D5C /* MediaItemDAO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaItemDAO.swift; sourceTree = "<group>"; };
+		57462B732A96001700949D5C /* ChatUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatUseCase.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -333,6 +336,14 @@
 			path = RepositoryInterface;
 			sourceTree = "<group>";
 		};
+		57462B722A96000A00949D5C /* UseCase */ = {
+			isa = PBXGroup;
+			children = (
+				57462B732A96001700949D5C /* ChatUseCase.swift */,
+			);
+			path = UseCase;
+			sourceTree = "<group>";
+		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
 			isa = PBXGroup;
 			children = (
@@ -389,6 +400,7 @@
 		D20FA2872A6B97B90081B039 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				57462B722A96000A00949D5C /* UseCase */,
 				57462B492A95B5C600949D5C /* RepositoryInterface */,
 				D2E3AA352A8B85980049DDEF /* Model */,
 				D20FA29B2A6BBA010081B039 /* Entity */,
@@ -690,6 +702,7 @@
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
