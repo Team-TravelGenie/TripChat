@@ -20,6 +20,7 @@ final class ChatListViewModel {
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
         addChat()
+        fetchRecentChat()
     }
     
     // MARK: Internal
@@ -37,6 +38,24 @@ final class ChatListViewModel {
     
     // MARK: Private
     
+    private func fetchRecentChat() {
+        chatUseCase.fetchRecentChats(pageSize: 20) { [weak self] result in
+            switch result {
+            case .success(let fetchedChats):
+                self?.chats.append(contentsOf: fetchedChats)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func addChat() {
+        let tagItem = TagItem(tags: [Tag(value: "22바다"), Tag(value: "동남아")])
+        let recommendationItem = RecommendationItem(country: "나라", city: "도시", spot: "장소", image: .init())
+        let chat1 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [], messages: [])
+        let chat2 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [recommendationItem], messages: [])
+
+        chatUseCase.save(chat: chat1) { _ in }
+        chatUseCase.save(chat: chat2) { _ in }
     }
 }
