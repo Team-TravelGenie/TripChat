@@ -17,4 +17,7 @@ protocol ChatStorage {
     func fetchChats(
         with keyword: String,
         completion: @escaping (Result<[Chat], Error>) -> Void)
+    func deleteChat(
+        with id: UUID,
+        completion: @escaping (Result<Bool, Error>) -> Void)
 }

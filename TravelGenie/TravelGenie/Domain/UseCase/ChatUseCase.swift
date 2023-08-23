@@ -17,6 +17,9 @@ protocol ChatUseCase {
     func fetchChats(
         with keyword: String,
         completion: @escaping (Result<[Chat], Error>) -> Void)
+    func deleteChat(
+        with id: UUID,
+        completion: @escaping (Result<Bool, Error>) -> Void)
 }
 
 final class DefaultChatUseCase: ChatUseCase {
@@ -54,5 +57,9 @@ final class DefaultChatUseCase: ChatUseCase {
                 completion(.failure(error))
             }
         }
+    }
+    
+    func deleteChat(with id: UUID, completion: @escaping (Result<Bool, Error>) -> Void) {
+        chatRepository.deleteChat(with: id, completion: completion)
     }
 }

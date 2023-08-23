@@ -95,6 +95,26 @@ final class CoreDataStorage: ChatStorage {
         }
     }
     
+    func deleteChat(
+        with id: UUID,
+        completion: @escaping (Result<Bool, Error>) -> Void)
+    {
+        let request: NSFetchRequest = ChatEntity.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        request.predicate = predicate
+        
+        do {
+            let targetObjects = try context.fetch(request)
+            targetObjects.forEach {
+                context.delete($0)
+            }
+            try saveContext()
+            completion(.success(true))
+        } catch {
+            completion(.failure(StorageError.noResultForID))
+        }
+    }
+    
     // MARK: Private
     
     private func saveContext() throws {

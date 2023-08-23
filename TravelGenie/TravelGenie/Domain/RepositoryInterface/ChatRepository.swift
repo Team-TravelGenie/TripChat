@@ -17,5 +17,7 @@ protocol ChatRepository {
     func fetchChats(
         with keyword: String,
         completion: @escaping (Result<[Chat], Error>) -> Void)
-    func delete(_ chat: Chat)
+    func deleteChat(
+        with id: UUID,
+        completion: @escaping (Result<Bool, Error>) -> Void)
 }

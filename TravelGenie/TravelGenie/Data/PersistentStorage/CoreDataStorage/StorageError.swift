@@ -10,4 +10,5 @@ import Foundation
 enum StorageError: Error {
     case coreDataSaveFailure(Error)
     case noResultForKeyword
+    case noResultForID
 }
