@@ -23,6 +23,7 @@
         <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ChatEntity" inverseName="recommendations" inverseEntity="ChatEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">
+        <attribute name="isSelected" optional="YES" attributeType="Boolean" usesScalarValueType="YES"/>
         <attribute name="value" optional="YES" attributeType="String"/>
         <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatEntity" inverseName="tags" inverseEntity="ChatEntity"/>
     </entity>

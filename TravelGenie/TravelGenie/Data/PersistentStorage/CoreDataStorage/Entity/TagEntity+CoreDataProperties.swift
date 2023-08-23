@@ -17,6 +17,7 @@ extension TagEntity {
     }
 
     @NSManaged public var value: String
+    @NSManaged public var isSelected: Bool
     @NSManaged public var chat: NSOrderedSet?
 
 }
