@@ -185,6 +185,8 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             }
         }
 
+        cell.delegate = self
+        
         return cell
     }
     
@@ -279,5 +281,11 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
             messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
         }
+    }
+}
+
+extension CustomTagContentCell: TagSelectionDelegate {
+    func tagDidSelect(withText text: String) {
+        print(text)
     }
 }

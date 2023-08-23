@@ -7,9 +7,14 @@
 
 import UIKit
 
+protocol TagSelectionDelegate: AnyObject {
+    func tagDidSelect(withText text: String)
+}
+
 class TagCollectionViewCell: UICollectionViewCell {
     static var identifier: String { return String(describing: self) }
     
+    weak var delegate: TagSelectionDelegate?
     private let tagButton: UIButton = UIButton()
     
     override init(frame: CGRect) {
@@ -55,12 +60,12 @@ class TagCollectionViewCell: UICollectionViewCell {
             guard let self else { return }
             self.tagButton.isSelected.toggle()
             setButtonAttribute(sender: self.tagButton.state)
+            print(self.tagButton.state)
+            notifyTagSelection(sender: self.tagButton)
         }
-        
         
         tagButton.addAction(buttonAction, for: .touchUpInside)
     }
-    
     
     private func setButtonAttribute(sender: UIButton.State) {
         switch sender {
@@ -72,6 +77,16 @@ class TagCollectionViewCell: UICollectionViewCell {
             self.tagButton.backgroundColor = .tertiary
             self.tagButton.layer.borderColor = UIColor.primary.cgColor
             self.tagButton.layer.borderWidth = 2
+        }
+    }
+    
+    private func notifyTagSelection(sender: UIButton) {
+        let selectedRawValue = 5
+        
+        if sender.state.rawValue == selectedRawValue {
+            guard let tagText = sender.titleLabel?.text else { return }
+            
+            delegate?.tagDidSelect(withText: tagText)
         }
     }
     
