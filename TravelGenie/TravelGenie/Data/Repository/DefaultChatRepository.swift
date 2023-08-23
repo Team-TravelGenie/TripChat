@@ -28,9 +28,11 @@ final class DefaultChatRepository: ChatRepository {
         chatStorage.fetchRecentChats(pageSize: pageSize, completion: completion)
     }
     
-    func fetchChatList(with keyword: String) -> [Chat] {
-        
-        return []
+    func fetchChats(
+        with keyword: String,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        chatStorage.fetchChats(with: keyword, completion: completion)
     }
     
     func delete(_ chat: Chat) {

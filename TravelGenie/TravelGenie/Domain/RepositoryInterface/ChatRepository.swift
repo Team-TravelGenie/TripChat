@@ -8,12 +8,14 @@
 import Foundation
 
 protocol ChatRepository {
-    func fetchChatList(with keyword: String) -> [Chat]
     func saveChat(
         _ chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
     func fetchRecentChats(
         pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    func fetchChats(
+        with keyword: String,
         completion: @escaping (Result<[Chat], Error>) -> Void)
     func delete(_ chat: Chat)
 }

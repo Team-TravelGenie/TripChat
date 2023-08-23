@@ -14,6 +14,9 @@ protocol ChatUseCase {
     func fetchRecentChats(
         pageSize: Int,
         completion: @escaping (Result<[Chat], Error>) -> Void)
+    func fetchChats(
+        with keyword: String,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
 }
 
 final class DefaultChatUseCase: ChatUseCase {
@@ -38,4 +41,18 @@ final class DefaultChatUseCase: ChatUseCase {
         chatRepository.fetchRecentChats(pageSize: pageSize, completion: completion)
     }
     
+    func fetchChats(
+        with keyword: String,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        chatRepository.fetchChats(with: keyword) { result in
+            switch result {
+            case .success(let chats):
+                let sortedChats = chats.sorted { $0.createdAt > $1.createdAt }
+                completion(.success(sortedChats))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
+    }
 }

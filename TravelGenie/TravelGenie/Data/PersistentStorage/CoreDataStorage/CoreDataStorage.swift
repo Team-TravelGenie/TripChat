@@ -113,6 +113,20 @@ final class CoreDataStorage: ChatStorage {
         }
     }
     
+    func fetchChats(
+        with keyword: String,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        let tagResult: [Chat] = fetchWithTag(keyword)
+        let recommendationResult: [Chat] = fetchWithRecommendation(keyword)
+        let result: [Chat] = tagResult + recommendationResult
+        
+        if result.isEmpty {
+            completion(.failure(StorageError.noResultForKeyword))
+        } else {
+            completion(.success(result))
+        }
+    }
     
     // MARK: Private
     
@@ -123,6 +137,54 @@ final class CoreDataStorage: ChatStorage {
             } catch {
                 throw StorageError.coreDataSaveFailure(error)
             }
+        }
+    }
+    
+    private func fetchWithTag(_ tag: String) -> [Chat] {
+        var result: [Chat] = []
+        let request: NSFetchRequest = TagEntity.fetchRequest()
+        let predicate = NSPredicate(format: "value CONTAINS[c] %@", tag)
+        request.predicate = predicate
+        
+        do {
+            let tagEntities: [TagEntity] = try context.fetch(request)
+            tagEntities.forEach {
+                if let chatEntities = $0.chat?.array as? [ChatEntity] {
+                    result.append(contentsOf: chatEntities.map { $0.toDomain() })
+                }
+            }
+            
+            return result
+        } catch {
+            return result
+        }
+    }
+    
+    private func fetchWithRecommendation(_ keyword: String) -> [Chat] {
+        var result: [Chat] = []
+        let request: NSFetchRequest = RecommendationEntity.fetchRequest()
+        let countryPredicate = NSPredicate(format: "country CONTAINS[c] %@", keyword)
+        let cityPredicate = NSPredicate(format: "city CONTAINS[c] %@", keyword)
+        let spotPredicate = NSPredicate(format: "spot CONTAINS[c] %@", keyword)
+        let predicate = NSCompoundPredicate(
+            type: .or,
+            subpredicates: [
+                countryPredicate,
+                cityPredicate,
+                spotPredicate,])
+        request.predicate = predicate
+        
+        do {
+            let recommendationEntities: [RecommendationEntity] = try context.fetch(request)
+            recommendationEntities.forEach {
+                if let chatEntities = $0.chat?.array as? [ChatEntity] {
+                    result.append(contentsOf: chatEntities.map { $0.toDomain() })
+                }
+            }
+            
+            return result
+        } catch {
+            return result
         }
     }
 }
