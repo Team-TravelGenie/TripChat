@@ -8,7 +8,7 @@
 import CoreData
 import Foundation
 
-final class CoreDataStorage {
+final class CoreDataStorage: ChatStorage {
     
     static let shared = CoreDataStorage()
     
@@ -29,7 +29,7 @@ final class CoreDataStorage {
         return self.persistentContainer.newBackgroundContext()
     }()
 
-    func create(_ chat: Chat) {
+    func saveChat(_ chat: Chat) {
         let tags: [String] = chat.tags
         let messages: [Message] = chat.messages
         let recommendations: [String] = chat.recommendations

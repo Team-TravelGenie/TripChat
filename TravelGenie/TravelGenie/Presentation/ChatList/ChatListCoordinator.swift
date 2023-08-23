@@ -23,7 +23,7 @@ final class ChatListCoordinator: Coordinator {
     func start() {
         let viewModel = ChatListViewModel(
             chatUseCase: DefaultChatUseCase(
-                chatRepository: DefaultChatRepository(chatStorage: CoreDataChatStorage())))
+                chatRepository: DefaultChatRepository()))
         let chatListViewController = ChatListViewController(viewModel: viewModel)
         viewModel.coordinator = self
         navigationController.pushViewController(chatListViewController, animated: false)

@@ -34,7 +34,6 @@
 		573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD682A9365B300116D2D /* AvatarHeaderView.swift */; };
 		573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */; };
 		57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B262A94E9B600949D5C /* ChatStorage.swift */; };
-		57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */; };
 		57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */; };
 		57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 57462B302A94EC8800949D5C /* CoreDataModel.xcdatamodeld */; };
 		57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B432A94F92A00949D5C /* MessageKind+description.swift */; };
@@ -119,7 +118,6 @@
 		573BCD682A9365B300116D2D /* AvatarHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarHeaderView.swift; sourceTree = "<group>"; };
 		573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+resize.swift"; sourceTree = "<group>"; };
 		57462B262A94E9B600949D5C /* ChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatStorage.swift; sourceTree = "<group>"; };
-		57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		57462B2B2A94EB5B00949D5C /* CoreDataStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStorage.swift; sourceTree = "<group>"; };
 		57462B312A94EC8800949D5C /* CoreDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = CoreDataModel.xcdatamodel; sourceTree = "<group>"; };
 		57462B432A94F92A00949D5C /* MessageKind+description.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MessageKind+description.swift"; sourceTree = "<group>"; };
@@ -287,7 +285,6 @@
 			isa = PBXGroup;
 			children = (
 				57462B262A94E9B600949D5C /* ChatStorage.swift */,
-				57462B282A94E9D700949D5C /* CoreDataChatStorage.swift */,
 				57462B2A2A94EB4D00949D5C /* CoreDataStorage */,
 				57462B702A95F74500949D5C /* MediaItemDAO.swift */,
 			);
@@ -691,7 +688,6 @@
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
-				57462B292A94E9D700949D5C /* CoreDataChatStorage.swift in Sources */,
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,

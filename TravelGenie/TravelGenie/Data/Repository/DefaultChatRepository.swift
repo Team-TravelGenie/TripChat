@@ -11,7 +11,7 @@ final class DefaultChatRepository: ChatRepository {
     
     private let chatStorage: ChatStorage
     
-    init(chatStorage: ChatStorage) {
+    init(chatStorage: ChatStorage = CoreDataStorage.shared) {
         self.chatStorage = chatStorage
     }
     
