@@ -16,6 +16,7 @@ final class DefaultChatRepository: ChatRepository {
     }
     
     func saveChat(_ chat: Chat) {
+        chatStorage.saveChat(chat)
     }
     
     func fetchChatList() -> [Chat] {
