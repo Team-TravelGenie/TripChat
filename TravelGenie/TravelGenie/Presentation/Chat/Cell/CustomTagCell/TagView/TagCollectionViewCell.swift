@@ -10,20 +10,11 @@ import UIKit
 class TagCollectionViewCell: UICollectionViewCell {
     static var identifier: String { return String(describing: self) }
     
-    private let tagButton: UIButton = {
-       let button = UIButton()
-        
-        button.layer.cornerRadius = 24
-        button.layer.borderWidth = 1.0
-        button.layer.borderColor = UIColor.blueGrayBackground.cgColor
-        button.backgroundColor = .white
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
+    private let tagButton: UIButton = UIButton()
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
+        configureSubviews()
         configureLayout()
     }
     
@@ -32,16 +23,62 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     func configure(tag: Tag) {
-        let text = tag.text
-        let title = NSMutableAttributedString()
-            .text("#\(text)", font: .bodyRegular, color: .black)
+        configureTagButtonText(tag: tag)
+    }
+    
+    private func configureSubviews() {
+        congirueTagButton()
+    }
+    
+    private func congirueTagButton() {
+        setButtonAction()
+        tagButton.layer.cornerRadius = 24
+        tagButton.layer.borderWidth = 1.0
+        self.tagButton.backgroundColor = .white
+        self.tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
+    }
+    
+    private func configureTagButtonText(tag: Tag) {
+        let tagText = tag.text
         
-        tagButton.setAttributedTitle(title, for: .normal)
+        let defaultText = NSMutableAttributedString()
+            .text(tagText, font: .bodyRegular, color: .black)
+        let selectedText = NSMutableAttributedString()
+            .text(tagText, font: .bodyBold, color: .primary)
+        
+        tagButton.setAttributedTitle(defaultText, for: .normal)
+        tagButton.setAttributedTitle(selectedText, for: .selected)
+    }
+    
+    private func setButtonAction() {
+        let buttonAction = UIAction { [weak self] _ in
+            guard let self else { return }
+            self.tagButton.isSelected.toggle()
+            setButtonAttribute(sender: self.tagButton.state)
+        }
+        
+        
+        tagButton.addAction(buttonAction, for: .touchUpInside)
+    }
+    
+    
+    private func setButtonAttribute(sender: UIButton.State) {
+        switch sender {
+        case .highlighted:
+            self.tagButton.backgroundColor = .white
+            self.tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
+            self.tagButton.layer.borderWidth = 1
+        default:
+            self.tagButton.backgroundColor = .tertiary
+            self.tagButton.layer.borderColor = UIColor.primary.cgColor
+            self.tagButton.layer.borderWidth = 2
+        }
     }
     
     private func configureLayout() {
         contentView.addSubview(tagButton)
         
+        tagButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             tagButton.topAnchor.constraint(equalTo: contentView.topAnchor),
             tagButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
@@ -49,6 +86,4 @@ class TagCollectionViewCell: UICollectionViewCell {
             tagButton.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
         ])
     }
-    
-    
 }
