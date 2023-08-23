@@ -4,8 +4,8 @@
         <attribute name="createdAt" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <relationship name="messages" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="MessageEntity" inverseName="chat" inverseEntity="MessageEntity"/>
-        <relationship name="recommendations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="RecommendationEntity" inverseName="chat" inverseEntity="RecommendationEntity"/>
-        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="TagEntity" inverseName="chat" inverseEntity="TagEntity"/>
+        <relationship name="recommendations" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="RecommendationEntity" inverseName="chat" inverseEntity="RecommendationEntity"/>
+        <relationship name="tags" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="TagEntity" inverseName="chat" inverseEntity="TagEntity"/>
     </entity>
     <entity name="MessageEntity" representedClassName="MessageEntity" syncable="YES">
         <attribute name="data" optional="YES" attributeType="Binary"/>

@@ -18,8 +18,8 @@ extension ChatEntity {
 
     @NSManaged public var createdAt: Date
     @NSManaged public var id: UUID
-    @NSManaged public var recommendations: NSSet
-    @NSManaged public var tags: NSSet
+    @NSManaged public var recommendations: NSOrderedSet
+    @NSManaged public var tags: NSOrderedSet
     @NSManaged public var messages: NSOrderedSet
 
 }
