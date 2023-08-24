@@ -37,6 +37,9 @@ final class ChatListViewController: UIViewController {
         viewModel.emptyChat = { [weak self] isChatsEmpty in
             self?.emptyChatLabel.isHidden = !isChatsEmpty
         }
+        viewModel.chatsDelivered = { [weak self] chats in
+            self?.chatListTableView.reloadData()
+        }
     }
     
     private func configureViewController() {
@@ -169,6 +172,7 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
 extension ChatListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
+        viewModel.fireSearch(with: textField.text)
         return true
     }
 }

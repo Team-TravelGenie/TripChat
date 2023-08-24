@@ -14,9 +14,11 @@ final class ChatListViewModel {
     private let chatUseCase: ChatUseCase
     
     var emptyChat: ((Bool) -> Void)?
+    var chatsDelivered: (([Chat]) -> Void)?
     private(set) var chats: [Chat] = [] {
         didSet {
             emptyChat?(chats.isEmpty)
+            chatsDelivered?(chats)
         }
     }
     
@@ -35,6 +37,18 @@ final class ChatListViewModel {
             switch result {
             case .success:
                 self?.chats.remove(at: index)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fireSearch(with keyword: String?) {
+        guard let keyword else { return }
+        chatUseCase.fetchChats(with: keyword) { [weak self] result in
+            switch result {
+            case .success(let chats):
+                self?.chats = chats
             case .failure(let error):
                 print(error)
             }
