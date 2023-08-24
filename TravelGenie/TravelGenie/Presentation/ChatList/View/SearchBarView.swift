@@ -27,6 +27,8 @@ final class SearchBarView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal
+    
     func setTextFieldDelegate(delegate: UITextFieldDelegate) {
         searchTextField.delegate = delegate
     }

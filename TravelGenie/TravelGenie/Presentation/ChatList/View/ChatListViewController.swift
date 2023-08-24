@@ -15,6 +15,8 @@ final class ChatListViewController: UIViewController {
     private let chatListTableView = UITableView()
     private let emptyChatLabel = UILabel()
     
+    // MARK: Lifecycle
+    
     init(viewModel: ChatListViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
@@ -32,6 +34,8 @@ final class ChatListViewController: UIViewController {
         configureHierarchy()
         configureLayout()
     }
+    
+    // MARK: Private
     
     private func bind() {
         viewModel.emptyChat = { [weak self] isChatsEmpty in
@@ -123,6 +127,8 @@ final class ChatListViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDataSource, UITableViewDelegate
+
 extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(
         _ tableView: UITableView,
@@ -164,6 +170,8 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
+
+// MARK: UITextFieldDelegate
 
 extension ChatListViewController: UITextFieldDelegate {
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
