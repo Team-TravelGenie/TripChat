@@ -40,8 +40,8 @@ final class ChatListViewController: UIViewController {
     private func configureChatListTableView() {
         chatListTableView.delegate = self
         chatListTableView.dataSource = self
-        chatListTableView.backgroundColor = .clear
         chatListTableView.separatorStyle = .none
+        chatListTableView.backgroundColor = .white
         chatListTableView.register(ChatListCell.self, forCellReuseIdentifier: ChatListCell.identifier)
     }
     

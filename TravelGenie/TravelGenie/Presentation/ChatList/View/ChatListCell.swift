@@ -22,7 +22,6 @@ final class ChatListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        backgroundColor = .clear
         configureSubviews()
         configureHierarchy()
         configureLayout()
@@ -55,6 +54,7 @@ final class ChatListCell: UITableViewCell {
     // MARK: Private
     
     private func configureSubviews() {
+        contentView.backgroundColor = .white
         configureMainStackView()
         configureDetailStackView()
         configureAvatarImageView()
