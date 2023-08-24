@@ -41,9 +41,9 @@ final class ChatListCell: UITableViewCell {
     // MARK: Internal
     
     func configureContents(with item: Chat) {
-        let tags: [String] = item.tags
+        let tags: [String] = item.tags.tags.map { $0.value }
         let labelText = NSMutableAttributedString()
-        let date = DateFormatter.formatter.string(from: item.date)
+        let date = DateFormatter.formatter.string(from: item.createdAt)
         dateLabel.attributedText = NSMutableAttributedString()
             .text(date, font: .captionBold, color: .black)
         tags.forEach {

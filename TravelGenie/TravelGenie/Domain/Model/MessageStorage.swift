@@ -44,9 +44,12 @@ final class MessageStorage {
     // MARK: Private
     
     private func setupDefaultMessage() -> [Message] {
+        let defaultMessage = NSMutableAttributedString()
+            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
+        
         let defaultMessages = [
             Message(sender: Sender(name: .ai)),
-            Message(text: Constant.welcomeText, sender: Sender(name: .ai), sentDate: Date()),
+            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
             Message(sender: Sender(name: .ai))
         ]
         
