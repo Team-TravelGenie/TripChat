@@ -69,15 +69,12 @@ final class ChatListViewController: UIViewController {
         let labelText = NSMutableAttributedString()
             .text("최근대화가 없습니다", font: .bodyRegular, color: .grayFont)
         emptyChatLabel.attributedText = labelText
+        emptyChatLabel.isHidden = !viewModel.chats.isEmpty
     }
     
     private func configureHierarchy() {
         [searchBarContainerView, chatListTableView, emptyChatLabel].forEach { view.addSubview($0) }
         searchBarContainerView.addSubview(searchBarView)
-        
-        if viewModel.chats.isEmpty {
-            view.addSubview(emptyChatLabel)
-        }
     }
     
     private func configureLayout() {
