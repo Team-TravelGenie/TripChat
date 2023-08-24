@@ -88,10 +88,14 @@ final class ChatListCell: UITableViewCell {
     }
     
     private func configureLayout() {
+        let mainStackViewTopConstraint = mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
+        let mainStackViewBottomConstraint = mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        mainStackViewTopConstraint.priority = .defaultHigh
+        mainStackViewBottomConstraint.priority = .defaultHigh
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            mainStackViewTopConstraint,
+            mainStackViewBottomConstraint,
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
         ])
