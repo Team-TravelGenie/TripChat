@@ -62,6 +62,7 @@ final class ChatListCell: UITableViewCell {
     
     private func configureMainStackView() {
         mainStackView.spacing = 12
+        mainStackView.axis = .horizontal
         mainStackView.alignment = .center
     }
     
