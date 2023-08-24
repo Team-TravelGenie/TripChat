@@ -34,7 +34,16 @@ final class ChatListViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        configureNavigationBarTitle()
         configureChatListTableView()
+    }
+        
+    private func configureNavigationBarTitle() {
+        let titleLabel = UILabel()
+        let titleText = NSMutableAttributedString()
+            .text("최근대화", font: .headline, color: .black)
+        titleLabel.attributedText = titleText
+        navigationItem.titleView = titleLabel
     }
     
     private func configureChatListTableView() {
