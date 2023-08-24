@@ -67,6 +67,7 @@ final class SearchBarView: UIView {
         searchTextField.textColor = .black
         searchTextField.returnKeyType = .search
         searchTextField.attributedPlaceholder = placeholderText
+        searchTextField.defaultTextAttributes = TextAttributeCreator.create(font: .bodyRegular, color: .black)
     }
     
     private func configureHiearchy() {
