@@ -20,6 +20,7 @@ extension NSMutableAttributedString {
             .foregroundColor: color,
             .paragraphStyle: style,
             .font: font,
+            .baselineOffset: (lineHeight - font.lineHeight) / 4,
         ]
         
         self.append(NSAttributedString(string: value, attributes: attributes))
