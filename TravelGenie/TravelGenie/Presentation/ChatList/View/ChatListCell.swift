@@ -47,10 +47,8 @@ final class ChatListCell: UITableViewCell {
         dateLabel.attributedText = NSMutableAttributedString()
             .text(date, font: .captionBold, color: .black)
         tags.forEach {
-            labelText.append(NSMutableAttributedString().text(
-                "# \($0) ",
-                font: .captionRegular, color: .grayFont))
-        }
+            labelText.append(NSMutableAttributedString()
+                .text("# \($0) ", font: .captionRegular, color: .grayFont))}
         tagLabel.attributedText = labelText
     }
     
@@ -68,10 +66,9 @@ final class ChatListCell: UITableViewCell {
     }
     
     private func configureDetailStackView() {
+        detailStackView.spacing = 2
         detailStackView.axis = .vertical
         detailStackView.alignment = .leading
-        detailStackView.spacing = 2
-        detailStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private func configureAvatarImageView() {
