@@ -10,6 +10,8 @@ import UIKit
 final class ChatListViewController: UIViewController {
     
     private let viewModel: ChatListViewModel
+    private let searchBarContainerView = UIView()
+    private let searchBarView = SearchBarView()
     private let chatListTableView = UITableView()
     
     init(viewModel: ChatListViewModel) {
@@ -34,7 +36,12 @@ final class ChatListViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        configureSearchBarContainerView()
         configureChatListTableView()
+    }
+    
+    private func configureSearchBarContainerView() {
+        searchBarContainerView.backgroundColor = .clear
     }
     
     private func configureChatListTableView() {
@@ -46,13 +53,29 @@ final class ChatListViewController: UIViewController {
     }
     
     private func configureHierarchy() {
-        view.addSubview(chatListTableView)
+        [searchBarContainerView, chatListTableView].forEach { view.addSubview($0) }
+        searchBarContainerView.addSubview(searchBarView)
     }
     
     private func configureLayout() {
+        searchBarContainerView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBarContainerView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            searchBarContainerView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+            searchBarContainerView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+        
+        searchBarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            searchBarView.topAnchor.constraint(equalTo: searchBarContainerView.topAnchor, constant: 16),
+            searchBarView.bottomAnchor.constraint(equalTo: searchBarContainerView.bottomAnchor, constant: -16),
+            searchBarView.leadingAnchor.constraint(equalTo: searchBarContainerView.leadingAnchor, constant: 12),
+            searchBarView.trailingAnchor.constraint(equalTo: searchBarContainerView.trailingAnchor, constant: -12),
+        ])
+        
         chatListTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            chatListTableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+            chatListTableView.topAnchor.constraint(equalTo: searchBarContainerView.bottomAnchor),
             chatListTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             chatListTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             chatListTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
