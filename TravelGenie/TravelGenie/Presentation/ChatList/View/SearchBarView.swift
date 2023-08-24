@@ -54,6 +54,7 @@ final class SearchBarView: UIView {
     private func configureSearchTextField() {
         let placeholderText = NSMutableAttributedString()
             .text("검색", font: .bodyRegular, color: .blueGrayFont)
+        searchTextField.delegate = self
         searchTextField.textColor = .black
         searchTextField.returnKeyType = .search
         searchTextField.attributedPlaceholder = placeholderText
@@ -78,5 +79,12 @@ final class SearchBarView: UIView {
             searchIconImageView.widthAnchor.constraint(equalToConstant: 20),
             searchIconImageView.heightAnchor.constraint(equalToConstant: 20),
         ])
+    }
+}
+
+extension SearchBarView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }
