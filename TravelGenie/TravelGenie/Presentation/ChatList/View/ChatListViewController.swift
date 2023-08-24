@@ -44,13 +44,14 @@ final class ChatListViewController: UIViewController {
     }
     
     private func configureSubviews() {
-        configureSearchBarContainerView()
+        configureSearchBar()
         configureChatListTableView()
         configureEmptyChatLabel()
     }
     
-    private func configureSearchBarContainerView() {
+    private func configureSearchBar() {
         searchBarContainerView.backgroundColor = .clear
+        searchBarView.setTextFieldDelegate(delegate: self)
     }
     
     private func configureChatListTableView() {
@@ -162,5 +163,12 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
         let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
         
         return configuration
+    }
+}
+
+extension ChatListViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
     }
 }

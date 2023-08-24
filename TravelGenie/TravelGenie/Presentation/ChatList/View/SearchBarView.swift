@@ -13,6 +13,8 @@ final class SearchBarView: UIView {
     private let searchIconImageView = UIImageView()
     private let searchTextField = UITextField()
     
+    // MARK: Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureMainView()
@@ -24,6 +26,12 @@ final class SearchBarView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    func setTextFieldDelegate(delegate: UITextFieldDelegate) {
+        searchTextField.delegate = delegate
+    }
+    
+    // MARK: Private
     
     private func configureMainView() {
         clipsToBounds = true
@@ -54,7 +62,6 @@ final class SearchBarView: UIView {
     private func configureSearchTextField() {
         let placeholderText = NSMutableAttributedString()
             .text("검색", font: .bodyRegular, color: .blueGrayFont)
-        searchTextField.delegate = self
         searchTextField.textColor = .black
         searchTextField.returnKeyType = .search
         searchTextField.attributedPlaceholder = placeholderText
@@ -79,12 +86,5 @@ final class SearchBarView: UIView {
             searchIconImageView.widthAnchor.constraint(equalToConstant: 20),
             searchIconImageView.heightAnchor.constraint(equalToConstant: 20),
         ])
-    }
-}
-
-extension SearchBarView: UITextFieldDelegate {
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
-        return true
     }
 }
