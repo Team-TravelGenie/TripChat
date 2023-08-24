@@ -54,8 +54,9 @@ final class SearchBarView: UIView {
     private func configureSearchTextField() {
         let placeholderText = NSMutableAttributedString()
             .text("검색", font: .bodyRegular, color: .blueGrayFont)
-        searchTextField.attributedPlaceholder = placeholderText
         searchTextField.textColor = .black
+        searchTextField.returnKeyType = .search
+        searchTextField.attributedPlaceholder = placeholderText
     }
     
     private func configureHiearchy() {
