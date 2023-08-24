@@ -31,7 +31,7 @@ final class ChatListViewModel {
     }
     
     // MARK: Internal
-    func deleteItem(at index: Int) {
+    func remove(at index: Int) {
         let id = chats[index].id
         chatUseCase.deleteChat(with: id) { [weak self] result in
             switch result {

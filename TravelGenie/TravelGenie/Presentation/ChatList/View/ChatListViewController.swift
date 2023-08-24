@@ -107,6 +107,20 @@ final class ChatListViewController: UIViewController {
             emptyChatLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 35)
         ])
     }
+    
+    private func deleteAction(at indexPath: IndexPath) -> UIContextualAction {
+        let icon: UIImage? = UIGraphicsImageRenderer(size: CGSize(width: 20, height: 20)).image { _ in
+            UIImage(named: "trash")?
+                .withTintColor(.white)
+                .draw(in: CGRect(x: 0, y: 0, width: 20, height: 20))}
+        let action = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, handler in
+            self?.viewModel.remove(at: indexPath.row)
+            handler(true)}
+        action.image = icon
+        action.backgroundColor = .alert
+        
+        return action
+    }
 }
 
 extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
@@ -145,24 +159,9 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
         trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath)
         -> UISwipeActionsConfiguration?
     {
-        let icon: UIImage? = UIGraphicsImageRenderer(size: CGSize(width: 20, height: 20)).image { _ in
-            UIImage(named: "trash")?
-                .withTintColor(.white)
-                .draw(in: CGRect(x: 0, y: 0, width: 20, height: 20))
-        }
-        
-        let deleteAction = UIContextualAction(style: .destructive, title: nil) { [weak self] action, view, handler in
-            self?.viewModel.deleteItem(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .fade)
-            handler(true)
-        }
-        
-        deleteAction.image = icon
-        deleteAction.backgroundColor = .alert
+        let deleteAction = deleteAction(at: indexPath)
             
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-        
-        return configuration
+        return UISwipeActionsConfiguration(actions: [deleteAction])
     }
 }
 
