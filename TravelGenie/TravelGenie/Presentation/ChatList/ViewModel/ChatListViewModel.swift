@@ -13,13 +13,18 @@ final class ChatListViewModel {
     
     private let chatUseCase: ChatUseCase
     
-    private(set) var chats: [Chat] = []
+    var emptyChat: ((Bool) -> Void)?
+    private(set) var chats: [Chat] = [] {
+        didSet {
+            emptyChat?(chats.isEmpty)
+        }
+    }
     
     // MARK: Lifecycle
     
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
-        addChat()
+//        addChat()
         fetchRecentChat()
     }
     

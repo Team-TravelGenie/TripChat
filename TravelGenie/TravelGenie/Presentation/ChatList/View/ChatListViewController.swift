@@ -13,6 +13,7 @@ final class ChatListViewController: UIViewController {
     private let searchBarContainerView = UIView()
     private let searchBarView = SearchBarView()
     private let chatListTableView = UITableView()
+    private let emptyChatLabel = UILabel()
     
     init(viewModel: ChatListViewModel) {
         self.viewModel = viewModel
@@ -25,10 +26,17 @@ final class ChatListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        bind()
         configureViewController()
         configureSubviews()
         configureHierarchy()
         configureLayout()
+    }
+    
+    private func bind() {
+        viewModel.emptyChat = { [weak self] isChatsEmpty in
+            self?.emptyChatLabel.isHidden = !isChatsEmpty
+        }
     }
     
     private func configureViewController() {
@@ -38,6 +46,7 @@ final class ChatListViewController: UIViewController {
     private func configureSubviews() {
         configureSearchBarContainerView()
         configureChatListTableView()
+        configureEmptyChatLabel()
     }
     
     private func configureSearchBarContainerView() {
@@ -52,9 +61,19 @@ final class ChatListViewController: UIViewController {
         chatListTableView.register(ChatListCell.self, forCellReuseIdentifier: ChatListCell.identifier)
     }
     
+    private func configureEmptyChatLabel() {
+        let labelText = NSMutableAttributedString()
+            .text("최근대화가 없습니다", font: .bodyRegular, color: .grayFont)
+        emptyChatLabel.attributedText = labelText
+    }
+    
     private func configureHierarchy() {
-        [searchBarContainerView, chatListTableView].forEach { view.addSubview($0) }
+        [searchBarContainerView, chatListTableView, emptyChatLabel].forEach { view.addSubview($0) }
         searchBarContainerView.addSubview(searchBarView)
+        
+        if viewModel.chats.isEmpty {
+            view.addSubview(emptyChatLabel)
+        }
     }
     
     private func configureLayout() {
@@ -79,6 +98,12 @@ final class ChatListViewController: UIViewController {
             chatListTableView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
             chatListTableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             chatListTableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+        ])
+        
+        emptyChatLabel.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            emptyChatLabel.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+            emptyChatLabel.centerYAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerYAnchor, constant: 35)
         ])
     }
 }
