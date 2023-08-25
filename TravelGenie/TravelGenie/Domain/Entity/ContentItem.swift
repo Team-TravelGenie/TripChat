@@ -47,7 +47,7 @@ struct Tag: Codable {
     let value: String
     var isSelected: Bool
     
-    init(category: Category, value: String, isSelected: Bool = false) {
+    init(category: Category = .theme, value: String, isSelected: Bool = false) {
         self.category = category
         self.value = value
         self.isSelected = isSelected
