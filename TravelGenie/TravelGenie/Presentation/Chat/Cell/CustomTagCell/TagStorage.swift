@@ -8,39 +8,39 @@
 import Foundation
 
 final class TagStorage {
-    private var tagList = [MockTag]()
+    private var tags = [MockTag]()
     
     var count: Int {
-        return tagList.count
+        return tags.count
     }
     
     var locationTagList: [MockTag] {
-        return tagList.filter { $0.category == .location }
+        return tags.filter { $0.category == .location }
     }
     
     var themeTagList: [MockTag] {
-        return tagList.filter { $0.category == .theme }
+        return tags.filter { $0.category == .theme }
     }
     
     private var selectedTagList: [MockTag] {
-        return tagList.filter { $0.isOn == true }
+        return tags.filter { $0.isOn == true }
     }
     
     init() {
-        self.tagList = setDefaultTagList()
+        self.tags = setDefaultTagList()
     }
     
     func getSelectedTags() -> [MockTag]? {
         return selectedTagList.isEmpty ? nil : selectedTagList
     }
     
-    func insertTags(tags: [MockTag]) {
-        tags.forEach { tagList.append($0) }
+    func insertTags(_ tags: [MockTag]) {
+        tags.forEach { self.tags.append($0) }
     }
     
     func updateTagIsSelected(value: String, isSelected: Bool) {
-        if let index = tagList.firstIndex(where: { $0.text == value }) {
-            tagList[index].isOn = isSelected
+        if let index = tags.firstIndex(where: { $0.text == value }) {
+            tags[index].isOn = isSelected
         }
     }
     

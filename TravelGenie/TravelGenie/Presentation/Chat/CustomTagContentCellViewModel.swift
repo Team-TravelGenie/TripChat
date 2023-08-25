@@ -33,7 +33,7 @@ final class CustomTagContentCellViewModel {
     // MARK: Internal
     
     func insertTags(tags: [MockTag]) {
-        tagStorage.insertTags(tags: tags)
+        tagStorage.insertTags(tags)
     }
     
     func getSelectedTags() -> [MockTag]? {
