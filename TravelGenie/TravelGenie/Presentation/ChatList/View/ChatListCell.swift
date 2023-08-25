@@ -22,7 +22,6 @@ final class ChatListCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
-        backgroundColor = .clear
         configureSubviews()
         configureHierarchy()
         configureLayout()
@@ -47,16 +46,15 @@ final class ChatListCell: UITableViewCell {
         dateLabel.attributedText = NSMutableAttributedString()
             .text(date, font: .captionBold, color: .black)
         tags.forEach {
-            labelText.append(NSMutableAttributedString().text(
-                "# \($0) ",
-                font: .captionRegular, color: .grayFont))
-        }
+            labelText.append(NSMutableAttributedString()
+                .text("# \($0) ", font: .captionRegular, color: .grayFont))}
         tagLabel.attributedText = labelText
     }
     
     // MARK: Private
     
     private func configureSubviews() {
+        contentView.backgroundColor = .white
         configureMainStackView()
         configureDetailStackView()
         configureAvatarImageView()
@@ -64,14 +62,14 @@ final class ChatListCell: UITableViewCell {
     
     private func configureMainStackView() {
         mainStackView.spacing = 12
+        mainStackView.axis = .horizontal
         mainStackView.alignment = .center
     }
     
     private func configureDetailStackView() {
+        detailStackView.spacing = 2
         detailStackView.axis = .vertical
         detailStackView.alignment = .leading
-        detailStackView.spacing = 2
-        detailStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
     private func configureAvatarImageView() {
@@ -90,10 +88,14 @@ final class ChatListCell: UITableViewCell {
     }
     
     private func configureLayout() {
+        let mainStackViewTopConstraint = mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16)
+        let mainStackViewBottomConstraint = mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16)
+        mainStackViewTopConstraint.priority = .defaultHigh
+        mainStackViewBottomConstraint.priority = .defaultHigh
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 16),
-            mainStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -16),
+            mainStackViewTopConstraint,
+            mainStackViewBottomConstraint,
             mainStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
             mainStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
         ])
@@ -101,7 +103,7 @@ final class ChatListCell: UITableViewCell {
         avatarImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             avatarImageView.widthAnchor.constraint(equalToConstant: 52),
-            avatarImageView.heightAnchor.constraint(equalTo: avatarImageView.widthAnchor),
+            avatarImageView.heightAnchor.constraint(equalToConstant: 52),
         ])
     }
 }
