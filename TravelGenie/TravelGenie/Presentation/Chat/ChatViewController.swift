@@ -16,12 +16,14 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [Tag(value: "아라"),
-                                     Tag(value: "아라아"),
-                                     Tag(value: "아라아라"),
-                                     Tag(value: "아라아라아"),
-                                     Tag(value: "아라아라아라")
-                                    ])
+        let message = Message(tags: [
+            Tag(category: .theme, value: "아"),
+            Tag(category: .theme, value: "아라"),
+            Tag(category: .theme, value: "아라0라"),
+            Tag(category: .theme, value: "아라아라"),
+            Tag(category: .theme, value: "아라아라라"),
+            Tag(category: .theme, value: "아라라라라라"),
+        ])
         messageStorage.insertMessage(message)
                               
         var recommendations: [RecommendationItem] = []
@@ -43,7 +45,7 @@ final class ChatViewController: ChatInterfaceViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func didTapButton() {
+    override func didTapImageUploadButton() {
         presentPHPicekrViewController()
     }
     

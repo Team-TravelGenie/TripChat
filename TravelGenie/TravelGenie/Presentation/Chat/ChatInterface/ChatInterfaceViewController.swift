@@ -63,7 +63,7 @@ class ChatInterfaceViewController: MessagesViewController {
         }
         
         if case let .custom(item) = message.kind {
-            if item is MockTagItem {
+            if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
                 cell.delegate = self
                 cell.configure(with: message)
@@ -131,8 +131,8 @@ class ChatInterfaceViewController: MessagesViewController {
         // [이미지업로드] 버튼 동작을 정의하기위한 메서드, 사용하려는 뷰컨트롤러에서 해당 메서드를 오버라이드하여 사용하세요.
     }
     
-    func submitSelectedTags(_ selectedTagList: [MockTag]) {
-        print(selectedTagList)
+    func submitSelectedTags(_ selectedTags: [Tag]) {
+        print(selectedTags)
     }
 }
 
@@ -211,7 +211,7 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
             return MessageSizeCalculator()
         }
         
-        if item is MockTagItem {
+        if item is TagItem {
             return tagMessageCellSizeCalculator
 
         } else if item is [RecommendationItem] {

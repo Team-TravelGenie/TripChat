@@ -99,11 +99,3 @@ struct Message: MessageType {
         self.sentDate = sentDate
     }
 }
-
-extension Message {
-    init(mockTags: [MockTag]) {
-        let mockTagItem = MockTagItem(tags: mockTags)
-        
-        self.init(kind: .custom(mockTagItem), sender: Sender(name: .ai), messageId: UUID().uuidString, sentDate: Date())
-    }
-}

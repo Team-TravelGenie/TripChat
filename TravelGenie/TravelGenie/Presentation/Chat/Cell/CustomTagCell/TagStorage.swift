@@ -8,46 +8,46 @@
 import Foundation
 
 final class TagStorage {
-    private var tags = [MockTag]()
+    private var tags = [Tag]()
     
     var count: Int {
         return tags.count
     }
     
-    var locationTags: [MockTag] {
+    var locationTags: [Tag] {
         return tags.filter { $0.category == .location }
     }
     
-    var themeTags: [MockTag] {
+    var themeTags: [Tag] {
         return tags.filter { $0.category == .theme }
     }
     
-    private var selectedTags: [MockTag] {
-        return tags.filter { $0.isOn == true }
+    private var selectedTags: [Tag] {
+        return tags.filter { $0.isSelected == true }
     }
     
     init() {
         tags = setDefaultTags()
     }
     
-    func getSelectedTags() -> [MockTag]? {
+    func getSelectedTags() -> [Tag]? {
         return selectedTags.isEmpty ? nil : selectedTags
     }
     
-    func insertTags(_ tags: [MockTag]) {
+    func insertTags(_ tags: [Tag]) {
         tags.forEach { self.tags.append($0) }
     }
     
     func updateTagSelectionState(value: String, isSelected: Bool) {
-        if let index = tags.firstIndex(where: { $0.text == value }) {
-            tags[index].isOn = isSelected
+        if let index = tags.firstIndex(where: { $0.value == value }) {
+            tags[index].isSelected = isSelected
         }
     }
     
-    private func setDefaultTags() -> [MockTag] {
+    private func setDefaultTags() -> [Tag] {
         let defaultTag = [
-            MockTag(category: .location, text: "국내"),
-            MockTag(category: .location, text: "해외")
+            Tag(category: .location, value: "국내"),
+            Tag(category: .location, value: "해외")
         ]
         
         return defaultTag

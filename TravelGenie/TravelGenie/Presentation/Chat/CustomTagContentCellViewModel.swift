@@ -18,11 +18,11 @@ final class CustomTagContentCellViewModel {
         return tagStorage.themeTags.count
     }
     
-    var locationTagList: [MockTag] {
+    var locationTagList: [Tag] {
         return tagStorage.locationTags
     }
     
-    var themeTagList: [MockTag] {
+    var themeTagList: [Tag] {
         return tagStorage.themeTags
     }
     
@@ -32,11 +32,11 @@ final class CustomTagContentCellViewModel {
     
     // MARK: Internal
     
-    func insertTags(tags: [MockTag]) {
+    func insertTags(tags: [Tag]) {
         tagStorage.insertTags(tags)
     }
     
-    func getSelectedTags() -> [MockTag]? {
+    func getSelectedTags() -> [Tag]? {
         guard let isSelectedTags = tagStorage.getSelectedTags() else {
             print("선택된 태그없음")
             return nil
@@ -52,11 +52,11 @@ final class CustomTagContentCellViewModel {
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            let numberofCharactoersInTag = CGFloat(tagStorage.locationTags[indexPath.item].text.count)
+            let numberofCharactoersInTag = CGFloat(tagStorage.locationTags[indexPath.item].value.count)
             
             return calculateSizeForCharacters(count: numberofCharactoersInTag)
         case 1:
-            let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].text.count)
+            let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].value.count)
             
             return calculateSizeForCharacters(count: numberOfCharactersInTag)
         default:

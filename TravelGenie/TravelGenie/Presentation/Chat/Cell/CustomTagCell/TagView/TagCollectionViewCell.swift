@@ -27,7 +27,7 @@ class TagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(tag: MockTag) {
+    func configure(tag: Tag) {
         configureTagButtonText(tag: tag)
     }
     
@@ -43,8 +43,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
     }
     
-    private func configureTagButtonText(tag: MockTag) {
-        let tagText = tag.text
+    private func configureTagButtonText(tag: Tag) {
+        let tagText = tag.value
         
         let defaultText = NSMutableAttributedString()
             .text(tagText, font: .bodyRegular, color: .black)

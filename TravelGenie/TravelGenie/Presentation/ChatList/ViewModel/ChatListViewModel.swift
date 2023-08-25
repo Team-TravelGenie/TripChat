@@ -50,7 +50,7 @@ final class ChatListViewModel {
     }
     
     private func addChat() {
-        let tagItem = TagItem(tags: [Tag(value: "22바다"), Tag(value: "동남아")])
+        let tagItem = TagItem(tags: [Tag(category: .theme, value: "22바다"), Tag(category: .theme, value: "동남아")])
         let recommendationItem = RecommendationItem(country: "나라", city: "도시", spot: "장소", image: .init())
         let chat1 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [], messages: [])
         let chat2 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [recommendationItem], messages: [])
