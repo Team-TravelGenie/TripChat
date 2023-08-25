@@ -9,7 +9,7 @@ import UIKit
 import MessageKit
 
 protocol TagSubmissionDelegate: AnyObject {
-    func submitSelectedTags(_ selectedTags: [MockTag])
+    func submitSelectedTags(_ selectedTags: [Tag])
 }
 
 final class CustomTagContentCell: UICollectionViewCell {
@@ -37,7 +37,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     func configure(with message: MessageType) {
         if case .custom(let tagItem) = message.kind {
-            guard let tagItem = tagItem as? MockTagItem else { return }
+            guard let tagItem = tagItem as? TagItem else { return }
             
             viewModel.insertTags(tags: tagItem.tags)
         }
