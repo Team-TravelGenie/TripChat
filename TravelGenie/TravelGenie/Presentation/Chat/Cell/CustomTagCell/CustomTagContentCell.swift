@@ -9,13 +9,13 @@ import UIKit
 import MessageKit
 
 protocol TagSubmissionDelegate: AnyObject {
-    func submitSelectedTags(_ selectedTagList: [MockTag])
+    func submitSelectedTags(_ isSelectedTags: [MockTag])
 }
 
 final class CustomTagContentCell: UICollectionViewCell {
     weak var delegate: TagSubmissionDelegate?
     
-    private var tagStorage: TagStorage = TagStorage()
+    private let viewModel = CustomTagContentCellViewModel()
     
     private let tagContentAvatarView = AvatarView()
     private let messageContentView = UIView()
@@ -39,7 +39,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? MockTagItem else { return }
             
-            tagStorage.insertTags(tags: tagItem.tags)
+            viewModel.insertTags(tags: tagItem.tags)
         }
     }
     
@@ -99,8 +99,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureSubmitKeywordButtonAction() {
         let buttonAction = UIAction { [weak self] _ in
             guard let self,
-                  let selectedList = self.tagStorage.getSelectedTags() else {
-                print("선택된 태그 없음.")
+                  let selectedList = self.viewModel.getSelectedTags() else {
                 return
             }
             
@@ -174,9 +173,9 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return tagStorage.locationTagList.count
+            return viewModel.locationTagListCount
         case .theme:
-            return tagStorage.themeTagList.count
+            return viewModel.themeTagListCount
         }
     }
     
@@ -190,9 +189,9 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                cell.configure(tag: tagStorage.locationTagList[indexPath.item])
+                cell.configure(tag: viewModel.locationTagList[indexPath.item])
             case .theme:
-                cell.configure(tag: tagStorage.themeTagList[indexPath.item])
+                cell.configure(tag: viewModel.themeTagList[indexPath.item])
             }
         }
 
@@ -214,12 +213,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         
-        let headerText: [String] = [
-            "✈️지역",
-            "⛵️테마"
-        ]
-        
-        header.configure(text: headerText[indexPath.section])
+        header.configure(text: viewModel.sectionsHeaderTexts[indexPath.section])
             
         return header
     }
@@ -232,23 +226,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        if let section = Section(rawValue: indexPath.section) {
-            switch section {
-            case .location:
-                let twoCharacterCellSize = CGSize(width: 74, height: 47)
-                return twoCharacterCellSize
-            case .theme:
-                let numberOfCharactersInTag = tagStorage.themeTagList[indexPath.item].text.count
-                let defaultHeight: CGFloat = 47 // 고정높이
-                let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
-                let additionalWidthForOneCharacterSize: CGFloat = 13.0
-                
-                let cellWidth = defaultWidth + CGFloat(numberOfCharactersInTag) * additionalWidthForOneCharacterSize
-                
-                return CGSize(width: cellWidth, height: defaultHeight)
-            }
-        }
-        return CGSize(width: 0, height: 0)
+        viewModel.cellSizeForSection(indexPath: indexPath)
     }
     
     func collectionView(
@@ -297,6 +275,6 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
 
 extension CustomTagContentCell: TagSelectionDelegate {
     func tagDidSelect(withText value: String, isSelected: Bool) {
-        tagStorage.updateTagIsSelected(value: value, isSelected: isSelected)
+        viewModel.updateTagIsSelected(value: value, isSelected: isSelected)
     }
 }
