@@ -101,7 +101,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureSubmitKeywordButtonAction() {
         let buttonAction = UIAction { [weak self] _ in
             guard let self,
-                  let selectedList = self.tagStorage.getSelectedList() else {
+                  let selectedList = self.tagStorage.getSelectedTags() else {
                 print("선택된 태그 없음.")
                 return
             }

@@ -30,7 +30,7 @@ final class TagStorage {
         self.tagList = setDefaultTagList()
     }
     
-    func getSelectedList() -> [MockTag]? {
+    func getSelectedTags() -> [MockTag]? {
         return selectedTagList.isEmpty ? nil : selectedTagList
     }
     
