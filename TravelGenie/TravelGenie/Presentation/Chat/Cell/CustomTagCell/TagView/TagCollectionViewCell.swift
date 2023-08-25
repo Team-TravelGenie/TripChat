@@ -59,8 +59,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         let buttonAction = UIAction { [weak self] _ in
             guard let self else { return }
             self.tagButton.isSelected.toggle()
-            setButtonAttribute(sender: self.tagButton.state)
-            notifyTagSelection(sender: self.tagButton)
+            self.setButtonAttribute(sender: self.tagButton.state)
+            self.notifyTagSelection(sender: self.tagButton)
         }
         
         tagButton.addAction(buttonAction, for: .touchUpInside)
