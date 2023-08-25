@@ -8,7 +8,7 @@
 import UIKit
 
 protocol TagSelectionDelegate: AnyObject {
-    func tagDidSelect(withText text: String, isOn: Bool)
+    func tagDidSelect(withText text: String, isSelected: Bool)
 }
 
 class TagCollectionViewCell: UICollectionViewCell {
@@ -92,9 +92,9 @@ class TagCollectionViewCell: UICollectionViewCell {
         
         switch sender.state {
         case selectedState:
-            delegate?.tagDidSelect(withText: tagText, isOn: true)
+            delegate?.tagDidSelect(withText: tagText, isSelected: true)
         case deselectedState:
-            delegate?.tagDidSelect(withText: tagText, isOn: false)
+            delegate?.tagDidSelect(withText: tagText, isSelected: false)
         default:
             break
         }

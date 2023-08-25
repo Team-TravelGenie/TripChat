@@ -38,9 +38,9 @@ final class TagStorage {
         tags.forEach { tagList.append($0) }
     }
     
-    func updateTagIsOn(text: String, isOn: Bool) {
-        if let index = tagList.firstIndex(where: { $0.text == text }) {
-            tagList[index].isOn = isOn
+    func updateTagIsOn(value: String, isSelected: Bool) {
+        if let index = tagList.firstIndex(where: { $0.text == value }) {
+            tagList[index].isOn = isSelected
         }
     }
     

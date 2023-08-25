@@ -298,7 +298,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
 }
 
 extension CustomTagContentCell: TagSelectionDelegate {
-    func tagDidSelect(withText text: String, isOn: Bool) {
-        tagStorage.updateTagIsOn(text: text, isOn: isOn)
+    func tagDidSelect(withText value: String, isSelected: Bool) {
+        tagStorage.updateTagIsOn(value: value, isSelected: isSelected)
     }
 }
