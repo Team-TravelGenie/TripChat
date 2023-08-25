@@ -67,21 +67,26 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     private func setButtonAttribute(sender: UIButton.State) {
+        let selectedState: UIButton.State = [.highlighted, .selected]
+        let deselectedState: UIButton.State = .highlighted
+        
         switch sender {
-        case .highlighted:
+        case deselectedState:
             self.tagButton.backgroundColor = .white
             self.tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
             self.tagButton.layer.borderWidth = 1
-        default:
+        case selectedState:
             self.tagButton.backgroundColor = .tertiary
             self.tagButton.layer.borderColor = UIColor.primary.cgColor
             self.tagButton.layer.borderWidth = 2
+        default:
+            break
         }
     }
     
     private func notifyTagSelection(sender: UIButton) {
-        let selectedState = UIButton.State(rawValue: 5)
-        let deselectedState = UIButton.State(rawValue: 1)
+        let selectedState: UIButton.State = [.highlighted, .selected]
+        let deselectedState: UIButton.State = .highlighted
         
         guard let tagText = sender.titleLabel?.text else { return }
         
