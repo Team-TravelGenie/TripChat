@@ -35,9 +35,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(
-        with message: MessageType)
-    {
+    func configure(with message: MessageType) {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? MockTagItem else { return }
             
@@ -299,6 +297,6 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
 
 extension CustomTagContentCell: TagSelectionDelegate {
     func tagDidSelect(withText value: String, isSelected: Bool) {
-        tagStorage.updateTagIsOn(value: value, isSelected: isSelected)
+        tagStorage.updateTagIsSelected(value: value, isSelected: isSelected)
     }
 }
