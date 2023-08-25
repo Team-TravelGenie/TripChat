@@ -43,15 +43,21 @@ struct TagItem: Codable {
 }
 
 struct Tag: Codable {
+    let category: Category
     let value: String
-    let isSelected: Bool
+    var isSelected: Bool
     
-    init(value: String, isSelected: Bool = false) {
+    init(category: Category, value: String, isSelected: Bool = false) {
+        self.category = category
         self.value = value
         self.isSelected = isSelected
     }
 }
 
+enum Category: Codable {
+    case location
+    case theme
+}
 
 // MARK: MessageKind - .custom(RecommendationItem) 메시지 컨텐츠
 

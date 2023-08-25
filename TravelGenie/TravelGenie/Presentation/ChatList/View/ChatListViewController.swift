@@ -51,6 +51,7 @@ final class ChatListViewController: UIViewController {
     }
     
     private func configureSubviews() {
+        configureNavigationBarTitle()
         configureSearchBar()
         configureChatListTableView()
         configureEmptyChatLabel()
@@ -60,12 +61,20 @@ final class ChatListViewController: UIViewController {
         searchBarContainerView.backgroundColor = .clear
         searchBarView.setTextFieldDelegate(delegate: self)
     }
+        
+    private func configureNavigationBarTitle() {
+        let titleLabel = UILabel()
+        let titleText = NSMutableAttributedString()
+            .text("최근대화", font: .headline, color: .black)
+        titleLabel.attributedText = titleText
+        navigationItem.titleView = titleLabel
+    }
     
     private func configureChatListTableView() {
         chatListTableView.delegate = self
         chatListTableView.dataSource = self
-        chatListTableView.backgroundColor = .clear
         chatListTableView.separatorStyle = .none
+        chatListTableView.backgroundColor = .white
         chatListTableView.register(ChatListCell.self, forCellReuseIdentifier: ChatListCell.identifier)
     }
     

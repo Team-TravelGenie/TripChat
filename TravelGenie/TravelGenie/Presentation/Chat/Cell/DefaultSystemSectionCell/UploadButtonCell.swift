@@ -7,16 +7,16 @@
 
 import UIKit
 
-protocol ButtonCellDelegate: AnyObject {
-    func didTapButton()
+protocol UploadButtonCellDelegate: AnyObject {
+    func didTapImageUploadButton()
 }
 
-final class ButtonCell: UICollectionViewCell {
+final class UploadButtonCell: UICollectionViewCell {
     enum Constant {
         static let buttonText = "이미지 업로드"
     }
     
-    weak var delegate: ButtonCellDelegate?
+    weak var delegate: UploadButtonCellDelegate?
     
     private let uploadButton: UIButton = {
         let button = UIButton()
@@ -43,7 +43,7 @@ final class ButtonCell: UICollectionViewCell {
     
     private func configureButtonAction() {
         let buttonAction = UIAction { [weak self] _ in
-            self?.delegate?.didTapButton()
+            self?.delegate?.didTapImageUploadButton()
         }
         
         uploadButton.addAction(buttonAction, for: .touchUpInside)

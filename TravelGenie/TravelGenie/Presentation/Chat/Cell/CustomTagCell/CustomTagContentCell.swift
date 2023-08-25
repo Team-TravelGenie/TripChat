@@ -8,12 +8,14 @@
 import UIKit
 import MessageKit
 
+protocol TagSubmissionDelegate: AnyObject {
+    func submitSelectedTags(_ selectedTags: [Tag])
+}
+
 final class CustomTagContentCell: UICollectionViewCell {
-    var tagList: [Tag] = [] {
-        didSet {
-            tagCollectionView.reloadData()
-        }
-    }
+    weak var delegate: TagSubmissionDelegate?
+    
+    private let viewModel = CustomTagContentCellViewModel()
     
     private let tagContentAvatarView = AvatarView()
     private let messageContentView = UIView()
@@ -33,18 +35,16 @@ final class CustomTagContentCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func configure(
-        with message: MessageType)
-    {
+    func configure(with message: MessageType) {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
             
-            tagList = tagItem.tags
+            viewModel.insertTags(tags: tagItem.tags)
         }
     }
     
     private func configureSubviews() {
-        configureSubmitButton()
+        configureSubmitKeywordButton()
         configureTagCollectionView()
         configureMessageContentView()
         configureDefaultMessageLabel()
@@ -86,13 +86,27 @@ final class CustomTagContentCell: UICollectionViewCell {
         tagCollectionView.translatesAutoresizingMaskIntoConstraints = false
     }
     
-    private func configureSubmitButton() {
+    private func configureSubmitKeywordButton() {
         let titleText = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
         
+        configureSubmitKeywordButtonAction()
         submitKeywordButton.layer.cornerRadius = 12
         submitKeywordButton.backgroundColor = .blueGrayBackground3
         submitKeywordButton.setAttributedTitle(titleText, for: .normal)
+    }
+    
+    private func configureSubmitKeywordButtonAction() {
+        let buttonAction = UIAction { [weak self] _ in
+            guard let self,
+                  let selectedList = self.viewModel.getSelectedTags() else {
+                return
+            }
+            
+            self.delegate?.submitSelectedTags(selectedList)
+        }
+        
+        submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }
     
     private func configureHierarchy() {
@@ -159,9 +173,9 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return 2
+            return viewModel.locationTagListCount
         case .theme:
-            return tagList.count
+            return viewModel.themeTagListCount
         }
     }
     
@@ -175,16 +189,14 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                let defaultTag = [
-                    Tag(value: "국내"),
-                    Tag(value: "해외")
-                ]
-                cell.configure(tag: defaultTag[indexPath.item])
+                cell.configure(tag: viewModel.locationTagList[indexPath.item])
             case .theme:
-                cell.configure(tag: tagList[indexPath.item])
+                cell.configure(tag: viewModel.themeTagList[indexPath.item])
             }
         }
 
+        cell.delegate = self
+        
         return cell
     }
     
@@ -201,12 +213,7 @@ extension CustomTagContentCell: UICollectionViewDataSource {
             return UICollectionReusableView()
         }
         
-        let headerText: [String] = [
-            "✈️지역",
-            "⛵️테마"
-        ]
-        
-        header.configure(text: headerText[indexPath.section])
+        header.configure(text: viewModel.sectionsHeaderTexts[indexPath.section])
             
         return header
     }
@@ -219,23 +226,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        if let section = Section(rawValue: indexPath.section) {
-            switch section {
-            case .location:
-                let twoCharacterCellSize = CGSize(width: 74, height: 47)
-                return twoCharacterCellSize
-            case .theme:
-                let numberOfCharactersInTag = tagList[indexPath.item].value.count
-                let defaultHeight: CGFloat = 47 // 고정높이
-                let defaultWidth: CGFloat = 48 // 비어있는 태그의 tagCell의 width
-                let additionalWidthForOneCharacterSize: CGFloat = 13.0
-                
-                let cellWidth = defaultWidth + CGFloat(numberOfCharactersInTag) * additionalWidthForOneCharacterSize
-                
-                return CGSize(width: cellWidth, height: defaultHeight)
-            }
-        }
-        return CGSize(width: 0, height: 0)
+        viewModel.cellSizeForSection(indexPath: indexPath)
     }
     
     func collectionView(
@@ -279,5 +270,11 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
             messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
         }
+    }
+}
+
+extension CustomTagContentCell: TagSelectionDelegate {
+    func tagDidSelect(withText value: String, isSelected: Bool) {
+        viewModel.updateTagIsSelected(value: value, isSelected: isSelected)
     }
 }
