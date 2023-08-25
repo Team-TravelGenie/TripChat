@@ -13,23 +13,43 @@ final class ChatListViewModel {
     
     private let chatUseCase: ChatUseCase
     
-    private(set) var chats: [Chat] = []
+    var emptyChat: ((Bool) -> Void)?
+    var chatsDelivered: (([Chat]) -> Void)?
+    private(set) var chats: [Chat] = [] {
+        didSet {
+            emptyChat?(chats.isEmpty)
+            chatsDelivered?(chats)
+        }
+    }
     
     // MARK: Lifecycle
     
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
-        addChat()
+//        addChat()
         fetchRecentChat()
     }
     
     // MARK: Internal
-    func deleteItem(at index: Int) {
+    
+    func remove(at index: Int) {
         let id = chats[index].id
         chatUseCase.deleteChat(with: id) { [weak self] result in
             switch result {
             case .success:
                 self?.chats.remove(at: index)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    func fireSearch(with keyword: String?) {
+        guard let keyword else { return }
+        chatUseCase.fetchChats(with: keyword) { [weak self] result in
+            switch result {
+            case .success(let chats):
+                self?.chats = chats
             case .failure(let error):
                 print(error)
             }
