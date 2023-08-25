@@ -11,28 +11,51 @@ final class ChatListViewModel {
     
     weak var coordinator: ChatListCoordinator?
     
-    private(set) var chats: [Chat]
+    private let chatUseCase: ChatUseCase
+    
+    private(set) var chats: [Chat] = []
     
     // MARK: Lifecycle
     
-    init(chats: [Chat]) {
-        self.chats = chats
+    init(chatUseCase: ChatUseCase) {
+        self.chatUseCase = chatUseCase
         addChat()
+        fetchRecentChat()
     }
     
     // MARK: Internal
-    func deleteItem(at row: Int) {
-        
+    func deleteItem(at index: Int) {
+        let id = chats[index].id
+        chatUseCase.deleteChat(with: id) { [weak self] result in
+            switch result {
+            case .success:
+                self?.chats.remove(at: index)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     // MARK: Private
     
+    private func fetchRecentChat() {
+        chatUseCase.fetchRecentChats(pageSize: 20) { [weak self] result in
+            switch result {
+            case .success(let fetchedChats):
+                self?.chats.append(contentsOf: fetchedChats)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
     private func addChat() {
-        let chat1 = Chat(date: Date(), tags: ["바다", "동남아", "휴양지"])
-        let chat2 = Chat(date: Date(), tags: ["바다다", "동남아", "휴양지"])
-        let chat3 = Chat(date: Date(), tags: ["바다다다", "동남아", "휴양지"])
-        self.chats.append(chat1)
-        self.chats.append(chat2)
-        self.chats.append(chat3)
+        let tagItem = TagItem(tags: [Tag(value: "22바다"), Tag(value: "동남아")])
+        let recommendationItem = RecommendationItem(country: "나라", city: "도시", spot: "장소", image: .init())
+        let chat1 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [], messages: [])
+        let chat2 = Chat(id: UUID(), createdAt: Date(), tags: tagItem, recommendations: [recommendationItem], messages: [])
+
+        chatUseCase.save(chat: chat1) { _ in }
+        chatUseCase.save(chat: chat2) { _ in }
     }
 }
