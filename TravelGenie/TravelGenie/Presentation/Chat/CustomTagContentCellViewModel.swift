@@ -11,19 +11,19 @@ final class CustomTagContentCellViewModel {
     private let tagStorage: TagStorage = TagStorage()
     
     var locationTagListCount: Int {
-        return tagStorage.locationTagList.count
+        return tagStorage.locationTags.count
     }
     
     var themeTagListCount: Int {
-        return tagStorage.themeTagList.count
+        return tagStorage.themeTags.count
     }
     
     var locationTagList: [MockTag] {
-        return tagStorage.locationTagList
+        return tagStorage.locationTags
     }
     
     var themeTagList: [MockTag] {
-        return tagStorage.themeTagList
+        return tagStorage.themeTags
     }
     
     var sectionsHeaderTexts: [String] {
@@ -52,11 +52,11 @@ final class CustomTagContentCellViewModel {
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {
         switch indexPath.section {
         case 0:
-            let numberofCharactoersInTag = CGFloat(tagStorage.locationTagList[indexPath.item].text.count)
+            let numberofCharactoersInTag = CGFloat(tagStorage.locationTags[indexPath.item].text.count)
             
             return calculateSizeForCharacters(count: numberofCharactoersInTag)
         case 1:
-            let numberOfCharactersInTag = CGFloat(tagStorage.themeTagList[indexPath.item].text.count)
+            let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].text.count)
             
             return calculateSizeForCharacters(count: numberOfCharactersInTag)
         default:

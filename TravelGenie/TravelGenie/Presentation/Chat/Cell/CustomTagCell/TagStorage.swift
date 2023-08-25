@@ -14,24 +14,24 @@ final class TagStorage {
         return tags.count
     }
     
-    var locationTagList: [MockTag] {
+    var locationTags: [MockTag] {
         return tags.filter { $0.category == .location }
     }
     
-    var themeTagList: [MockTag] {
+    var themeTags: [MockTag] {
         return tags.filter { $0.category == .theme }
     }
     
-    private var selectedTagList: [MockTag] {
+    private var selectedTags: [MockTag] {
         return tags.filter { $0.isOn == true }
     }
     
     init() {
-        self.tags = setDefaultTagList()
+        tags = setDefaultTags()
     }
     
     func getSelectedTags() -> [MockTag]? {
-        return selectedTagList.isEmpty ? nil : selectedTagList
+        return selectedTags.isEmpty ? nil : selectedTags
     }
     
     func insertTags(_ tags: [MockTag]) {
@@ -44,7 +44,7 @@ final class TagStorage {
         }
     }
     
-    private func setDefaultTagList() -> [MockTag] {
+    private func setDefaultTags() -> [MockTag] {
         let defaultTag = [
             MockTag(category: .location, text: "국내"),
             MockTag(category: .location, text: "해외")
