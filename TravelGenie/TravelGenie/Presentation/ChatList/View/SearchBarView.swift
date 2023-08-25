@@ -51,8 +51,8 @@ final class SearchBarView: UIView {
     }
     
     private func configureMainStackView() {
-        mainStackView.axis = .horizontal
         mainStackView.spacing = 8
+        mainStackView.axis = .horizontal
         mainStackView.alignment = .center
     }
     

@@ -64,13 +64,14 @@ final class ChatListCell: UITableViewCell {
     
     private func configureMainStackView() {
         mainStackView.spacing = 12
+        mainStackView.axis = .horizontal
         mainStackView.alignment = .center
     }
     
     private func configureDetailStackView() {
+        detailStackView.spacing = 2
         detailStackView.axis = .vertical
         detailStackView.alignment = .leading
-        detailStackView.spacing = 2
         detailStackView.setContentHuggingPriority(.defaultLow, for: .horizontal)
     }
     
