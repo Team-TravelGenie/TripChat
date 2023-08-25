@@ -46,7 +46,7 @@ final class CustomTagContentCellViewModel {
     }
     
     func updateTagIsSelected(value: String, isSelected: Bool) {
-        tagStorage.updateTagIsSelected(value: value, isSelected: isSelected)
+        tagStorage.updateTagSelectionState(value: value, isSelected: isSelected)
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {

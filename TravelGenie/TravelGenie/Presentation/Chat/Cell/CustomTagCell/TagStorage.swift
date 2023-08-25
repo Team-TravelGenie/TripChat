@@ -38,7 +38,7 @@ final class TagStorage {
         tags.forEach { self.tags.append($0) }
     }
     
-    func updateTagIsSelected(value: String, isSelected: Bool) {
+    func updateTagSelectionState(value: String, isSelected: Bool) {
         if let index = tags.firstIndex(where: { $0.text == value }) {
             tags[index].isOn = isSelected
         }
