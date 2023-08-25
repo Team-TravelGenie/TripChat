@@ -68,7 +68,6 @@
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
 		D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23037772A8C65E40017950E /* SystemMessageCell.swift */; };
-		D24DF9C22A968FA30066C5B3 /* MockTag.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C12A968FA30066C5B3 /* MockTag.swift */; };
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
@@ -155,7 +154,6 @@
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
 		D23037772A8C65E40017950E /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
-		D24DF9C12A968FA30066C5B3 /* MockTag.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockTag.swift; sourceTree = "<group>"; };
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
@@ -555,7 +553,6 @@
 		D2F8C5762A8F47A800AA3BFC /* CustomTagCell */ = {
 			isa = PBXGroup;
 			children = (
-				D24DF9C12A968FA30066C5B3 /* MockTag.swift */,
 				D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */,
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
 				D2F8C5812A8F538500AA3BFC /* TagView */,
@@ -723,7 +720,6 @@
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
-				D24DF9C22A968FA30066C5B3 /* MockTag.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
 				57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */,
