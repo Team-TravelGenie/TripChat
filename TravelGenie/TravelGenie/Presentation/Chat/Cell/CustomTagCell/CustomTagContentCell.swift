@@ -9,7 +9,7 @@ import UIKit
 import MessageKit
 
 protocol TagSubmissionDelegate: AnyObject {
-    func submitSelectedTags(_ isSelectedTags: [MockTag])
+    func submitSelectedTags(_ selectedTags: [MockTag])
 }
 
 final class CustomTagContentCell: UICollectionViewCell {
