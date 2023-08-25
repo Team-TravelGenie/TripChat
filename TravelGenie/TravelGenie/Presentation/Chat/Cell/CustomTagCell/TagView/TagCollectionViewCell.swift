@@ -39,8 +39,8 @@ class TagCollectionViewCell: UICollectionViewCell {
         setButtonAction()
         tagButton.layer.cornerRadius = 24
         tagButton.layer.borderWidth = 1.0
-        self.tagButton.backgroundColor = .white
-        self.tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
+        tagButton.backgroundColor = .white
+        tagButton.layer.borderColor = UIColor.blueGrayLine.cgColor
     }
     
     private func configureTagButtonText(tag: MockTag) {
