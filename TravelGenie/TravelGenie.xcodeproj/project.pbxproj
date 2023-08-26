@@ -350,12 +350,32 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		5763DEFB2A99AAE70028B19F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */,
+				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
+				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		576EC3AC2A977FFA008C2D7C /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		576EC3AF2A97B1BF008C2D7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D23037752A8C61A80017950E /* Cell */,
+				D2E3AA312A8B83350049DDEF /* ChatInterface */,
+				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -537,12 +557,8 @@
 		D2E3AA242A8B61DA0049DDEF /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				D23037752A8C61A80017950E /* Cell */,
-				D2E3AA312A8B83350049DDEF /* ChatInterface */,
-				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
-				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
-				573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */,
-				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
+				5763DEFB2A99AAE70028B19F /* ViewModel */,
+				576EC3AF2A97B1BF008C2D7C /* View */,
 				573BCD252A8F46B900116D2D /* ChatCoordinator.swift */,
 			);
 			path = Chat;
