@@ -50,6 +50,7 @@
 		57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */; };
 		57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */; };
 		57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */; };
+		5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEA2A9885E40028B19F /* FeedbackButton.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3A82A9742DC008C2D7C /* SearchBarView.swift */; };
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
@@ -140,6 +141,7 @@
 		57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5763DEEA2A9885E40028B19F /* FeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackButton.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		576EC3A82A9742DC008C2D7C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
@@ -354,6 +356,22 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		5763DEF82A99AAB20028B19F /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEF92A99AABC0028B19F /* View */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		5763DEF92A99AABC0028B19F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEEA2A9885E40028B19F /* FeedbackButton.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		5763DEFB2A99AAE70028B19F /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,6 +448,7 @@
 		D20FA2862A6B97A70081B039 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5763DEF82A99AAB20028B19F /* PopUp */,
 				576EC3AC2A977FFA008C2D7C /* Common */,
 				573BCD542A925B9B00116D2D /* ChatList */,
 				D2E3AA242A8B61DA0049DDEF /* Chat */,
@@ -733,6 +752,7 @@
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
+				5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */,
 				573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */,
 				57462B692A95E90700949D5C /* MessageEntity+CoreDataProperties.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
