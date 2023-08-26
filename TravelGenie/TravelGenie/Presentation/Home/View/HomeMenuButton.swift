@@ -14,10 +14,10 @@ final class HomeMenuButton: UIButton {
     override init(frame: CGRect) {
         super.init(frame: frame)
         clipsToBounds = true
-        isHighlighted = false
         layer.cornerRadius = 12
         layer.masksToBounds = true
         backgroundColor = .grayBackground
+        adjustsImageWhenHighlighted = false
         titleEdgeInsets = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
         contentEdgeInsets = UIEdgeInsets(top: 16, left: 20, bottom: 16, right: 20 + 16)
     }
