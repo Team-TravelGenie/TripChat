@@ -16,6 +16,7 @@ extension TagEntity {
         return NSFetchRequest<TagEntity>(entityName: "TagEntity")
     }
 
+    @NSManaged public var category: String
     @NSManaged public var value: String
     @NSManaged public var isSelected: Bool
     @NSManaged public var chat: NSOrderedSet?
