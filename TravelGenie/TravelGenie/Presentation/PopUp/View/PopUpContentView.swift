@@ -85,6 +85,18 @@ final class PopUpContentView: UIView {
         configureBottomButtonStackView()
     }
     
+    private func configureMainText(with text: NSAttributedString) {
+        mainTextView.attributedText = text
+    }
+    
+    private func configureLeftButtonTitle(with title: NSAttributedString) {
+        leftButton.setAttributedTitle(title, for: .normal)
+    }
+    
+    private func configureRightButtonTitle(with title: NSAttributedString) {
+        rightButton.setAttributedTitle(title, for: .normal)
+    }
+    
     private func configureMainStackView() {
         mainStackView.axis = .vertical
         mainStackView.spacing = 24
