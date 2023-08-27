@@ -55,6 +55,7 @@
 		5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF02A98FA950028B19F /* PopUpViewController.swift */; };
 		5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */; };
 		5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF42A991D320028B19F /* PopUpViewModel.swift */; };
+		5763DEF72A991D560028B19F /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF62A991D560028B19F /* UserFeedback.swift */; };
 		5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */; };
 		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
@@ -152,6 +153,7 @@
 		5763DEF02A98FA950028B19F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
 		5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showPopUp.swift"; sourceTree = "<group>"; };
 		5763DEF42A991D320028B19F /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
+		5763DEF62A991D560028B19F /* UserFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedback.swift; sourceTree = "<group>"; };
 		5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
 		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
@@ -562,6 +564,7 @@
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
 				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
+				5763DEF62A991D560028B19F /* UserFeedback.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -820,6 +823,7 @@
 				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
+				5763DEF72A991D560028B19F /* UserFeedback.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
