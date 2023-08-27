@@ -40,6 +40,30 @@ final class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSubviews()
+        configureHierarchy()
+        configureContentViewLayout(contentView)
+    }
+    
+    // MARK: Private
+    
+    private func configureSubviews() {
+        view.backgroundColor = .black.withAlphaComponent(0.2)
+    }
+    
+    private func configureHierarchy() {
+        view.addSubview(contentView)
+    }
+    
+    private func configureContentViewLayout(_ contentView: PopUpContentView) {
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            contentView.widthAnchor.constraint(equalToConstant: 351),
+            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+}
 
 extension PopUpViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
