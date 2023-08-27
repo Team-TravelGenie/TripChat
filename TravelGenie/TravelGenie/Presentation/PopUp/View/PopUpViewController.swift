@@ -31,6 +31,7 @@ final class PopUpViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
         contentView?.delegate = self
+        contentView?.textViewDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -39,5 +40,18 @@ final class PopUpViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+extension PopUpViewController: UITextViewDelegate {
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        textView.attributedText = nil
+        textView.textColor = .black
+    }
+    
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if textView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty {
+            textView.attributedText = FeedbackTextView.placeholderText
+        }
+    }
+}
     }
 }

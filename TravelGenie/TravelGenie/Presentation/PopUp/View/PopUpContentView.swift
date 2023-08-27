@@ -18,6 +18,11 @@ final class PopUpContentView: UIView {
     }
     
     weak var delegate: PopUpContentViewDelegate?
+    weak var textViewDelegate: UITextViewDelegate? {
+        didSet {
+            feedbackTextView.delegate = textViewDelegate
+        }
+    }
     
     let type: PopUpType?
     
