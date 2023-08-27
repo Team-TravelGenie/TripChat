@@ -15,9 +15,8 @@ final class PopUpViewController: UIViewController {
     
     weak var delegate: PopUpViewControllerDelegate?
     
-    private let viewModel: PopUpViewModel!
-    
-    private var contentView: PopUpContentView!
+    private let viewModel: PopUpViewModel
+    private var contentView: PopUpContentView
     
     // MARK: Lifecycle
     
@@ -31,8 +30,8 @@ final class PopUpViewController: UIViewController {
         contentView = PopUpContentView(type: type)
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
-        contentView?.delegate = self
-        contentView?.textViewDelegate = self
+        contentView.delegate = self
+        contentView.textViewDelegate = self
     }
     
     required init?(coder: NSCoder) {
