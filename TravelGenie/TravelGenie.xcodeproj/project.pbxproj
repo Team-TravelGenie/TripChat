@@ -53,6 +53,7 @@
 		5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEA2A9885E40028B19F /* FeedbackButton.swift */; };
 		5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */; };
 		5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF02A98FA950028B19F /* PopUpViewController.swift */; };
+		5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */; };
 		5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF42A991D320028B19F /* PopUpViewModel.swift */; };
 		5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */; };
 		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
@@ -149,6 +150,7 @@
 		5763DEEA2A9885E40028B19F /* FeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackButton.swift; sourceTree = "<group>"; };
 		5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTextView.swift; sourceTree = "<group>"; };
 		5763DEF02A98FA950028B19F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showPopUp.swift"; sourceTree = "<group>"; };
 		5763DEF42A991D320028B19F /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
 		5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
 		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
@@ -579,6 +581,7 @@
 				573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */,
 				573BCD632A934D4500116D2D /* DateFormatter+shared.swift */,
 				573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */,
+				5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -803,6 +806,7 @@
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
+				5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
