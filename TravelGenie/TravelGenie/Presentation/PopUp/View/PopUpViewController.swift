@@ -8,6 +8,7 @@
 import UIKit
 
 protocol PopUpViewControllerDelegate: AnyObject {
+    func pop()
 }
 
 final class PopUpViewController: UIViewController {
@@ -90,5 +91,10 @@ extension PopUpViewController: PopUpContentViewDelegate {
         feedbackContentView.textViewDelegate = self
         view.addSubview(feedbackContentView)
         configureContentViewLayout(feedbackContentView)
+    }
+    
+    func dismissAndPop() {
+        dismiss(animated: false)
+        delegate?.pop()
     }
 }

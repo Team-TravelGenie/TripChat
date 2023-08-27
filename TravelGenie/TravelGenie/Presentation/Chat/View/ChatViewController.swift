@@ -149,7 +149,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
 }
 
 extension ChatViewController: PopUpViewControllerDelegate {
-    func dismiss(viewController: UIViewController) {
-        dismiss(animated: false)
+    func pop() {
+        viewModel.pop()
     }
 }

@@ -33,6 +33,7 @@ final class ChatListViewController: UIViewController {
         configureSubviews()
         configureHierarchy()
         configureLayout()
+        navigationController?.delegate = self
     }
     
     // MARK: Private
@@ -187,5 +188,21 @@ extension ChatListViewController: UITextFieldDelegate {
         textField.resignFirstResponder()
         viewModel.fireSearch(with: textField.text)
         return true
+    }
+}
+
+extension ChatListViewController: UINavigationControllerDelegate {
+    func navigationController(
+        _ navigationController: UINavigationController,
+        animationControllerFor operation: UINavigationController.Operation,
+        from fromVC: UIViewController,
+        to toVC: UIViewController)
+    -> UIViewControllerAnimatedTransitioning?
+    {
+        if operation == .pop {
+            self.viewModel.coordinator?.finish()
+        }
+        
+        return nil
     }
 }

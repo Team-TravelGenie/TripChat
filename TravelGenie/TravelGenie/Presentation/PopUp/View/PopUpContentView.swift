@@ -10,6 +10,7 @@ import UIKit
 protocol PopUpContentViewDelegate: AnyObject {
     func dismissPopUp()
     func showFeedbackContentView()
+    func dismissAndPop()
 }
 
 final class PopUpContentView: UIView {
@@ -101,6 +102,8 @@ final class PopUpContentView: UIView {
             configureMainText(with: popUpModel.mainText)
             configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
             configureRightButtonTitle(with: popUpModel.rightButtonTitle)
+            closeButton.addAction(dismissAndPopAction(), for: .touchUpInside)
+            rightButton.addAction(dismissAndPopAction(), for: .touchUpInside)
         }
     }
     
@@ -267,6 +270,12 @@ final class PopUpContentView: UIView {
     private func showFeedbackContentView() -> UIAction {
         return UIAction { [weak self] _ in
             self?.delegate?.showFeedbackContentView()
+        }
+    }
+    
+    private func dismissAndPopAction() -> UIAction {
+        return UIAction { [weak self] _ in
+            self?.delegate?.dismissAndPop()
         }
     }
 }

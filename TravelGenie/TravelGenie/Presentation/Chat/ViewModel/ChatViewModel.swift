@@ -24,7 +24,11 @@ final class ChatViewModel {
         let popUpViewModel = createPopUpViewModel()
         let popUpModel = createPopUpModel()
         
-        return (viewModel: popUpViewModel, type: .feedback(popUpModel))
+        return (viewModel: popUpViewModel, type: .normal(popUpModel))
+    }
+    
+    func pop() {
+        coordinator?.finish()
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
