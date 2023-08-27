@@ -66,6 +66,7 @@ final class PopUpContentView: UIView {
         backgroundColor = .white
         layer.cornerRadius = 20
         layer.masksToBounds = true
+        configureContents(with: type)
         configureSubviews()
         configureHierarchy()
         configureLayout()
@@ -83,6 +84,19 @@ final class PopUpContentView: UIView {
         configureMessageStackView()
         configureFeedbackButtonStackView()
         configureBottomButtonStackView()
+    }
+    
+    private func configureContents(with type: PopUpType) {
+        switch type {
+        case .normal(let popUpModel):
+            configureMainText(with: popUpModel.mainText)
+            configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
+            configureRightButtonTitle(with: popUpModel.rightButtonTitle)
+        case .feedback(let popUpModel):
+            configureMainText(with: popUpModel.mainText)
+            configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
+            configureRightButtonTitle(with: popUpModel.rightButtonTitle)
+        }
     }
     
     private func configureMainText(with text: NSAttributedString) {
