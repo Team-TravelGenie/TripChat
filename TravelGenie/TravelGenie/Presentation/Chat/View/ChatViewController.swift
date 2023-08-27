@@ -75,9 +75,10 @@ final class ChatViewController: ChatInterfaceViewController {
     
     private func createBackBarButtonAction() -> UIAction {
         let backBarButtonImage = UIImage(systemName: "chevron.left")
-        let popUpModels = viewModel.backButtonTapped()
         
-        return UIAction(image: backBarButtonImage) { _ in
+        return UIAction(image: backBarButtonImage) { [weak self] _ in
+            guard let self else { return }
+            let popUpModels = self.viewModel.backButtonTapped()
             self.showPopUp(
                 viewModel: popUpModels.viewModel,
                 type: popUpModels.type,
@@ -93,8 +94,9 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true) {
-                self.getImage(results: results) { image in
-                    guard let image else { return }
+                self.getImage(results: results) { [weak self] image in
+                    guard let self,
+                          let image else { return }
                     let message = self.viewModel.makePhotoMessage(image)
                     
                     self.messageStorage.insertMessage(message)

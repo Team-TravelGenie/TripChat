@@ -79,8 +79,8 @@ class ChatInterfaceViewController: MessagesViewController {
     }
     
     private func bind() {
-        messageStorage.didChangedMessageList = {
-            self.messagesCollectionView.reloadData()
+        messageStorage.didChangedMessageList = { [weak self] in
+            self?.messagesCollectionView.reloadData()
         }
     }
     
