@@ -62,6 +62,10 @@ final class PopUpContentView: UIView {
         .borderWidth(1)
         .cornerRadius(8)
     
+    private var isFeedbackSelected: Bool {
+        return thumbsUpButton.isSelected || thumbsDownButton.isSelected
+    }
+    
     // MARK: Lifecycle
     
     init(type: PopUpType) {
@@ -167,6 +171,7 @@ final class PopUpContentView: UIView {
             if self.thumbsUpButton.isSelected {
                 self.thumbsDownButton.isSelected = false
             }
+            self.configureSubmitButton()
         }
         thumbsUpButton.addAction(action, for: .touchUpInside)
     }
@@ -178,6 +183,7 @@ final class PopUpContentView: UIView {
             if self.thumbsDownButton.isSelected {
                 self.thumbsUpButton.isSelected = false
             }
+            self.configureSubmitButton()
         }
         thumbsDownButton.addAction(action, for: .touchUpInside)
     }
@@ -186,6 +192,13 @@ final class PopUpContentView: UIView {
         bottomButtonStackView.spacing = 8
         bottomButtonStackView.axis = .horizontal
         bottomButtonStackView.distribution = .fillEqually
+        configureSubmitButton()
+    }
+    
+    private func configureSubmitButton() {
+        guard case .feedback = type else { return }
+        leftButton.isEnabled = isFeedbackSelected
+        leftButton.backgroundColor = isFeedbackSelected ? .primary : .grayBackground
     }
     
     private func configureHierarchy() {
