@@ -8,6 +8,7 @@
 import UIKit
 
 protocol PopUpContentViewDelegate: AnyObject {
+    func dismissPopUp()
 }
 
 final class PopUpContentView: UIView {
@@ -92,6 +93,7 @@ final class PopUpContentView: UIView {
             configureMainText(with: popUpModel.mainText)
             configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
             configureRightButtonTitle(with: popUpModel.rightButtonTitle)
+            closeButton.addAction(dismissAction(), for: .touchUpInside)
         case .feedback(let popUpModel):
             configureMainText(with: popUpModel.mainText)
             configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
@@ -249,5 +251,13 @@ final class PopUpContentView: UIView {
         NSLayoutConstraint.activate([
             rightButton.heightAnchor.constraint(equalToConstant: 47),
         ])
+    }
+    
+    // MARK: Button Actions
+    
+    private func dismissAction() -> UIAction {
+        return UIAction { [weak self] _ in
+            self?.delegate?.dismissPopUp()
+        }
     }
 }

@@ -77,5 +77,9 @@ extension PopUpViewController: UITextViewDelegate {
         }
     }
 }
+
+extension PopUpViewController: PopUpContentViewDelegate {
+    func dismissPopUp() {
+        dismiss(animated: false)
     }
 }
