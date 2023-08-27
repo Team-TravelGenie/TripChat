@@ -26,8 +26,8 @@ final class HomeCoordinator: Coordinator {
         let homeViewModel = HomeViewModel()
         let homeViewController = HomeViewController(viewModel: homeViewModel)
         let backBarButtonItem = UIBarButtonItem(title: String(), style: .plain, target: self, action: nil)
-        backBarButtonItem.tintColor = .black
         homeViewModel.coordinator = self
+        backBarButtonItem.tintColor = .black
         homeViewController.navigationItem.backBarButtonItem = backBarButtonItem
         navigationController?.pushViewController(homeViewController, animated: false)
     }
