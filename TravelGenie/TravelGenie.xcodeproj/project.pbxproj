@@ -52,6 +52,10 @@
 		57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */; };
 		5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEA2A9885E40028B19F /* FeedbackButton.swift */; };
 		5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */; };
+		5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF02A98FA950028B19F /* PopUpViewController.swift */; };
+		5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF42A991D320028B19F /* PopUpViewModel.swift */; };
+		5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */; };
+		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3A82A9742DC008C2D7C /* SearchBarView.swift */; };
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
@@ -144,6 +148,10 @@
 		57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		5763DEEA2A9885E40028B19F /* FeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackButton.swift; sourceTree = "<group>"; };
 		5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTextView.swift; sourceTree = "<group>"; };
+		5763DEF02A98FA950028B19F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		5763DEF42A991D320028B19F /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
+		5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
+		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		576EC3A82A9742DC008C2D7C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
@@ -361,7 +369,9 @@
 		5763DEF82A99AAB20028B19F /* PopUp */ = {
 			isa = PBXGroup;
 			children = (
+				5763DEFA2A99AAC00028B19F /* ViewModel */,
 				5763DEF92A99AABC0028B19F /* View */,
+				5763DEFE2A99B9300028B19F /* PopUpModel.swift */,
 			);
 			path = PopUp;
 			sourceTree = "<group>";
@@ -371,8 +381,18 @@
 			children = (
 				5763DEEA2A9885E40028B19F /* FeedbackButton.swift */,
 				5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */,
+				5763DEF02A98FA950028B19F /* PopUpViewController.swift */,
+				5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		5763DEFA2A99AAC00028B19F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEF42A991D320028B19F /* PopUpViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		5763DEFB2A99AAE70028B19F /* ViewModel */ = {
@@ -740,6 +760,7 @@
 				57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
+				5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */,
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -751,8 +772,10 @@
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
+				5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
+				5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */,
@@ -762,6 +785,7 @@
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
 				D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
