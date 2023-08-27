@@ -82,4 +82,13 @@ extension PopUpViewController: PopUpContentViewDelegate {
     func dismissPopUp() {
         dismiss(animated: false)
     }
+    
+    func showFeedbackContentView() {
+        let popUpModel = viewModel.createFeedbackModel()
+        let feedbackContentView = PopUpContentView(type: .feedback(popUpModel))
+        feedbackContentView.delegate = self
+        feedbackContentView.textViewDelegate = self
+        view.addSubview(feedbackContentView)
+        configureContentViewLayout(feedbackContentView)
+    }
 }
