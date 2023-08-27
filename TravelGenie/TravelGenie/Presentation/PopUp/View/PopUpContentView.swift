@@ -132,6 +132,30 @@ final class PopUpContentView: UIView {
         feedbackButtonStackView.spacing = 12
         feedbackButtonStackView.axis = .horizontal
         feedbackButtonStackView.distribution = .equalCentering
+        configureThumbsUpButton()
+        configureThumbsDownButton()
+    }
+    
+    private func configureThumbsUpButton() {
+        let action = UIAction { [weak self] _ in
+            guard let self else { return }
+            self.thumbsUpButton.isSelected.toggle()
+            if self.thumbsUpButton.isSelected {
+                self.thumbsDownButton.isSelected = false
+            }
+        }
+        thumbsUpButton.addAction(action, for: .touchUpInside)
+    }
+    
+    private func configureThumbsDownButton() {
+        let action = UIAction { [weak self] _ in
+            guard let self else { return }
+            self.thumbsDownButton.isSelected.toggle()
+            if self.thumbsDownButton.isSelected {
+                self.thumbsUpButton.isSelected = false
+            }
+        }
+        thumbsDownButton.addAction(action, for: .touchUpInside)
     }
         
     private func configureBottomButtonStackView() {
