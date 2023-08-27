@@ -8,14 +8,14 @@
 import UIKit
 
 final class HomeCoordinator: Coordinator {
-
+    
+    weak var finishDelegate: CoordinationFinishDelegate?
+    weak var navigationController: UINavigationController?
     var childCoordinators: [Coordinator] = []
-    var finishDelegate: CoordinationFinishDelegate?
-    var navigationController: UINavigationController
     
     // MARK: Lifecycle
     
-    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController) {
+    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController?) {
         self.finishDelegate = finishDelegate
         self.navigationController = navigationController
     }
@@ -29,7 +29,7 @@ final class HomeCoordinator: Coordinator {
         backBarButtonItem.tintColor = .black
         homeViewModel.coordinator = self
         homeViewController.navigationItem.backBarButtonItem = backBarButtonItem
-        navigationController.pushViewController(homeViewController, animated: false)
+        navigationController?.pushViewController(homeViewController, animated: false)
     }
     
     func newChatFlow() {
