@@ -8,4 +8,7 @@
 import Foundation
 
 struct PopUpModel {
+    let mainText: NSAttributedString
+    let leftButtonTitle: NSAttributedString
+    let rightButtonTitle: NSAttributedString
 }
