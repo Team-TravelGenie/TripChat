@@ -33,4 +33,9 @@ final class PopUpViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
+    
+    // TODO: - 사용자 피드백 처리(RemoteStorage에 전송)
+    func sendUserFeedback(_ feedback: UserFeedback) {
+        
+    }
 }

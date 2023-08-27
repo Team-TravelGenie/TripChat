@@ -11,6 +11,7 @@ protocol PopUpContentViewDelegate: AnyObject {
     func dismissPopUp()
     func showFeedbackContentView()
     func dismissAndPop()
+    func sendFeedback(_ feedback: UserFeedback)
 }
 
 final class PopUpContentView: UIView {
@@ -103,6 +104,7 @@ final class PopUpContentView: UIView {
             configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
             configureRightButtonTitle(with: popUpModel.rightButtonTitle)
             closeButton.addAction(dismissAndPopAction(), for: .touchUpInside)
+            leftButton.addAction(submitFeedbackAction(), for: .touchUpInside)
             rightButton.addAction(dismissAndPopAction(), for: .touchUpInside)
         }
     }
@@ -276,6 +278,22 @@ final class PopUpContentView: UIView {
     private func dismissAndPopAction() -> UIAction {
         return UIAction { [weak self] _ in
             self?.delegate?.dismissAndPop()
+        }
+    }
+    private func submitFeedbackAction() -> UIAction {
+        return UIAction { [weak self] _ in
+            guard let self,
+                  (self.thumbsUpButton.isSelected || self.thumbsDownButton.isSelected),
+                  (!self.feedbackTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
+                   self.feedbackTextView.attributedText != FeedbackTextView.placeholderText)
+            else { return }
+            
+            let userFeedback = UserFeedback(
+                isPositive: self.thumbsUpButton.isSelected,
+                content: self.feedbackTextView.text)
+            
+            self.delegate?.sendFeedback(userFeedback)
+            self.delegate?.dismissAndPop()
         }
     }
 }

@@ -97,4 +97,8 @@ extension PopUpViewController: PopUpContentViewDelegate {
         dismiss(animated: false)
         delegate?.pop()
     }
+    
+    func sendFeedback(_ feedback: UserFeedback) {
+        viewModel.sendUserFeedback(feedback)
+    }
 }
