@@ -9,3 +9,11 @@ final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
 }
+
+// MARK: MessageStorageDelegate
+
+extension ChatInterfaceViewModel: MessageStorageDelegate {
+    func insert(message: Message) {
+        messageStorage.insertMessage(message)
+    }
+}

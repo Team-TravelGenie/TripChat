@@ -15,7 +15,8 @@ class ChatInterfaceViewController: MessagesViewController {
     }
 
     let defaultSender: Sender = Sender(name: .user)
-    var messageStorage: MessageStorage = MessageStorage()
+    let chatInterfaceViewModel = ChatInterfaceViewModel()
+
     private lazy var tagMessageCellSizeCalculator
     = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var recommendationCellSizeCalculator
@@ -44,7 +45,6 @@ class ChatInterfaceViewController: MessagesViewController {
                 return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
             case .uploadButtonMessage:
                 let cell = messagesCollectionView.dequeueReusableCell(UploadButtonCell.self, for: indexPath)
-                cell.delegate = self
                 return cell
             }
         }
@@ -78,7 +78,7 @@ class ChatInterfaceViewController: MessagesViewController {
     }
     
     private func bind() {
-        messageStorage.didChangedMessageList = { [weak self] in
+        chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
             self?.messagesCollectionView.reloadData()
         }
     }
@@ -141,11 +141,11 @@ extension ChatInterfaceViewController: MessagesDataSource {
     }
     
     func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
-        return messageStorage.sectionOfMessageList(indexPath.section)
+        return chatInterfaceViewModel.messageStorage.sectionOfMessageList(indexPath.section)
     }
     
     func numberOfSections(in messagesCollectionView: MessagesCollectionView) -> Int {
-        return messageStorage.count
+        return chatInterfaceViewModel.messageStorage.count
     }
 }
 

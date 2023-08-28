@@ -7,17 +7,29 @@
 
 import UIKit
 
+protocol MessageStorageDelegate: AnyObject {
+    func insert(message: Message)
+}
+
 final class ChatViewModel {
     
     weak var coordinator: ChatCoordinator?
+    weak var delegate: MessageStorageDelegate?
     
     private let user: Sender = Sender(name: .user)
     
-    func makePhotoMessage(_ image: UIImage) -> Message {
-        return Message(
+    // MARK: Internal
+    
+    func insertMessage(_ message: Message) {
+        delegate?.insert(message: message)
+    }
+    
+    func makePhotoMessage(_ image: UIImage) {
+        let message = Message(
             image: image,
             sender: self.user,
             sentDate: Date())
+        delegate?.insert(message: message)
     }
     
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {
