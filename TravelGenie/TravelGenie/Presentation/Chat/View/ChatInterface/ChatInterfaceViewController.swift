@@ -136,14 +136,6 @@ class ChatInterfaceViewController: MessagesViewController {
     private func configureMessagesCollectionViewBackgroundColor() {
         messagesCollectionView.backgroundColor = .blueGrayBackground
     }
-    
-    func didTapImageUploadButton() {
-        // [이미지업로드] 버튼 동작을 정의하기위한 메서드, 사용하려는 뷰컨트롤러에서 해당 메서드를 오버라이드하여 사용하세요.
-    }
-    
-    func submitSelectedTags(_ selectedTags: [Tag]) {
-        print(selectedTags)
-    }
 }
 
 // MARK: MessagesDataSource
