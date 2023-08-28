@@ -232,5 +232,3 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         return nil
     }
 }
-
-extension ChatInterfaceViewController: UploadButtonCellDelegate { }

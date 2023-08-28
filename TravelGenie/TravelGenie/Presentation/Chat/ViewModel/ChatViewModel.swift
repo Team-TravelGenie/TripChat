@@ -15,12 +15,18 @@ final class ChatViewModel {
     
     weak var coordinator: ChatCoordinator?
     weak var delegate: MessageStorageDelegate?
+    var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
     
     // MARK: Lifecycle
     
     init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(submitSelectedTags(notification:)),
@@ -82,6 +88,9 @@ final class ChatViewModel {
     
     // MARK: objc methods
     
+    @objc private func didTapImageUploadButton(notification: Notification) {
+        didTapImageUploadButton?()
+    }
 
     @objc private func submitSelectedTags(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }

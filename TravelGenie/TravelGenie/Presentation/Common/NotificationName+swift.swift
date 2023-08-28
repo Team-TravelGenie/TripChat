@@ -8,6 +8,7 @@
 import Foundation
 
 extension Notification.Name {
+    static let imageUploadButtonTapped = Notification.Name("imageUploadButtonTapped")
     static let tagSubmitButtonTapped = Notification.Name("tagSubmitButtonTapped")
 }
 

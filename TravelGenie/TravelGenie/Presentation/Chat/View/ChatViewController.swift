@@ -19,6 +19,7 @@ final class ChatViewController: ChatInterfaceViewController {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         viewModel.delegate = chatInterfaceViewModel
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -48,8 +49,10 @@ final class ChatViewController: ChatInterfaceViewController {
         chatViewModel.insertMessage(secondMessage)
     }
     
-    override func didTapImageUploadButton() {
-        presentPHPicekrViewController()
+    func bind() {
+        chatViewModel.didTapImageUploadButton = { [weak self] in
+            self?.presentPHPickerViewController()
+        }
     }
     
     // MARK: Private
