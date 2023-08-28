@@ -9,11 +9,11 @@ import UIKit
 
 final class ChatCoordinator: Coordinator {
     
+    weak var finishDelegate: CoordinationFinishDelegate?
+    weak var navigationController: UINavigationController?
     var childCoordinators: [Coordinator] = []
-    var finishDelegate: CoordinationFinishDelegate?
-    var navigationController: UINavigationController
     
-    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController) {
+    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController?) {
         self.finishDelegate = finishDelegate
         self.navigationController = navigationController
     }
@@ -22,6 +22,6 @@ final class ChatCoordinator: Coordinator {
         let chatViewModel = ChatViewModel()
         let chatViewController = ChatViewController(viewModel: chatViewModel)
         chatViewModel.coordinator = self
-        navigationController.pushViewController(chatViewController, animated: false)
+        navigationController?.pushViewController(chatViewController, animated: false)
     }
 }

@@ -12,7 +12,7 @@ final class AppCoordinator: Coordinator {
     var window: UIWindow?
     var childCoordinators : [Coordinator] = []
     var finishDelegate: CoordinationFinishDelegate? = nil
-    var navigationController: UINavigationController
+    var navigationController: UINavigationController?
     
     // MARK: Lifecycle
     
@@ -31,7 +31,7 @@ final class AppCoordinator: Coordinator {
     
     // MARK: Private
     
-    private func homeFlow(navigationController: UINavigationController) {
+    private func homeFlow(navigationController: UINavigationController?) {
         let homeCoordinator = HomeCoordinator(finishDelegate: self, navigationController: navigationController)
         childCoordinators.append(homeCoordinator)
         homeCoordinator.start()

@@ -50,9 +50,19 @@
 		57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */; };
 		57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */; };
 		57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */; };
+		5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEA2A9885E40028B19F /* FeedbackButton.swift */; };
+		5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */; };
+		5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF02A98FA950028B19F /* PopUpViewController.swift */; };
+		5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */; };
+		5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF42A991D320028B19F /* PopUpViewModel.swift */; };
+		5763DEF72A991D560028B19F /* UserFeedback.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF62A991D560028B19F /* UserFeedback.swift */; };
+		5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */; };
+		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3A82A9742DC008C2D7C /* SearchBarView.swift */; };
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
+		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
+		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
@@ -138,9 +148,19 @@
 		57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		5763DEEA2A9885E40028B19F /* FeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackButton.swift; sourceTree = "<group>"; };
+		5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTextView.swift; sourceTree = "<group>"; };
+		5763DEF02A98FA950028B19F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
+		5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+showPopUp.swift"; sourceTree = "<group>"; };
+		5763DEF42A991D320028B19F /* PopUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewModel.swift; sourceTree = "<group>"; };
+		5763DEF62A991D560028B19F /* UserFeedback.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedback.swift; sourceTree = "<group>"; };
+		5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
+		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		576EC3A82A9742DC008C2D7C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
+		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
+		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -350,12 +370,63 @@
 			path = UseCase;
 			sourceTree = "<group>";
 		};
+		5763DEF82A99AAB20028B19F /* PopUp */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEFA2A99AAC00028B19F /* ViewModel */,
+				5763DEF92A99AABC0028B19F /* View */,
+				5763DEFE2A99B9300028B19F /* PopUpModel.swift */,
+			);
+			path = PopUp;
+			sourceTree = "<group>";
+		};
+		5763DEF92A99AABC0028B19F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEEA2A9885E40028B19F /* FeedbackButton.swift */,
+				5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */,
+				5763DEF02A98FA950028B19F /* PopUpViewController.swift */,
+				5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		5763DEFA2A99AAC00028B19F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				5763DEF42A991D320028B19F /* PopUpViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		5763DEFB2A99AAE70028B19F /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */,
+				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
+				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		576EC3AC2A977FFA008C2D7C /* Common */ = {
 			isa = PBXGroup;
 			children = (
 				576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */,
+				576EC3B22A97B39F008C2D7C /* CircleIconView.swift */,
+				576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */,
 			);
 			path = Common;
+			sourceTree = "<group>";
+		};
+		576EC3AF2A97B1BF008C2D7C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D23037752A8C61A80017950E /* Cell */,
+				D2E3AA312A8B83350049DDEF /* ChatInterface */,
+				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+			);
+			path = View;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -404,6 +475,7 @@
 		D20FA2862A6B97A70081B039 /* Presentation */ = {
 			isa = PBXGroup;
 			children = (
+				5763DEF82A99AAB20028B19F /* PopUp */,
 				576EC3AC2A977FFA008C2D7C /* Common */,
 				573BCD542A925B9B00116D2D /* ChatList */,
 				D2E3AA242A8B61DA0049DDEF /* Chat */,
@@ -492,6 +564,7 @@
 				D2E3AA362A8B85AB0049DDEF /* Sender.swift */,
 				D2E3AA382A8B87630049DDEF /* Message.swift */,
 				D2E81B892A9116F6006A5236 /* ContentItem.swift */,
+				5763DEF62A991D560028B19F /* UserFeedback.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -511,6 +584,7 @@
 				573BCD0A2A8BBBC000116D2D /* NSMutableAttributedString+text.swift */,
 				573BCD632A934D4500116D2D /* DateFormatter+shared.swift */,
 				573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */,
+				5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -537,12 +611,8 @@
 		D2E3AA242A8B61DA0049DDEF /* Chat */ = {
 			isa = PBXGroup;
 			children = (
-				D23037752A8C61A80017950E /* Cell */,
-				D2E3AA312A8B83350049DDEF /* ChatInterface */,
-				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
-				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
-				573BCD472A92146F00116D2D /* RecommendationCellViewModel.swift */,
-				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
+				5763DEFB2A99AAE70028B19F /* ViewModel */,
+				576EC3AF2A97B1BF008C2D7C /* View */,
 				573BCD252A8F46B900116D2D /* ChatCoordinator.swift */,
 			);
 			path = Chat;
@@ -696,26 +766,32 @@
 				57462B2C2A94EB5B00949D5C /* CoreDataStorage.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
+				5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */,
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
+				576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
+				5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
+				5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
+				5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */,
 				573BCD232A8F43B200116D2D /* HomeCoordinator.swift in Sources */,
 				57462B692A95E90700949D5C /* MessageEntity+CoreDataProperties.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
 				D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
@@ -733,6 +809,7 @@
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
+				5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
@@ -746,12 +823,14 @@
 				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
+				5763DEF72A991D560028B19F /* UserFeedback.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
+				576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */,
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
@@ -761,6 +840,7 @@
 				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
+				5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */,
 				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
 				576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */,
 				57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */,

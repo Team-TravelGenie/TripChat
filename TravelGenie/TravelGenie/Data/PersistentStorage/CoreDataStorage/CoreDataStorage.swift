@@ -129,6 +129,7 @@ final class CoreDataStorage: ChatStorage {
         let tagEntity = TagEntity(context: context)
         tagEntity.setValue(tag.value, forKey: "value")
         tagEntity.setValue(tag.isSelected, forKey: "isSelected")
+        tagEntity.setValue(tag.category.rawValue, forKey: "category")
         
         return tagEntity
     }

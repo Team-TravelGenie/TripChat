@@ -13,6 +13,17 @@ final class ChatViewController: ChatInterfaceViewController {
     
     private let viewModel: ChatViewModel
     
+    // MARK: Lifecycle
+    
+    init(viewModel: ChatViewModel) {
+        self.viewModel = viewModel
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
@@ -36,21 +47,43 @@ final class ChatViewController: ChatInterfaceViewController {
         messageStorage.insertMessage(secondMessage)
     }
     
-    init(viewModel: ChatViewModel) {
-        self.viewModel = viewModel
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
-    
     override func didTapImageUploadButton() {
         presentPHPicekrViewController()
     }
     
+    // MARK: Private
+    
     private func setupNavigation() {
-        title = "채팅"
+        setUpNavigationBarTitle()
+        setUpNavigationBarBackButton()
+    }
+    
+    private func setUpNavigationBarTitle() {
+        let titleLabel = UILabel()
+        let titleText = NSMutableAttributedString()
+            .text("채팅", font: .headline, color: .black)
+        titleLabel.attributedText = titleText
+        navigationItem.titleView = titleLabel
+    }
+    
+    private func setUpNavigationBarBackButton() {
+        let backBarButton = UIBarButtonItem()
+        backBarButton.primaryAction = createBackBarButtonAction()
+        backBarButton.tintColor = .black
+        navigationItem.leftBarButtonItem = backBarButton
+    }
+    
+    private func createBackBarButtonAction() -> UIAction {
+        let backBarButtonImage = UIImage(systemName: "chevron.left")
+        
+        return UIAction(image: backBarButtonImage) { [weak self] _ in
+            guard let self else { return }
+            let popUpModels = self.viewModel.backButtonTapped()
+            self.showPopUp(
+                viewModel: popUpModels.viewModel,
+                type: popUpModels.type,
+                delegate: self)
+        }
     }
 }
 
@@ -61,8 +94,9 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true) {
-                self.getImage(results: results) { image in
-                    guard let image else { return }
+                self.getImage(results: results) { [weak self] image in
+                    guard let self,
+                          let image else { return }
                     let message = self.viewModel.makePhotoMessage(image)
                     
                     self.messageStorage.insertMessage(message)
@@ -111,5 +145,11 @@ extension ChatViewController: PHPickerViewControllerDelegate {
                 }
             })
         }
+    }
+}
+
+extension ChatViewController: PopUpViewControllerDelegate {
+    func pop() {
+        viewModel.pop()
     }
 }

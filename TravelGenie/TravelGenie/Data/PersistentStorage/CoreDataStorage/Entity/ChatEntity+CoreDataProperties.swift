@@ -107,6 +107,7 @@ extension ChatEntity {
         tags.array.forEach {
             if let tagEntity = $0 as? TagEntity {
                 let tag = Tag(
+                    category: Category.init(rawValue: tagEntity.category)!,
                     value: tagEntity.value,
                     isSelected: tagEntity.isSelected)
                 tagList.append(tag)

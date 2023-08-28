@@ -10,7 +10,6 @@ import UIKit
 final class HomeViewController: UIViewController {
     
     private let viewModel: HomeViewModel
-    
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let planeImageView = UIImageView()

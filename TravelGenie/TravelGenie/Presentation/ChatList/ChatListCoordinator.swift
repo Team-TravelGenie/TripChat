@@ -9,13 +9,13 @@ import UIKit
 
 final class ChatListCoordinator: Coordinator {
     
+    weak var finishDelegate: CoordinationFinishDelegate?
+    weak var navigationController: UINavigationController?
     var childCoordinators: [Coordinator] = []
-    var finishDelegate: CoordinationFinishDelegate?
-    var navigationController: UINavigationController
     
     // MARK: Lifecycle
     
-    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController) {
+    init(finishDelegate: CoordinationFinishDelegate, navigationController: UINavigationController?) {
         self.finishDelegate = finishDelegate
         self.navigationController = navigationController
     }
@@ -26,6 +26,6 @@ final class ChatListCoordinator: Coordinator {
                 chatRepository: DefaultChatRepository()))
         let chatListViewController = ChatListViewController(viewModel: viewModel)
         viewModel.coordinator = self
-        navigationController.pushViewController(chatListViewController, animated: false)
+        navigationController?.pushViewController(chatListViewController, animated: false)
     }
 }

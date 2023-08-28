@@ -54,7 +54,7 @@ struct Tag: Codable {
     }
 }
 
-enum Category: Codable {
+enum Category: String, Codable {
     case location
     case theme
 }
