@@ -31,6 +31,12 @@ final class ChatViewModel {
         coordinator?.finish()
     }
     
+    private func requestRecommendations(with tags: [Tag]) {
+        let keywords: [String] = tags.map { $0.value }
+        
+        // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
+    }
+    
     private func createPopUpViewModel() -> PopUpViewModel {
         return PopUpViewModel()
     }
@@ -50,5 +56,13 @@ final class ChatViewModel {
             mainText: mainText,
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
+    }
+}
+
+// MARK: TagSubmissionDelegate
+
+extension ChatViewModel: TagSubmissionDelegate {
+    func submitSelectedTags(_ selectedTags: [Tag]) {
+        self.requestRecommendations(with: selectedTags)
     }
 }

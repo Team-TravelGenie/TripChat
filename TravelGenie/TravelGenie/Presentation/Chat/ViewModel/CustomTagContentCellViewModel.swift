@@ -10,6 +10,8 @@ import Foundation
 final class CustomTagContentCellViewModel {
     private let tagStorage: TagStorage = TagStorage()
     
+    weak var delegate: TagSubmissionDelegate?
+    
     var locationTagListCount: Int {
         return tagStorage.locationTags.count
     }
@@ -47,6 +49,10 @@ final class CustomTagContentCellViewModel {
     
     func updateTagIsSelected(value: String, isSelected: Bool) {
         tagStorage.updateTagSelectionState(value: value, isSelected: isSelected)
+    }
+    
+    func submitSelectedTags(_ selectedTags: [Tag]) {
+        delegate?.submitSelectedTags(selectedTags)
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {

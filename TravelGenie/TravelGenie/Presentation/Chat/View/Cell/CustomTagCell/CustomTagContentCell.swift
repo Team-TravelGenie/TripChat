@@ -13,7 +13,6 @@ protocol TagSubmissionDelegate: AnyObject {
 }
 
 final class CustomTagContentCell: UICollectionViewCell {
-    weak var delegate: TagSubmissionDelegate?
     
     private let viewModel = CustomTagContentCellViewModel()
     
@@ -103,9 +102,8 @@ final class CustomTagContentCell: UICollectionViewCell {
                 return
             }
             
-            self.delegate?.submitSelectedTags(selectedList)
+            self.viewModel.submitSelectedTags(selectedList)
         }
-        
         submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }
     
