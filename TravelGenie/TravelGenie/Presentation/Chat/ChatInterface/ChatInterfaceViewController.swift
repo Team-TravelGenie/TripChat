@@ -66,6 +66,7 @@ class ChatInterfaceViewController: MessagesViewController {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
                 cell.delegate = self
+                cell.sizedelegate = self
                 cell.configure(with: message)
                 return cell
             } else if item is [RecommendationItem] {
@@ -240,3 +241,9 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
 }
 
 extension ChatInterfaceViewController: UploadButtonCellDelegate, TagSubmissionDelegate { }
+
+extension ChatInterfaceViewController: TagMessageSizeDelegate {
+    func didUpdateTagMessageHeight(_ height: CGFloat) {
+        print("안녕델리게이트")   
+    }
+}

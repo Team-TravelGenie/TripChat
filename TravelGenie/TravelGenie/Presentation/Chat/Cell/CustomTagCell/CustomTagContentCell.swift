@@ -12,8 +12,13 @@ protocol TagSubmissionDelegate: AnyObject {
     func submitSelectedTags(_ selectedTags: [Tag])
 }
 
+protocol TagMessageSizeDelegate: AnyObject {
+    func didUpdateTagMessageHeight(_ height: CGFloat)
+}
+
 final class CustomTagContentCell: UICollectionViewCell {
     weak var delegate: TagSubmissionDelegate?
+    weak var sizedelegate: TagMessageSizeDelegate? // 위 delegate 변수가 NotificationCenter로 변경되면서 제거될 예정이므로 이를 sizedelegate로 지어뒀지만, PR 이 후, delegate로 수정하려고합니다.
     
     private let viewModel = CustomTagContentCellViewModel()
     
@@ -261,6 +266,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
         if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
             messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
+            sizedelegate?.didUpdateTagMessageHeight(totalContentHeight)
         }
     }
     
