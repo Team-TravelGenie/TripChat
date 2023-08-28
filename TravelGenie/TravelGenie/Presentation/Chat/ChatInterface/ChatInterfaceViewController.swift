@@ -244,6 +244,12 @@ extension ChatInterfaceViewController: UploadButtonCellDelegate, TagSubmissionDe
 
 extension ChatInterfaceViewController: TagMessageSizeDelegate {
     func didUpdateTagMessageHeight(_ height: CGFloat) {
-        print("안녕델리게이트")   
+        let tagCellIndex: IndexSet = IndexSet(integer: 3)
+        
+        tagMessageCellSizeCalculator.updateMessageContainerHeight(height)
+        
+        UIView.performWithoutAnimation {
+            messagesCollectionView.reloadSections(tagCellIndex)
+        }
     }
 }
