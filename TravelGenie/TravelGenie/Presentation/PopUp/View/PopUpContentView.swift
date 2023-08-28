@@ -84,6 +84,13 @@ final class PopUpContentView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Override(s)
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        feedbackTextView.resignFirstResponder()
+        super.touchesBegan(touches, with: event)
+    }
+    
     // MARK: Private
     
     private func configureSubviews() {
@@ -172,6 +179,7 @@ final class PopUpContentView: UIView {
                 self.thumbsDownButton.isSelected = false
             }
             self.configureSubmitButton()
+            self.feedbackTextView.resignFirstResponder()
         }
         thumbsUpButton.addAction(action, for: .touchUpInside)
     }
@@ -184,6 +192,7 @@ final class PopUpContentView: UIView {
                 self.thumbsUpButton.isSelected = false
             }
             self.configureSubmitButton()
+            self.feedbackTextView.resignFirstResponder()
         }
         thumbsDownButton.addAction(action, for: .touchUpInside)
     }
@@ -299,7 +308,10 @@ final class PopUpContentView: UIView {
                   (self.thumbsUpButton.isSelected || self.thumbsDownButton.isSelected),
                   (!self.feedbackTextView.text.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ||
                    self.feedbackTextView.attributedText != FeedbackTextView.placeholderText)
-            else { return }
+            else {
+                self?.feedbackTextView.resignFirstResponder()
+                return
+            }
             
             let userFeedback = UserFeedback(
                 isPositive: self.thumbsUpButton.isSelected,
