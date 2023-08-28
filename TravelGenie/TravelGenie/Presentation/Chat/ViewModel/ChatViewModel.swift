@@ -69,12 +69,6 @@ final class ChatViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
-}
 
-// MARK: TagSubmissionDelegate
-
-extension ChatViewModel: TagSubmissionDelegate {
-    func submitSelectedTags(_ selectedTags: [Tag]) {
-        self.requestRecommendations(with: selectedTags)
     }
 }

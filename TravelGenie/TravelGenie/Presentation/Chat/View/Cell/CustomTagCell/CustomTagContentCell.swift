@@ -8,10 +8,6 @@
 import UIKit
 import MessageKit
 
-protocol TagSubmissionDelegate: AnyObject {
-    func submitSelectedTags(_ selectedTags: [Tag])
-}
-
 final class CustomTagContentCell: UICollectionViewCell {
     
     private let viewModel = CustomTagContentCellViewModel()
