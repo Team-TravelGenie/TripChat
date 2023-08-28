@@ -252,10 +252,19 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath)
     {
-        updateCollectionViewHeight(tagCollectionView)
+        updateCollectionViewHeight()
     }
     
-    private func updateCollectionViewHeight(_ collectionView: UICollectionView) {
+    private func updateCollectionViewHeight() {
+        let totalContentHeight = totalContentHeight(tagCollectionView)
+        
+        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
+        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
+            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
+        }
+    }
+    
+    private func totalContentHeight(_ collectionView: UICollectionView) -> CGFloat {
         guard let tagCollectionViewLayout = collectionView.collectionViewLayout as? LeftAlignedCollectionViewFlowLayout else {
             fatalError("flowLayout Error")
         }
@@ -264,12 +273,8 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
         let insetPadding: CGFloat = 20
-        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
         
-        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
-        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
-            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
-        }
+        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
     }
 }
 
