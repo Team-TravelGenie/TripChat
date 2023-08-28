@@ -26,6 +26,8 @@ final class ChatViewController: ChatInterfaceViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Override(s)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
@@ -49,13 +51,13 @@ final class ChatViewController: ChatInterfaceViewController {
         chatViewModel.insertMessage(secondMessage)
     }
     
-    func bind() {
+    // MARK: Private
+    
+    private func bind() {
         chatViewModel.didTapImageUploadButton = { [weak self] in
             self?.presentPHPickerViewController()
         }
     }
-    
-    // MARK: Private
     
     private func setupNavigation() {
         setUpNavigationBarTitle()
@@ -91,9 +93,13 @@ final class ChatViewController: ChatInterfaceViewController {
     }
 }
 
-// MARK: PHPickerViewControllerDelegate 관련
+// MARK: PHPickerViewControllerDelegate
+
 extension ChatViewController: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    func picker(
+        _ picker: PHPickerViewController,
+        didFinishPicking results: [PHPickerResult])
+    {
         if results.isEmpty {
             self.dismiss(animated: true)
         } else {
@@ -108,8 +114,8 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         }
     }
     
-    private func presentPHPicekrViewController() {
-        let configuration = setupPHPicekrConfiguration()
+    private func presentPHPickerViewController() {
+        let configuration = setupPHPickerConfiguration()
         let phPickerViewController = PHPickerViewController(configuration: configuration)
         
         phPickerViewController.delegate = self
@@ -122,7 +128,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         present(phPickerViewController, animated: true)
     }
     
-    private func setupPHPicekrConfiguration() -> PHPickerConfiguration {
+    private func setupPHPickerConfiguration() -> PHPickerConfiguration {
         var configuration = PHPickerConfiguration(photoLibrary: .shared())
         
         configuration.filter = .images
@@ -132,7 +138,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         return configuration
     }
     
-    private func getImage(results: [PHPickerResult], completion: @escaping (UIImage?) -> Void) {
+    private func getImage(
+        results: [PHPickerResult],
+        completion: @escaping (UIImage?) -> Void)
+    {
         var formattedImage: UIImage?
         guard let itemProvider = results.first?.itemProvider else { return }
         

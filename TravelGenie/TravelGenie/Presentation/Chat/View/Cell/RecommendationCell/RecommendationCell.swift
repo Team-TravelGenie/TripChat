@@ -10,7 +10,7 @@ import UIKit
 
 final class RecommendationCell: UICollectionViewCell {
     
-    enum Design {
+    private enum Design {
         static let leftPadding: CGFloat = 12
         static let avatarViewSize: CGFloat = 40
         static let spacing: CGFloat = 8

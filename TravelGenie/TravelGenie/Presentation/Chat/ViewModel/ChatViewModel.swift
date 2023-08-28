@@ -59,9 +59,10 @@ final class ChatViewModel {
         coordinator?.finish()
     }
     
+    // MARK: Private
+    
     private func requestRecommendations(with tags: [Tag]) {
         let keywords: [String] = tags.map { $0.value }
-        
         // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
     }
     

@@ -8,6 +8,7 @@
 import UIKit
 
 class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
+    
     let customMinimumInteritemSpacingForSectionAt: CGFloat = 8
     var totalHeight: CGFloat = 0 // 셀과 헤더 전체 높이를 계산하기 위한 변수
 

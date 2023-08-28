@@ -30,6 +30,8 @@ class CustomCellSizeCalculator: CellSizeCalculator {
         self.messagesLayout.messagesDataSource
     }
     
+    // MARK: Override(s)
+    
     override func sizeForItem(at indexPath: IndexPath) -> CGSize {
         let dataSource = messagesDataSource
         let message = dataSource.messageForItem(at: indexPath, in: messagesLayout.messagesCollectionView)

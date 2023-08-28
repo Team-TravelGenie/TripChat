@@ -9,6 +9,7 @@ import UIKit
 import MessageKit
 
 class ChatInterfaceViewController: MessagesViewController {
+    
     enum MessagesDefaultSection: Int {
         case systemMessage = 0
         case uploadButtonMessage = 2
@@ -18,9 +19,11 @@ class ChatInterfaceViewController: MessagesViewController {
     let chatInterfaceViewModel = ChatInterfaceViewModel()
 
     private lazy var tagMessageCellSizeCalculator
-    = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+        = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var recommendationCellSizeCalculator
-    = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+        = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    
+    // MARK: Override(s)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +31,11 @@ class ChatInterfaceViewController: MessagesViewController {
         setupMessagesCollectionViewAttributes()
     }
     
-    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    override func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell
+    {
         guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
             fatalError("Datasource error")
         }
@@ -51,6 +58,8 @@ class ChatInterfaceViewController: MessagesViewController {
 
         return super.collectionView(collectionView, cellForItemAt: indexPath)
     }
+    
+    // MARK: Internal
     
     func customCell(
         for message: MessageType,
@@ -119,7 +128,9 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.register(SystemMessageCell.self)
         messagesCollectionView.register(UploadButtonCell.self)
         messagesCollectionView.register(CustomTagContentCell.self)
-        messagesCollectionView.register(RecommendationCell.self, forCellWithReuseIdentifier: RecommendationCell.identifier)
+        messagesCollectionView.register(
+            RecommendationCell.self,
+            forCellWithReuseIdentifier: RecommendationCell.identifier)
     }
     
     private func configureMessagesCollectionViewBackgroundColor() {
@@ -135,12 +146,18 @@ class ChatInterfaceViewController: MessagesViewController {
     }
 }
 
+// MARK: MessagesDataSource
+
 extension ChatInterfaceViewController: MessagesDataSource {
     var currentSender: SenderType {
         return defaultSender
     }
     
-    func messageForItem(at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> MessageType {
+    func messageForItem(
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> MessageType
+    {
         return chatInterfaceViewModel.messageStorage.sectionOfMessageList(indexPath.section)
     }
     
@@ -148,6 +165,8 @@ extension ChatInterfaceViewController: MessagesDataSource {
         return chatInterfaceViewModel.messageStorage.count
     }
 }
+
+// MARK: MessagesDisplayDelegate
 
 extension ChatInterfaceViewController: MessagesDisplayDelegate {
     func textColor(
@@ -199,6 +218,8 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
     }
 }
 
+// MARK: MessagesLayoutDelegate
+
 extension ChatInterfaceViewController: MessagesLayoutDelegate {
     func customCellSizeCalculator(
         for message: MessageType,
@@ -220,7 +241,12 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         return MessageSizeCalculator()
     }
     
-    func textCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator? {
+    func textCellSizeCalculator(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CellSizeCalculator?
+    {
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {
             case .systemMessage:

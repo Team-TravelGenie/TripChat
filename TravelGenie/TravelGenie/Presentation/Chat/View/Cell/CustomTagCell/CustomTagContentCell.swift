@@ -19,6 +19,8 @@ final class CustomTagContentCell: UICollectionViewCell {
     private let submitKeywordButton = UIButton()
     private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
+    // MARK: Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureSubviews()
@@ -30,6 +32,8 @@ final class CustomTagContentCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal
+    
     func configure(with message: MessageType) {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
@@ -37,6 +41,8 @@ final class CustomTagContentCell: UICollectionViewCell {
             viewModel.insertTags(tags: tagItem.tags)
         }
     }
+    
+    // MARK: Private
     
     private func configureSubviews() {
         configureSubmitKeywordButton()
@@ -152,6 +158,8 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
 }
 
+// MARK: UICollectionViewDataSource
+
 extension CustomTagContentCell: UICollectionViewDataSource {
     fileprivate enum Section: Int {
         case location
@@ -213,6 +221,8 @@ extension CustomTagContentCell: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
@@ -266,6 +276,8 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         }
     }
 }
+
+// MARK: TagSelectionDelegate
 
 extension CustomTagContentCell: TagSelectionDelegate {
     func tagDidSelect(withText value: String, isSelected: Bool) {

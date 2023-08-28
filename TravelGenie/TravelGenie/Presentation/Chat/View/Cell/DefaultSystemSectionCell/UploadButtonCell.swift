@@ -8,7 +8,8 @@
 import UIKit
 
 final class UploadButtonCell: UICollectionViewCell {
-    enum Constant {
+    
+    private enum Constant {
         static let buttonText = "이미지 업로드"
     }
     
@@ -25,6 +26,8 @@ final class UploadButtonCell: UICollectionViewCell {
         return button
     }()
     
+    // MARK: Lifecycle
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureLayout()
@@ -34,6 +37,8 @@ final class UploadButtonCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Private
     
     private func configureButtonAction() {
         let buttonAction = UIAction { _ in
