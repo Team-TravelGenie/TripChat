@@ -155,7 +155,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         
         submitKeywordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
+            submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor),
             submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
             submitKeywordButton.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
             submitKeywordButton.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -12)
@@ -240,7 +240,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         referenceSizeForHeaderInSection section: Int)
         -> CGSize
     {
-        return CGSize(width: 240, height: 23)
+        return CGSize(width: 204, height: 23)
     }
     
     func collectionView(
@@ -249,7 +249,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets
     {
-        return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        return UIEdgeInsets(top: 4, left: 0, bottom: 12, right: 0)
     }
     
     func collectionView(
@@ -278,9 +278,8 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let messageLabelHeight = defaultMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
-        let insetPadding: CGFloat = 20
         
-        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
+        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
     }
 }
 
