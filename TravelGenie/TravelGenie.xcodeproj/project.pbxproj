@@ -59,6 +59,7 @@
 		5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */; };
 		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
 		5763DF072A9CA8020028B19F /* ChatInterfaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */; };
+		5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DF082A9CAF220028B19F /* NotificationName+swift.swift */; };
 		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
 		576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3A82A9742DC008C2D7C /* SearchBarView.swift */; };
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
@@ -158,6 +159,7 @@
 		5763DEFC2A99B81F0028B19F /* PopUpContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpContentView.swift; sourceTree = "<group>"; };
 		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
 		5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewModel.swift; sourceTree = "<group>"; };
+		5763DF082A9CAF220028B19F /* NotificationName+swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+swift.swift"; sourceTree = "<group>"; };
 		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		576EC3A82A9742DC008C2D7C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
@@ -418,6 +420,7 @@
 				576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */,
 				576EC3B22A97B39F008C2D7C /* CircleIconView.swift */,
 				576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */,
+				5763DF082A9CAF220028B19F /* NotificationName+swift.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -838,6 +841,7 @@
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
 				57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */,
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
+				5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */,
 				57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,

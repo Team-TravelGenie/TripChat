@@ -51,6 +51,10 @@ final class CustomTagContentCellViewModel {
     }
     
     func submitSelectedTags(_ selectedTags: [Tag]) {
+        NotificationCenter.default.post(
+            name: .tagSubmitButtonTapped,
+            object: self,
+            userInfo: [NotificationKey.selectedTags: selectedTags])
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {

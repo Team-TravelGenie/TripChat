@@ -18,6 +18,16 @@ final class ChatViewModel {
     
     private let user: Sender = Sender(name: .user)
     
+    // MARK: Lifecycle
+    
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(submitSelectedTags(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
+    }
+    
     // MARK: Internal
     
     func insertMessage(_ message: Message) {
@@ -69,6 +79,12 @@ final class ChatViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
+    
+    // MARK: objc methods
+    
 
+    @objc private func submitSelectedTags(notification: Notification) {
+        guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
+        requestRecommendations(with: selectedTags)
     }
 }
