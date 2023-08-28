@@ -13,25 +13,16 @@ final class UploadButtonCell: UICollectionViewCell {
         static let buttonText = "이미지 업로드"
     }
     
-    private let uploadButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle(Constant.buttonText, for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .primary
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
+    private let uploadButton = RectangleTextButton()
+        .backgroundColor(.primary)
+        .cornerRadius(12)
     
     // MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUploadButton()
         configureLayout()
-        configureButtonAction()
     }
     
     required init?(coder: NSCoder) {
@@ -39,6 +30,13 @@ final class UploadButtonCell: UICollectionViewCell {
     }
     
     // MARK: Private
+    
+    private func configureUploadButton() {
+        let buttonTitle = NSMutableAttributedString()
+            .text(Constant.buttonText, font: .headline, color: .white)
+        uploadButton.setAttributedTitle(buttonTitle, for: .normal)
+        configureButtonAction()
+    }
     
     private func configureButtonAction() {
         let buttonAction = UIAction { _ in
@@ -51,6 +49,7 @@ final class UploadButtonCell: UICollectionViewCell {
     private func configureLayout() {
         contentView.addSubview(uploadButton)
         
+        uploadButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             uploadButton.widthAnchor.constraint(equalToConstant: 351),
             uploadButton.heightAnchor.constraint(equalToConstant: 58),
