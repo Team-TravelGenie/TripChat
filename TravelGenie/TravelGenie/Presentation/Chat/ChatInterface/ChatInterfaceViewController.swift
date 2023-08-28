@@ -220,8 +220,13 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         
         return MessageSizeCalculator()
     }
-    
-    func textCellSizeCalculator(for message: MessageType, at indexPath: IndexPath, in messagesCollectionView: MessagesCollectionView) -> CellSizeCalculator? {
+        
+    func attributedTextCellSizeCalculator(
+        for message: MessageType,
+        at indexPath: IndexPath,
+        in messagesCollectionView: MessagesCollectionView)
+        -> CellSizeCalculator?
+    {
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {
             case .systemMessage:
