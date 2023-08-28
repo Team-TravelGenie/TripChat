@@ -67,6 +67,7 @@ final class PopUpViewController: UIViewController {
 
 extension PopUpViewController: UITextViewDelegate {
     func textViewDidBeginEditing(_ textView: UITextView) {
+        guard textView.attributedText == FeedbackTextView.placeholderText else { return }
         textView.attributedText = nil
         textView.textColor = .black
     }
