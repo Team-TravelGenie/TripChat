@@ -10,8 +10,14 @@ import UIKit
 
 final class TagMessageCellSizeCalculator: CustomCellSizeCalculator {
     
+    private var dynamicHeight: CGFloat = .zero
+    
     override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
-        return CGSize(width: .zero, height: 500)
+        return CGSize(width: .zero, height: dynamicHeight)
+    }
+    
+    func updateMessageContainerHeight(_ height: CGFloat) {
+        dynamicHeight = height
     }
 }
 

@@ -12,8 +12,13 @@ protocol TagSubmissionDelegate: AnyObject {
     func submitSelectedTags(_ selectedTags: [Tag])
 }
 
+protocol TagMessageSizeDelegate: AnyObject {
+    func didUpdateTagMessageHeight(_ height: CGFloat)
+}
+
 final class CustomTagContentCell: UICollectionViewCell {
     weak var delegate: TagSubmissionDelegate?
+    weak var sizedelegate: TagMessageSizeDelegate? // 위 delegate 변수가 NotificationCenter로 변경되면서 제거될 예정이므로 이를 sizedelegate로 지어뒀지만, PR 이 후, delegate로 수정하려고합니다.
     
     private let viewModel = CustomTagContentCellViewModel()
     
@@ -150,7 +155,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         
         submitKeywordButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor, constant: 12),
+            submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor),
             submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
             submitKeywordButton.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
             submitKeywordButton.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -12)
@@ -235,7 +240,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         referenceSizeForHeaderInSection section: Int)
         -> CGSize
     {
-        return CGSize(width: 240, height: 23)
+        return CGSize(width: 204, height: 23)
     }
     
     func collectionView(
@@ -244,7 +249,16 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         insetForSectionAt section: Int)
         -> UIEdgeInsets
     {
-        return UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
+        return UIEdgeInsets(top: 4, left: 0, bottom: 12, right: 0)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat
+    {
+        return 8
     }
     
     func collectionView(
@@ -252,10 +266,20 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         willDisplay cell: UICollectionViewCell,
         forItemAt indexPath: IndexPath)
     {
-        updateCollectionViewHeight(tagCollectionView)
+        updateCollectionViewHeight()
     }
     
-    private func updateCollectionViewHeight(_ collectionView: UICollectionView) {
+    private func updateCollectionViewHeight() {
+        let totalContentHeight = totalContentHeight(tagCollectionView)
+        
+        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
+        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
+            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
+            sizedelegate?.didUpdateTagMessageHeight(totalContentHeight)
+        }
+    }
+    
+    private func totalContentHeight(_ collectionView: UICollectionView) -> CGFloat {
         guard let tagCollectionViewLayout = collectionView.collectionViewLayout as? LeftAlignedCollectionViewFlowLayout else {
             fatalError("flowLayout Error")
         }
@@ -263,13 +287,8 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let messageLabelHeight = defaultMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
-        let insetPadding: CGFloat = 20
-        let totalContentHeight = tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight + insetPadding
         
-        // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
-        if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
-            messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
-        }
+        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
     }
 }
 
