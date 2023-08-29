@@ -126,6 +126,7 @@ final class ChatViewModel {
         openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
             switch result {
             case .success(let chatMessages):
+                self?.openAIChatMessages.append(contentsOf: chatMessages)
                 self?.configureOpenAIResponse(chatMessages)
             case .failure(let error):
                 print(error)
