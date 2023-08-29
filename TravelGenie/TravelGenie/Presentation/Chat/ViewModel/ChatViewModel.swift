@@ -39,16 +39,12 @@ final class ChatViewModel {
     
     // MARK: Internal
     
-    func insertMessage(_ message: Message) {
-        delegate?.insert(message: message)
-    }
-    
     func makePhotoMessage(_ image: UIImage) {
         let message = Message(
             image: image,
             sender: self.user,
             sentDate: Date())
-        delegate?.insert(message: message)
+        insertMessage(message)
     }
     
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {
@@ -67,6 +63,9 @@ final class ChatViewModel {
     private func requestRecommendations(with tags: [Tag]) {
         let keywords: [String] = tags.map { $0.value }
         // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
+    private func insertMessage(_ message: Message) {
+        delegate?.insert(message: message)
+    }
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
