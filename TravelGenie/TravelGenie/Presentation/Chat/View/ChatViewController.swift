@@ -40,15 +40,6 @@ final class ChatViewController: ChatInterfaceViewController {
             Tag(category: .theme, value: "아라라라라라"),
         ])
         chatViewModel.insertMessage(message)
-
-        var recommendations: [RecommendationItem] = []
-        let image = UIImage(systemName: "chevron.left")!
-        let data = image.pngData()!
-        recommendations.append(RecommendationItem(country: "아이폰나라", city: "아이폰시", spot: "아이폰", image: data))
-        recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
-        recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
-        let secondMessage = Message(recommendations: recommendations, sentDate: Date())
-        chatViewModel.insertMessage(secondMessage)
     }
     
     // MARK: Private
