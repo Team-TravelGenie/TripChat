@@ -42,6 +42,15 @@ final class MessageStorage {
         return messageList[section]
     }
     
+    func findTagMessageIndex() -> Int? {
+        return messageList.firstIndex(where: {
+            if case let .custom(item) = $0.kind, item is TagItem {
+                return true
+            }
+            return false
+        })
+    }
+    
     // MARK: Private
     
     private func setupDefaultMessage() -> [Message] {
