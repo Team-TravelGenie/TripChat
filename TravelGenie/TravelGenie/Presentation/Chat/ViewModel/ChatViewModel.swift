@@ -5,6 +5,7 @@
 //  Created by 서현웅 on 2023/08/15.
 //
 
+import InputBarAccessoryView
 import OpenAISwift
 import UIKit
 
@@ -120,5 +121,16 @@ final class ChatViewModel {
     @objc private func submitSelectedTags(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         requestRecommendations(with: selectedTags)
+    }
+}
+
+// MARK: InputBarAccessoryViewDelegate
+
+extension ChatViewModel: InputBarAccessoryViewDelegate {
+    func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
+        let textMessage = createTextMessage(with: text)
+        let openAIChatMessage = ChatMessage(role: .user, content: text)
+        insertMessage(textMessage)
+        sendMessageToOpenAI(openAIChatMessage)
     }
 }
