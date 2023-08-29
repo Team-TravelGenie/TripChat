@@ -45,12 +45,23 @@ final class ChatViewModel {
         delegate?.insert(message: message)
     }
     
-    func makePhotoMessage(_ image: UIImage) {
-        let message = Message(
-            image: image,
-            sender: self.user,
-            sentDate: Date())
-        delegate?.insert(message: message)
+    func makePhotoMessages(_ images: [UIImage]) {
+        let totalPhotosToUpload = images.count
+        var photoUploadCount = 0
+        
+        images.forEach {
+            let photoMesage = Message(
+                image: $0,
+                sender: user,
+                sentDate: Date())
+            
+            delegate?.insert(message: photoMesage)
+            photoUploadCount += 1
+            
+            if totalPhotosToUpload == photoUploadCount {
+                buttonStateDelegate?.setUploadButtonState(false)
+            }
+        }
     }
     
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {

@@ -85,7 +85,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
     {
         dismiss(animated: true) {
             self.getImages(results: results) { [weak self] in
-                self?.chatViewModel.makePhotoMessage($0)
+                self?.chatViewModel.makePhotoMessages($0)
             }
         }
     }
