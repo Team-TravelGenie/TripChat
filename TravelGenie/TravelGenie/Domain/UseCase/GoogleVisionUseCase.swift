@@ -32,7 +32,14 @@ final class DefaultGoogleVisionUseCase: GoogleVisionUseCase {
         completion: @escaping (Result<DetectedImageLabel, Error>) -> Void)
         -> Cancellable
     {
-        
+        return googleVisionRepository.requestImageLabelDetection(content) { result in
+            switch result {
+            case .success(let keywords):
+                completion(.success(keywords))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
     
     func extractLandmarks(
@@ -40,8 +47,13 @@ final class DefaultGoogleVisionUseCase: GoogleVisionUseCase {
         completion: @escaping (Result<DetectedLandmark, Error>) -> Void)
         -> Cancellable
     {
-        
+        return googleVisionRepository.requestLandmarkDetection(content) { result in
+            switch result {
+            case .success(let landmarks):
+                completion(.success(landmarks))
+            case .failure(let error):
+                completion(.failure(error))
+            }
+        }
     }
-    
-    
 }
