@@ -62,6 +62,7 @@ final class ChatViewModel {
     var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
+    private let ai: Sender = Sender(name: .ai)
     private let openAIUseCase: OpenAIUseCase
     private var openAIChatMessages: [ChatMessage] = []
     
@@ -87,7 +88,7 @@ final class ChatViewModel {
     func makePhotoMessage(_ image: UIImage) {
         let message = Message(
             image: image,
-            sender: self.user,
+            sender: user,
             sentDate: Date())
         insertMessage(message)
     }
@@ -143,17 +144,17 @@ final class ChatViewModel {
             let recommendationMessage = createRecommendationMessage(with: openAIRecommendation)
             insertMessage(recommendationMessage)
         } catch {
-            let textMessage = createTextMessage(with: messageContent)
+            let textMessage = createTextMessage(with: messageContent, sender: ai)
             insertMessage(textMessage)
         }
     }
     
-    private func createTextMessage(with text: String) -> Message {
+    private func createTextMessage(with text: String, sender: Sender) -> Message {
         let messageText = NSMutableAttributedString()
             .text(text, font: .bodyRegular, color: .black)
         return Message(
             text: messageText,
-            sender: Sender(name: .ai),
+            sender: sender,
             sentDate: Date())
     }
     
@@ -161,7 +162,7 @@ final class ChatViewModel {
     private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
         
         // 메시지는 [RecommendationItem]을 받아서 만든다.
-        return Message(sender: Sender(name: .ai), sentDate: Date())
+        return Message(sender: ai, sentDate: Date())
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
@@ -195,7 +196,7 @@ final class ChatViewModel {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
-        let selectedTagTextMessage = createTextMessage(with: tagText)
+        let selectedTagTextMessage = createTextMessage(with: tagText, sender: user)
         insertMessage(selectedTagTextMessage)
         sendSelectedTags(tagText)
     }
@@ -205,7 +206,7 @@ final class ChatViewModel {
 
 extension ChatViewModel: InputBarAccessoryViewDelegate {
     func inputBar(_ inputBar: InputBarAccessoryView, didPressSendButtonWith text: String) {
-        let textMessage = createTextMessage(with: text)
+        let textMessage = createTextMessage(with: text, sender: user)
         let openAIChatMessage = ChatMessage(role: .user, content: text)
         insertMessage(textMessage)
         sendMessageToOpenAI(openAIChatMessage)
