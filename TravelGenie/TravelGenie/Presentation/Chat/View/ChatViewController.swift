@@ -115,16 +115,26 @@ extension ChatViewController: PHPickerViewControllerDelegate {
     
     private func getImages(
         results: [PHPickerResult],
-        completion: @escaping (UIImage) -> Void)
+        completion: @escaping ([UIImage]) -> Void)
     {
+        var images: [UIImage] = []
+        let group = DispatchGroup()
+        
         for result in results {
+            group.enter()
             result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let error = error {
                     print(error.localizedDescription)
                 } else if let image = image as? UIImage {
-                    completion(image)
+                    images.append(image)
                 }
+                
+                group.leave()
             }
+        }
+        
+        group.notify(queue: .main) {
+            completion(images)
         }
     }
 }
