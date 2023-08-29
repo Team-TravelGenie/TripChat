@@ -80,6 +80,16 @@ final class ChatViewModel {
         }
     }
     
+    
+    private func createTextMessage(with text: String) -> Message {
+        let messageText = NSMutableAttributedString()
+            .text(text, font: .bodyRegular, color: .black)
+        return Message(
+            text: messageText,
+            sender: Sender(name: .ai),
+            sentDate: Date())
+    }
+    
     private func createPopUpViewModel() -> PopUpViewModel {
         return PopUpViewModel()
     }
