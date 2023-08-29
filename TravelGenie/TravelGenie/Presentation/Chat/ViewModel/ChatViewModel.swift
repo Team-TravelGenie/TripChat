@@ -38,21 +38,18 @@ final class ChatViewModel {
         delegate?.insert(message: message)
     }
     
-    func makePhotoMessages(_ images: [UIImage]) {
+    func handlePhotoUploads(images: [UIImage]) {
         let totalPhotosToUpload = images.count
         var photoUploadCount = 0
         
-        images.forEach {
-            let photoMesage = Message(
-                image: $0,
-                sender: user,
-                sentDate: Date())
+        for image in images {
+            let photoMessage = makePhotoMessage(from: image)
             
-            delegate?.insert(message: photoMesage)
+            insertMessage(photoMessage)
             photoUploadCount += 1
             
             if totalPhotosToUpload == photoUploadCount {
-                buttonStateDelegate?.setUploadButtonState(false)
+                updateUploadButtonState(false)
             }
         }
     }
@@ -69,6 +66,17 @@ final class ChatViewModel {
     }
     
     // MARK: Private
+    
+    private func makePhotoMessage(from image: UIImage) -> Message {
+        return Message(
+            image: image,
+            sender: user,
+            sentDate: Date())
+    }
+
+    private func updateUploadButtonState(_ isEnabled: Bool) {
+        buttonStateDelegate?.setUploadButtonState(isEnabled)
+    }
     
     private func requestRecommendations(with tags: [Tag]) {
         let keywords: [String] = tags.map { $0.value }
