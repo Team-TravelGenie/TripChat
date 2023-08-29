@@ -82,10 +82,11 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         _ picker: PHPickerViewController,
         didFinishPicking results: [PHPickerResult])
     {
-        self.dismiss(animated: true) {
-            self.getImages(results: results) { [weak self] in self?.chatViewModel.makePhotoMessage($0)
+        dismiss(animated: true) {
+            self.getImages(results: results) { [weak self] in
+                self?.chatViewModel.makePhotoMessage($0)
             }
-        }   
+        }
     }
     
     private func presentPHPickerViewController() {
