@@ -50,6 +50,7 @@ final class ChatViewModel {
             
             if totalPhotosToUpload == photoUploadCount {
                 updateUploadButtonState(false)
+                extractKeywordsFromImages(images: images)
             }
         }
     }
@@ -76,6 +77,46 @@ final class ChatViewModel {
 
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
+    }
+    
+    private func extractKeywordsFromImages(images: [UIImage]) {
+        images.forEach { image in
+            if let base64String = convertImageToBase64(image: image) {
+                fetchKeywordsFromGoogleVision(base64String: base64String)
+                fetchLandMarksFromGoogleVision(base64String: base64String)
+            }
+        }
+    }
+
+    private func convertImageToBase64(image: UIImage) -> String? {
+        if let imageData = image.jpegData(compressionQuality: 1.0) {
+            return imageData.base64EncodedString()
+        }
+        
+        print("base64String 인코딩오류")
+        return nil
+    }
+
+    private func fetchKeywordsFromGoogleVision(base64String: String) {
+        googleVisionUseCase.extractKeywords(base64String) { result in
+            switch result {
+            case .success(let keywords):
+                print(keywords)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func fetchLandMarksFromGoogleVision(base64String: String) {
+        googleVisionUseCase.extractLandmarks(base64String) { result in
+            switch result {
+            case .success(let landmarks):
+                print(landmarks)
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func requestRecommendations(with tags: [Tag]) {
