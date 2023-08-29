@@ -74,6 +74,7 @@ class ChatInterfaceViewController: MessagesViewController {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
+                cell.sizedelegate = self
                 cell.configure(with: message)
                 return cell
             } else if item is [RecommendationItem] {
@@ -233,7 +234,7 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         return MessageSizeCalculator()
     }
     
-    func textCellSizeCalculator(
+    func attributedTextCellSizeCalculator(
         for message: MessageType,
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView)
@@ -248,5 +249,17 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
             }
         }
         return nil
+    }
+}
+
+extension ChatInterfaceViewController: TagMessageSizeDelegate {
+    func didUpdateTagMessageHeight(_ height: CGFloat) {
+        let tagCellIndex: IndexSet = IndexSet(integer: 3)
+        
+        tagMessageCellSizeCalculator.updateMessageContainerHeight(height)
+        
+        UIView.performWithoutAnimation {
+            messagesCollectionView.reloadSections(tagCellIndex)
+        }
     }
 }
