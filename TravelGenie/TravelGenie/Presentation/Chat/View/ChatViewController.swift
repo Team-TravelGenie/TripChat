@@ -32,15 +32,15 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [
-            Tag(category: .theme, value: "아"),
-            Tag(category: .theme, value: "아라"),
-            Tag(category: .theme, value: "아라0라"),
-            Tag(category: .theme, value: "아라아라"),
-            Tag(category: .theme, value: "아라아라라"),
-            Tag(category: .theme, value: "아라라라라라"),
-        ])
-        chatViewModel.insertMessage(message)
+//        let message = Message(tags: [
+//            Tag(category: .theme, value: "아"),
+//            Tag(category: .theme, value: "아라"),
+//            Tag(category: .theme, value: "아라0라"),
+//            Tag(category: .theme, value: "아라아라"),
+//            Tag(category: .theme, value: "아라아라라"),
+//            Tag(category: .theme, value: "아라라라라라"),
+//        ])
+//        chatViewModel.insertMessage(message)
     }
     
     // MARK: Private
