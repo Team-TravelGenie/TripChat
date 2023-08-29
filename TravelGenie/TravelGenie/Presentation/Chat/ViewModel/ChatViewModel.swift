@@ -27,16 +27,7 @@ final class ChatViewModel {
     // MARK: Lifecycle
     
     init() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didTapImageUploadButton(notification:)),
-            name: .imageUploadButtonTapped,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(submitSelectedTags(notification:)),
-            name: .tagSubmitButtonTapped,
-            object: nil)
+        registerNotificationObservers()
     }
     
     // MARK: Internal
@@ -101,6 +92,19 @@ final class ChatViewModel {
             mainText: mainText,
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
+    }
+    
+    private func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(submitSelectedTags(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
     }
     
     // MARK: objc methods
