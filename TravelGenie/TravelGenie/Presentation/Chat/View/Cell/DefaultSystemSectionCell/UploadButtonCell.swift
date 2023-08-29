@@ -7,43 +7,40 @@
 
 import UIKit
 
-protocol UploadButtonCellDelegate: AnyObject {
-    func didTapImageUploadButton()
-}
-
 final class UploadButtonCell: UICollectionViewCell {
-    enum Constant {
+    
+    private enum Constant {
         static let buttonText = "이미지 업로드"
     }
     
-    weak var delegate: UploadButtonCellDelegate?
+    private let uploadButton = RectangleTextButton()
+        .backgroundColor(.primary)
+        .cornerRadius(12)
     
-    private let uploadButton: UIButton = {
-        let button = UIButton()
-        
-        button.setTitle(Constant.buttonText, for: .normal)
-        button.setTitleColor(UIColor.white, for: .normal)
-        button.backgroundColor = .primary
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 18)
-        button.layer.cornerRadius = 10
-        button.translatesAutoresizingMaskIntoConstraints = false
-        
-        return button
-    }()
+    // MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        configureUploadButton()
         configureLayout()
-        configureButtonAction()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Private
+    
+    private func configureUploadButton() {
+        let buttonTitle = NSMutableAttributedString()
+            .text(Constant.buttonText, font: .headline, color: .white)
+        uploadButton.setAttributedTitle(buttonTitle, for: .normal)
+        configureButtonAction()
+    }
+    
     private func configureButtonAction() {
-        let buttonAction = UIAction { [weak self] _ in
-            self?.delegate?.didTapImageUploadButton()
+        let buttonAction = UIAction { _ in
+            NotificationCenter.default.post(name: .imageUploadButtonTapped, object: nil)
         }
         
         uploadButton.addAction(buttonAction, for: .touchUpInside)
@@ -52,6 +49,7 @@ final class UploadButtonCell: UICollectionViewCell {
     private func configureLayout() {
         contentView.addSubview(uploadButton)
         
+        uploadButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             uploadButton.widthAnchor.constraint(equalToConstant: 351),
             uploadButton.heightAnchor.constraint(equalToConstant: 58),

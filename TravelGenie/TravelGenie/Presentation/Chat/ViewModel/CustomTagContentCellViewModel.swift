@@ -8,7 +8,6 @@
 import Foundation
 
 final class CustomTagContentCellViewModel {
-    private let tagStorage: TagStorage = TagStorage()
     
     var locationTagListCount: Int {
         return tagStorage.locationTags.count
@@ -30,6 +29,8 @@ final class CustomTagContentCellViewModel {
         return ["✈️지역", "⛵️테마"]
     }
     
+    private let tagStorage: TagStorage = TagStorage()
+    
     // MARK: Internal
     
     func insertTags(tags: [Tag]) {
@@ -47,6 +48,13 @@ final class CustomTagContentCellViewModel {
     
     func updateTagIsSelected(value: String, isSelected: Bool) {
         tagStorage.updateTagSelectionState(value: value, isSelected: isSelected)
+    }
+    
+    func submitSelectedTags(_ selectedTags: [Tag]) {
+        NotificationCenter.default.post(
+            name: .tagSubmitButtonTapped,
+            object: self,
+            userInfo: [NotificationKey.selectedTags: selectedTags])
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {

@@ -12,10 +12,14 @@ protocol TagSelectionDelegate: AnyObject {
 }
 
 class TagCollectionViewCell: UICollectionViewCell {
+    
     static var identifier: String { return String(describing: self) }
     
     weak var delegate: TagSelectionDelegate?
+    
     private let tagButton: UIButton = UIButton()
+    
+    // MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: .zero)
@@ -27,9 +31,13 @@ class TagCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal
+    
     func configure(tag: Tag) {
         configureTagButtonText(tag: tag)
     }
+    
+    // MARK: Private
     
     private func configureSubviews() {
         congirueTagButton()

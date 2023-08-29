@@ -11,18 +11,22 @@ import MessageKit
 
 final class ChatViewController: ChatInterfaceViewController {
     
-    private let viewModel: ChatViewModel
+    private let chatViewModel: ChatViewModel
     
     // MARK: Lifecycle
     
     init(viewModel: ChatViewModel) {
-        self.viewModel = viewModel
+        self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        viewModel.delegate = chatInterfaceViewModel
+        bind()
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    // MARK: Override(s)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,8 +39,8 @@ final class ChatViewController: ChatInterfaceViewController {
             Tag(category: .theme, value: "아라아라라"),
             Tag(category: .theme, value: "아라라라라라"),
         ])
-        messageStorage.insertMessage(message)
-                              
+        chatViewModel.insertMessage(message)
+
         var recommendations: [RecommendationItem] = []
         let image = UIImage(systemName: "chevron.left")!
         let data = image.pngData()!
@@ -44,14 +48,16 @@ final class ChatViewController: ChatInterfaceViewController {
         recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
         recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
         let secondMessage = Message(recommendations: recommendations, sentDate: Date())
-        messageStorage.insertMessage(secondMessage)
-    }
-    
-    override func didTapImageUploadButton() {
-        presentPHPicekrViewController()
+        chatViewModel.insertMessage(secondMessage)
     }
     
     // MARK: Private
+    
+    private func bind() {
+        chatViewModel.didTapImageUploadButton = { [weak self] in
+            self?.presentPHPickerViewController()
+        }
+    }
     
     private func setupNavigation() {
         setUpNavigationBarTitle()
@@ -78,7 +84,7 @@ final class ChatViewController: ChatInterfaceViewController {
         
         return UIAction(image: backBarButtonImage) { [weak self] _ in
             guard let self else { return }
-            let popUpModels = self.viewModel.backButtonTapped()
+            let popUpModels = self.chatViewModel.backButtonTapped()
             self.showPopUp(
                 viewModel: popUpModels.viewModel,
                 type: popUpModels.type,
@@ -87,9 +93,13 @@ final class ChatViewController: ChatInterfaceViewController {
     }
 }
 
-// MARK: PHPickerViewControllerDelegate 관련
+// MARK: PHPickerViewControllerDelegate
+
 extension ChatViewController: PHPickerViewControllerDelegate {
-    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+    func picker(
+        _ picker: PHPickerViewController,
+        didFinishPicking results: [PHPickerResult])
+    {
         if results.isEmpty {
             self.dismiss(animated: true)
         } else {
@@ -97,16 +107,15 @@ extension ChatViewController: PHPickerViewControllerDelegate {
                 self.getImage(results: results) { [weak self] image in
                     guard let self,
                           let image else { return }
-                    let message = self.viewModel.makePhotoMessage(image)
-                    
-                    self.messageStorage.insertMessage(message)
+                    self.chatViewModel.makePhotoMessage(image)
+                    // TODO: - API에 사진 전송
                 }
             }
         }
     }
     
-    private func presentPHPicekrViewController() {
-        let configuration = setupPHPicekrConfiguration()
+    private func presentPHPickerViewController() {
+        let configuration = setupPHPickerConfiguration()
         let phPickerViewController = PHPickerViewController(configuration: configuration)
         
         phPickerViewController.delegate = self
@@ -119,7 +128,7 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         present(phPickerViewController, animated: true)
     }
     
-    private func setupPHPicekrConfiguration() -> PHPickerConfiguration {
+    private func setupPHPickerConfiguration() -> PHPickerConfiguration {
         var configuration = PHPickerConfiguration(photoLibrary: .shared())
         
         configuration.filter = .images
@@ -129,7 +138,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         return configuration
     }
     
-    private func getImage(results: [PHPickerResult], completion: @escaping (UIImage?) -> Void) {
+    private func getImage(
+        results: [PHPickerResult],
+        completion: @escaping (UIImage?) -> Void)
+    {
         var formattedImage: UIImage?
         guard let itemProvider = results.first?.itemProvider else { return }
         
@@ -148,8 +160,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
     }
 }
 
+// MARK: PopUpViewControllerDelegate
+
 extension ChatViewController: PopUpViewControllerDelegate {
     func pop() {
-        viewModel.pop()
+        chatViewModel.pop()
     }
 }

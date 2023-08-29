@@ -8,16 +8,12 @@
 import UIKit
 import MessageKit
 
-protocol TagSubmissionDelegate: AnyObject {
-    func submitSelectedTags(_ selectedTags: [Tag])
-}
-
 protocol TagMessageSizeDelegate: AnyObject {
     func didUpdateTagMessageHeight(_ height: CGFloat)
 }
 
 final class CustomTagContentCell: UICollectionViewCell {
-    weak var delegate: TagSubmissionDelegate?
+    
     weak var sizedelegate: TagMessageSizeDelegate? // 위 delegate 변수가 NotificationCenter로 변경되면서 제거될 예정이므로 이를 sizedelegate로 지어뒀지만, PR 이 후, delegate로 수정하려고합니다.
     
     private let viewModel = CustomTagContentCellViewModel()
@@ -28,6 +24,8 @@ final class CustomTagContentCell: UICollectionViewCell {
     private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let submitKeywordButton = UIButton()
     private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
+    
+    // MARK: Lifecycle
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -40,6 +38,8 @@ final class CustomTagContentCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal
+    
     func configure(with message: MessageType) {
         if case .custom(let tagItem) = message.kind {
             guard let tagItem = tagItem as? TagItem else { return }
@@ -47,6 +47,8 @@ final class CustomTagContentCell: UICollectionViewCell {
             viewModel.insertTags(tags: tagItem.tags)
         }
     }
+    
+    // MARK: Private
     
     private func configureSubviews() {
         configureSubmitKeywordButton()
@@ -108,9 +110,8 @@ final class CustomTagContentCell: UICollectionViewCell {
                 return
             }
             
-            self.delegate?.submitSelectedTags(selectedList)
+            self.viewModel.submitSelectedTags(selectedList)
         }
-        
         submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }
     
@@ -162,6 +163,8 @@ final class CustomTagContentCell: UICollectionViewCell {
         ])
     }
 }
+
+// MARK: UICollectionViewDataSource
 
 extension CustomTagContentCell: UICollectionViewDataSource {
     fileprivate enum Section: Int {
@@ -223,6 +226,8 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         return header
     }
 }
+
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
     func collectionView(
@@ -291,6 +296,8 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
     }
 }
+
+// MARK: TagSelectionDelegate
 
 extension CustomTagContentCell: TagSelectionDelegate {
     func tagDidSelect(withText value: String, isSelected: Bool) {

@@ -25,9 +25,11 @@ struct ImageMediaItem: MediaItem {
         if image == nil, imageData != nil {
             let imageFromData = UIImage(data: imageData!)
             self.image = imageFromData
+            self.imageData = imageData
             size = imageFromData?.size ?? .init()
         } else if image != nil, imageData == nil {
             let dataFromImage = image?.pngData()
+            self.image = image
             self.imageData = dataFromImage
             size = image!.size
         } else {

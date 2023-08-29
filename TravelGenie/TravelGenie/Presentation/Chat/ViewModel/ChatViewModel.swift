@@ -7,17 +7,45 @@
 
 import UIKit
 
+protocol MessageStorageDelegate: AnyObject {
+    func insert(message: Message)
+}
+
 final class ChatViewModel {
     
     weak var coordinator: ChatCoordinator?
+    weak var delegate: MessageStorageDelegate?
+    var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
     
-    func makePhotoMessage(_ image: UIImage) -> Message {
-        return Message(
+    // MARK: Lifecycle
+    
+    init() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(submitSelectedTags(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
+    }
+    
+    // MARK: Internal
+    
+    func insertMessage(_ message: Message) {
+        delegate?.insert(message: message)
+    }
+    
+    func makePhotoMessage(_ image: UIImage) {
+        let message = Message(
             image: image,
             sender: self.user,
             sentDate: Date())
+        delegate?.insert(message: message)
     }
     
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {
@@ -29,6 +57,13 @@ final class ChatViewModel {
     
     func pop() {
         coordinator?.finish()
+    }
+    
+    // MARK: Private
+    
+    private func requestRecommendations(with tags: [Tag]) {
+        let keywords: [String] = tags.map { $0.value }
+        // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
@@ -50,5 +85,16 @@ final class ChatViewModel {
             mainText: mainText,
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
+    }
+    
+    // MARK: objc methods
+    
+    @objc private func didTapImageUploadButton(notification: Notification) {
+        didTapImageUploadButton?()
+    }
+
+    @objc private func submitSelectedTags(notification: Notification) {
+        guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
+        requestRecommendations(with: selectedTags)
     }
 }

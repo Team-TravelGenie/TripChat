@@ -8,7 +8,6 @@
 import Foundation
 
 final class TagStorage {
-    private var tags = [Tag]()
     
     var count: Int {
         return tags.count
@@ -22,13 +21,18 @@ final class TagStorage {
         return tags.filter { $0.category == .theme }
     }
     
+    private var tags = [Tag]()
     private var selectedTags: [Tag] {
         return tags.filter { $0.isSelected == true }
     }
     
+    // MARK: Lifecycle
+    
     init() {
         tags = setDefaultTags()
     }
+    
+    // MARK: Internal
     
     func getSelectedTags() -> [Tag]? {
         return selectedTags.isEmpty ? nil : selectedTags
@@ -44,11 +48,12 @@ final class TagStorage {
         }
     }
     
+    // MARK: Private
+    
     private func setDefaultTags() -> [Tag] {
         let defaultTag = [
             Tag(category: .location, value: "국내"),
-            Tag(category: .location, value: "해외")
-        ]
+            Tag(category: .location, value: "해외")]
         
         return defaultTag
     }

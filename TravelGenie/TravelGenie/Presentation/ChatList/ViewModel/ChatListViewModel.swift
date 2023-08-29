@@ -11,10 +11,10 @@ final class ChatListViewModel {
     
     weak var coordinator: ChatListCoordinator?
     
-    private let chatUseCase: ChatUseCase
-    
     var emptyChat: ((Bool) -> Void)?
     var chatsDelivered: (([Chat]) -> Void)?
+    
+    private let chatUseCase: ChatUseCase
     private(set) var chats: [Chat] = [] {
         didSet {
             emptyChat?(chats.isEmpty)
