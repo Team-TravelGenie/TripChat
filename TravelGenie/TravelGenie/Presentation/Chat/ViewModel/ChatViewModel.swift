@@ -20,6 +20,7 @@ final class ChatViewModel {
     
     private let user: Sender = Sender(name: .user)
     private let openAIUseCase: OpenAIUseCase
+    private var openAIChatMessages: [ChatMessage] = []
     
     // MARK: Lifecycle
     
@@ -66,6 +67,17 @@ final class ChatViewModel {
     private func insertMessage(_ message: Message) {
         delegate?.insert(message: message)
     }
+    
+    private func sendMessageToOpenAI(_ message: ChatMessage) {
+        // TODO: - 챗지피티에 메시지 발송할 때 항상 답변 생성 애니메이션 넣어야 함
+        openAIChatMessages.append(message)
+        openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
+            switch result {
+            case .success(let chatMessages):
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
