@@ -52,6 +52,7 @@ class ChatInterfaceViewController: MessagesViewController {
                 return messagesCollectionView.dequeueReusableCell(SystemMessageCell.self, for: indexPath)
             case .uploadButtonMessage:
                 let cell = messagesCollectionView.dequeueReusableCell(UploadButtonCell.self, for: indexPath)
+                cell.configureButtonState(state: chatInterfaceViewModel.uploadButtonState)
                 return cell
             }
         }
@@ -91,6 +92,17 @@ class ChatInterfaceViewController: MessagesViewController {
         chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
+            }
+        }
+        
+        chatInterfaceViewModel.didchangeUploadButtonState = { [weak self] state in
+            let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
+            let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
+
+            DispatchQueue.main.async {
+                UIView.performWithoutAnimation {
+                    self?.messagesCollectionView.reloadSections(indexSet)
+                }
             }
         }
     }
