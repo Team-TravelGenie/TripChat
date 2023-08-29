@@ -125,12 +125,26 @@ final class ChatViewModel {
         openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
             switch result {
             case .success(let chatMessages):
+                self?.configureOpenAIResponse(chatMessages)
             case .failure(let error):
                 print(error)
             }
         }
     }
     
+    private func configureOpenAIResponse(_ messages: [ChatMessage]) {
+        guard let messageContent = messages.first?.content,
+              let messageContentData = messageContent.data(using: .utf8)
+        else { return }
+        
+        // ChatGPT의 답변이 장소 추천인지, 일반 텍스트인지 구분
+        do {
+            let openAIRecommendation = try JSONDecoder().decode(OpenAIRecommendation.self, from: messageContentData)
+        } catch {
+            let textMessage = createTextMessage(with: messageContent)
+            insertMessage(textMessage)
+        }
+    }
     
     private func createTextMessage(with text: String) -> Message {
         let messageText = NSMutableAttributedString()
