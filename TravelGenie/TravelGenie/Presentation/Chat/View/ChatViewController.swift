@@ -82,18 +82,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         _ picker: PHPickerViewController,
         didFinishPicking results: [PHPickerResult])
     {
-        if results.isEmpty {
-            self.dismiss(animated: true)
-        } else {
-            self.dismiss(animated: true) {
-                self.getImages(results: results) { [weak self] images in
-                    images.forEach { [weak self] image in
-                        guard let image else { return }
-                        self?.chatViewModel.makePhotoMessage(image)
-                    }
-                }
+        self.dismiss(animated: true) {
+            self.getImages(results: results) { [weak self] in self?.chatViewModel.makePhotoMessage($0)
             }
-        }
+        }   
     }
     
     private func presentPHPickerViewController() {
@@ -122,35 +114,16 @@ extension ChatViewController: PHPickerViewControllerDelegate {
     
     private func getImages(
         results: [PHPickerResult],
-        completion: @escaping ([UIImage?]) -> Void)
+        completion: @escaping (UIImage) -> Void)
     {
-        var formattedImages: [UIImage?] = []
-        let dispatchGroup = DispatchGroup()
-        
         for result in results {
-            dispatchGroup.enter()
-            let itemProvider = result.itemProvider
-            
-            if itemProvider.canLoadObject(ofClass: UIImage.self) {
-                itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
-                    if let error = error {
-                        print(error.localizedDescription)
-                    } else {
-                        DispatchQueue.main.async {
-                            if let img = image as? UIImage {
-                                formattedImages.append(img)
-                            }
-                        }
-                    }
-                    dispatchGroup.leave()
-                })
-            } else {
-                dispatchGroup.leave()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let error = error {
+                    print(error.localizedDescription)
+                } else if let image = image as? UIImage {
+                    completion(image)
+                }
             }
-        }
-        
-        dispatchGroup.notify(queue: .main) {
-            completion(formattedImages)
         }
     }
 }
