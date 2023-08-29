@@ -62,11 +62,13 @@ final class ChatViewModel {
     
     // MARK: Private
     
-    private func requestRecommendations(with tags: [Tag]) {
-        let keywords: [String] = tags.map { $0.value }
-        // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
     private func insertMessage(_ message: Message) {
         delegate?.insert(message: message)
+    }
+    
+    private func sendSelectedTags(_ tagText: String) {
+        let message = ChatMessage(role: .user, content: tagText)
+        sendMessageToOpenAI(message)
     }
     
     private func sendMessageToOpenAI(_ message: ChatMessage) {
@@ -120,7 +122,11 @@ final class ChatViewModel {
 
     @objc private func submitSelectedTags(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
-        requestRecommendations(with: selectedTags)
+        
+        let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
+        let selectedTagTextMessage = createTextMessage(with: tagText)
+        insertMessage(selectedTagTextMessage)
+        sendSelectedTags(tagText)
     }
 }
 
