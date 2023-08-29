@@ -47,6 +47,16 @@ final class ChatViewModel {
             """
     }
     
+    private struct OpenAIRecommendation: Decodable {
+        
+        struct RecommendationItem: Decodable {
+            let country: String
+            let spot: String
+        }
+        
+        let recommendationItems: [RecommendationItem]
+    }
+    
     weak var coordinator: ChatCoordinator?
     weak var delegate: MessageStorageDelegate?
     var didTapImageUploadButton: (() -> Void)?
