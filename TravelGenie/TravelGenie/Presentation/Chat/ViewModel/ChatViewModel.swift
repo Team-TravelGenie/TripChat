@@ -22,11 +22,13 @@ final class ChatViewModel {
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
+    private let googleVisionUseCase: GoogleVisionUseCase
     private let user: Sender = Sender(name: .user)
     
     // MARK: Lifecycle
     
-    init() {
+    init(googleVisionUseCase: GoogleVisionUseCase) {
+        self.googleVisionUseCase = googleVisionUseCase
         registerNotificationObservers()
     }
     

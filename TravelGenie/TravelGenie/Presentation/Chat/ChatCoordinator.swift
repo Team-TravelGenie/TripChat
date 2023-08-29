@@ -19,7 +19,9 @@ final class ChatCoordinator: Coordinator {
     }
     
     func start() {
-        let chatViewModel = ChatViewModel()
+        let chatViewModel = ChatViewModel(
+            googleVisionUseCase: DefaultGoogleVisionUseCase(
+                googleVisionRepository: DefaultGoogleVisionRepository()))
         let chatViewController = ChatViewController(viewModel: chatViewModel)
         chatViewModel.coordinator = self
         navigationController?.pushViewController(chatViewController, animated: false)
