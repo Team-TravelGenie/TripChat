@@ -5,6 +5,7 @@
 //  Created by 서현웅 on 2023/08/15.
 //
 
+import OpenAISwift
 import UIKit
 
 protocol MessageStorageDelegate: AnyObject {
@@ -18,10 +19,12 @@ final class ChatViewModel {
     var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
+    private let openAIUseCase: OpenAIUseCase
     
     // MARK: Lifecycle
     
-    init() {
+    init(openAIUseCase: OpenAIUseCase) {
+        self.openAIUseCase = openAIUseCase
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didTapImageUploadButton(notification:)),
