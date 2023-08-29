@@ -8,6 +8,13 @@
 final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
+    var didchangeUploadButtonState: ((Bool) -> Void)?
+    
+    private (set) var uploadButtonState: Bool = true {
+        didSet {
+            didchangeUploadButtonState?(uploadButtonState)
+        }
+    }
 }
 
 // MARK: MessageStorageDelegate
@@ -15,5 +22,9 @@ final class ChatInterfaceViewModel {
 extension ChatInterfaceViewModel: MessageStorageDelegate {
     func insert(message: Message) {
         messageStorage.insertMessage(message)
+    }
+    
+    func setUploadButtonState(_ isEnabled: Bool) {
+        uploadButtonState = isEnabled
     }
 }
