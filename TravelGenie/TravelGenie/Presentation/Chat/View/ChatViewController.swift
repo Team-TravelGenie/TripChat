@@ -31,24 +31,6 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [
-            Tag(category: .theme, value: "아"),
-            Tag(category: .theme, value: "아라"),
-            Tag(category: .theme, value: "아라0라"),
-            Tag(category: .theme, value: "아라아라"),
-            Tag(category: .theme, value: "아라아라라"),
-            Tag(category: .theme, value: "아라라라라라"),
-        ])
-        chatViewModel.insertMessage(message)
-
-        var recommendations: [RecommendationItem] = []
-        let image = UIImage(systemName: "chevron.left")!
-        let data = image.pngData()!
-        recommendations.append(RecommendationItem(country: "아이폰나라", city: "아이폰시", spot: "아이폰", image: data))
-        recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
-        recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
-        let secondMessage = Message(recommendations: recommendations, sentDate: Date())
-        chatViewModel.insertMessage(secondMessage)
     }
     
     // MARK: Private
@@ -104,11 +86,11 @@ extension ChatViewController: PHPickerViewControllerDelegate {
             self.dismiss(animated: true)
         } else {
             self.dismiss(animated: true) {
-                self.getImage(results: results) { [weak self] image in
-                    guard let self,
-                          let image else { return }
-                    self.chatViewModel.makePhotoMessage(image)
-                    // TODO: - API에 사진 전송
+                self.getImages(results: results) { [weak self] images in
+                    images.forEach { [weak self] image in
+                        guard let image else { return }
+                        self?.chatViewModel.makePhotoMessage(image)
+                    }
                 }
             }
         }
@@ -133,29 +115,42 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         
         configuration.filter = .images
         configuration.preferredAssetRepresentationMode = .current
-        configuration.selectionLimit = 1
+        configuration.selectionLimit = 3
         
         return configuration
     }
     
-    private func getImage(
+    private func getImages(
         results: [PHPickerResult],
-        completion: @escaping (UIImage?) -> Void)
+        completion: @escaping ([UIImage?]) -> Void)
     {
-        var formattedImage: UIImage?
-        guard let itemProvider = results.first?.itemProvider else { return }
+        var formattedImages: [UIImage?] = []
+        let dispatchGroup = DispatchGroup()
         
-        if itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else {
-                    DispatchQueue.main.async {
-                        formattedImage = image as? UIImage
-                        completion(formattedImage)
+        for result in results {
+            dispatchGroup.enter()
+            let itemProvider = result.itemProvider
+            
+            if itemProvider.canLoadObject(ofClass: UIImage.self) {
+                itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
+                    if let error = error {
+                        print(error.localizedDescription)
+                    } else {
+                        DispatchQueue.main.async {
+                            if let img = image as? UIImage {
+                                formattedImages.append(img)
+                            }
+                        }
                     }
-                }
-            })
+                    dispatchGroup.leave()
+                })
+            } else {
+                dispatchGroup.leave()
+            }
+        }
+        
+        dispatchGroup.notify(queue: .main) {
+            completion(formattedImages)
         }
     }
 }
