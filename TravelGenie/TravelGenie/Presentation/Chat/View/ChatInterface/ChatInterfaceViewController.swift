@@ -256,12 +256,16 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
 
 extension ChatInterfaceViewController: TagMessageSizeDelegate {
     func didUpdateTagMessageHeight(_ height: CGFloat) {
-        let tagCellIndex: IndexSet = IndexSet(integer: 3)
+        guard let tagMessageIndex = chatInterfaceViewModel.messageStorage.findTagMessageIndex() else {
+            print("MessageStorage에서 TagMessage를 찾지못헀음")
+            return
+        }
         
+        let tagSectionIndex: IndexSet = IndexSet(integer: tagMessageIndex)
         tagMessageCellSizeCalculator.updateMessageContainerHeight(height)
         
         UIView.performWithoutAnimation {
-            messagesCollectionView.reloadSections(tagCellIndex)
+            messagesCollectionView.reloadSections(tagSectionIndex)
         }
     }
 }
