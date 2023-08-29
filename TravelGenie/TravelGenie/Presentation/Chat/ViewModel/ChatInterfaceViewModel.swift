@@ -23,7 +23,11 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func insert(message: Message) {
         messageStorage.insertMessage(message)
     }
-    
+}
+
+// MARK: ButtonStateDelegate
+
+extension ChatInterfaceViewModel: ButtonStateDelegate {
     func setUploadButtonState(_ isEnabled: Bool) {
         uploadButtonState = isEnabled
     }

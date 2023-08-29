@@ -11,10 +11,15 @@ protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
 }
 
+protocol ButtonStateDelegate: AnyObject {
+    func setUploadButtonState(_ isEnabled: Bool)
+}
+
 final class ChatViewModel {
     
     weak var coordinator: ChatCoordinator?
     weak var delegate: MessageStorageDelegate?
+    weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
