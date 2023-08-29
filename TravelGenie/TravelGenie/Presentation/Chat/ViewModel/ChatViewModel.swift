@@ -140,6 +140,8 @@ final class ChatViewModel {
         // ChatGPT의 답변이 장소 추천인지, 일반 텍스트인지 구분
         do {
             let openAIRecommendation = try JSONDecoder().decode(OpenAIRecommendation.self, from: messageContentData)
+            let recommendationMessage = createRecommendationMessage(with: openAIRecommendation)
+            insertMessage(recommendationMessage)
         } catch {
             let textMessage = createTextMessage(with: messageContent)
             insertMessage(textMessage)
@@ -153,6 +155,13 @@ final class ChatViewModel {
             text: messageText,
             sender: Sender(name: .ai),
             sentDate: Date())
+    }
+    
+    // TODO: - 사진 API를 통해 사진 가져와서 RecommendationItem 생성
+    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
+        
+        // 메시지는 [RecommendationItem]을 받아서 만든다.
+        return Message(sender: Sender(name: .ai), sentDate: Date())
     }
     
     private func createPopUpViewModel() -> PopUpViewModel {
