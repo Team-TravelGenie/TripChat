@@ -62,18 +62,10 @@ final class ChatViewModel {
     
     func saveChat() {
         guard let messages = delegate?.fetchMessages(),
-              !selectedTags.isEmpty,
-              !recommendationItems.isEmpty
+              isValidChat()
         else { return }
         
-        let tagItem = TagItem(tags: selectedTags)
-        let chat = Chat(
-            id: UUID(),
-            createdAt: Date(),
-            tags: tagItem,
-            recommendations: recommendationItems,
-            messages: messages)
-
+        let chat = createChat(with: messages)
         chatUseCase.save(chat: chat) { result in
             switch result {
             case .success:
@@ -114,6 +106,21 @@ final class ChatViewModel {
             mainText: mainText,
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
+    }
+    
+    private func isValidChat() -> Bool {
+        return !selectedTags.isEmpty && !recommendationItems.isEmpty
+    }
+    
+    private func createChat(with messages: [Message]) -> Chat {
+        let tagItem = TagItem(tags: selectedTags)
+
+        return Chat(
+            id: UUID(),
+            createdAt: Date(),
+            tags: tagItem,
+            recommendations: recommendationItems,
+            messages: messages)
     }
     
     // MARK: objc methods
