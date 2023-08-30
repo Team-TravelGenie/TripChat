@@ -66,15 +66,21 @@ final class ChatViewModel {
     private let ai: Sender = Sender(name: .ai)
     private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
+    private let imageSearchUseCase: ImageSearchUseCase
     private var selectedTags: [Tag] = []
     private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
     
     // MARK: Lifecycle
     
-    init(chatUseCase: ChatUseCase, openAIUseCase: OpenAIUseCase) {
+    init(
+        chatUseCase: ChatUseCase,
+        openAIUseCase: OpenAIUseCase,
+        imageSearchUseCase: ImageSearchUseCase)
+    {
         self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
+        self.imageSearchUseCase = imageSearchUseCase
         addDefaultOpenAIPropmpt()
         NotificationCenter.default.addObserver(
             self,
@@ -131,6 +137,27 @@ final class ChatViewModel {
         delegate?.insert(message: message)
     }
     
+    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
+        let items = result.recommendationItems
+        items.forEach { createRecommendationItem(with: $0) }
+        
+        return Message(recommendations: recommendationItems)
+    }
+    
+    private func createRecommendationItem(with item: OpenAIRecommendation.RecommendationItem) {
+        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { [weak self] result in
+            switch result {
+            case .success(let imageData):
+                let recommendationItem = RecommendationItem(
+                    country: item.country,
+                    spot: item.spot,
+                    image: imageData)
+                self?.recommendationItems.append(recommendationItem)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
     private func addDefaultOpenAIPropmpt() {
         let message = ChatMessage(role: .system, content: OpenAIPrompt.openAISystemPrompt)
         openAIChatMessages.append(message)
