@@ -9,7 +9,7 @@ import Foundation
 
 final class VisionResultProcessor {
     
-    fileprivate struct VisionResults {
+    private struct VisionResults {
         var keywords: [Keyword]
         var landmarks: [Landmark]
     }
