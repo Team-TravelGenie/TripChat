@@ -7,6 +7,7 @@
 
 protocol ImageSearchRepository {
     func searchImage(
-        _ info: String,
+        with tags: [Tag],
+        spot: String,
         completion: @escaping (Result<String, Error>) -> Void)
 }

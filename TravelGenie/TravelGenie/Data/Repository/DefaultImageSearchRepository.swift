@@ -11,12 +11,13 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
     
     private let networkService = NetworkService()
     
-    // TODO: - 넣어줄 Info 타입 정의
     func searchImage(
-        _ info: String,
+        with tags: [Tag],
+        spot: String,
         completion: @escaping (Result<String, Error>) -> Void)
     {
-        let requestModel = ImageSearchRequestModel(q: "", exactTerms: "")
+        let query = tags.map { $0.value }.joined(separator: " ")
+        let requestModel = ImageSearchRequestModel(q: query, exactTerms: spot)
         networkService.request(GoogleCustomSearchAPI.imageSearch(requestModel)) { result in
             switch result {
             case .success(let response):

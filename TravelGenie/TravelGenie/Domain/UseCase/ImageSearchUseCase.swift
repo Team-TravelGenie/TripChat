@@ -5,10 +5,13 @@
 //  Created by summercat on 2023/08/30.
 //
 
+import Foundation
+
 protocol ImageSearchUseCase {
     func searchImage(
-        _ info: String,
-        completion: @escaping (Result<String, Error>) -> Void)
+        with tags: [Tag],
+        spot: String,
+        completion: @escaping (Result<Data, Error>) -> Void)
 }
 
 final class DefaultImageSearchUseCase: ImageSearchUseCase {
@@ -20,13 +23,17 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
     }
     
     func searchImage(
-        _ info: String,
-        completion: @escaping (Result<String, Error>) -> Void)
+        with tags: [Tag],
+        spot: String,
+        completion: @escaping (Result<Data, Error>) -> Void)
     {
-        repository.searchImage(info) { result in
+        let themeTags = tags.filter { $0.category == .theme }
+        repository.searchImage(with: themeTags, spot: spot) { result in
             switch result {
             case .success(let imageURL):
-                completion(.success(imageURL))
+                ImageManager.retrieveImage(with: imageURL) { data in
+                    completion(.success(data))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }
