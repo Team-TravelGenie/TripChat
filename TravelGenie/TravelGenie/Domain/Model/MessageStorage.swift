@@ -42,6 +42,10 @@ final class MessageStorage {
         return messageList[section]
     }
     
+    func fetchMessages() -> [Message] {
+        return messageList
+    }
+    
     // MARK: Private
     
     private func setupDefaultMessage() -> [Message] {
