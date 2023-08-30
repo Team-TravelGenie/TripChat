@@ -68,6 +68,7 @@
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
+		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
 		57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98732A9E3B580074409B /* ImageSearchDTO.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
@@ -169,6 +170,7 @@
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
+		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
 		57DA98732A9E3B580074409B /* ImageSearchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchDTO.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -585,6 +587,7 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */,
+				57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -796,6 +799,7 @@
 				5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
+				57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */,
 				5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
