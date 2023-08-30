@@ -19,12 +19,14 @@ final class ChatViewModel {
     var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
+    private let chatUseCase: ChatUseCase
     private var selectedTags: [Tag] = []
     private var recommendationItems: [RecommendationItem] = []
     
     // MARK: Lifecycle
     
-    init() {
+    init(chatUseCase: ChatUseCase) {
+        self.chatUseCase = chatUseCase
         NotificationCenter.default.addObserver(
             self,
             selector: #selector(didTapImageUploadButton(notification:)),
@@ -71,6 +73,15 @@ final class ChatViewModel {
             tags: tagItem,
             recommendations: recommendationItems,
             messages: messages)
+
+        chatUseCase.save(chat: chat) { result in
+            switch result {
+            case .success:
+                return
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func pop() {
