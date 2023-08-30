@@ -43,8 +43,6 @@ final class RecommendationItemCell: UICollectionViewCell {
         let text = NSMutableAttributedString()
             .text(item.country, font: .headline, color: .black)
             .text(" ", font: .headline, color: .black)
-            .text(item.city, font: .headline, color: .black)
-            .text(" ", font: .headline, color: .black)
             .text(item.spot, font: .headline, color: .black)
         imageView.image = UIImage(data: item.image)
         descriptionTextView.attributedText = text
