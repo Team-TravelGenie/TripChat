@@ -88,7 +88,7 @@
 		D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */; };
 		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
-		D29DBD352A9F7EA100C856C0 /* VisionResultFilter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultFilter.swift */; };
+		D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */; };
 		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
 		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
 		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
@@ -191,7 +191,7 @@
 		D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionUseCase.swift; sourceTree = "<group>"; };
 		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
-		D29DBD342A9F7EA100C856C0 /* VisionResultFilter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultFilter.swift; sourceTree = "<group>"; };
+		D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProcessor.swift; sourceTree = "<group>"; };
 		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -418,7 +418,7 @@
 				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
-				D29DBD342A9F7EA100C856C0 /* VisionResultFilter.swift */,
+				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -813,7 +813,7 @@
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
-				D29DBD352A9F7EA100C856C0 /* VisionResultFilter.swift in Sources */,
+				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				573BCD4A2A92149F00116D2D /* RecommendationItemCell.swift in Sources */,
