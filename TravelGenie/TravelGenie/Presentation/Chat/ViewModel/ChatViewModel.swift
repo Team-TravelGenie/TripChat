@@ -81,11 +81,25 @@ final class ChatViewModel {
     }
     
     private func extractKeywordsFromImages(images: [UIImage]) {
+        let group = DispatchGroup()
+        
         images.forEach {
             if let base64String = convertImageToBase64(image: $0) {
-                fetchKeywordsFromGoogleVision(base64String: base64String)
-                fetchLandMarksFromGoogleVision(base64String: base64String)
+                
+                group.enter()
+                fetchKeywordsFromGoogleVision(base64String: base64String) {
+                    group.leave()
+                }
+                
+                group.enter()
+                fetchLandMarksFromGoogleVision(base64String: base64String) {
+                    group.leave()
+                }
             }
+        }
+        
+        group.notify(queue: .main) {
+            // TODO: 이곳에서 6개 키워드 처리
         }
     }
 
@@ -98,7 +112,7 @@ final class ChatViewModel {
         return nil
     }
 
-    private func fetchKeywordsFromGoogleVision(base64String: String) {
+    private func fetchKeywordsFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
         googleVisionUseCase.extractKeywords(base64String) { result in
             switch result {
             case .success(let keywords):
@@ -106,10 +120,12 @@ final class ChatViewModel {
             case .failure(let error):
                 print(error)
             }
+            
+            completion()
         }
     }
     
-    private func fetchLandMarksFromGoogleVision(base64String: String) {
+    private func fetchLandMarksFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
         googleVisionUseCase.extractLandmarks(base64String) { result in
             switch result {
             case .success(let landmarks):
@@ -117,6 +133,8 @@ final class ChatViewModel {
             case .failure(let error):
                 print(error)
             }
+            
+            completion()
         }
     }
     

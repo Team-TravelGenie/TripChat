@@ -9,18 +9,22 @@ import Foundation
 
 struct VisionResults {
     var keywords: [Keyword]
-    var landmarks: [Landmark]?
+    var landmarks: [Landmark]
 }
 
 final class VisionResultProcessor {
     
-    private var visionResults: VisionResults?
+    private var visionResults = VisionResults(keywords: [], landmarks: [])
     
     func setKeywords(_ keywords: [Keyword]) {
-        visionResults?.keywords = keywords
+        keywords.forEach {
+            visionResults.keywords.append($0)
+        }
     }
     
     func setLandmarks(_ landmarks: [Landmark]) {
-        visionResults?.landmarks = landmarks
+        landmarks.forEach {
+            visionResults.landmarks.append($0)
+        }
     }
 }
