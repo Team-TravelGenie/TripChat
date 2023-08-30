@@ -163,6 +163,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
 // MARK: PopUpViewControllerDelegate
 
 extension ChatViewController: PopUpViewControllerDelegate {
+    func saveChat() {
+        chatViewModel.saveChat()
+    }
+    
     func pop() {
         chatViewModel.pop()
     }
