@@ -43,16 +43,16 @@ final class ChatViewModel {
         let totalPhotosToUpload = images.count
         var photoUploadCount = 0
         
-        for image in images {
-            let photoMessage = makePhotoMessage(from: image)
+        images.forEach {
+            let photoMessage = makePhotoMessage(from: $0)
             
-            insertMessage(photoMessage)
             photoUploadCount += 1
-            
-            if totalPhotosToUpload == photoUploadCount {
-                updateUploadButtonState(false)
-                extractKeywordsFromImages(images: images)
-            }
+            insertMessage(photoMessage)
+        }
+
+        if totalPhotosToUpload == photoUploadCount {
+            updateUploadButtonState(false)
+            extractKeywordsFromImages(images: images)
         }
     }
     
