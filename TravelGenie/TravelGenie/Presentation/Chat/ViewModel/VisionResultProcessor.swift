@@ -16,16 +16,12 @@ final class VisionResultProcessor {
     
     private var visionResults = VisionResults(keywords: [], landmarks: [])
     
-    func setKeywords(_ keywords: [Keyword]) {
-        keywords.forEach {
-            visionResults.keywords.append($0)
-        }
+    func addKeywords(_ keywords: [Keyword]) {
+        visionResults.keywords.append(contentsOf: keywords)
     }
     
-    func setLandmarks(_ landmarks: [Landmark]) {
-        landmarks.forEach {
-            visionResults.landmarks.append($0)
-        }
+    func addLandmarks(_ landmarks: [Landmark]) {
+        visionResults.landmarks.append(contentsOf: landmarks)
     }
     
     func getTopSixResults() -> [Tag] {

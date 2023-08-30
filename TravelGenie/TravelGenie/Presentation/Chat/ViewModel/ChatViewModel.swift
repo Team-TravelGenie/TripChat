@@ -124,7 +124,7 @@ final class ChatViewModel {
         googleVisionUseCase.extractKeywords(base64String) { result in
             switch result {
             case .success(let keywords):
-                self.visionResultProcessor.setKeywords(keywords.labels)
+                self.visionResultProcessor.addKeywords(keywords.labels)
             case .failure(let error):
                 print(error)
             }
@@ -137,7 +137,7 @@ final class ChatViewModel {
         googleVisionUseCase.extractLandmarks(base64String) { result in
             switch result {
             case .success(let landmarks):
-                self.visionResultProcessor.setLandmarks(landmarks.landmarks)
+                self.visionResultProcessor.addLandmarks(landmarks.landmarks)
             case .failure(let error):
                 print(error)
             }
