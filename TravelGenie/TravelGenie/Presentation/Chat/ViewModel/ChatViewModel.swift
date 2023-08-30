@@ -23,6 +23,7 @@ final class ChatViewModel {
     var didTapImageUploadButton: (() -> Void)?
     
     private let googleVisionUseCase: GoogleVisionUseCase
+    private let visionResultProcessor = VisionResultProcessor()
     private let user: Sender = Sender(name: .user)
     
     // MARK: Lifecycle
@@ -80,8 +81,8 @@ final class ChatViewModel {
     }
     
     private func extractKeywordsFromImages(images: [UIImage]) {
-        images.forEach { image in
-            if let base64String = convertImageToBase64(image: image) {
+        images.forEach {
+            if let base64String = convertImageToBase64(image: $0) {
                 fetchKeywordsFromGoogleVision(base64String: base64String)
                 fetchLandMarksFromGoogleVision(base64String: base64String)
             }
@@ -101,7 +102,7 @@ final class ChatViewModel {
         googleVisionUseCase.extractKeywords(base64String) { result in
             switch result {
             case .success(let keywords):
-                print(keywords)
+                self.visionResultProcessor.allResponses.append(keywords)
             case .failure(let error):
                 print(error)
             }
@@ -112,7 +113,7 @@ final class ChatViewModel {
         googleVisionUseCase.extractLandmarks(base64String) { result in
             switch result {
             case .success(let landmarks):
-                print(landmarks)
+                self.visionResultProcessor.allResponses.append(landmarks)
             case .failure(let error):
                 print(error)
             }
