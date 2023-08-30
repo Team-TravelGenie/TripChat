@@ -9,6 +9,7 @@ import UIKit
 
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
+    func fetchMessages() -> [Message]
 }
 
 final class ChatViewModel {
@@ -18,6 +19,8 @@ final class ChatViewModel {
     var didTapImageUploadButton: (() -> Void)?
     
     private let user: Sender = Sender(name: .user)
+    private var selectedTags: [Tag] = []
+    private var recommendationItems: [RecommendationItem] = []
     
     // MARK: Lifecycle
     
@@ -53,6 +56,21 @@ final class ChatViewModel {
         let popUpModel = createPopUpModel()
         
         return (viewModel: popUpViewModel, type: .normal(popUpModel))
+    }
+    
+    func saveChat() {
+        guard let messages = delegate?.fetchMessages(),
+              !selectedTags.isEmpty,
+              !recommendationItems.isEmpty
+        else { return }
+        
+        let tagItem = TagItem(tags: selectedTags)
+        let chat = Chat(
+            id: UUID(),
+            createdAt: Date(),
+            tags: tagItem,
+            recommendations: recommendationItems,
+            messages: messages)
     }
     
     func pop() {
@@ -95,6 +113,8 @@ final class ChatViewModel {
 
     @objc private func submitSelectedTags(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
+        
+        self.selectedTags = selectedTags
         requestRecommendations(with: selectedTags)
     }
 }
