@@ -72,6 +72,7 @@
 		57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98732A9E3B580074409B /* ImageSearchDTO.swift */; };
 		57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98752A9E4B200074409B /* ImageSearchRepository.swift */; };
 		57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */; };
+		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
@@ -176,6 +177,7 @@
 		57DA98732A9E3B580074409B /* ImageSearchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchDTO.swift; sourceTree = "<group>"; };
 		57DA98752A9E4B200074409B /* ImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSearchRepository.swift; sourceTree = "<group>"; };
+		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -381,6 +383,7 @@
 			isa = PBXGroup;
 			children = (
 				57462B732A96001700949D5C /* ChatUseCase.swift */,
+				57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -816,6 +819,7 @@
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
 				D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
+				57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */,
 				5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
