@@ -13,7 +13,7 @@ enum SenderName: String {
     case user
 }
 
-struct Sender: SenderType {
+struct Sender: SenderType, Equatable {
     var senderId: String
     var displayName: String
     

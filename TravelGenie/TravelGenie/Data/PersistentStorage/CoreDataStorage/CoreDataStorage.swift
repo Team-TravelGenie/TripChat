@@ -137,7 +137,6 @@ final class CoreDataStorage: ChatStorage {
     private func createRecommendationEntity(with recommendation: RecommendationItem) -> RecommendationEntity {
         let recommendationEntity = RecommendationEntity(context: context)
         recommendationEntity.setValue(recommendation.country, forKey: "country")
-        recommendationEntity.setValue(recommendation.city, forKey: "city")
         recommendationEntity.setValue(recommendation.spot, forKey: "spot")
         recommendationEntity.setValue(recommendation.image, forKey: "image")
         
@@ -202,14 +201,13 @@ final class CoreDataStorage: ChatStorage {
         var result: [Chat] = []
         let request: NSFetchRequest = RecommendationEntity.fetchRequest()
         let countryPredicate = NSPredicate(format: "country CONTAINS[c] %@", keyword)
-        let cityPredicate = NSPredicate(format: "city CONTAINS[c] %@", keyword)
         let spotPredicate = NSPredicate(format: "spot CONTAINS[c] %@", keyword)
         let predicate = NSCompoundPredicate(
             type: .or,
             subpredicates: [
                 countryPredicate,
-                cityPredicate,
-                spotPredicate,])
+                spotPredicate,
+            ])
         request.predicate = predicate
         
         do {
