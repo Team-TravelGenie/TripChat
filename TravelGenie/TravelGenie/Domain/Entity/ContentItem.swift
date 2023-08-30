@@ -65,7 +65,6 @@ enum Category: String, Codable {
 
 struct RecommendationItem: Codable {
     let country: String
-    let city: String
     let spot: String
     let image: Data
 }

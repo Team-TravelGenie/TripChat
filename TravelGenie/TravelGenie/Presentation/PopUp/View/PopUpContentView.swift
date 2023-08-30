@@ -11,6 +11,7 @@ protocol PopUpContentViewDelegate: AnyObject {
     func dismissPopUp()
     func showFeedbackContentView()
     func dismissAndPop()
+    func saveChat()
     func sendFeedback(_ feedback: UserFeedback)
 }
 
@@ -108,6 +109,7 @@ final class PopUpContentView: UIView {
             configureLeftButtonTitle(with: popUpModel.leftButtonTitle)
             configureRightButtonTitle(with: popUpModel.rightButtonTitle)
             closeButton.addAction(dismissAction(), for: .touchUpInside)
+            leftButton.addAction(saveChatAction(), for: .touchUpInside)
             leftButton.addAction(showFeedbackContentView(), for: .touchUpInside)
             rightButton.addAction(dismissAction(), for: .touchUpInside)
         case .feedback(let popUpModel):
@@ -302,6 +304,13 @@ final class PopUpContentView: UIView {
             self?.delegate?.dismissAndPop()
         }
     }
+    
+    private func saveChatAction() -> UIAction {
+        return UIAction { [weak self] _ in
+            self?.delegate?.saveChat()
+        }
+    }
+    
     private func submitFeedbackAction() -> UIAction {
         return UIAction { [weak self] _ in
             guard let self,

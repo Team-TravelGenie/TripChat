@@ -16,4 +16,8 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func insert(message: Message) {
         messageStorage.insertMessage(message)
     }
+    
+    func fetchMessages() -> [Message] {
+        return messageStorage.fetchMessages()
+    }
 }

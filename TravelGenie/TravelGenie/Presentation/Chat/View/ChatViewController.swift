@@ -18,7 +18,8 @@ final class ChatViewController: ChatInterfaceViewController {
     init(viewModel: ChatViewModel) {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        viewModel.delegate = chatInterfaceViewModel
+        chatViewModel.delegate = chatInterfaceViewModel
+        messageInputBar.delegate = chatViewModel
         bind()
     }
     
@@ -31,24 +32,15 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-        let message = Message(tags: [
-            Tag(category: .theme, value: "아"),
-            Tag(category: .theme, value: "아라"),
-            Tag(category: .theme, value: "아라0라"),
-            Tag(category: .theme, value: "아라아라"),
-            Tag(category: .theme, value: "아라아라라"),
-            Tag(category: .theme, value: "아라라라라라"),
-        ])
-        chatViewModel.insertMessage(message)
-
-        var recommendations: [RecommendationItem] = []
-        let image = UIImage(systemName: "chevron.left")!
-        let data = image.pngData()!
-        recommendations.append(RecommendationItem(country: "아이폰나라", city: "아이폰시", spot: "아이폰", image: data))
-        recommendations.append(RecommendationItem(country: "아2폰나라", city: "아2폰시", spot: "아2폰", image: data))
-        recommendations.append(RecommendationItem(country: "33333", city: "아이폰시", spot: "아이폰", image: data))
-        let secondMessage = Message(recommendations: recommendations, sentDate: Date())
-        chatViewModel.insertMessage(secondMessage)
+//        let message = Message(tags: [
+//            Tag(category: .theme, value: "아"),
+//            Tag(category: .theme, value: "아라"),
+//            Tag(category: .theme, value: "아라0라"),
+//            Tag(category: .theme, value: "아라아라"),
+//            Tag(category: .theme, value: "아라아라라"),
+//            Tag(category: .theme, value: "아라라라라라"),
+//        ])
+//        chatViewModel.insertMessage(message)
     }
     
     // MARK: Private
@@ -163,6 +155,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
 // MARK: PopUpViewControllerDelegate
 
 extension ChatViewController: PopUpViewControllerDelegate {
+    func saveChat() {
+        chatViewModel.saveChat()
+    }
+    
     func pop() {
         chatViewModel.pop()
     }

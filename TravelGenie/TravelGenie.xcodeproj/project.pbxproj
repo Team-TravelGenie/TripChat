@@ -60,7 +60,7 @@
 		5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEFE2A99B9300028B19F /* PopUpModel.swift */; };
 		5763DF072A9CA8020028B19F /* ChatInterfaceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */; };
 		5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DF082A9CAF220028B19F /* NotificationName+swift.swift */; };
-		57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */; };
+		57684BF92A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57684BF82A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift */; };
 		576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3A82A9742DC008C2D7C /* SearchBarView.swift */; };
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
 		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
@@ -73,6 +73,7 @@
 		57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98752A9E4B200074409B /* ImageSearchRepository.swift */; };
 		57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */; };
 		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
+		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
@@ -166,7 +167,7 @@
 		5763DEFE2A99B9300028B19F /* PopUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpModel.swift; sourceTree = "<group>"; };
 		5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewModel.swift; sourceTree = "<group>"; };
 		5763DF082A9CAF220028B19F /* NotificationName+swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NotificationName+swift.swift"; sourceTree = "<group>"; };
-		57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
+		57684BF82A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultOpenAIRepository.swift; sourceTree = "<group>"; };
 		576EC3A82A9742DC008C2D7C /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
@@ -178,6 +179,7 @@
 		57DA98752A9E4B200074409B /* ImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
+		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -375,6 +377,7 @@
 			children = (
 				57462B4A2A95B5ED00949D5C /* ChatRepository.swift */,
 				57DA98752A9E4B200074409B /* ImageSearchRepository.swift */,
+				57DA986B2A9DD0130074409B /* OpenAIRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -384,6 +387,7 @@
 			children = (
 				57462B732A96001700949D5C /* ChatUseCase.swift */,
 				57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */,
+				57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -530,8 +534,8 @@
 			isa = PBXGroup;
 			children = (
 				D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */,
-				57684BF82A73CAFE008AB8C9 /* OpenAIRepository.swift */,
 				57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */,
+				57684BF82A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift */,
 				57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */,
 			);
 			path = Repository;
@@ -792,6 +796,7 @@
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				D2F8C57A2A8F482D00AA3BFC /* CustomMessageContentCell.swift in Sources */,
 				5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */,
+				57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */,
 				D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */,
 				573BCD462A92141500116D2D /* RecommendationCell.swift in Sources */,
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
@@ -833,7 +838,7 @@
 				573BCD482A92146F00116D2D /* RecommendationCellViewModel.swift in Sources */,
 				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */,
 				573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */,
-				57684BF92A73CAFE008AB8C9 /* OpenAIRepository.swift in Sources */,
+				57684BF92A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
 				573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
@@ -878,6 +883,7 @@
 				57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */,
 				57462B6E2A95EAF700949D5C /* ChatEntity+CoreDataClass.swift in Sources */,
 				573BCD6B2A936F0D00116D2D /* UIImage+resize.swift in Sources */,
+				57DA986C2A9DD0130074409B /* OpenAIRepository.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

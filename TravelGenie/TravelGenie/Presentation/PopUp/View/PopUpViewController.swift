@@ -8,6 +8,7 @@
 import UIKit
 
 protocol PopUpViewControllerDelegate: AnyObject {
+    func saveChat()
     func pop()
 }
 
@@ -96,6 +97,10 @@ extension PopUpViewController: PopUpContentViewDelegate {
     func dismissAndPop() {
         dismiss(animated: false)
         delegate?.pop()
+    }
+    
+    func saveChat() {
+        delegate?.saveChat()
     }
     
     func sendFeedback(_ feedback: UserFeedback) {

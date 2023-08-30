@@ -19,7 +19,11 @@ final class ChatCoordinator: Coordinator {
     }
     
     func start() {
-        let chatViewModel = ChatViewModel()
+        let chatViewModel = ChatViewModel(
+            chatUseCase: DefaultChatUseCase(
+                chatRepository: DefaultChatRepository()),
+            openAIUseCase: DefaultOpenAIUseCase(
+                openAIRepository: DefaultOpenAIRepository()))
         let chatViewController = ChatViewController(viewModel: chatViewModel)
         chatViewModel.coordinator = self
         navigationController?.pushViewController(chatViewController, animated: false)
