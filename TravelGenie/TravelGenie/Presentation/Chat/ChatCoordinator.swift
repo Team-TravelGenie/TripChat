@@ -20,6 +20,8 @@ final class ChatCoordinator: Coordinator {
     
     func start() {
         let chatViewModel = ChatViewModel(
+            chatUseCase: DefaultChatUseCase(
+                chatRepository: DefaultChatRepository()),
             openAIUseCase: DefaultOpenAIUseCase(
                 openAIRepository: DefaultOpenAIRepository()))
         let chatViewController = ChatViewController(viewModel: chatViewModel)

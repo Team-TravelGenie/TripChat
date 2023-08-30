@@ -11,6 +11,7 @@ import UIKit
 
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
+    func fetchMessages() -> [Message]
 }
 
 final class ChatViewModel {
@@ -63,12 +64,16 @@ final class ChatViewModel {
     
     private let user: Sender = Sender(name: .user)
     private let ai: Sender = Sender(name: .ai)
+    private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
+    private var selectedTags: [Tag] = []
+    private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
     
     // MARK: Lifecycle
     
-    init(openAIUseCase: OpenAIUseCase) {
+    init(chatUseCase: ChatUseCase, openAIUseCase: OpenAIUseCase) {
+        self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
         addDefaultOpenAIPropmpt()
         NotificationCenter.default.addObserver(
@@ -98,6 +103,22 @@ final class ChatViewModel {
         let popUpModel = createPopUpModel()
         
         return (viewModel: popUpViewModel, type: .normal(popUpModel))
+    }
+    
+    func saveChat() {
+        guard let messages = delegate?.fetchMessages(),
+              isValidChat()
+        else { return }
+        
+        let chat = createChat(with: messages)
+        chatUseCase.save(chat: chat) { result in
+            switch result {
+            case .success:
+                return
+            case .failure(let error):
+                print(error)
+            }
+        }
     }
     
     func pop() {
@@ -188,6 +209,21 @@ final class ChatViewModel {
             rightButtonTitle: rightButtonTitle)
     }
     
+    private func isValidChat() -> Bool {
+        return !selectedTags.isEmpty && !recommendationItems.isEmpty
+    }
+    
+    private func createChat(with messages: [Message]) -> Chat {
+        let tagItem = TagItem(tags: selectedTags)
+
+        return Chat(
+            id: UUID(),
+            createdAt: Date(),
+            tags: tagItem,
+            recommendations: recommendationItems,
+            messages: messages)
+    }
+    
     // MARK: objc methods
     
     @objc private func didTapImageUploadButton(notification: Notification) {
@@ -199,6 +235,7 @@ final class ChatViewModel {
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         let selectedTagTextMessage = createTextMessage(with: tagText, sender: user)
+        self.selectedTags = selectedTags
         insertMessage(selectedTagTextMessage)
         sendSelectedTags(tagText)
     }

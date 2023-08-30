@@ -18,8 +18,8 @@ final class ChatViewController: ChatInterfaceViewController {
     init(viewModel: ChatViewModel) {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        viewModel.delegate = chatInterfaceViewModel
-        messageInputBar.delegate = viewModel
+        chatViewModel.delegate = chatInterfaceViewModel
+        messageInputBar.delegate = chatViewModel
         bind()
     }
     
@@ -155,6 +155,10 @@ extension ChatViewController: PHPickerViewControllerDelegate {
 // MARK: PopUpViewControllerDelegate
 
 extension ChatViewController: PopUpViewControllerDelegate {
+    func saveChat() {
+        chatViewModel.saveChat()
+    }
+    
     func pop() {
         chatViewModel.pop()
     }
