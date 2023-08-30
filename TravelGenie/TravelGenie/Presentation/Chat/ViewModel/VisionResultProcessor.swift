@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct VisionResults {
-    var keywords: [Keyword]
-    var landmarks: [Landmark]
-}
-
 final class VisionResultProcessor {
+    
+    fileprivate struct VisionResults {
+        var keywords: [Keyword]
+        var landmarks: [Landmark]
+    }
     
     private var visionResults = VisionResults(keywords: [], landmarks: [])
     
