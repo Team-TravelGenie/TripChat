@@ -112,12 +112,12 @@ final class ChatViewModel {
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {
-        if let imageData = image.jpegData(compressionQuality: 1.0) {
-            return imageData.base64EncodedString()
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("base64String 인코딩오류")
+            return nil
         }
         
-        print("base64String 인코딩오류")
-        return nil
+        return imageData.base64EncodedString()
     }
 
     private func fetchKeywordsFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
