@@ -42,20 +42,14 @@ final class VisionResultProcessor {
     }
     
     private func convertTags(_ results: [Any]) -> [Tag] {
-        var tags: [Tag] = []
-        
-        results.forEach {
+        return results.compactMap {
             if let landmark = $0 as? Landmark {
-                let tag = Tag(category: .theme, value: landmark.place)
-
-                tags.append(tag)
+                return Tag(category: .theme, value: landmark.place)
             } else if let keyword = $0 as? Keyword {
-                let tag = Tag(category: .theme, value: keyword.name)
-                
-                tags.append(tag)
+                return Tag(category: .theme, value: keyword.name)
             }
+            
+            return nil
         }
-        
-        return tags
     }
 }
