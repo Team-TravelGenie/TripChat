@@ -42,7 +42,24 @@ final class VisionResultProcessor {
             topSixResults.append(contentsOf: remainingKeywords)
         }
         
+        return convertTags(topSixResults)
+    }
+    
+    private func convertTags(_ results: [Any]) -> [Tag] {
+        var tags: [Tag] = []
         
-        return topSixResults
+        results.forEach {
+            if let landmark = $0 as? Landmark {
+                let tag = Tag(category: .theme, value: landmark.place)
+
+                tags.append(tag)
+            } else if let keyword = $0 as? Keyword {
+                let tag = Tag(category: .theme, value: keyword.name)
+                
+                tags.append(tag)
+            }
+        }
+        
+        return tags
     }
 }

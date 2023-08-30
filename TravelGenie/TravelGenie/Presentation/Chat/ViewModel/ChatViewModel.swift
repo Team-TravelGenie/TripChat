@@ -99,7 +99,9 @@ final class ChatViewModel {
         }
         
         group.notify(queue: .main) {
-            // TODO: 이곳에서 6개 키워드 처리
+            let tags = self.visionResultProcessor.getTopSixResults()
+            
+            // TODO: 메시지생성
         }
     }
 
