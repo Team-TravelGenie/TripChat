@@ -75,6 +75,10 @@ final class ChatViewModel {
             sender: user,
             sentDate: Date())
     }
+    
+    private func makeTagMessage(from tags: [Tag]) -> Message {
+        return Message(tags: tags)
+    }
 
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
@@ -98,10 +102,12 @@ final class ChatViewModel {
             }
         }
         
-        group.notify(queue: .main) {
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
             let tags = self.visionResultProcessor.getTopSixResults()
+            let tagMessage = self.makeTagMessage(from: tags)
             
-            // TODO: 메시지생성
+            self.delegate?.insert(message: tagMessage)
         }
     }
 

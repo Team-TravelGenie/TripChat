@@ -28,7 +28,7 @@ final class VisionResultProcessor {
         }
     }
     
-    func getTopSixResults() -> [Any] {
+    func getTopSixResults() -> [Tag] {
         var topSixResults: [Any] = []
         
         topSixResults.append(contentsOf: visionResults.landmarks)
