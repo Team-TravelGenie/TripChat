@@ -167,6 +167,7 @@ final class CustomTagContentCell: UICollectionViewCell {
             submitKeywordButton.topAnchor.constraint(equalTo: tagCollectionView.bottomAnchor),
             submitKeywordButton.leadingAnchor.constraint(equalTo: messageContentView.leadingAnchor, constant: 20),
             submitKeywordButton.trailingAnchor.constraint(equalTo: messageContentView.trailingAnchor, constant: -20),
+            submitKeywordButton.heightAnchor.constraint(equalToConstant: 47),
             submitKeywordButton.bottomAnchor.constraint(equalTo: messageContentView.bottomAnchor, constant: -12)
         ])
     }
