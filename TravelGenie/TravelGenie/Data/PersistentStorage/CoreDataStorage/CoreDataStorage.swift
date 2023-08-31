@@ -61,36 +61,14 @@ final class CoreDataService {
         }
     }
     
-    func fetchRecentChats(
-        pageSize: Int,
-        completion: @escaping (Result<[Chat], Error>) -> Void)
-    {
-        let request: NSFetchRequest = ChatEntity.fetchRequest()
-        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
-        request.sortDescriptors = [sortDescriptor]
-        request.fetchBatchSize = pageSize
-        
-        do {
-            let result = try context.fetch(request).map { $0.toDomain() }
-            completion(.success(result))
-        } catch {
-            completion(.failure(error))
+    func fetch<T>(request: NSFetchRequest<T>, predicate: NSPredicate? = nil) throws -> [T] {
+        if let predicate = predicate {
+            request.predicate = predicate
         }
-    }
-    
-    func fetchChats(
-        with keyword: String,
-        completion: @escaping (Result<[Chat], Error>) -> Void)
-    {
-        let tagResult: [Chat] = fetchWithTag(keyword)
-        let recommendationResult: [Chat] = fetchWithRecommendation(keyword)
-        let result: [Chat] = tagResult + recommendationResult
         
-        if result.isEmpty {
-            completion(.failure(StorageError.noResultForKeyword))
-        } else {
-            completion(.success(result))
-        }
+        let data = try context.fetch(request)
+        
+        return data
     }
     
     func deleteChat(
@@ -175,52 +153,5 @@ final class CoreDataService {
         messageEntity.setValue(data, forKey: "data")
         
         return messageEntity
-    }
-    
-    private func fetchWithTag(_ tag: String) -> [Chat] {
-        var result: [Chat] = []
-        let request: NSFetchRequest = TagEntity.fetchRequest()
-        let predicate = NSPredicate(format: "value CONTAINS[c] %@", tag)
-        request.predicate = predicate
-        
-        do {
-            let tagEntities: [TagEntity] = try context.fetch(request)
-            tagEntities.forEach {
-                if let chatEntities = $0.chat?.array as? [ChatEntity] {
-                    result.append(contentsOf: chatEntities.map { $0.toDomain() })
-                }
-            }
-            
-            return result
-        } catch {
-            return result
-        }
-    }
-    
-    private func fetchWithRecommendation(_ keyword: String) -> [Chat] {
-        var result: [Chat] = []
-        let request: NSFetchRequest = RecommendationEntity.fetchRequest()
-        let countryPredicate = NSPredicate(format: "country CONTAINS[c] %@", keyword)
-        let spotPredicate = NSPredicate(format: "spot CONTAINS[c] %@", keyword)
-        let predicate = NSCompoundPredicate(
-            type: .or,
-            subpredicates: [
-                countryPredicate,
-                spotPredicate,
-            ])
-        request.predicate = predicate
-        
-        do {
-            let recommendationEntities: [RecommendationEntity] = try context.fetch(request)
-            recommendationEntities.forEach {
-                if let chatEntities = $0.chat?.array as? [ChatEntity] {
-                    result.append(contentsOf: chatEntities.map { $0.toDomain() })
-                }
-            }
-            
-            return result
-        } catch {
-            return result
-        }
     }
 }
