@@ -99,7 +99,7 @@
 		D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */; };
 		D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */; };
 		D26846902AA1109E00831097 /* DefaultTranslateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468F2AA1109E00831097 /* DefaultTranslateRepository.swift */; };
-		D26846922AA1134900831097 /* DefaultTranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846912AA1134900831097 /* DefaultTranslateUseCase.swift */; };
+		D26846922AA1134900831097 /* TranslateUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846912AA1134900831097 /* TranslateUseCase.swift */; };
 		D26846942AA115AB00831097 /* TranslateRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846932AA115AB00831097 /* TranslateRepository.swift */; };
 		D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */; };
 		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
@@ -218,7 +218,7 @@
 		D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateAPI.swift; sourceTree = "<group>"; };
 		D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateRequestModel.swift; sourceTree = "<group>"; };
 		D268468F2AA1109E00831097 /* DefaultTranslateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTranslateRepository.swift; sourceTree = "<group>"; };
-		D26846912AA1134900831097 /* DefaultTranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTranslateUseCase.swift; sourceTree = "<group>"; };
+		D26846912AA1134900831097 /* TranslateUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateUseCase.swift; sourceTree = "<group>"; };
 		D26846932AA115AB00831097 /* TranslateRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateRepository.swift; sourceTree = "<group>"; };
 		D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionUseCase.swift; sourceTree = "<group>"; };
 		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
@@ -415,7 +415,7 @@
 				D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */,
 				57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */,
 				57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */,
-				D26846912AA1134900831097 /* DefaultTranslateUseCase.swift */,
+				D26846912AA1134900831097 /* TranslateUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -847,7 +847,7 @@
 				57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
-				D26846922AA1134900831097 /* DefaultTranslateUseCase.swift in Sources */,
+				D26846922AA1134900831097 /* TranslateUseCase.swift in Sources */,
 				576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				5763DF072A9CA8020028B19F /* ChatInterfaceViewModel.swift in Sources */,
