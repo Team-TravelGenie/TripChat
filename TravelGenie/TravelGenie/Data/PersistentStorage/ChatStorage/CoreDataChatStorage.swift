@@ -24,6 +24,30 @@ extension CoreDataChatStorage: ChatStorage {
         chat: Chat,
         completion: @escaping (Result<Chat, Error>) -> Void)
     {
+        do {
+            if let chatEntity = try coreDataService.save(
+                entityName: "ChatEntity",
+                values: [
+                    "id": chat.id,
+                    "createdAt": chat.createdAt,
+                ]) as? ChatEntity {
+                
+                try chat.tags.tags.forEach {
+                    try createTagEntity(with: $0, addTo: chatEntity)
+                }
+                
+                try chat.recommendations.forEach {
+                    try createRecommendationEntity(with: $0, addTo: chatEntity)
+                }
+                
+                try chat.messages.forEach {
+                    try createMessageEntity(with: $0, addTo: chatEntity)
+                }
+            }
+        } catch {
+            completion(.failure(error))
+        }
+    }
     
     func fetchRecentChats(
         pageSize: Int,
@@ -62,6 +86,78 @@ extension CoreDataChatStorage: ChatStorage {
     }
     
     // MARK: Private
+    
+    private func createTagEntity(
+        with tag: Tag,
+        addTo chatEntity: ChatEntity) throws
+    {
+        guard let tagEntity = try coreDataService.save(
+            entityName: "TagEntity",
+            values: [
+                "value": tag.value,
+                "isSelected": tag.isSelected,
+                "category": tag.category,
+            ]) as? TagEntity else { return }
+        
+        chatEntity.addToTags(tagEntity)
+    }
+    
+    private func createRecommendationEntity(
+        with recommendation: RecommendationItem,
+        addTo chatEntity: ChatEntity) throws
+    {
+        guard let recommendationEntity = try coreDataService.save(
+            entityName: "RecommendationEntity",
+            values: [
+                "country": recommendation.country,
+                "spot": recommendation.spot,
+                "image": recommendation.image,
+            ]) as? RecommendationEntity else { return }
+        
+        chatEntity.addToRecommendations(recommendationEntity)
+
+    }
+    
+    private func createMessageEntity(
+        with message: Message,
+        addTo chatEntity: ChatEntity) throws
+    {
+        var data: Data? = nil
+        
+        switch message.kind {
+        case .text(let text):
+            data = try JSONEncoder().encode(text)
+        case .attributedText(let attributedText):
+            data = try NSKeyedArchiver.archivedData(
+                withRootObject: attributedText,
+                requiringSecureCoding: true)
+        case .photo(let mediaItem):
+            let dao = MediaItemDAO(with: mediaItem)
+            data = try JSONEncoder().encode(dao)
+        case .custom(let item):
+            if message.kind.description == "tag" {
+                let item = item as? TagItem
+                data = try JSONEncoder().encode(item)
+            } else if message.kind.description == "recommendation" {
+                let item = item as? RecommendationItem
+                data = try JSONEncoder().encode(item)
+            }
+        default:
+            break
+        }
+        
+        if let messageEntity = try coreDataService.save(
+            entityName: "MessageEntity",
+            values: [
+                "id": UUID(uuidString: message.messageId),
+                "kind": message.kind.description,
+                "sender": message.sender.displayName,
+                "sentDate": message.sentDate,
+                "data": data,
+            ]) as? MessageEntity {
+            chatEntity.addToMessages(messageEntity)
+        }
+    }
     
     private func fetchWithTag(_ tag: String) -> [Chat] {
         var result: [Chat] = []
