@@ -7,7 +7,13 @@
 
 import Foundation
 
-final class TranslateUseCase {
+protocol TranslateUseCase {
+    func translateKewords(
+        _ contents: String,
+        completion: @escaping (Result<String, Error>) -> Void)
+}
+
+final class DefaultTranslateUseCase {
     
     private let translateRepository: TranslateRepository
     
