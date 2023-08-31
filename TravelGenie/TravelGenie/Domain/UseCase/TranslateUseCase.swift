@@ -13,7 +13,7 @@ protocol TranslateUseCase {
         completion: @escaping (Result<String, Error>) -> Void)
 }
 
-final class DefaultTranslateUseCase {
+final class DefaultTranslateUseCase: TranslateUseCase {
     
     private let translateRepository: TranslateRepository
     

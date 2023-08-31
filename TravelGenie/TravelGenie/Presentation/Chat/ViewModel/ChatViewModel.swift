@@ -66,13 +66,14 @@ final class ChatViewModel {
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
-    private let googleVisionUseCase: GoogleVisionUseCase
     private let visionResultProcessor = VisionResultProcessor()
     private let user: Sender = Sender(name: .user)
     private let ai: Sender = Sender(name: .ai)
     private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
     private let imageSearchUseCase: ImageSearchUseCase
+    private let googleVisionUseCase: GoogleVisionUseCase
+    private let translateUseCase: TranslateUseCase
     private var selectedTags: [Tag] = []
     private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
@@ -83,12 +84,14 @@ final class ChatViewModel {
         chatUseCase: ChatUseCase,
         openAIUseCase: OpenAIUseCase,
         imageSearchUseCase: ImageSearchUseCase,
-        googleVisionUseCase: GoogleVisionUseCase)
+        googleVisionUseCase: GoogleVisionUseCase,
+        translateUseCase: TranslateUseCase)
     {
         self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
         self.imageSearchUseCase = imageSearchUseCase
         self.googleVisionUseCase = googleVisionUseCase
+        self.translateUseCase = translateUseCase
         addDefaultOpenAIPropmpt()
 		registerNotificationObservers()
     }
