@@ -53,24 +53,10 @@ final class CoreDataService {
         return data
     }
     
-    func deleteChat(
-        with id: UUID,
-        completion: @escaping (Result<Bool, Error>) -> Void)
-    {
-        let request: NSFetchRequest = ChatEntity.fetchRequest()
-        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
-        request.predicate = predicate
+    func delete(object: NSManagedObject) throws {
+        context.delete(object)
         
-        do {
-            let targetObjects = try context.fetch(request)
-            targetObjects.forEach {
-                context.delete($0)
-            }
-            try saveContext()
-            completion(.success(true))
-        } catch {
-            completion(.failure(StorageError.noResultForID))
-        }
+        try saveContext()
     }
     
     // MARK: Private
