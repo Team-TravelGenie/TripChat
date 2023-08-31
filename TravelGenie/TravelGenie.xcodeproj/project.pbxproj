@@ -95,6 +95,7 @@
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
+		D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846892AA10A5600831097 /* TranslateDTO.swift */; };
 		D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */; };
 		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
@@ -208,6 +209,7 @@
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
+		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
 		D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionUseCase.swift; sourceTree = "<group>"; };
 		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
@@ -581,6 +583,7 @@
 				D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */,
 				D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */,
 				57DA98732A9E3B580074409B /* ImageSearchDTO.swift */,
+				D26846892AA10A5600831097 /* TranslateDTO.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -833,6 +836,7 @@
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				5763DF072A9CA8020028B19F /* ChatInterfaceViewModel.swift in Sources */,
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
+				D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
