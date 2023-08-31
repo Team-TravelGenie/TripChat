@@ -25,8 +25,21 @@ extension CoreDataChatStorage: ChatStorage {
         completion: @escaping (Result<Chat, Error>) -> Void)
     {
     
-    func fetchRecentChats(pageSize: Int, completion: @escaping (Result<[Chat], Error>) -> Void) {
+    func fetchRecentChats(
+        pageSize: Int,
+        completion: @escaping (Result<[Chat], Error>) -> Void)
+    {
+        let request = ChatEntity.fetchRequest()
+        let sortDescriptor = NSSortDescriptor(key: "createdAt", ascending: false)
+        request.sortDescriptors = [sortDescriptor]
+        request.fetchBatchSize = pageSize
         
+        do {
+            let result = try coreDataService.fetch(request: request).map { $0.toDomain() }
+            completion(.success(result))
+        } catch {
+            completion(.failure(StorageError.emptyStorage))
+        }
     }
     
     func fetchChats(
