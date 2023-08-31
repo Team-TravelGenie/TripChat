@@ -17,7 +17,7 @@ final class DefaultChatRepository: ChatRepository {
     
     func save(
         chat: Chat,
-        completion: @escaping (Result<Chat, Error>) -> Void)
+        completion: @escaping (Result<Bool, Error>) -> Void)
     {
         chatStorage.save(chat: chat, completion: completion)
     }

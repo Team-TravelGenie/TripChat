@@ -22,7 +22,7 @@ extension CoreDataChatStorage: ChatStorage {
     
     func save(
         chat: Chat,
-        completion: @escaping (Result<Chat, Error>) -> Void)
+        completion: @escaping (Result<Bool, Error>) -> Void)
     {
         do {
             if let chatEntity = try coreDataService.save(
@@ -43,6 +43,8 @@ extension CoreDataChatStorage: ChatStorage {
                 try chat.messages.forEach {
                     try createMessageEntity(with: $0, addTo: chatEntity)
                 }
+                
+                completion(.success(true))
             }
         } catch {
             completion(.failure(error))
