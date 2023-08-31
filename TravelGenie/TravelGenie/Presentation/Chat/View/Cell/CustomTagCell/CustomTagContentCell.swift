@@ -64,7 +64,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     private func configureSubmitButtonStateAndAppearance(_ state: Bool) {
         submitKeywordButton.isEnabled = state
-        submitKeywordButton.backgroundColor = state ? .blueGrayBackground3 : .black
+        submitKeywordButton.backgroundColor = state ? .blueGrayBackground3 : .blueGrayBackground
     }
     
     private func configureSubviews() {
