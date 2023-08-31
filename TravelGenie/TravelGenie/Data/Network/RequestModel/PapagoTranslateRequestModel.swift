@@ -8,7 +8,11 @@
 import Foundation
 
 struct PapagoTranslateRequestModel: Encodable {
-    let source: String
-    let target: String
+    let source: String = "en"
+    let target: String = "ko"
     let text: String
+    
+    init(text: String) {
+        self.text = text
+    }
 }
