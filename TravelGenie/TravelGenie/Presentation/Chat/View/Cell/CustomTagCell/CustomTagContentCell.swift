@@ -18,7 +18,10 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     private let viewModel = CustomTagContentCellViewModel()
     
-    private let tagContentAvatarView = AvatarView()
+    private let avatarView = CircleIconView()
+        .backgroundColor(.white)
+        .size(40)
+        .iconImage(imageName: "chat", size: 32)
     private let messageContentView = UIView()
     private let defaultMessageLabel = UILabel()
     private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
@@ -55,14 +58,6 @@ final class CustomTagContentCell: UICollectionViewCell {
         configureTagCollectionView()
         configureMessageContentView()
         configureDefaultMessageLabel()
-        configureTagContentAvatarView()
-    }
-    
-    private func configureTagContentAvatarView() {
-        let avatarImage = UIImage(named: "chat")
-        let avatar = Avatar(image: avatarImage)
-        tagContentAvatarView.set(avatar: avatar)
-        tagContentAvatarView.backgroundColor = .white
     }
     
     private func configureMessageContentView() {
@@ -118,24 +113,22 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureHierarchy() {
         [defaultMessageLabel, tagCollectionView, submitKeywordButton]
             .forEach { messageContentView.addSubview($0) }
-        [tagContentAvatarView, messageContentView]
+        [avatarView, messageContentView]
             .forEach { contentView.addSubview($0) }
     }
     
     private func configureLayout() {
-        tagContentAvatarView.translatesAutoresizingMaskIntoConstraints = false
+        avatarView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            tagContentAvatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            tagContentAvatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-            tagContentAvatarView.widthAnchor.constraint(equalToConstant: 40),
-            tagContentAvatarView.heightAnchor.constraint(equalTo: tagContentAvatarView.widthAnchor)
+            avatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
         ])
         
         let defaultHeightValue: CGFloat = 500
         messageContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            messageContentView.topAnchor.constraint(equalTo: tagContentAvatarView.topAnchor),
-            messageContentView.leadingAnchor.constraint(equalTo: tagContentAvatarView.trailingAnchor, constant: 8),
+            messageContentView.topAnchor.constraint(equalTo: avatarView.topAnchor),
+            messageContentView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
             messageContentView.widthAnchor.constraint(equalToConstant: 244)
         ])
         messageContentViewHeightLayoutConstraint = messageContentView.heightAnchor.constraint(equalToConstant: defaultHeightValue)
