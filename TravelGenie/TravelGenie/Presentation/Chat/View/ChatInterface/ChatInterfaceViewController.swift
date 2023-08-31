@@ -174,9 +174,10 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
         at indexPath: IndexPath,
         in messagesCollectionView: MessagesCollectionView)
     {
-        let avatarImage = UIImage(named: "chat")
+        let avatarImage = UIImage(named: "chat-with-background")
         let avatar = Avatar(image: avatarImage)
         avatarView.set(avatar: avatar)
+        avatarView.backgroundColor = .clear
     }
 }
 
