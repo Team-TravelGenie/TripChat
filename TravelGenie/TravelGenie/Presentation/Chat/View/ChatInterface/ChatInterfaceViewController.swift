@@ -88,6 +88,7 @@ class ChatInterfaceViewController: MessagesViewController {
         chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
+                self?.messagesCollectionView.scrollToLastItem()
             }
         }
         
@@ -248,5 +249,7 @@ extension ChatInterfaceViewController: TagMessageSizeDelegate {
         UIView.performWithoutAnimation {
             messagesCollectionView.reloadSections(tagSectionIndex)
         }
+        
+        messagesCollectionView.scrollToLastItem()
     }
 }
