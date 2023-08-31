@@ -43,7 +43,7 @@ final class TagStorage {
     }
     
     func updateTagSelectionState(value: String, isSelected: Bool) {
-        if let index = tags.firstIndex(where: { $0.value == value }) {
+        if let index = tags.firstIndex(where: { "#\($0.value)" == value }) {
             tags[index].isSelected = isSelected
         }
     }

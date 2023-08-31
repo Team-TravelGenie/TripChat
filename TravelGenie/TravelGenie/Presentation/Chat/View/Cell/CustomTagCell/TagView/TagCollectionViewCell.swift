@@ -52,7 +52,7 @@ class TagCollectionViewCell: UICollectionViewCell {
     }
     
     private func configureTagButtonText(tag: Tag) {
-        let tagText = tag.value
+        let tagText = "#\(tag.value)"
         
         let defaultText = NSMutableAttributedString()
             .text(tagText, font: .bodyRegular, color: .black)
