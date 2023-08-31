@@ -183,11 +183,38 @@ final class ChatViewModel {
         
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
-            let tags = self.visionResultProcessor.getTopSixResults()
-            let tagMessage = self.makeTagMessage(from: tags)
+            let processedTags = self.visionResultProcessor.getTopSixResults()
             
-            self.delegate?.insert(message: tagMessage)
+            translateTagValues(tags: processedTags) { [weak self] in
+                guard let self else { return }
+                let tagMessage = self.makeTagMessage(from: $0)
+                
+                self.delegate?.insert(message: tagMessage)
+            }
         }
+    }
+    
+    private func translateTagValues(tags: [Tag], completion: @escaping ([Tag]) -> Void) {
+        let convertedTagsToText = tags.map { $0.value }.joined(separator: ",")
+        
+        translateUseCase.translateKewords(convertedTagsToText) { [weak self] result in
+            switch result {
+            case .success(let translatedKeywords):
+                guard let self else { return }
+                let tagsFromTranslatedKeywords = self.convertSeperatedTextToTags(text: translatedKeywords)
+                
+                completion(tagsFromTranslatedKeywords)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    private func convertSeperatedTextToTags(text: String) -> [Tag] {
+        let splitText = text.split(separator: ",")
+        let trimmedTexts = splitText.map { $0.replacingOccurrences(of: " ", with: "") }
+        
+        return trimmedTexts.map { Tag(category: .theme, value: String($0)) }
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {
