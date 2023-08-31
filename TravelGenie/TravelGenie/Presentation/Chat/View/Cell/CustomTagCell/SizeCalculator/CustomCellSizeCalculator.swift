@@ -12,7 +12,6 @@ class CustomCellSizeCalculator: CellSizeCalculator {
     
     init(layout: MessagesCollectionViewFlowLayout? = nil) {
         super.init()
-        layout?.sectionInset = UIEdgeInsets(top: 4, left: .zero, bottom: 4, right: .zero)
         self.layout = layout
     }
     

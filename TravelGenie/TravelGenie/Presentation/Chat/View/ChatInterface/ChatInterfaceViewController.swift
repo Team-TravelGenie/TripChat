@@ -101,6 +101,7 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func customizeMessagesCollectionViewLayout() {
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
+        layout?.sectionInset = UIEdgeInsets(top: 8, left: .zero, bottom: 8, right: .zero)
     }
     
     private func cellResistration() {
