@@ -11,7 +11,7 @@ import MessageKit
 final class ButtonMessageCellSizeCalculator: CustomCellSizeCalculator {
     
     override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
-        return CGSize(width: messagesLayout.itemWidth, height: 130)
+        return CGSize(width: messagesLayout.itemWidth, height: 58)
     }
     
 }
