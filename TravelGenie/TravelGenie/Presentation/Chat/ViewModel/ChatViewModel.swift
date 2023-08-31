@@ -14,6 +14,10 @@ protocol MessageStorageDelegate: AnyObject {
     func fetchMessages() -> [Message]
 }
 
+protocol ButtonStateDelegate: AnyObject {
+    func setUploadButtonState(_ isEnabled: Bool)
+}
+
 final class ChatViewModel {
     
     private enum OpenAIPrompt {
@@ -59,8 +63,11 @@ final class ChatViewModel {
     
     weak var coordinator: ChatCoordinator?
     weak var delegate: MessageStorageDelegate?
+    weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
+    private let googleVisionUseCase: GoogleVisionUseCase
+    private let visionResultProcessor = VisionResultProcessor()
     private let user: Sender = Sender(name: .user)
     private let ai: Sender = Sender(name: .ai)
     private let chatUseCase: ChatUseCase
@@ -81,26 +88,30 @@ final class ChatViewModel {
         self.openAIUseCase = openAIUseCase
         self.imageSearchUseCase = imageSearchUseCase
         addDefaultOpenAIPropmpt()
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didTapImageUploadButton(notification:)),
-            name: .imageUploadButtonTapped,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(submitSelectedTags(notification:)),
-            name: .tagSubmitButtonTapped,
-            object: nil)
+		registerNotificationObservers()
     }
     
     // MARK: Internal
     
-    func makePhotoMessage(_ image: UIImage) {
-        let message = Message(
-            image: image,
-            sender: user,
-            sentDate: Date())
-        insertMessage(message)
+    func insertMessage(_ message: Message) {
+        delegate?.insert(message: message)
+    }
+    
+    func handlePhotoUploads(images: [UIImage]) {
+        let totalPhotosToUpload = images.count
+        var photoUploadCount = 0
+        
+        images.forEach {
+            let photoMessage = makePhotoMessage(from: $0)
+            
+            photoUploadCount += 1
+            insertMessage(photoMessage)
+        }
+
+        if totalPhotosToUpload == photoUploadCount {
+            updateUploadButtonState(false)
+            extractKeywordsFromImages(images: images)
+        }
     }
     
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {
@@ -132,10 +143,86 @@ final class ChatViewModel {
     
     // MARK: Private
     
-    // MARK: Message
+    private func makePhotoMessage(from image: UIImage) -> Message {
+        return Message(
+            image: image,
+            sender: user,
+            sentDate: Date())
+    }
     
-    private func insertMessage(_ message: Message) {
-        delegate?.insert(message: message)
+    private func makeTagMessage(from tags: [Tag]) -> Message {
+        return Message(tags: tags)
+    }
+
+    private func updateUploadButtonState(_ isEnabled: Bool) {
+        buttonStateDelegate?.setUploadButtonState(isEnabled)
+    }
+    
+    private func extractKeywordsFromImages(images: [UIImage]) {
+        let group = DispatchGroup()
+        
+        images.forEach {
+            if let base64String = convertImageToBase64(image: $0) {
+                
+                group.enter()
+                fetchKeywordsFromGoogleVision(base64String: base64String) {
+                    group.leave()
+                }
+                
+                group.enter()
+                fetchLandMarksFromGoogleVision(base64String: base64String) {
+                    group.leave()
+                }
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
+            let tags = self.visionResultProcessor.getTopSixResults()
+            let tagMessage = self.makeTagMessage(from: tags)
+            
+            self.delegate?.insert(message: tagMessage)
+        }
+    }
+
+    private func convertImageToBase64(image: UIImage) -> String? {
+        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
+            print("base64String 인코딩오류")
+            return nil
+        }
+        
+        return imageData.base64EncodedString()
+    }
+
+    private func fetchKeywordsFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
+        googleVisionUseCase.extractKeywords(base64String) { result in
+            switch result {
+            case .success(let keywords):
+                self.visionResultProcessor.addKeywords(keywords.labels)
+            case .failure(let error):
+                print(error)
+            }
+            
+            completion()
+        }
+    }
+    
+    private func fetchLandMarksFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
+        googleVisionUseCase.extractLandmarks(base64String) { result in
+            switch result {
+            case .success(let landmarks):
+                self.visionResultProcessor.addLandmarks(landmarks.landmarks)
+            case .failure(let error):
+                print(error)
+            }
+            
+            completion()
+        }
+    }
+    
+    private func requestRecommendations(with tags: [Tag]) {
+        let keywords: [String] = tags.map { $0.value }
+        // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
     }
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
@@ -235,6 +322,19 @@ final class ChatViewModel {
             rightButtonTitle: rightButtonTitle)
     }
     
+    private func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(submitSelectedTags(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
+	}
+
     // MARK: Chat
     
     private func isValidChat() -> Bool {

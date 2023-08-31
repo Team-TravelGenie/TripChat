@@ -1,5 +1,5 @@
 //
-//  DefaultRepository.swift
+//  DefaultGoogleVisionRepository.swift
 //  TravelGenie
 //
 //  Created by 서현웅 on 2023/07/22.
@@ -8,7 +8,7 @@
 import Foundation
 import Moya
 
-final class GoogleVisionRepository {
+final class DefaultGoogleVisionRepository: GoogleVisionRepository {
     private let networkService = NetworkService()
     
     func requestImageLabelDetection(
