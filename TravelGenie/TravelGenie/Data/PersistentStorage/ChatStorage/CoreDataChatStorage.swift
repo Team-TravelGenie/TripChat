@@ -9,6 +9,11 @@ import Foundation
 
 final class CoreDataChatStorage {
     
+    private let coreDataService: CoreDataService
+    
+    init(coreDataService: CoreDataService = CoreDataService.shared) {
+        self.coreDataService = coreDataService
+    }
 }
 
 extension CoreDataChatStorage: ChatStorage {
