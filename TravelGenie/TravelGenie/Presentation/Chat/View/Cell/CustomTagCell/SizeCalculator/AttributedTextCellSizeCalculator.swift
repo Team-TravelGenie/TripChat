@@ -60,8 +60,8 @@ final class AttributedTextCellSizeCalculator: MessageSizeCalculator {
         -> CGSize
     {
         let attributedText: NSAttributedString
-        
         let textMessageKind = message.kind
+        
         switch textMessageKind {
         case .attributedText(let text):
             attributedText = text
