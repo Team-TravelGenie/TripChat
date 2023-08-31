@@ -51,10 +51,11 @@ final class UploadButtonCell: UICollectionViewCell {
         
         uploadButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            uploadButton.widthAnchor.constraint(equalToConstant: 351),
+            uploadButton.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+            uploadButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12),
             uploadButton.heightAnchor.constraint(equalToConstant: 58),
             uploadButton.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
-            uploadButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
+            uploadButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
     }
 }
