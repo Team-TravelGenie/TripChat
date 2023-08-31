@@ -22,6 +22,8 @@ class ChatInterfaceViewController: MessagesViewController {
         = TagMessageCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var recommendationCellSizeCalculator
         = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var attributedTextCellSizeCalculator
+        = AttributedTextCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     // MARK: Override(s)
     
@@ -218,7 +220,8 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
                 return ButtonMessageCellSizeCalculator(layout: messagesCollectionView.messagesCollectionViewFlowLayout)
             }
         }
-        return nil
+
+        return attributedTextCellSizeCalculator
     }
 }
 
