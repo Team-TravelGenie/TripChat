@@ -25,7 +25,9 @@ final class ChatCoordinator: Coordinator {
             openAIUseCase: DefaultOpenAIUseCase(
                 openAIRepository: DefaultOpenAIRepository()),
             imageSearchUseCase: DefaultImageSearchUseCase(
-                repository: DefaultImageSearchRepository()))
+                repository: DefaultImageSearchRepository()),
+            googleVisionUseCase: DefaultGoogleVisionUseCase(
+                googleVisionRepository: DefaultGoogleVisionRepository()))
         let chatViewController = ChatViewController(viewModel: chatViewModel)
         chatViewModel.coordinator = self
         navigationController?.pushViewController(chatViewController, animated: false)

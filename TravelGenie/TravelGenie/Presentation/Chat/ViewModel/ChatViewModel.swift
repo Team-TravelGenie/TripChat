@@ -82,11 +82,13 @@ final class ChatViewModel {
     init(
         chatUseCase: ChatUseCase,
         openAIUseCase: OpenAIUseCase,
-        imageSearchUseCase: ImageSearchUseCase)
+        imageSearchUseCase: ImageSearchUseCase,
+        googleVisionUseCase: GoogleVisionUseCase)
     {
         self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
         self.imageSearchUseCase = imageSearchUseCase
+        self.googleVisionUseCase = googleVisionUseCase
         addDefaultOpenAIPropmpt()
 		registerNotificationObservers()
     }
