@@ -49,7 +49,6 @@ final class ChatViewModel {
     }
     
     private struct OpenAIRecommendation: Decodable {
-        
         struct RecommendationItem: Decodable {
             let country: String
             let spot: String
@@ -66,15 +65,21 @@ final class ChatViewModel {
     private let ai: Sender = Sender(name: .ai)
     private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
+    private let imageSearchUseCase: ImageSearchUseCase
     private var selectedTags: [Tag] = []
     private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
     
     // MARK: Lifecycle
     
-    init(chatUseCase: ChatUseCase, openAIUseCase: OpenAIUseCase) {
+    init(
+        chatUseCase: ChatUseCase,
+        openAIUseCase: OpenAIUseCase,
+        imageSearchUseCase: ImageSearchUseCase)
+    {
         self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
+        self.imageSearchUseCase = imageSearchUseCase
         addDefaultOpenAIPropmpt()
         NotificationCenter.default.addObserver(
             self,
@@ -127,9 +132,45 @@ final class ChatViewModel {
     
     // MARK: Private
     
+    // MARK: Message
+    
     private func insertMessage(_ message: Message) {
         delegate?.insert(message: message)
     }
+    
+    private func createTextMessage(with text: String, sender: Sender) -> Message {
+        let textColor: UIColor = sender == ai ? .black : .white
+        let messageText = NSMutableAttributedString()
+            .text(text, font: .bodyRegular, color: textColor)
+        return Message(
+            text: messageText,
+            sender: sender,
+            sentDate: Date())
+    }
+    
+    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
+        let items = result.recommendationItems
+        items.forEach { createRecommendationItem(with: $0) }
+        
+        return Message(recommendations: recommendationItems)
+    }
+    
+    private func createRecommendationItem(with item: OpenAIRecommendation.RecommendationItem) {
+        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { [weak self] result in
+            switch result {
+            case .success(let imageData):
+                let recommendationItem = RecommendationItem(
+                    country: item.country,
+                    spot: item.spot,
+                    image: imageData)
+                self?.recommendationItems.append(recommendationItem)
+            case .failure(let error):
+                print(error)
+            }
+        }
+    }
+    
+    // MARK: OpenAI
     
     private func addDefaultOpenAIPropmpt() {
         let message = ChatMessage(role: .system, content: OpenAIPrompt.openAISystemPrompt)
@@ -171,22 +212,7 @@ final class ChatViewModel {
         }
     }
     
-    private func createTextMessage(with text: String, sender: Sender) -> Message {
-        let textColor: UIColor = sender == ai ? .black : .white
-        let messageText = NSMutableAttributedString()
-            .text(text, font: .bodyRegular, color: textColor)
-        return Message(
-            text: messageText,
-            sender: sender,
-            sentDate: Date())
-    }
-    
-    // TODO: - 사진 API를 통해 사진 가져와서 RecommendationItem 생성
-    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
-        
-        // 메시지는 [RecommendationItem]을 받아서 만든다.
-        return Message(sender: ai, sentDate: Date())
-    }
+    // MARK: PopUp
     
     private func createPopUpViewModel() -> PopUpViewModel {
         return PopUpViewModel()
@@ -208,6 +234,8 @@ final class ChatViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
+    
+    // MARK: Chat
     
     private func isValidChat() -> Bool {
         return !selectedTags.isEmpty && !recommendationItems.isEmpty

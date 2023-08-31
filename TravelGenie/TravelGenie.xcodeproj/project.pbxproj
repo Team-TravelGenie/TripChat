@@ -75,6 +75,7 @@
 		57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */; };
 		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
 		57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98872A9F81300074409B /* OpenAIRepository.swift */; };
+		57DA988B2A9F8C830074409B /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988A2A9F8C830074409B /* ImageManager.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
@@ -182,6 +183,7 @@
 		57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
 		57DA98872A9F81300074409B /* OpenAIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
+		57DA988A2A9F8C830074409B /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -467,6 +469,14 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		57DA98892A9F8C770074409B /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				57DA988A2A9F8C830074409B /* ImageManager.swift */,
+			);
+			path = Utility;
+			sourceTree = "<group>";
+		};
 		D20FA2662A6B8DA90081B039 = {
 			isa = PBXGroup;
 			children = (
@@ -486,6 +496,7 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
+				57DA98892A9F8C770074409B /* Utility */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
 				D20FA2882A6B97C20081B039 /* Data */,
@@ -852,6 +863,7 @@
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
 				57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */,
+				57DA988B2A9F8C830074409B /* ImageManager.swift in Sources */,
 				57462B272A94E9B600949D5C /* ChatStorage.swift in Sources */,
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
