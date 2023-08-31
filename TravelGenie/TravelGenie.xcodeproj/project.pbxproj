@@ -76,6 +76,7 @@
 		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
 		57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98872A9F81300074409B /* OpenAIRepository.swift */; };
 		57DA988B2A9F8C830074409B /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988A2A9F8C830074409B /* ImageManager.swift */; };
+		57DA988F2AA0663C0074409B /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */; };
 		D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2722A6B8DA90081B039 /* AppDelegate.swift */; };
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
@@ -184,6 +185,7 @@
 		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
 		57DA98872A9F81300074409B /* OpenAIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57DA988A2A9F8C830074409B /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
+		57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
 		D20FA26F2A6B8DA90081B039 /* TravelGenie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TravelGenie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D20FA2722A6B8DA90081B039 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -481,6 +483,7 @@
 			children = (
 				57462B3F2A94F68700949D5C /* Entity */,
 				57462B262A94E9B600949D5C /* ChatStorage.swift */,
+				57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */,
 			);
 			path = ChatStorage;
 			sourceTree = "<group>";
@@ -897,6 +900,7 @@
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,
+				57DA988F2AA0663C0074409B /* CoreDataChatStorage.swift in Sources */,
 				57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
