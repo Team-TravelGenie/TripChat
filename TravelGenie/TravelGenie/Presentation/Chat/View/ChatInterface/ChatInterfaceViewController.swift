@@ -198,7 +198,6 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         
         if item is TagItem {
             return tagMessageCellSizeCalculator
-
         } else if item is [RecommendationItem] {
             return recommendationCellSizeCalculator
         }
@@ -228,7 +227,6 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
 extension ChatInterfaceViewController: TagMessageSizeDelegate {
     func didUpdateTagMessageHeight(_ height: CGFloat) {
         let tagCellIndex: IndexSet = IndexSet(integer: 3)
-        
         tagMessageCellSizeCalculator.updateMessageContainerHeight(height)
         
         UIView.performWithoutAnimation {

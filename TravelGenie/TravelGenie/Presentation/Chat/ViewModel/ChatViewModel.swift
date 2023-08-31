@@ -148,6 +148,8 @@ final class ChatViewModel {
             sentDate: Date())
     }
     
+    // 이미지를 받아오기 전에 Message를 생성하므로
+    // DispatchGroup이나 이런거 활용 필요!
     private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
         let items = result.recommendationItems
         items.forEach { createRecommendationItem(with: $0) }
