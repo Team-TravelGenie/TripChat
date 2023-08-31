@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class DefaultTranslateRepository {
+final class DefaultTranslateRepository: TranslateRepository {
     
     private let networkService = NetworkService()
     
