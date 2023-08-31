@@ -19,6 +19,7 @@ final class ChatViewController: ChatInterfaceViewController {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         chatViewModel.delegate = chatInterfaceViewModel
+        chatViewModel.buttonStateDelegate = chatInterfaceViewModel
         messageInputBar.delegate = chatViewModel
         bind()
     }
@@ -32,15 +33,6 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
-//        let message = Message(tags: [
-//            Tag(category: .theme, value: "아"),
-//            Tag(category: .theme, value: "아라"),
-//            Tag(category: .theme, value: "아라0라"),
-//            Tag(category: .theme, value: "아라아라"),
-//            Tag(category: .theme, value: "아라아라라"),
-//            Tag(category: .theme, value: "아라라라라라"),
-//        ])
-//        chatViewModel.insertMessage(message)
     }
     
     // MARK: Private
@@ -92,16 +84,9 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         _ picker: PHPickerViewController,
         didFinishPicking results: [PHPickerResult])
     {
-        if results.isEmpty {
-            self.dismiss(animated: true)
-        } else {
-            self.dismiss(animated: true) {
-                self.getImage(results: results) { [weak self] image in
-                    guard let self,
-                          let image else { return }
-                    self.chatViewModel.makePhotoMessage(image)
-                    // TODO: - API에 사진 전송
-                }
+        dismiss(animated: true) {
+            self.getImages(results: results) { [weak self] in
+                self?.chatViewModel.handlePhotoUploads(images: $0)
             }
         }
     }
@@ -125,29 +110,33 @@ extension ChatViewController: PHPickerViewControllerDelegate {
         
         configuration.filter = .images
         configuration.preferredAssetRepresentationMode = .current
-        configuration.selectionLimit = 1
+        configuration.selectionLimit = 3
         
         return configuration
     }
     
-    private func getImage(
+    private func getImages(
         results: [PHPickerResult],
-        completion: @escaping (UIImage?) -> Void)
+        completion: @escaping ([UIImage]) -> Void)
     {
-        var formattedImage: UIImage?
-        guard let itemProvider = results.first?.itemProvider else { return }
+        var images: [UIImage] = []
+        let group = DispatchGroup()
         
-        if itemProvider.canLoadObject(ofClass: UIImage.self) {
-            itemProvider.loadObject(ofClass: UIImage.self, completionHandler: { image, error in
+        for result in results {
+            group.enter()
+            result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
                 if let error = error {
                     print(error.localizedDescription)
-                } else {
-                    DispatchQueue.main.async {
-                        formattedImage = image as? UIImage
-                        completion(formattedImage)
-                    }
+                } else if let image = image as? UIImage {
+                    images.append(image)
                 }
-            })
+                
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(images)
         }
     }
 }

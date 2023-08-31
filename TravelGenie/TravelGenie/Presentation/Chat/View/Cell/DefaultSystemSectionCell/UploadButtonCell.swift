@@ -14,7 +14,6 @@ final class UploadButtonCell: UICollectionViewCell {
     }
     
     private let uploadButton = RectangleTextButton()
-        .backgroundColor(.primary)
         .cornerRadius(12)
     
     // MARK: Lifecycle
@@ -27,6 +26,12 @@ final class UploadButtonCell: UICollectionViewCell {
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    func configureButtonState(state: Bool) {
+        uploadButton.isEnabled = state
+        
+        state ? uploadButton.backgroundColor(.primary) : uploadButton.backgroundColor(.blueGrayLine)
     }
     
     // MARK: Private

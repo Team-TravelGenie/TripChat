@@ -35,6 +35,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         configureSubviews()
         configureHierarchy()
         configureLayout()
+        bind()
     }
     
     required init?(coder: NSCoder) {
@@ -52,6 +53,19 @@ final class CustomTagContentCell: UICollectionViewCell {
     }
     
     // MARK: Private
+    
+    private func bind() {
+        viewModel.didTapSubmitButton = { [weak self] state in
+            DispatchQueue.main.async {
+                self?.configureSubmitButtonStateAndAppearance(state)
+            }
+        }
+    }
+    
+    private func configureSubmitButtonStateAndAppearance(_ state: Bool) {
+        submitKeywordButton.isEnabled = state
+        submitKeywordButton.backgroundColor = state ? .blueGrayBackground3 : .black
+    }
     
     private func configureSubviews() {
         configureSubmitKeywordButton()
@@ -106,6 +120,7 @@ final class CustomTagContentCell: UICollectionViewCell {
             }
             
             self.viewModel.submitSelectedTags(selectedList)
+            self.viewModel.updateSubmitButtonState(false)
         }
         submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }

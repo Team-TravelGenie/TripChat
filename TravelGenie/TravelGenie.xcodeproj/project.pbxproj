@@ -88,14 +88,17 @@
 		D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */; };
 		D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */; };
 		D20FA29D2A6BC6590081B039 /* DetectedImageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */; };
-		D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */; };
+		D20FA2A22A6BC8650081B039 /* DefaultGoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A12A6BC8650081B039 /* DefaultGoogleVisionRepository.swift */; };
 		D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */; };
 		D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */; };
 		D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D23037772A8C65E40017950E /* SystemMessageCell.swift */; };
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
+		D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */; };
+		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
+		D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */; };
 		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
 		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
 		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
@@ -198,14 +201,17 @@
 		D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLabelDetectionAPI.swift; sourceTree = "<group>"; };
 		D20FA2992A6BB9E20081B039 /* LabelDectionDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LabelDectionDTO.swift; sourceTree = "<group>"; };
 		D20FA29C2A6BC6590081B039 /* DetectedImageLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetectedImageLabel.swift; sourceTree = "<group>"; };
-		D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
+		D20FA2A12A6BC8650081B039 /* DefaultGoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultGoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRequestModel.swift; sourceTree = "<group>"; };
 		D20FA2AA2A6BE34D0081B039 /* Encodable+toDictionary.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+toDictionary.swift"; sourceTree = "<group>"; };
 		D23037772A8C65E40017950E /* SystemMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageCell.swift; sourceTree = "<group>"; };
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
+		D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionUseCase.swift; sourceTree = "<group>"; };
+		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
+		D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProcessor.swift; sourceTree = "<group>"; };
 		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
@@ -382,6 +388,7 @@
 			isa = PBXGroup;
 			children = (
 				57462B4A2A95B5ED00949D5C /* ChatRepository.swift */,
+				D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */,
 				57DA98752A9E4B200074409B /* ImageSearchRepository.swift */,
 				57DA98872A9F81300074409B /* OpenAIRepository.swift */,
 			);
@@ -392,6 +399,7 @@
 			isa = PBXGroup;
 			children = (
 				57462B732A96001700949D5C /* ChatUseCase.swift */,
+				D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */,
 				57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */,
 				57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */,
 			);
@@ -434,6 +442,7 @@
 				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
+				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -548,7 +557,7 @@
 		D20FA2892A6B97E30081B039 /* Repository */ = {
 			isa = PBXGroup;
 			children = (
-				D20FA2A12A6BC8650081B039 /* GoogleVisionRepository.swift */,
+				D20FA2A12A6BC8650081B039 /* DefaultGoogleVisionRepository.swift */,
 				57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */,
 				57684BF82A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift */,
 				57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */,
@@ -829,6 +838,7 @@
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
 				5763DEFF2A99B9300028B19F /* PopUpModel.swift in Sources */,
 				573BCD5E2A92618500116D2D /* ChatListCell.swift in Sources */,
+				D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */,
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
 				57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */,
 				5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */,
@@ -846,12 +856,14 @@
 				5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
+				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
+				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */,
 				573BCD4A2A92149F00116D2D /* RecommendationItemCell.swift in Sources */,
-				D20FA2A22A6BC8650081B039 /* GoogleVisionRepository.swift in Sources */,
+				D20FA2A22A6BC8650081B039 /* DefaultGoogleVisionRepository.swift in Sources */,
 				573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */,
 				573BCD482A92146F00116D2D /* RecommendationCellViewModel.swift in Sources */,
 				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */,
