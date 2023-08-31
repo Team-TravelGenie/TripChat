@@ -29,7 +29,15 @@ final class CustomTagContentCellViewModel {
         return ["✈️지역", "⛵️테마"]
     }
     
+    var didTapSubmitButton: ((Bool) -> Void)?
+
     private let tagStorage: TagStorage = TagStorage()
+
+    private var submitButtonState: Bool = true {
+        didSet {
+            didTapSubmitButton?(submitButtonState)
+        }
+    }
     
     // MARK: Internal
     
@@ -48,6 +56,10 @@ final class CustomTagContentCellViewModel {
     
     func updateTagIsSelected(value: String, isSelected: Bool) {
         tagStorage.updateTagSelectionState(value: value, isSelected: isSelected)
+    }
+    
+    func updateSubmitButtonState(_ state: Bool) {
+        submitButtonState = state
     }
     
     func submitSelectedTags(_ selectedTags: [Tag]) {
