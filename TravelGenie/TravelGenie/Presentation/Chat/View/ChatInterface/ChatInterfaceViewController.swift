@@ -44,8 +44,6 @@ class ChatInterfaceViewController: MessagesViewController {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
         
-        _ = messagesDataSource.messageForItem(at: indexPath, in: messagesCollectionView)
-        
         if let defaultSection = MessagesDefaultSection(rawValue: indexPath.section) {
             switch defaultSection {
             case .systemMessage:
@@ -67,10 +65,6 @@ class ChatInterfaceViewController: MessagesViewController {
         in messagesCollectionView: MessagesCollectionView)
         -> UICollectionViewCell
     {
-        guard let _ = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
@@ -107,24 +101,6 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func customizeMessagesCollectionViewLayout() {
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
-        
-        layout?.setMessageOutgoingAvatarSize(.zero)
-        layout?.setMessageOutgoingMessageTopLabelAlignment(
-            LabelAlignment(
-                textAlignment: .right,
-                textInsets: .zero))
-        layout?.setMessageOutgoingMessageBottomLabelAlignment(
-            LabelAlignment(
-                textAlignment: .right,
-                textInsets: .zero))
-        layout?.setMessageIncomingAvatarPosition(
-            AvatarPosition(vertical: .messageTop))
-        layout?.setAvatarLeadingTrailingPadding(8)
-        layout?.setMessageIncomingAvatarSize(
-            CGSize(width: 40, height: 40))
-        
-        let bodyRegular = UIFont.systemFont(ofSize: 15, weight: .regular)
-        layout?.textMessageSizeCalculator.messageLabelFont = bodyRegular
     }
     
     private func cellResistration() {
@@ -199,17 +175,7 @@ extension ChatInterfaceViewController: MessagesDisplayDelegate {
     {
         let avatarImage = UIImage(named: "chat")
         let avatar = Avatar(image: avatarImage)
-        avatarView.backgroundColor = .white
         avatarView.set(avatar: avatar)
-    }
-    
-    func configureMediaMessageImageView(
-        _ imageView: UIImageView,
-        for message: MessageType,
-        at indexPath: IndexPath,
-        in messagesCollectionView: MessagesCollectionView)
-    {
-        // TODO: kind - PhotoCell, CustomCell(Swipe) 타입에 대해서 Cache 구현
     }
 }
 
