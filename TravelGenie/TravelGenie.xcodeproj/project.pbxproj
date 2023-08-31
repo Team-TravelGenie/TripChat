@@ -96,6 +96,8 @@
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
 		D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846892AA10A5600831097 /* TranslateDTO.swift */; };
+		D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */; };
+		D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */; };
 		D26E6BA32A9E1CD90069A6DC /* GoogleVisionUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */; };
 		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
@@ -210,6 +212,8 @@
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
 		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
+		D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateAPI.swift; sourceTree = "<group>"; };
+		D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateRequestModel.swift; sourceTree = "<group>"; };
 		D26E6BA22A9E1CD90069A6DC /* GoogleVisionUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionUseCase.swift; sourceTree = "<group>"; };
 		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
@@ -605,6 +609,7 @@
 				D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */,
 				D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */,
 				57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */,
+				D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 			children = (
 				D20FA2A72A6BD4830081B039 /* GoogleVisionRequestModel.swift */,
 				57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */,
+				D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -892,6 +898,7 @@
 				D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */,
 				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */,
+				D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */,
 				D2E3AA392A8B87630049DDEF /* Message.swift in Sources */,
 				5763DEF72A991D560028B19F /* UserFeedback.swift in Sources */,
 				D2E810EC2A70427500136F99 /* DetectedLandmark.swift in Sources */,
@@ -899,6 +906,7 @@
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
 				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
+				D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
