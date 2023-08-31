@@ -1,5 +1,5 @@
 //
-//  CoreDataStorage.swift
+//  CoreDataService.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/08/22.
@@ -8,9 +8,9 @@
 import CoreData
 import Foundation
 
-final class CoreDataStorage: ChatStorage {
+final class CoreDataService {
     
-    static let shared = CoreDataStorage()
+    static let shared = CoreDataService()
     
     private lazy var persistentContainer: NSPersistentContainer = {        
         let container = NSPersistentContainer(name: "CoreDataModel")
