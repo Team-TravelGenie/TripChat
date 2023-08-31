@@ -81,8 +81,22 @@ extension CoreDataChatStorage: ChatStorage {
         }
     }
     
-    func deleteChat(with id: UUID, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func deleteChat(
+        with id: UUID,
+        completion: @escaping (Result<Bool, Error>) -> Void)
+    {
+        let request = ChatEntity.fetchRequest()
+        let predicate = NSPredicate(format: "id == %@", id as CVarArg)
         
+        do {
+            let targetObjects = try coreDataService.fetch(request: request, predicate: predicate)
+            try targetObjects.forEach {
+                try coreDataService.delete(object: $0)
+            }
+            completion(.success(true))
+        } catch {
+            completion(.failure(StorageError.noResultForID))
+        }
     }
     
     // MARK: Private
