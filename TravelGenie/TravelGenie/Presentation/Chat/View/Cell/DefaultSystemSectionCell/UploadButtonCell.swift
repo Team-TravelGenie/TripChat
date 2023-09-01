@@ -30,7 +30,6 @@ final class UploadButtonCell: UICollectionViewCell {
     
     func configureButtonState(state: Bool) {
         uploadButton.isEnabled = state
-        
         uploadButton.backgroundColor(state ? .primary : .blueGrayLine)
     }
     
