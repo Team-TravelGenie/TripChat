@@ -66,16 +66,16 @@ final class ChatViewModel {
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
-    private let googleVisionUseCase: GoogleVisionUseCase
-    private let visionResultProcessor = VisionResultProcessor()
-    private let user: Sender = Sender(name: .user)
     private let ai: Sender = Sender(name: .ai)
+    private let user: Sender = Sender(name: .user)
     private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
     private let imageSearchUseCase: ImageSearchUseCase
+    private let googleVisionUseCase: GoogleVisionUseCase
     private var selectedTags: [Tag] = []
-    private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
+    private var recommendationItems: [RecommendationItem] = []
+    private let visionResultProcessor = VisionResultProcessor()
     
     // MARK: Lifecycle
     
@@ -130,7 +130,7 @@ final class ChatViewModel {
         
         let chat = createChat(with: messages)
         chatUseCase.save(chat: chat) { error in
-            print(error)
+            print(error?.localizedDescription)
         }
     }
     
@@ -153,10 +153,6 @@ final class ChatViewModel {
             object: nil)
     }
     
-    private func makeTagMessage(from tags: [Tag]) -> Message {
-        return Message(tags: tags)
-    }
-
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
@@ -182,7 +178,7 @@ final class ChatViewModel {
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             let tags = self.visionResultProcessor.getTopSixResults()
-            let tagMessage = self.makeTagMessage(from: tags)
+            let tagMessage = self.createTagMessage(from: tags)
             
             self.delegate?.insert(message: tagMessage)
         }
@@ -240,6 +236,10 @@ final class ChatViewModel {
             image: image,
             sender: user,
             sentDate: Date())
+    }
+    
+    private func createTagMessage(from tags: [Tag]) -> Message {
+        return Message(tags: tags)
     }
     
     private func insertRecommendationMessage(with result: OpenAIRecommendation) {
