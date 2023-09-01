@@ -242,26 +242,44 @@ final class ChatViewModel {
             sentDate: Date())
     }
     
-    // 이미지를 받아오기 전에 Message를 생성하므로
-    // DispatchGroup이나 이런거 활용 필요!
-    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
+    private func insertRecommendationMessage(with result: OpenAIRecommendation) {
         let items = result.recommendationItems
-        items.forEach { createRecommendationItem(with: $0) }
+        var message = Message(sender: Sender(name: .ai))
+        let group = DispatchGroup()
         
-        return Message(recommendations: recommendationItems)
+        for item in items {
+            group.enter()
+            createRecommendationItem(with: item) { [weak self] recommendationItem in
+                self?.recommendationItems.append(recommendationItem)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
+            message = Message(recommendations: self.recommendationItems)
+            insertMessage(message)
+        }
     }
     
-    private func createRecommendationItem(with item: OpenAIRecommendation.RecommendationItem) {
-        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { [weak self] result in
+    private func createRecommendationItem(
+        with item: OpenAIRecommendation.RecommendationItem,
+        completion: @escaping ((RecommendationItem) -> Void))
+    {
+        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { result in
             switch result {
             case .success(let imageData):
                 let recommendationItem = RecommendationItem(
                     country: item.country,
                     spot: item.spot,
                     image: imageData)
-                self?.recommendationItems.append(recommendationItem)
-            case .failure(let error):
-                print(error)
+                completion(recommendationItem)
+            case .failure:
+                let recommendationItem = RecommendationItem(
+                    country: item.country,
+                    spot: item.spot,
+                    image: Data())
+                completion(recommendationItem)
             }
         }
     }
@@ -300,8 +318,7 @@ final class ChatViewModel {
         // ChatGPT의 답변이 장소 추천인지, 일반 텍스트인지 구분
         do {
             let openAIRecommendation = try JSONDecoder().decode(OpenAIRecommendation.self, from: messageContentData)
-            let recommendationMessage = createRecommendationMessage(with: openAIRecommendation)
-            insertMessage(recommendationMessage)
+            insertRecommendationMessage(with: openAIRecommendation)
         } catch {
             let textMessage = createTextMessage(with: messageContent, sender: ai)
             insertMessage(textMessage)
