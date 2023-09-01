@@ -104,7 +104,7 @@ final class ChatViewModel {
         var photoUploadCount = 0
         
         images.forEach {
-            let photoMessage = makePhotoMessage(from: $0)
+            let photoMessage = createPhotoMessage(from: $0)
             
             photoUploadCount += 1
             insertMessage(photoMessage)
@@ -140,11 +140,17 @@ final class ChatViewModel {
     
     // MARK: Private
     
-    private func makePhotoMessage(from image: UIImage) -> Message {
-        return Message(
-            image: image,
-            sender: user,
-            sentDate: Date())
+    private func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(submitSelectedTags(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
     }
     
     private func makeTagMessage(from tags: [Tag]) -> Message {
@@ -221,6 +227,7 @@ final class ChatViewModel {
         let keywords: [String] = tags.map { $0.value }
         // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
     }
+    // MARK: Create Message
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
         let textColor: UIColor = sender == ai ? .black : .white
@@ -229,6 +236,13 @@ final class ChatViewModel {
         return Message(
             text: messageText,
             sender: sender,
+            sentDate: Date())
+    }
+    
+    private func createPhotoMessage(from image: UIImage) -> Message {
+        return Message(
+            image: image,
+            sender: user,
             sentDate: Date())
     }
     
@@ -320,19 +334,6 @@ final class ChatViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
-    
-    private func registerNotificationObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didTapImageUploadButton(notification:)),
-            name: .imageUploadButtonTapped,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(submitSelectedTags(notification:)),
-            name: .tagSubmitButtonTapped,
-            object: nil)
-	}
 
     // MARK: Chat
     
