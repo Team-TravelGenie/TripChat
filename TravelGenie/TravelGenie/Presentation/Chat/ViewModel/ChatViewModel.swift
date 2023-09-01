@@ -73,7 +73,6 @@ final class ChatViewModel {
     private let openAIUseCase: OpenAIUseCase
     private let imageSearchUseCase: ImageSearchUseCase
     private let googleVisionUseCase: GoogleVisionUseCase
-    private let translateUseCase: TranslateUseCase
     private var selectedTags: [Tag] = []
     private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
@@ -84,14 +83,12 @@ final class ChatViewModel {
         chatUseCase: ChatUseCase,
         openAIUseCase: OpenAIUseCase,
         imageSearchUseCase: ImageSearchUseCase,
-        googleVisionUseCase: GoogleVisionUseCase,
-        translateUseCase: TranslateUseCase)
+        googleVisionUseCase: GoogleVisionUseCase)
     {
         self.chatUseCase = chatUseCase
         self.openAIUseCase = openAIUseCase
         self.imageSearchUseCase = imageSearchUseCase
         self.googleVisionUseCase = googleVisionUseCase
-        self.translateUseCase = translateUseCase
         addDefaultOpenAIPropmpt()
         registerNotificationObservers()
     }
@@ -184,7 +181,7 @@ final class ChatViewModel {
         group.notify(queue: .global(qos: .userInteractive)) { [weak self] in
             guard let self else { return }
             
-            self.visionResultProcessor.getSixMostConfidentTranslatedTags(useCase: self.translateUseCase) { [weak self] in
+            self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
                 let tagMessage = self.makeTagMessage(from: $0)
                 
