@@ -9,6 +9,6 @@ import Foundation
 
 protocol TranslateRepository {
     func translate(
-        with kewords: String,
+        with keywords: String,
         completion: @escaping ((Result<String, Error>) -> Void))
 }

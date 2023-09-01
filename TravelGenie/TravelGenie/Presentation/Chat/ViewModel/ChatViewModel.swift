@@ -197,7 +197,7 @@ final class ChatViewModel {
     private func translateTagValues(tags: [Tag], completion: @escaping ([Tag]) -> Void) {
         let convertedTagsToText = tags.map { $0.value }.joined(separator: ",")
         
-        translateUseCase.translateKewords(convertedTagsToText) { [weak self] result in
+        translateUseCase.translateKeywords(with: convertedTagsToText) { [weak self] result in
             switch result {
             case .success(let translatedKeywords):
                 guard let self else { return }

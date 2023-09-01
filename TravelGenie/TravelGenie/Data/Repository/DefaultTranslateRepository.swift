@@ -12,10 +12,10 @@ final class DefaultTranslateRepository: TranslateRepository {
     private let networkService = NetworkService()
     
     func translate(
-        with kewords: String,
+        with keywords: String,
         completion: @escaping ((Result<String, Error>) -> Void))
     {
-        let requestModel = PapagoTranslateRequestModel(text: kewords)
+        let requestModel = PapagoTranslateRequestModel(text: keywords)
         
         networkService.request(PapagoTranslateAPI.translate(requestModel)) { result in
             switch result {

@@ -8,8 +8,8 @@
 import Foundation
 
 protocol TranslateUseCase {
-    func translateKewords(
-        _ contents: String,
+    func translateKeywords(
+        with keywords: String,
         completion: @escaping (Result<String, Error>) -> Void)
 }
 
@@ -21,8 +21,8 @@ final class DefaultTranslateUseCase: TranslateUseCase {
         self.translateRepository = translateRepository
     }
     
-    func translateKewords(
-        _ contents: String,
+    func translateKeywords(
+        with contents: String,
         completion: @escaping (Result<String, Error>) -> Void)
     {
         translateRepository.translate(with: contents) { result in
