@@ -242,7 +242,6 @@ final class ChatViewModel {
     
     private func insertRecommendationMessage(with result: OpenAIRecommendation) {
         let items = result.recommendationItems
-        var message = Message(sender: Sender(name: .ai))
         let group = DispatchGroup()
         
         for item in items {
@@ -255,7 +254,7 @@ final class ChatViewModel {
         
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
-            message = Message(recommendations: self.recommendationItems)
+            let message = Message(recommendations: self.recommendationItems)
             insertMessage(message)
         }
     }
