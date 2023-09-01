@@ -129,13 +129,8 @@ final class ChatViewModel {
         else { return }
         
         let chat = createChat(with: messages)
-        chatUseCase.save(chat: chat) { result in
-            switch result {
-            case .success:
-                return
-            case .failure(let error):
-                print(error)
-            }
+        chatUseCase.save(chat: chat) { error in
+            print(error)
         }
     }
     

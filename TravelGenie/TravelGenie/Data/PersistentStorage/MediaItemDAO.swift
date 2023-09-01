@@ -9,14 +9,14 @@ import Foundation
 import MessageKit
 
 struct MediaItemDAO: Codable {
-    let URLString: String?
+    let urlString: String?
     let imageData: Data?
     let placeholderImageData: Data?
     let width: Double
     let height: Double
     
     init(with mediaItem: MediaItem) {
-        URLString = mediaItem.url?.absoluteString
+        urlString = mediaItem.url?.absoluteString
         imageData = mediaItem.image?.pngData()
         placeholderImageData = mediaItem.placeholderImage.pngData()
         width = mediaItem.size.width

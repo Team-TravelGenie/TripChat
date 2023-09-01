@@ -11,13 +11,13 @@ final class DefaultChatRepository: ChatRepository {
     
     private let chatStorage: ChatStorage
     
-    init(chatStorage: ChatStorage = CoreDataStorage.shared) {
+    init(chatStorage: ChatStorage = CoreDataChatStorage()) {
         self.chatStorage = chatStorage
     }
     
     func save(
         chat: Chat,
-        completion: @escaping (Result<Chat, Error>) -> Void)
+        completion: @escaping (Error?) -> Void)
     {
         chatStorage.save(chat: chat, completion: completion)
     }
