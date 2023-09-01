@@ -184,7 +184,14 @@ final class ChatViewModel {
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             
+            self.visionResultProcessor.getSixMostConfidentTranslatedTags(useCase: self.translateUseCase) { [weak self] in
+                guard let self else { return }
+                let tagMessage = self.makeTagMessage(from: $0)
+                
+                insertMessage(tagMessage)
+            }
         }
+        
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {
