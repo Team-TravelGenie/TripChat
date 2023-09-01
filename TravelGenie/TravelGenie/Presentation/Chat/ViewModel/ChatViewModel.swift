@@ -93,7 +93,7 @@ final class ChatViewModel {
         self.googleVisionUseCase = googleVisionUseCase
         self.translateUseCase = translateUseCase
         addDefaultOpenAIPropmpt()
-		registerNotificationObservers()
+        registerNotificationObservers()
     }
     
     // MARK: Internal
