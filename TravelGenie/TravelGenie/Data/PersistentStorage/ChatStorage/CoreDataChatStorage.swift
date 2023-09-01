@@ -141,8 +141,6 @@ extension CoreDataChatStorage: ChatStorage {
         var data: Data? = nil
         
         switch message.kind {
-        case .text(let text):
-            data = try JSONEncoder().encode(text)
         case .attributedText(let attributedText):
             data = try NSKeyedArchiver.archivedData(
                 withRootObject: attributedText,
