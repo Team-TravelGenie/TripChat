@@ -183,9 +183,9 @@ final class ChatViewModel {
         
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
-            let processedTags = self.visionResultProcessor.getTopSixResults()
+            let topSixTags = self.visionResultProcessor.getTopSixResults()
             
-            translateTagValues(tags: processedTags) { [weak self] in
+            translateTagValues(tags: topSixTags) { [weak self] in
                 guard let self else { return }
                 let tagMessage = self.makeTagMessage(from: $0)
                 
