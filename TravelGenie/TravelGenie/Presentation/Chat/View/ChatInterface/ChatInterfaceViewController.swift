@@ -116,6 +116,7 @@ class ChatInterfaceViewController: MessagesViewController {
     private func customizeMessagesCollectionViewLayout() {
         let layout = messagesCollectionView.collectionViewLayout as? MessagesCollectionViewFlowLayout
         layout?.sectionInset = UIEdgeInsets(top: 8, left: .zero, bottom: 8, right: .zero)
+        layout?.setMessageOutgoingAvatarSize(CGSize(width: 0, height: 0))
     }
     
     private func cellResistration() {
