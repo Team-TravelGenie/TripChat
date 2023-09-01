@@ -22,7 +22,7 @@ extension CoreDataChatStorage: ChatStorage {
     
     func save(
         chat: Chat,
-        completion: @escaping (Result<Bool, Error>) -> Void)
+        completion: @escaping (Error?) -> Void)
     {
         do {
             if let chatEntity = try coreDataService.save(
@@ -43,11 +43,9 @@ extension CoreDataChatStorage: ChatStorage {
                 try chat.messages.forEach {
                     try createMessageEntity(with: $0, addTo: chatEntity)
                 }
-                
-                completion(.success(true))
             }
         } catch {
-            completion(.failure(error))
+            completion(error)
         }
     }
     
@@ -163,7 +161,7 @@ extension CoreDataChatStorage: ChatStorage {
         if let messageEntity = try coreDataService.save(
             entityName: "MessageEntity",
             values: [
-                "id": UUID(uuidString: message.messageId),
+                "id": UUID(uuidString: message.messageId)!,
                 "kind": message.kind.description,
                 "sender": message.sender.displayName,
                 "sentDate": message.sentDate,

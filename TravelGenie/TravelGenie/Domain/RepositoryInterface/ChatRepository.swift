@@ -10,7 +10,7 @@ import Foundation
 protocol ChatRepository {
     func save(
         chat: Chat,
-        completion: @escaping (Result<Bool, Error>) -> Void)
+        completion: @escaping (Error?) -> Void)
     func fetchRecentChats(
         pageSize: Int,
         completion: @escaping (Result<[Chat], Error>) -> Void)
