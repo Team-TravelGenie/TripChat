@@ -72,10 +72,10 @@ final class ChatViewModel {
     private let openAIUseCase: OpenAIUseCase
     private let imageSearchUseCase: ImageSearchUseCase
     private let googleVisionUseCase: GoogleVisionUseCase
+    private let visionResultProcessor = VisionResultProcessor()
     private var selectedTags: [Tag] = []
     private var openAIChatMessages: [ChatMessage] = []
     private var recommendationItems: [RecommendationItem] = []
-    private let visionResultProcessor = VisionResultProcessor()
     
     // MARK: Lifecycle
     
@@ -105,7 +105,6 @@ final class ChatViewModel {
         
         images.forEach {
             let photoMessage = createPhotoMessage(from: $0)
-            
             photoUploadCount += 1
             insertMessage(photoMessage)
         }
@@ -148,7 +147,7 @@ final class ChatViewModel {
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(submitSelectedTags(notification:)),
+            selector: #selector(didTapTagSubmitButton(notification:)),
             name: .tagSubmitButtonTapped,
             object: nil)
     }
@@ -162,7 +161,6 @@ final class ChatViewModel {
         
         images.forEach {
             if let base64String = convertImageToBase64(image: $0) {
-                
                 group.enter()
                 fetchKeywordsFromGoogleVision(base64String: base64String) {
                     group.leave()
@@ -177,9 +175,9 @@ final class ChatViewModel {
         
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
+            
             let tags = self.visionResultProcessor.getTopSixResults()
             let tagMessage = self.createTagMessage(from: tags)
-            
             self.delegate?.insert(message: tagMessage)
         }
     }
@@ -371,7 +369,7 @@ final class ChatViewModel {
         didTapImageUploadButton?()
     }
 
-    @objc private func submitSelectedTags(notification: Notification) {
+    @objc private func didTapTagSubmitButton(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
