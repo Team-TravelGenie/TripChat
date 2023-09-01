@@ -21,7 +21,7 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
         networkService.request(GoogleCustomSearchAPI.imageSearch(requestModel)) { result in
             switch result {
             case .success(let response):
-                completion(.success(response.items.link))
+                completion(.success(response.items[0].link))
             case .failure(let error):
                 completion(.failure(error))
             }
