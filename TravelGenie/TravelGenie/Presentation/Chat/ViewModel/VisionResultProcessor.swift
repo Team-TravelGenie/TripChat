@@ -33,9 +33,9 @@ final class VisionResultProcessor {
     }
     
     func getSixMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
-        let sortedVisionResult = sortByConfidence()
+        let sortedAndJoinedKeywords = keywordsOrderedByConfidence().joined(separator: ",")
         
-        translate(keyword: sortedVisionResult) { [weak self] result in
+        translate(keyword: sortedAndJoinedKeywords) { [weak self] result in
             guard let self else { return }
             
             var deDuplicatedResult = self.removeDuplicateValues(text: result)
@@ -50,12 +50,11 @@ final class VisionResultProcessor {
         }
     }
     
-    private func sortByConfidence() -> String {
+    private func keywordsOrderedByConfidence() -> [String] {
         let sortedLandmarks = visionResults.landmarks.sorted(by: { $0.confidence > $1.confidence }).map { $0.place }
         let sortedKeywords = visionResults.keywords.sorted(by: { $0.confidence > $1.confidence }).map { $0.name }
-        let combinedResults = sortedLandmarks + sortedKeywords
         
-        return combinedResults.joined(separator: ",")
+        return sortedLandmarks + sortedKeywords
     }
     
     private func removeDuplicateValues(text: String) -> [String] {
