@@ -15,6 +15,14 @@ final class VisionResultProcessor {
     }
     
     private var visionResults = VisionResults(keywords: [], landmarks: [])
+    private let translateUseCase: TranslateUseCase
+    
+    init(
+        translateUseCase: TranslateUseCase = DefaultTranslateUseCase(
+            translateRepository: DefaultTranslateRepository()))
+    {
+        self.translateUseCase = translateUseCase
+    }
     
     func addKeywords(_ keywords: [Keyword]) {
         visionResults.keywords.append(contentsOf: keywords)
@@ -24,10 +32,10 @@ final class VisionResultProcessor {
         visionResults.landmarks.append(contentsOf: landmarks)
     }
     
-    func getSixMostConfidentTranslatedTags(useCase: TranslateUseCase, completion: @escaping ([Tag]) -> Void) {
+    func getSixMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
         let sortedVisionResult = sortByConfidence()
         
-        translate(keyword: sortedVisionResult, useCase: useCase) { [weak self] result in
+        translate(keyword: sortedVisionResult) { [weak self] result in
             guard let self else { return }
             
             var deDuplicatedResult = self.removeDuplicateValues(text: result)
@@ -57,8 +65,8 @@ final class VisionResultProcessor {
         return Array(Set(trimmingResults))
     }
     
-    private func translate(keyword: String, useCase: TranslateUseCase, completion: @escaping (String) -> Void) {
-        useCase.translateKeywords(with: keyword) { result in
+    private func translate(keyword: String, completion: @escaping (String) -> Void) {
+        translateUseCase.translateKeywords(with: keyword) { result in
             switch result {
             case .success(let translatedKeyword):
                 completion(translatedKeyword)
