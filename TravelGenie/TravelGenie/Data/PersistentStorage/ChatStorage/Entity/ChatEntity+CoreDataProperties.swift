@@ -186,7 +186,7 @@ extension ChatEntity {
         let decodedData = try? JSONDecoder().decode(
             MediaItemDAO.self,
             from: entity.data ?? .init())
-        let url = URL(string: decodedData?.URLString ?? .init())
+        let url = URL(string: decodedData?.urlString ?? .init())
         
         return Message(
             url: url,
