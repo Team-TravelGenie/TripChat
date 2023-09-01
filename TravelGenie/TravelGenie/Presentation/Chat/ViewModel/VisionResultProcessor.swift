@@ -44,7 +44,7 @@ final class VisionResultProcessor {
                 deDuplicatedResult = Array(deDuplicatedResult.prefix(6))
             }
             
-            let topSixTags = self.convertSeperatedTextToTags(texts: deDuplicatedResult)
+            let topSixTags = self.convertToTags(texts: deDuplicatedResult)
             
             completion(topSixTags)
         }
@@ -75,7 +75,7 @@ final class VisionResultProcessor {
         }
     }
     
-    private func convertSeperatedTextToTags(texts: [String]) -> [Tag] {
+    private func convertToTags(texts: [String]) -> [Tag] {
         return texts.map { Tag(category: .theme, value: $0) }
     }
 }
