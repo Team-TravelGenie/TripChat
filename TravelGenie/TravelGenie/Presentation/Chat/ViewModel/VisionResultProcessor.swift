@@ -38,13 +38,13 @@ final class VisionResultProcessor {
         translate(keyword: sortedAndJoinedKeywords) { [weak self] result in
             guard let self else { return }
             
-            var deDuplicatedResult = self.removeDuplicateValues(text: result)
+            var uniqueValues = self.removeDuplicateValues(text: result)
             
-            if deDuplicatedResult.count > 6 {
-                deDuplicatedResult = Array(deDuplicatedResult.prefix(6))
+            if uniqueValues.count > 6 {
+                uniqueValues = Array(uniqueValues.prefix(6))
             }
             
-            let topSixTags = self.convertToTags(texts: deDuplicatedResult)
+            let topSixTags = self.convertToTags(texts: uniqueValues)
             
             completion(topSixTags)
         }
@@ -61,7 +61,9 @@ final class VisionResultProcessor {
         let results = text.split(separator: ",")
         let trimmingResults = results.map { String($0).replacingOccurrences(of: " ", with: "") }
         
-        return Array(Set(trimmingResults))
+        let orderedSetResults = NSOrderedSet(array: trimmingResults)
+        
+        return orderedSetResults.array.compactMap { $0 as? String }
     }
     
     private func translate(keyword: String, completion: @escaping (String) -> Void) {
