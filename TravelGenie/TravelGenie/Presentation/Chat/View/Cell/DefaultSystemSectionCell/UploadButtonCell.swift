@@ -15,6 +15,7 @@ final class UploadButtonCell: UICollectionViewCell {
     
     private let uploadButton = RectangleTextButton()
         .cornerRadius(12)
+        .backgroundColor(.primary)
     
     // MARK: Lifecycle
     
@@ -30,8 +31,7 @@ final class UploadButtonCell: UICollectionViewCell {
     
     func configureButtonState(state: Bool) {
         uploadButton.isEnabled = state
-        
-        state ? uploadButton.backgroundColor(.primary) : uploadButton.backgroundColor(.blueGrayLine)
+        uploadButton.layer.opacity = state ? 1 : 0.2
     }
     
     // MARK: Private
