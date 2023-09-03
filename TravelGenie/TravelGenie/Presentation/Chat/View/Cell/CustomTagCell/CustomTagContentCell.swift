@@ -18,14 +18,18 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     private let viewModel = CustomTagContentCellViewModel()
     
+    private let messageContentView = UIView()
+    private let defaultMessageLabel = UILabel()
+    private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let avatarView = CircleIconView()
         .backgroundColor(.white)
         .size(40)
         .iconImage(imageName: "chat", size: 32)
-    private let messageContentView = UIView()
-    private let defaultMessageLabel = UILabel()
-    private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let submitKeywordButton = UIButton()
+    
+    private let submitKeywordButton = RectangleTextButton()
+        .cornerRadius(8)
+        .backgroundColor(.blueGrayBackground3)
+    
     private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: Lifecycle
@@ -64,7 +68,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     private func configureSubmitButtonStateAndAppearance(_ state: Bool) {
         submitKeywordButton.isEnabled = state
-        submitKeywordButton.backgroundColor = state ? .blueGrayBackground3 : .black
+        submitKeywordButton.layer.opacity = state ? 1 : 0.2
     }
     
     private func configureSubviews() {
@@ -105,10 +109,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureSubmitKeywordButton() {
         let titleText = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
-        
         configureSubmitKeywordButtonAction()
-        submitKeywordButton.layer.cornerRadius = 12
-        submitKeywordButton.backgroundColor = .blueGrayBackground3
         submitKeywordButton.setAttributedTitle(titleText, for: .normal)
     }
     

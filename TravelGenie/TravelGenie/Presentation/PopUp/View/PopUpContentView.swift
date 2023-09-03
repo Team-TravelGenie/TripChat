@@ -39,7 +39,6 @@ final class PopUpContentView: UIView {
     private let closeButton = UIButton()
     private let mainTextView = UITextView()
     private let feedbackTextView = FeedbackTextView()
-    
     private let chatIconView = CircleIconView()
         .size(40)
         .backgroundColor(.blueGrayBackground)
@@ -209,7 +208,7 @@ final class PopUpContentView: UIView {
     private func configureSubmitButton() {
         guard case .feedback = type else { return }
         leftButton.isEnabled = isFeedbackSelected
-        leftButton.backgroundColor = isFeedbackSelected ? .primary : .grayBackground
+        leftButton.layer.opacity = isFeedbackSelected ? 1 : 0.2
     }
     
     private func configureHierarchy() {
