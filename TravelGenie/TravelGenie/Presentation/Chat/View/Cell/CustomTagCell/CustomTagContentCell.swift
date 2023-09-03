@@ -18,17 +18,18 @@ final class CustomTagContentCell: UICollectionViewCell {
     
     private let viewModel = CustomTagContentCellViewModel()
     
+    private let messageContentView = UIView()
+    private let defaultMessageLabel = UILabel()
+    private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     private let avatarView = CircleIconView()
         .backgroundColor(.white)
         .size(40)
         .iconImage(imageName: "chat", size: 32)
-    private let messageContentView = UIView()
-    private let defaultMessageLabel = UILabel()
-    private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
     
     private let submitKeywordButton = RectangleTextButton()
         .cornerRadius(8)
         .backgroundColor(.blueGrayBackground3)
+    
     private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: Lifecycle
@@ -108,7 +109,6 @@ final class CustomTagContentCell: UICollectionViewCell {
     private func configureSubmitKeywordButton() {
         let titleText = NSMutableAttributedString()
             .text("키워드 보내기", font: .bodyRegular, color: .black)
-        
         configureSubmitKeywordButtonAction()
         submitKeywordButton.setAttributedTitle(titleText, for: .normal)
     }
