@@ -25,7 +25,10 @@ final class CustomTagContentCell: UICollectionViewCell {
     private let messageContentView = UIView()
     private let defaultMessageLabel = UILabel()
     private let tagCollectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
-    private let submitKeywordButton = UIButton()
+    
+    private let submitKeywordButton = RectangleTextButton()
+        .cornerRadius(8)
+        .backgroundColor(.blueGrayBackground3)
     private var messageContentViewHeightLayoutConstraint: NSLayoutConstraint?
     
     // MARK: Lifecycle
@@ -107,8 +110,6 @@ final class CustomTagContentCell: UICollectionViewCell {
             .text("키워드 보내기", font: .bodyRegular, color: .black)
         
         configureSubmitKeywordButtonAction()
-        submitKeywordButton.layer.cornerRadius = 12
-        submitKeywordButton.backgroundColor = .blueGrayBackground3
         submitKeywordButton.setAttributedTitle(titleText, for: .normal)
     }
     
