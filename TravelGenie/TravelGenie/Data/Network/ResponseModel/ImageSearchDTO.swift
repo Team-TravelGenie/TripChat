@@ -8,7 +8,7 @@
 import Foundation
 
 struct ImageSearchDTO: Decodable {
-    let items: Item
+    let items: [Item]
 }
 
 extension ImageSearchDTO {

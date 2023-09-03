@@ -66,16 +66,16 @@ final class ChatViewModel {
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
-    private let visionResultProcessor = VisionResultProcessor()
-    private let user: Sender = Sender(name: .user)
     private let ai: Sender = Sender(name: .ai)
+    private let user: Sender = Sender(name: .user)
     private let chatUseCase: ChatUseCase
     private let openAIUseCase: OpenAIUseCase
     private let imageSearchUseCase: ImageSearchUseCase
     private let googleVisionUseCase: GoogleVisionUseCase
+    private let visionResultProcessor = VisionResultProcessor()
     private var selectedTags: [Tag] = []
-    private var recommendationItems: [RecommendationItem] = []
     private var openAIChatMessages: [ChatMessage] = []
+    private var recommendationItems: [RecommendationItem] = []
     
     // MARK: Lifecycle
     
@@ -104,8 +104,7 @@ final class ChatViewModel {
         var photoUploadCount = 0
         
         images.forEach {
-            let photoMessage = makePhotoMessage(from: $0)
-            
+            let photoMessage = createPhotoMessage(from: $0)
             photoUploadCount += 1
             insertMessage(photoMessage)
         }
@@ -129,13 +128,8 @@ final class ChatViewModel {
         else { return }
         
         let chat = createChat(with: messages)
-        chatUseCase.save(chat: chat) { result in
-            switch result {
-            case .success:
-                return
-            case .failure(let error):
-                print(error)
-            }
+        chatUseCase.save(chat: chat) { error in
+            print(error?.localizedDescription)
         }
     }
     
@@ -145,17 +139,19 @@ final class ChatViewModel {
     
     // MARK: Private
     
-    private func makePhotoMessage(from image: UIImage) -> Message {
-        return Message(
-            image: image,
-            sender: user,
-            sentDate: Date())
+    private func registerNotificationObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapImageUploadButton(notification:)),
+            name: .imageUploadButtonTapped,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(didTapTagSubmitButton(notification:)),
+            name: .tagSubmitButtonTapped,
+            object: nil)
     }
     
-    private func makeTagMessage(from tags: [Tag]) -> Message {
-        return Message(tags: tags)
-    }
-
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
@@ -165,7 +161,6 @@ final class ChatViewModel {
         
         images.forEach {
             if let base64String = convertImageToBase64(image: $0) {
-                
                 group.enter()
                 fetchKeywordsFromGoogleVision(base64String: base64String) {
                     group.leave()
@@ -183,7 +178,7 @@ final class ChatViewModel {
             
             self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
-                let tagMessage = self.makeTagMessage(from: $0)
+                let tagMessage = self.createTagMessage(from: $0)
                 
                 insertMessage(tagMessage)
             }
@@ -225,10 +220,7 @@ final class ChatViewModel {
         }
     }
     
-    private func requestRecommendations(with tags: [Tag]) {
-        let keywords: [String] = tags.map { $0.value }
-        // TODO: - ChatGPT에 keyword 넣어서 요청 보내기
-    }
+    // MARK: Create Message
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
         let textColor: UIColor = sender == ai ? .black : .white
@@ -240,26 +232,54 @@ final class ChatViewModel {
             sentDate: Date())
     }
     
-    // 이미지를 받아오기 전에 Message를 생성하므로
-    // DispatchGroup이나 이런거 활용 필요!
-    private func createRecommendationMessage(with result: OpenAIRecommendation) -> Message {
-        let items = result.recommendationItems
-        items.forEach { createRecommendationItem(with: $0) }
-        
-        return Message(recommendations: recommendationItems)
+    private func createPhotoMessage(from image: UIImage) -> Message {
+        return Message(
+            image: image,
+            sender: user,
+            sentDate: Date())
     }
     
-    private func createRecommendationItem(with item: OpenAIRecommendation.RecommendationItem) {
-        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { [weak self] result in
+    private func createTagMessage(from tags: [Tag]) -> Message {
+        return Message(tags: tags)
+    }
+    
+    private func insertRecommendationMessage(with result: OpenAIRecommendation) {
+        let items = result.recommendationItems
+        let group = DispatchGroup()
+        
+        for item in items {
+            group.enter()
+            createRecommendationItem(with: item) { [weak self] recommendationItem in
+                self?.recommendationItems.append(recommendationItem)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            guard let self else { return }
+            let message = Message(recommendations: self.recommendationItems)
+            insertMessage(message)
+        }
+    }
+    
+    private func createRecommendationItem(
+        with item: OpenAIRecommendation.RecommendationItem,
+        completion: @escaping ((RecommendationItem) -> Void))
+    {
+        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { result in
             switch result {
             case .success(let imageData):
                 let recommendationItem = RecommendationItem(
                     country: item.country,
                     spot: item.spot,
                     image: imageData)
-                self?.recommendationItems.append(recommendationItem)
-            case .failure(let error):
-                print(error)
+                completion(recommendationItem)
+            case .failure:
+                let recommendationItem = RecommendationItem(
+                    country: item.country,
+                    spot: item.spot,
+                    image: Data())
+                completion(recommendationItem)
             }
         }
     }
@@ -298,8 +318,7 @@ final class ChatViewModel {
         // ChatGPT의 답변이 장소 추천인지, 일반 텍스트인지 구분
         do {
             let openAIRecommendation = try JSONDecoder().decode(OpenAIRecommendation.self, from: messageContentData)
-            let recommendationMessage = createRecommendationMessage(with: openAIRecommendation)
-            insertMessage(recommendationMessage)
+            insertRecommendationMessage(with: openAIRecommendation)
         } catch {
             let textMessage = createTextMessage(with: messageContent, sender: ai)
             insertMessage(textMessage)
@@ -328,19 +347,6 @@ final class ChatViewModel {
             leftButtonTitle: leftButtonTitle,
             rightButtonTitle: rightButtonTitle)
     }
-    
-    private func registerNotificationObservers() {
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(didTapImageUploadButton(notification:)),
-            name: .imageUploadButtonTapped,
-            object: nil)
-        NotificationCenter.default.addObserver(
-            self,
-            selector: #selector(submitSelectedTags(notification:)),
-            name: .tagSubmitButtonTapped,
-            object: nil)
-	}
 
     // MARK: Chat
     
@@ -365,7 +371,7 @@ final class ChatViewModel {
         didTapImageUploadButton?()
     }
 
-    @objc private func submitSelectedTags(notification: Notification) {
+    @objc private func didTapTagSubmitButton(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")

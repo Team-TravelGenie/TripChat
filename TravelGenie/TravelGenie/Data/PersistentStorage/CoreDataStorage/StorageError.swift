@@ -11,4 +11,5 @@ enum StorageError: Error {
     case coreDataSaveFailure(Error)
     case noResultForKeyword
     case noResultForID
+    case emptyStorage
 }
