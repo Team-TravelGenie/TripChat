@@ -110,7 +110,7 @@ extension CoreDataChatStorage: ChatStorage {
             values: [
                 "value": tag.value,
                 "isSelected": tag.isSelected,
-                "category": tag.category,
+                "category": tag.category.rawValue,
             ]) as? TagEntity else { return }
         
         chatEntity.addToTags(tagEntity)
