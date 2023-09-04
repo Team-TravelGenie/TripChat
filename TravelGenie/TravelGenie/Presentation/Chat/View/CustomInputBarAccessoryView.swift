@@ -28,6 +28,7 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         padding = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         configureLeftStackView()
         configureMiddleContentView()
+        configureRightStackView()
     }
     
     private func configureLeftStackView() {
@@ -58,5 +59,10 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
             .text("무엇이든 물어보세요!", font: .bodyRegular, color: .blueGrayFont)
         inputTextView.placeholderLabel.attributedText = placeholderText
         inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 4, left: 0, bottom: 8, right: 0)
+    }
+    
+    private func configureRightStackView() {
+        sendButton.removeFromSuperview()
+        setRightStackViewWidthConstant(to: .zero, animated: false)
     }
 }
