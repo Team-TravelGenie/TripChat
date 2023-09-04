@@ -31,6 +31,7 @@ class ChatInterfaceViewController: MessagesViewController {
         super.viewDidLoad()
         bind()
         setupMessagesCollectionViewAttributes()
+        configureMessageInputBar()
     }
     
     override func collectionView(
@@ -131,6 +132,12 @@ class ChatInterfaceViewController: MessagesViewController {
     
     private func configureMessagesCollectionViewBackgroundColor() {
         messagesCollectionView.backgroundColor = .blueGrayBackground
+    }
+    
+    private func configureMessageInputBar() {
+        messageInputBar = CustomInputBarAccessoryView()
+        messageInputBar.separatorLine.isHidden = true
+        inputBarType = .custom(messageInputBar)
     }
 }
 

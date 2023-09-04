@@ -67,6 +67,7 @@
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
+		57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
 		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
@@ -185,6 +186,7 @@
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
+		57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBarAccessoryView.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
 		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
@@ -477,6 +479,7 @@
 				D23037752A8C61A80017950E /* Cell */,
 				D2E3AA312A8B83350049DDEF /* ChatInterface */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+				57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -828,6 +831,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */,
+				57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */,
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
