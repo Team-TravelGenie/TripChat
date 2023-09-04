@@ -14,6 +14,8 @@ final class ChatHistoryViewController: ChatInterfaceViewController {
     init(historyViewModel: ChatHistoryViewModel) {
         self.historyViewModel = historyViewModel
         super.init(nibName: nil, bundle: nil)
+        historyViewModel.delegate = chatInterfaceViewModel
+        historyViewModel.buttonStateDelegate = chatInterfaceViewModel
     }
     
     required init?(coder: NSCoder) {
