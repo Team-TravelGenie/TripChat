@@ -43,12 +43,6 @@ final class HomeCoordinator: Coordinator {
         childCoordinators.append(chatListCoordinator)
         chatListCoordinator.start()
     }
-    
-    func chatHistoryFlow() {
-        let chatHistoryCoordinator = ChatHistoryCoordinator(finishDelegate: self, navigationController: navigationController)
-        childCoordinators.append(chatHistoryCoordinator)
-        chatHistoryCoordinator.start()
-    }
 }
 
 extension HomeCoordinator: CoordinationFinishDelegate { }
