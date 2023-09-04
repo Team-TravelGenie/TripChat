@@ -11,4 +11,11 @@ final class ChatHistoryViewModel {
     
     weak var coordinator: ChatHistoryCoordinator?
     
+    var chat: Chat
+    
+    init(chat: Chat) {
+        self.chat = chat
+        print(chat)
+    }
+    
 }

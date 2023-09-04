@@ -179,6 +179,13 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
             
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
+    
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath)
+    {
+        viewModel.didSelctChat(index: indexPath.row)
+    }
 }
 
 // MARK: UITextFieldDelegate
