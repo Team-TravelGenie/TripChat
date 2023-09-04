@@ -30,9 +30,8 @@ final class ChatListCoordinator: Coordinator {
     }
         
     func chatHistoryFlow(chat: Chat) {
-        let chatHistoryCoordinator = ChatHistoryCoordinator(finishDelegate: self, navigationController: navigationController)
+        let chatHistoryCoordinator = ChatHistoryCoordinator(finishDelegate: self, navigationController: navigationController, chat: chat)
         childCoordinators.append(chatHistoryCoordinator)
-        chatHistoryCoordinator.chat = chat
         chatHistoryCoordinator.start()
     }
 }
