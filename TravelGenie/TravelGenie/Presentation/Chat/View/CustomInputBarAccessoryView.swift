@@ -14,14 +14,30 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        configure()
+        configureSubviews()
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    private func configure() {
+    // MARK: Private
+    
+    private func configureSubviews() {
         backgroundColor = .white
+        padding = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
+        configureLeftStackView()
+    }
+    
+    private func configureLeftStackView() {
+        leftStackView.alignment = .bottom
+        setLeftStackViewWidthConstant(to: 36, animated: false)
+        
+        let galleryButton = InputBarButtonItem()
+        let galleryButtonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
+        galleryButton.tintColor = .primary
+        galleryButton.setImage(galleryButtonImage, for: .normal)
+        galleryButton.setSize(CGSize(width: 36, height: 36), animated: false)
+        setStackViewItems([galleryButton], forStack: .left, animated: false)
     }
 }
