@@ -184,7 +184,7 @@ extension ChatListViewController: UITableViewDataSource, UITableViewDelegate {
         _ tableView: UITableView,
         didSelectRowAt indexPath: IndexPath)
     {
-        viewModel.didSelctChat(index: indexPath.row)
+        viewModel.didSelectChat(index: indexPath.row)
     }
 }
 
