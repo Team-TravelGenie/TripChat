@@ -106,6 +106,7 @@
 		D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */; };
 		D272925B2AA5E2C5001878D0 /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925A2AA5E2C5001878D0 /* ChatHistoryViewModel.swift */; };
 		D272925D2AA5E2DF001878D0 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925C2AA5E2DF001878D0 /* ChatHistoryViewController.swift */; };
+		D272925F2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925E2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
 		D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */; };
 		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
@@ -227,6 +228,7 @@
 		D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionRepository.swift; sourceTree = "<group>"; };
 		D272925A2AA5E2C5001878D0 /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
 		D272925C2AA5E2DF001878D0 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
+		D272925E2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryCoordinator.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
 		D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProcessor.swift; sourceTree = "<group>"; };
 		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
@@ -697,6 +699,7 @@
 			children = (
 				D27292582AA5E2A6001878D0 /* ViewModel */,
 				D27292592AA5E2AE001878D0 /* View */,
+				D272925E2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift */,
 			);
 			path = ChatHistory;
 			sourceTree = "<group>";
@@ -960,6 +963,7 @@
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,
+				D272925F2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift in Sources */,
 				57DA988F2AA0663C0074409B /* CoreDataChatStorage.swift in Sources */,
 				57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */,

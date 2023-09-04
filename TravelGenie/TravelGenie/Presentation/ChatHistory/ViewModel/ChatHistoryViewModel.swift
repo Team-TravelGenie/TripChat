@@ -9,4 +9,6 @@ import Foundation
 
 final class ChatHistoryViewModel {
     
+    weak var coordinator: ChatHistoryCoordinator?
+    
 }
