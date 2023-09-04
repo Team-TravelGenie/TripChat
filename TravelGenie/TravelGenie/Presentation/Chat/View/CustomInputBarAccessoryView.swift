@@ -27,6 +27,7 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         backgroundColor = .white
         padding = UIEdgeInsets(top: 12, left: 12, bottom: 12, right: 12)
         configureLeftStackView()
+        configureMiddleContentView()
     }
     
     private func configureLeftStackView() {
@@ -39,5 +40,23 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         galleryButton.setImage(galleryButtonImage, for: .normal)
         galleryButton.setSize(CGSize(width: 36, height: 36), animated: false)
         setStackViewItems([galleryButton], forStack: .left, animated: false)
+    }
+    
+    private func configureMiddleContentView() {
+        maxTextViewHeight = 72
+        middleContentViewPadding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+    
+        inputTextView.layer.cornerRadius = 12
+        inputTextView.layer.masksToBounds = true
+        inputTextView.layer.borderWidth = 1
+        inputTextView.layer.borderColor = UIColor.blueGrayLine.cgColor
+        inputTextView.backgroundColor = .grayBackground
+        inputTextView.contentInset = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
+        inputTextView.typingAttributes = TextAttributeCreator.create(font: .bodyRegular, color: .black)
+        
+        let placeholderText = NSMutableAttributedString()
+            .text("무엇이든 물어보세요!", font: .bodyRegular, color: .blueGrayFont)
+        inputTextView.placeholderLabel.attributedText = placeholderText
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 4, left: 0, bottom: 8, right: 0)
     }
 }
