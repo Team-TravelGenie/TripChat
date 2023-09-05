@@ -196,11 +196,19 @@ final class ChatViewModel {
             
             self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
-                let tagMessage = self.createTagMessage(from: $0)
+                let defaultTags = self.makeDefaultTags()
+                let appendedTags = defaultTags + $0
+                let tagMessage = self.createTagMessage(from: appendedTags)
                 
                 insertMessage(tagMessage)
             }
         }
+    }
+    
+    private func makeDefaultTags() -> [Tag] {
+        return [
+            Tag(category: .location, value: "국내"),
+            Tag(category: .location, value: "해외")]
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {
