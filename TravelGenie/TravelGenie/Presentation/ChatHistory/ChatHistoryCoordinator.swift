@@ -29,6 +29,4 @@ final class ChatHistoryCoordinator: Coordinator {
         chatHistoryViewModel.coordinator = self
         navigationController?.pushViewController(chatHistoryViewController, animated: false)
     }
-    
-    
 }

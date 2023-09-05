@@ -13,7 +13,7 @@ final class ChatHistoryViewModel {
     weak var delegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
     
-    var chat: Chat
+    private let chat: Chat
     
     init(chat: Chat) {
         self.chat = chat
