@@ -10,12 +10,21 @@ import Foundation
 final class ChatHistoryViewModel {
     
     weak var coordinator: ChatHistoryCoordinator?
+    weak var delegate: MessageStorageDelegate?
+    weak var buttonStateDelegate: ButtonStateDelegate?
     
     var chat: Chat
     
     init(chat: Chat) {
         self.chat = chat
-        print(chat)
+    }
+    
+    func insertChatMessages() {
+        chat.messages.forEach { delegate?.insert(message: $0) }
+    }
+    
+    func deactivateButtons() {
+        buttonStateDelegate?.setUploadButtonState(false)
     }
     
 }
