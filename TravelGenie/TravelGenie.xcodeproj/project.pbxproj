@@ -69,6 +69,7 @@
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
+		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
 		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
@@ -189,6 +190,7 @@
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
+		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
 		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
@@ -501,6 +503,7 @@
 			isa = PBXGroup;
 			children = (
 				57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */,
+				57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */,
 			);
 			path = UserFeedbackStorage;
 			sourceTree = "<group>";
@@ -875,6 +878,7 @@
 				57462B4D2A95B6AC00949D5C /* DefaultChatRepository.swift in Sources */,
 				57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */,
 				5763DEF52A991D320028B19F /* PopUpViewModel.swift in Sources */,
+				57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */,
 				D26846902AA1109E00831097 /* DefaultTranslateRepository.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
