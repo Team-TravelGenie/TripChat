@@ -26,12 +26,6 @@ final class TagStorage {
         return tags.filter { $0.isSelected == true }
     }
     
-    // MARK: Lifecycle
-    
-    init() {
-        tags = setDefaultTags()
-    }
-    
     // MARK: Internal
     
     func getSelectedTags() -> [Tag]? {
@@ -46,15 +40,5 @@ final class TagStorage {
         if let index = tags.firstIndex(where: { "#\($0.value)" == value }) {
             tags[index].isSelected = isSelected
         }
-    }
-    
-    // MARK: Private
-    
-    private func setDefaultTags() -> [Tag] {
-        let defaultTag = [
-            Tag(category: .location, value: "국내"),
-            Tag(category: .location, value: "해외")]
-        
-        return defaultTag
     }
 }
