@@ -71,6 +71,7 @@
 		57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
+		57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
@@ -194,6 +195,7 @@
 		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
+		57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUseCase.swift; sourceTree = "<group>"; };
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
@@ -426,6 +428,7 @@
 				57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */,
 				57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */,
 				D26846912AA1134900831097 /* TranslateUseCase.swift */,
+				57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */,
 			);
 			path = UseCase;
 			sourceTree = "<group>";
@@ -924,6 +927,7 @@
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
 				5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
+				57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
 				57462B442A94F92A00949D5C /* MessageKind+description.swift in Sources */,
