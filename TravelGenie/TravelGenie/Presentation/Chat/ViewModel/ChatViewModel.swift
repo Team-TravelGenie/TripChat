@@ -21,6 +21,10 @@ protocol ButtonStateDelegate: AnyObject {
 
 final class ChatViewModel {
     
+    private enum Constant {
+        static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
+    }
+    
     private enum OpenAIPrompt {
         static let openAISystemPrompt: String = """
             당신은 사용자가 입력한 키워드에 기반해서 3개의 여행지를 추천해주는 챗봇입니다.
@@ -151,6 +155,19 @@ final class ChatViewModel {
             selector: #selector(didTapTagSubmitButton(notification:)),
             name: .tagSubmitButtonTapped,
             object: nil)
+    }
+    
+    func setupDefaultSystemMessages() {
+        let defaultMessage = NSMutableAttributedString()
+            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
+        
+        let defaultMessages = [
+            Message(sender: Sender(name: .ai)),
+            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
+            Message(sender: Sender(name: .ai))
+        ]
+        
+        defaultMessages.forEach { insertMessage($0) }
     }
     
     private func updateUploadButtonState(_ isEnabled: Bool) {
