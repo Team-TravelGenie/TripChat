@@ -26,7 +26,6 @@ final class ChatListViewModel {
     
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
-//        addChat()
         fetchRecentChat()
     }
     
