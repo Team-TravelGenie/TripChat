@@ -67,6 +67,8 @@
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
+		57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */; };
+		57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
@@ -188,6 +190,8 @@
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
+		57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRepository.swift; sourceTree = "<group>"; };
+		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
@@ -405,6 +409,7 @@
 			isa = PBXGroup;
 			children = (
 				57462B4A2A95B5ED00949D5C /* ChatRepository.swift */,
+				57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */,
 				D26E6BA42A9E20440069A6DC /* GoogleVisionRepository.swift */,
 				57DA98752A9E4B200074409B /* ImageSearchRepository.swift */,
 				57DA98872A9F81300074409B /* OpenAIRepository.swift */,
@@ -601,6 +606,7 @@
 				57684BF82A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift */,
 				57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */,
 				D268468F2AA1109E00831097 /* DefaultTranslateRepository.swift */,
+				57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -864,6 +870,7 @@
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D26846922AA1134900831097 /* TranslateUseCase.swift in Sources */,
+				57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */,
 				576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */,
 				D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */,
 				5763DF072A9CA8020028B19F /* ChatInterfaceViewModel.swift in Sources */,
@@ -889,6 +896,7 @@
 				57462B692A95E90700949D5C /* MessageEntity+CoreDataProperties.swift in Sources */,
 				D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */,
 				573BCD602A93167200116D2D /* Chat.swift in Sources */,
+				57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */,
 				D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */,
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */,
