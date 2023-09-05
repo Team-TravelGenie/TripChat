@@ -25,12 +25,17 @@ final class ChatHistoryViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initializeHistoryChatUI()
+        removeInputBar()
         setupNavigation()
     }
     
     private func initializeHistoryChatUI() {
         historyViewModel.insertChatMessages()
         historyViewModel.deactivateButtons()
+    }
+    
+    private func removeInputBar() {
+        inputBarType = .custom(UIView(frame: .zero))
     }
     
     private func setupNavigation() {
