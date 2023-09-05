@@ -357,7 +357,6 @@
 			children = (
 				57DA988D2AA0650C0074409B /* ChatStorage */,
 				57462B2A2A94EB4D00949D5C /* CoreDataStorage */,
-				57462B702A95F74500949D5C /* MediaItemDAO.swift */,
 			);
 			path = PersistentStorage;
 			sourceTree = "<group>";
@@ -507,6 +506,7 @@
 				57462B3F2A94F68700949D5C /* Entity */,
 				57462B262A94E9B600949D5C /* ChatStorage.swift */,
 				57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */,
+				57462B702A95F74500949D5C /* MediaItemDAO.swift */,
 			);
 			path = ChatStorage;
 			sourceTree = "<group>";
