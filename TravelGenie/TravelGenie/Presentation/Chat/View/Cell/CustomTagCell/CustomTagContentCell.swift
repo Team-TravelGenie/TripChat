@@ -14,7 +14,7 @@ protocol TagMessageSizeDelegate: AnyObject {
 
 final class CustomTagContentCell: UICollectionViewCell {
     
-    weak var sizedelegate: TagMessageSizeDelegate? // 위 delegate 변수가 NotificationCenter로 변경되면서 제거될 예정이므로 이를 sizedelegate로 지어뒀지만, PR 이 후, delegate로 수정하려고합니다.
+    weak var sizedelegate: TagMessageSizeDelegate?
     
     private let viewModel = CustomTagContentCellViewModel()
     
@@ -54,6 +54,11 @@ final class CustomTagContentCell: UICollectionViewCell {
             
             viewModel.insertTags(tags: tagItem.tags)
         }
+    }
+    
+    func configureButtonsState(_ state: Bool) {
+        viewModel.updateSubmitButtonState(state)
+        tagCollectionView.isUserInteractionEnabled = state
     }
     
     // MARK: Private
