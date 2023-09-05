@@ -21,6 +21,7 @@ final class FeedbackTextView: UITextView {
         layer.borderColor = UIColor.blueGrayLine.cgColor
         attributedText = FeedbackTextView.placeholderText
         textContainerInset = UIEdgeInsets(top: 12, left: 20, bottom: 12, right: 20)
+        typingAttributes = TextAttributeCreator.create(font: .bodyRegular, color: .black)
     }
     
     required init?(coder: NSCoder) {
