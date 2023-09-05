@@ -9,6 +9,14 @@ import Foundation
 
 final class PopUpViewModel {
     
+    private let selectedTags: [Tag]
+    private let recommendationItem: [RecommendationItem]
+    
+    init(selectedTags: [Tag], recommendationItem: [RecommendationItem]) {
+        self.selectedTags = selectedTags
+        self.recommendationItem = recommendationItem
+    }
+    
     func createFeedbackModel() -> PopUpModel {
         let mainText = NSMutableAttributedString()
             .text("오늘 대화는 어떠셨나요?\n", font: .bodyRegular, color: .black)

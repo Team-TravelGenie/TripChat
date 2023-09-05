@@ -328,7 +328,9 @@ final class ChatViewModel {
     // MARK: PopUp
     
     private func createPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel()
+        return PopUpViewModel(
+            selectedTags: selectedTags,
+            recommendationItem: recommendationItems)
     }
     
     private func createPopUpModel() -> PopUpModel {
