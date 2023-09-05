@@ -44,7 +44,8 @@ final class VisionResultProcessor {
                 uniqueValues = Array(uniqueValues.prefix(6))
             }
             
-            let topSixTags = self.convertToTags(texts: uniqueValues)
+            var topSixTags = self.convertToTags(texts: uniqueValues)
+            topSixTags.append(contentsOf: makeDefaultTags())
             
             completion(topSixTags)
         }
@@ -79,5 +80,11 @@ final class VisionResultProcessor {
     
     private func convertToTags(texts: [String]) -> [Tag] {
         return texts.map { Tag(category: .theme, value: $0) }
+    }
+    
+    private func makeDefaultTags() -> [Tag] {
+        return [
+            Tag(category: .location, value: "국내"),
+            Tag(category: .location, value: "해외")]
     }
 }
