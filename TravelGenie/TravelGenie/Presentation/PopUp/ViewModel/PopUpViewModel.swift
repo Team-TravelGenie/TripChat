@@ -11,10 +11,16 @@ final class PopUpViewModel {
     
     private let selectedTags: [Tag]
     private let recommendationItem: [RecommendationItem]
+    private let userFeedbackUseCase: UserFeedbackUseCase
     
-    init(selectedTags: [Tag], recommendationItem: [RecommendationItem]) {
+    init(
+        selectedTags: [Tag],
+        recommendationItem: [RecommendationItem],
+        userFeedbackUseCase: UserFeedbackUseCase
+    ) {
         self.selectedTags = selectedTags
         self.recommendationItem = recommendationItem
+        self.userFeedbackUseCase = userFeedbackUseCase
     }
     
     func createFeedbackModel() -> PopUpModel {

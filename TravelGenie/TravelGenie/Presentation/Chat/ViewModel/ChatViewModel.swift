@@ -330,7 +330,11 @@ final class ChatViewModel {
     private func createPopUpViewModel() -> PopUpViewModel {
         return PopUpViewModel(
             selectedTags: selectedTags,
-            recommendationItem: recommendationItems)
+            recommendationItem: recommendationItems,
+            userFeedbackUseCase: DefaultUserFeedbackUseCase(
+                userFeedbackRepository: DefaultUserFeedbackRepository(
+                    userFeedbackStorage: FirebaseUserFeedbackStorage()))
+        )
     }
     
     private func createPopUpModel() -> PopUpModel {
