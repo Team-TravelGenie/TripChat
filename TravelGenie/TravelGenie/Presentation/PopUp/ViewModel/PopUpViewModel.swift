@@ -39,8 +39,14 @@ final class PopUpViewModel {
             rightButtonTitle: rightButtonTitle)
     }
     
-    // TODO: - 사용자 피드백 처리(RemoteStorage에 전송)
-    func sendUserFeedback(_ feedback: UserFeedback) {
-        
+    func sendUserFeedback(_ userFeedback: UserFeedback) {
+        let tagValues: [String] = selectedTags.map { $0.value }
+        let recommendationValues: [String] = recommendationItem.map { $0.spot }
+        userFeedbackUseCase.save(
+            userFeedback: userFeedback,
+            selectedTags: tagValues,
+            recommendations: recommendationValues) { error in
+                // TODO: - 에러 처리
+            }
     }
 }
