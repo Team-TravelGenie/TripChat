@@ -14,11 +14,11 @@ final class MessageStorage {
     var count: Int {
         return messageList.count
     }
-    var didChangedMessageList: (() -> Void)?
+    var didChangeMessageList: (() -> Void)?
 
     private var messageList: [Message] = [Message]() {
         didSet {
-            didChangedMessageList?()
+            didChangeMessageList?()
         }
     }
         
