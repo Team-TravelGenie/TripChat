@@ -81,6 +81,7 @@ extension PopUpViewController: UITextViewDelegate {
 }
 
 extension PopUpViewController: PopUpContentViewDelegate {
+    
     func dismissPopUp() {
         dismiss(animated: false)
     }
@@ -103,7 +104,7 @@ extension PopUpViewController: PopUpContentViewDelegate {
         delegate?.saveChat()
     }
     
-    func sendFeedback(_ feedback: UserFeedback) {
-        viewModel.sendUserFeedback(feedback)
+    func sendFeedback(isPositive: Bool, content: String) {
+        viewModel.sendUserFeedback(isPositive: isPositive, content: content)
     }
 }

@@ -15,16 +15,9 @@ final class DefaultUserFeedbackRepository: UserFeedbackRepository {
     
     func save(
         userFeedback: UserFeedback,
-        selectedTags: [String],
-        recommendations: [String],
         completion: @escaping ((Error?) -> Void))
     {
-        let requestModel = UserFeedbackRequestModel(
-            isPositive: userFeedback.isPositive,
-            content: userFeedback.content,
-            selectedTags: selectedTags,
-            recommendations: recommendations)
-        
+        let requestModel = UserFeedbackRequestModel(userFeedback: userFeedback)
         userFeedbackStorage.save(requestModel: requestModel, completion: completion)
     }
 }
