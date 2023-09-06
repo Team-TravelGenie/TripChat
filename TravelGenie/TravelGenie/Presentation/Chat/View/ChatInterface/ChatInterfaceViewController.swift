@@ -67,7 +67,7 @@ class ChatInterfaceViewController: MessagesViewController {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.sizedelegate = self
+                cell.sizeDelegate = self
                 cell.configure(with: message)
                 cell.configureButtonsState(chatInterfaceViewModel.tagCellButtonState)
                 return cell
