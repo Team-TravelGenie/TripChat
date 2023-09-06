@@ -52,13 +52,15 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         inputTextView.layer.borderWidth = 1
         inputTextView.layer.borderColor = UIColor.blueGrayLine.cgColor
         inputTextView.backgroundColor = .grayBackground
-        inputTextView.contentInset = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
+        inputTextView.textContainer.lineFragmentPadding = 0
+        inputTextView.textContainerInset = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
+        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20)
         inputTextView.typingAttributes = TextAttributeCreator.create(font: .bodyRegular, color: .black)
         
-        let placeholderText = NSMutableAttributedString()
-            .text("무엇이든 물어보세요!", font: .bodyRegular, color: .blueGrayFont)
-        inputTextView.placeholderLabel.attributedText = placeholderText
-        inputTextView.placeholderLabelInsets = UIEdgeInsets(top: 4, left: 0, bottom: 8, right: 0)
+        let placeholderText = "무엇이든 물어보세요!"
+        inputTextView.placeholderLabel.textColor = .blueGrayFont
+        inputTextView.placeholderLabel.font = .systemFont(ofSize: 15)
+        inputTextView.placeholder = placeholderText
     }
     
     private func configureRightStackView() {
