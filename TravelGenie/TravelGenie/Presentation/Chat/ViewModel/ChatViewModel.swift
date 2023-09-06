@@ -67,7 +67,7 @@ final class ChatViewModel {
     }
     
     weak var coordinator: ChatCoordinator?
-    weak var delegate: MessageStorageDelegate?
+    weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
@@ -101,7 +101,7 @@ final class ChatViewModel {
     // MARK: Internal
     
     func insertMessage(_ message: Message) {
-        delegate?.insert(message: message)
+        messageStorageDelegate?.insert(message: message)
     }
     
     func handlePhotoUploads(images: [UIImage]) {
@@ -128,7 +128,7 @@ final class ChatViewModel {
     }
     
     func saveChat() {
-        guard let messages = delegate?.fetchMessages(),
+        guard let messages = messageStorageDelegate?.fetchMessages(),
               isValidChat()
         else { return }
         
