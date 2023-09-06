@@ -404,10 +404,9 @@ final class ChatViewModel {
     @objc private func didTapTagSubmitButton(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
-        let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
-        let selectedTagTextMessage = createTextMessage(with: tagText, sender: user)
         self.selectedTags = selectedTags
-        insertMessage(selectedTagTextMessage)
+        
+        let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)
     }
 }
