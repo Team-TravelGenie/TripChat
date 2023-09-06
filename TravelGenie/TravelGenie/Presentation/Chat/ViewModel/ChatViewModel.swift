@@ -23,9 +23,7 @@ final class ChatViewModel {
     
     private enum Constant {
         static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
-    }
-    
-    private enum OpenAIPrompt {
+        
         static let openAISystemPrompt: String = """
             당신은 사용자가 입력한 키워드에 기반해서 3개의 여행지를 추천해주는 챗봇입니다.
             차근차근 생각해 봅시다.
@@ -67,7 +65,7 @@ final class ChatViewModel {
     }
     
     weak var coordinator: ChatCoordinator?
-    weak var delegate: MessageStorageDelegate?
+    weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
@@ -101,7 +99,7 @@ final class ChatViewModel {
     // MARK: Internal
     
     func insertMessage(_ message: Message) {
-        delegate?.insert(message: message)
+        messageStorageDelegate?.insert(message: message)
     }
     
     func handlePhotoUploads(images: [UIImage]) {
@@ -128,7 +126,7 @@ final class ChatViewModel {
     }
     
     func saveChat() {
-        guard let messages = delegate?.fetchMessages(),
+        guard let messages = messageStorageDelegate?.fetchMessages(),
               isValidChat()
         else { return }
         
@@ -313,7 +311,7 @@ final class ChatViewModel {
     // MARK: OpenAI
     
     private func addDefaultOpenAIPropmpt() {
-        let message = ChatMessage(role: .system, content: OpenAIPrompt.openAISystemPrompt)
+        let message = ChatMessage(role: .system, content: Constant.openAISystemPrompt)
         openAIChatMessages.append(message)
     }
     

@@ -38,10 +38,6 @@ class ChatInterfaceViewController: MessagesViewController {
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell
     {
-        guard let _ = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
         guard !isSectionReservedForTypingIndicator(indexPath.section) else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
@@ -71,7 +67,7 @@ class ChatInterfaceViewController: MessagesViewController {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.sizedelegate = self
+                cell.sizeDelegate = self
                 cell.configure(with: message)
                 cell.configureButtonsState(chatInterfaceViewModel.tagCellButtonState)
                 return cell
@@ -86,7 +82,7 @@ class ChatInterfaceViewController: MessagesViewController {
     }
     
     private func bind() {
-        chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
+        chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()

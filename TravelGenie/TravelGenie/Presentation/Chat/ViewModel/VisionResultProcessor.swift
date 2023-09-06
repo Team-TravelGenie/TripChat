@@ -44,7 +44,7 @@ final class VisionResultProcessor {
                 uniqueValues = Array(uniqueValues.prefix(6))
             }
             
-            var topSixTags = self.convertToTags(texts: uniqueValues)
+            let topSixTags = self.convertToTags(texts: uniqueValues)
             
             completion(topSixTags)
         }

@@ -14,7 +14,7 @@ protocol TagMessageSizeDelegate: AnyObject {
 
 final class CustomTagContentCell: UICollectionViewCell {
     
-    weak var sizedelegate: TagMessageSizeDelegate?
+    weak var sizeDelegate: TagMessageSizeDelegate?
     
     private let viewModel = CustomTagContentCellViewModel()
     
@@ -296,7 +296,7 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         // messageContainerHeightLayoutConstraint.constant가 contentsSize를 반영하지 않은 경우에만 업데이트
         if messageContentViewHeightLayoutConstraint?.constant != totalContentHeight {
             messageContentViewHeightLayoutConstraint?.constant = totalContentHeight
-            sizedelegate?.didUpdateTagMessageHeight(totalContentHeight)
+            sizeDelegate?.didUpdateTagMessageHeight(totalContentHeight)
         }
     }
     

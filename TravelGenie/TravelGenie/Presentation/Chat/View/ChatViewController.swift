@@ -18,7 +18,7 @@ final class ChatViewController: ChatInterfaceViewController {
     init(viewModel: ChatViewModel) {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        chatViewModel.delegate = chatInterfaceViewModel
+        chatViewModel.messageStorageDelegate = chatInterfaceViewModel
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
         messageInputBar.delegate = chatViewModel
         bind()
