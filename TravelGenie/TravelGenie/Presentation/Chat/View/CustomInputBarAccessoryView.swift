@@ -45,7 +45,7 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     
     private func configureMiddleContentView() {
         maxTextViewHeight = 72
-        middleContentViewPadding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 0)
+        middleContentViewPadding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
     
         inputTextView.layer.cornerRadius = 12
         inputTextView.layer.masksToBounds = true
@@ -62,7 +62,13 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     }
     
     private func configureRightStackView() {
-        sendButton.removeFromSuperview()
-        setRightStackViewWidthConstant(to: .zero, animated: false)
+        rightStackView.alignment = .bottom
+        setRightStackViewWidthConstant(to: 32, animated: false)
+        
+        let sendButtonImage = UIImage(named: "paper-plane")?.withRenderingMode(.alwaysTemplate)
+        sendButton.title = nil
+        sendButton.tintColor = .primary
+        sendButton.setImage(sendButtonImage, for: .normal)
+        sendButton.setSize(CGSize(width: 32, height: 32), animated: false)
     }
 }
