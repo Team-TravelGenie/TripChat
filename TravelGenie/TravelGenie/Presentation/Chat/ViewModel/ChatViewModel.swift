@@ -16,9 +16,14 @@ protocol MessageStorageDelegate: AnyObject {
 
 protocol ButtonStateDelegate: AnyObject {
     func setUploadButtonState(_ isEnabled: Bool)
+    func setTagCellButtonState(_ isEnabled: Bool)
 }
 
 final class ChatViewModel {
+    
+    private enum Constant {
+        static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
+    }
     
     private enum OpenAIPrompt {
         static let openAISystemPrompt: String = """
@@ -152,6 +157,19 @@ final class ChatViewModel {
             object: nil)
     }
     
+    func setupDefaultSystemMessages() {
+        let defaultMessage = NSMutableAttributedString()
+            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
+        
+        let defaultMessages = [
+            Message(sender: Sender(name: .ai)),
+            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
+            Message(sender: Sender(name: .ai))
+        ]
+        
+        defaultMessages.forEach { insertMessage($0) }
+    }
+    
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
@@ -178,11 +196,19 @@ final class ChatViewModel {
             
             self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
-                let tagMessage = self.createTagMessage(from: $0)
+                let defaultTags = self.makeDefaultTags()
+                let appendedTags = defaultTags + $0
+                let tagMessage = self.createTagMessage(from: appendedTags)
                 
                 insertMessage(tagMessage)
             }
         }
+    }
+    
+    private func makeDefaultTags() -> [Tag] {
+        return [
+            Tag(category: .location, value: "국내"),
+            Tag(category: .location, value: "해외")]
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {

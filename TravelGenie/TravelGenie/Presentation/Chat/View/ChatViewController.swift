@@ -33,6 +33,7 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        chatViewModel.setupDefaultSystemMessages()
     }
     
     // MARK: Private

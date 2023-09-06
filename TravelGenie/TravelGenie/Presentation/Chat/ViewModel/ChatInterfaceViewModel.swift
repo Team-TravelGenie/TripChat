@@ -9,10 +9,17 @@ final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
     var didchangeUploadButtonState: ((Bool) -> Void)?
+    var didchangeTagCellButtonState: ((Bool) -> Void)?
     
     private (set) var uploadButtonState: Bool = true {
         didSet {
             didchangeUploadButtonState?(uploadButtonState)
+        }
+    }
+    
+    private (set) var tagCellButtonState: Bool = true {
+        didSet {
+            didchangeTagCellButtonState?(tagCellButtonState)
         }
     }
 }
@@ -32,7 +39,12 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
 // MARK: ButtonStateDelegate
 
 extension ChatInterfaceViewModel: ButtonStateDelegate {
+    
     func setUploadButtonState(_ isEnabled: Bool) {
         uploadButtonState = isEnabled
+    }
+    
+    func setTagCellButtonState(_ isEnabled: Bool) {
+        tagCellButtonState = isEnabled
     }
 }

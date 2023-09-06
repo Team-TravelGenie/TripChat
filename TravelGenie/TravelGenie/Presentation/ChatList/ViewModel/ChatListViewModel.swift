@@ -55,6 +55,12 @@ final class ChatListViewModel {
         }
     }
     
+    func didSelectChat(index: Int) {
+        let chat = chats[index]
+        
+        coordinator?.chatHistoryFlow(chat: chat)
+    }
+    
     // MARK: Private
     
     private func fetchRecentChat() {
