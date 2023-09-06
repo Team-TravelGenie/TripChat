@@ -47,7 +47,7 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         maxTextViewHeight = 72
         middleContentViewPadding = UIEdgeInsets(top: 0, left: 12, bottom: 0, right: 12)
     
-        inputTextView.layer.cornerRadius = 12
+        inputTextView.layer.cornerRadius = 18
         inputTextView.layer.masksToBounds = true
         inputTextView.layer.borderWidth = 1
         inputTextView.layer.borderColor = UIColor.blueGrayLine.cgColor
