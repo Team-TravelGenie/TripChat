@@ -28,4 +28,12 @@ final class ChatListCoordinator: Coordinator {
         viewModel.coordinator = self
         navigationController?.pushViewController(chatListViewController, animated: false)
     }
+        
+    func chatHistoryFlow(chat: Chat) {
+        let chatHistoryCoordinator = ChatHistoryCoordinator(finishDelegate: self, navigationController: navigationController, chat: chat)
+        childCoordinators.append(chatHistoryCoordinator)
+        chatHistoryCoordinator.start()
+    }
 }
+
+extension ChatListCoordinator: CoordinationFinishDelegate { }

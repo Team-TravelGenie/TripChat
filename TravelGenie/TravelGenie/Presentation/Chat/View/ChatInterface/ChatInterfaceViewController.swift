@@ -38,10 +38,6 @@ class ChatInterfaceViewController: MessagesViewController {
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell
     {
-        guard let messagesDataSource = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
         guard !isSectionReservedForTypingIndicator(indexPath.section) else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
@@ -71,8 +67,9 @@ class ChatInterfaceViewController: MessagesViewController {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.sizedelegate = self
+                cell.sizeDelegate = self
                 cell.configure(with: message)
+                cell.configureButtonsState(chatInterfaceViewModel.tagCellButtonState)
                 return cell
             } else if item is [RecommendationItem] {
                 let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
@@ -85,7 +82,7 @@ class ChatInterfaceViewController: MessagesViewController {
     }
     
     private func bind() {
-        chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
+        chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()
@@ -96,6 +93,20 @@ class ChatInterfaceViewController: MessagesViewController {
             let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
             let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
 
+            DispatchQueue.main.async {
+                UIView.performWithoutAnimation {
+                    self?.messagesCollectionView.reloadSections(indexSet)
+                }
+            }
+        }
+        
+        chatInterfaceViewModel.didchangeTagCellButtonState = { [weak self] state in
+            guard let tagMessageIndex = self?.chatInterfaceViewModel.messageStorage.findTagMessageIndex() else {
+                print("MessageStorage에서 TagMessage를 찾지못헀음")
+                return
+            }
+            let indexSet = IndexSet(integer: tagMessageIndex)
+            
             DispatchQueue.main.async {
                 UIView.performWithoutAnimation {
                     self?.messagesCollectionView.reloadSections(indexSet)
