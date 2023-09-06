@@ -9,7 +9,11 @@ import MessageKit
 import UIKit
 
 final class PhotoMessageSizeCalculator: MediaMessageSizeCalculator {
-    override func messageContainerSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
+    override func messageContainerSize(
+        for message: MessageType,
+        at indexPath: IndexPath)
+        -> CGSize
+    {
         let maxWidth: CGFloat = 244
         let maxHeight: CGFloat = 244
         
@@ -41,7 +45,11 @@ final class PhotoMessageSizeCalculator: MediaMessageSizeCalculator {
         }
     }
     
-    override func avatarSize(for message: MessageType, at indexPath: IndexPath) -> CGSize {
+    override func avatarSize(
+        for message: MessageType,
+        at indexPath: IndexPath)
+        -> CGSize
+    {
         let layoutDelegate = messagesLayout.messagesLayoutDelegate
         let collectionView = messagesLayout.messagesCollectionView
         
