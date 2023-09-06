@@ -20,7 +20,6 @@ final class ChatViewController: ChatInterfaceViewController {
         super.init(nibName: nil, bundle: nil)
         chatViewModel.delegate = chatInterfaceViewModel
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
-        messageInputBar.delegate = chatViewModel
         bind()
     }
     
@@ -33,6 +32,7 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        configureMessageInputBar()
     }
     
     // MARK: Private
@@ -74,6 +74,13 @@ final class ChatViewController: ChatInterfaceViewController {
                 type: popUpModels.type,
                 delegate: self)
         }
+    }
+    
+    private func configureMessageInputBar() {
+        let messageInputBar = CustomInputBarAccessoryView()
+        messageInputBar.separatorLine.isHidden = true
+        messageInputBar.delegate = chatViewModel
+        inputBarType = .custom(messageInputBar)
     }
 }
 
