@@ -38,10 +38,6 @@ class ChatInterfaceViewController: MessagesViewController {
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell
     {
-        guard let _ = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
         guard !isSectionReservedForTypingIndicator(indexPath.section) else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
