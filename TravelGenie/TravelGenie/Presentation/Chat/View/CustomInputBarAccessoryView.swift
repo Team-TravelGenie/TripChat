@@ -32,15 +32,24 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     }
     
     private func configureLeftStackView() {
-        leftStackView.alignment = .bottom
-        setLeftStackViewWidthConstant(to: 36, animated: false)
+        leftStackView.alignment = .fill
+        setLeftStackViewWidthConstant(to: 24, animated: false)
         
         let galleryButton = InputBarButtonItem()
         let galleryButtonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
         galleryButton.tintColor = .primary
         galleryButton.setImage(galleryButtonImage, for: .normal)
-        galleryButton.setSize(CGSize(width: 36, height: 36), animated: false)
-        setStackViewItems([galleryButton], forStack: .left, animated: false)
+        galleryButton.setSize(CGSize(width: 24, height: 24), animated: false)
+        galleryButton.translatesAutoresizingMaskIntoConstraints = false
+
+        let wrapperView = UIView()
+        wrapperView.addSubview(galleryButton)
+        NSLayoutConstraint.activate([
+            galleryButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
+            galleryButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            galleryButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+        ])
+        setStackViewItems([wrapperView], forStack: .left, animated: false)
     }
     
     private func configureMiddleContentView() {
@@ -64,13 +73,24 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     }
     
     private func configureRightStackView() {
-        rightStackView.alignment = .bottom
-        setRightStackViewWidthConstant(to: 32, animated: false)
+        rightStackView.alignment = .fill
+        rightStackView.removeArrangedSubview(sendButton)
+        setRightStackViewWidthConstant(to: 24, animated: false)
         
         let sendButtonImage = UIImage(named: "paper-plane")?.withRenderingMode(.alwaysTemplate)
         sendButton.title = nil
         sendButton.tintColor = .primary
         sendButton.setImage(sendButtonImage, for: .normal)
-        sendButton.setSize(CGSize(width: 32, height: 32), animated: false)
+        sendButton.setSize(CGSize(width: 24, height: 24), animated: false)
+        sendButton.translatesAutoresizingMaskIntoConstraints = false
+        
+        let wrapperView = UIView()
+        wrapperView.addSubview(sendButton)
+        NSLayoutConstraint.activate([
+            sendButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
+            sendButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            sendButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+        ])
+        setStackViewItems([wrapperView], forStack: .right, animated: false)
     }
 }
