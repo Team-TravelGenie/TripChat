@@ -7,8 +7,13 @@
 
 import Foundation
 
+protocol ImagePickerDelegate: AnyObject {
+    func photoDataSent(_ data: [Data])
+}
+
 final class CustomImagePickerViewModel {
     
+    weak var delegate: ImagePickerDelegate?
     var selectedPhotoCountChanged: ((Int) -> Void)?
     
     private(set) var selectedPhotos: [Data?] = [] {
@@ -29,5 +34,10 @@ final class CustomImagePickerViewModel {
         guard let index = selectedPhotos.firstIndex(of: data) else { return nil }
         
         return index + 1
+    }
+    
+    func sendPhotos() {
+        let photos = selectedPhotos.compactMap { $0 }
+        delegate?.photoDataSent(photos)
     }
 }
