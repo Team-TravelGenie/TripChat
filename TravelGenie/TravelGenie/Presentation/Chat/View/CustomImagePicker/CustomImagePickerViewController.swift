@@ -234,7 +234,8 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         -> Bool
     {
         guard viewModel.selectedPhotos.count < 3 else {
-            // TODO: - alert 표시: 사진은 최대 3장까지만 선택할 수 있습니다.
+            self.presentPhotoLimitAlert()
+            
             return false
         }
         
@@ -254,6 +255,18 @@ extension CustomImagePickerViewController {
         let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             self?.dismiss(animated: false)
         }
+        
+        alertController.addAction(action)
+        self.present(alertController, animated: false)
+    }
+    
+    private func presentPhotoLimitAlert() {
+        let alertController = UIAlertController(
+            title: "사진 선택 가능 갯수 초과",
+            message: "사진은 3장 까지만 업로드 가능합니다.",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "확인", style: .default)
         
         alertController.addAction(action)
         self.present(alertController, animated: false)
