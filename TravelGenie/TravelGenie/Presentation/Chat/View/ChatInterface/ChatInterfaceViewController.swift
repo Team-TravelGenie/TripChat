@@ -93,7 +93,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didchangeUploadButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeUploadButtonState = { [weak self] state in
             let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
             let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
 
@@ -104,7 +104,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didchangeTagCellButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeTagCellButtonState = { [weak self] state in
             guard let tagMessageIndex = self?.chatInterfaceViewModel.messageStorage.findTagMessageIndex() else {
                 print("MessageStorage에서 TagMessage를 찾지못헀음")
                 return
