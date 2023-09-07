@@ -115,7 +115,7 @@ final class CustomImagePickerViewController: UIViewController {
             DispatchQueue.main.async {
                 switch status {
                 case .restricted, .denied:
-                    // TODO: - alert 보여주기
+                    self?.presentPhotoAuthorizationDeniedAlert()
                     return
                 default:
                     return
@@ -239,6 +239,24 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         }
         
         return true
+    }
+}
+
+// MARK: Alerts
+
+extension CustomImagePickerViewController {
+    private func presentPhotoAuthorizationDeniedAlert() {
+        let alertController = UIAlertController(
+            title: "사진 접근 권한 필요",
+            message: "사진을 올리기 위해서는 사진 접근 권한이 필요합니다. '설정'에서 사진 접근 권한을 허용해주세요.",
+            preferredStyle: .alert)
+        
+        let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
+            self?.dismiss(animated: false)
+        }
+        
+        alertController.addAction(action)
+        self.present(alertController, animated: false)
     }
 }
 
