@@ -709,6 +709,7 @@
 				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 				573BCD442A92140900116D2D /* RecommendationCell */,
+				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -780,7 +781,6 @@
 				D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */,
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
 				D2F8C5812A8F538500AA3BFC /* TagView */,
-				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = CustomTagCell;
 			sourceTree = "<group>";
