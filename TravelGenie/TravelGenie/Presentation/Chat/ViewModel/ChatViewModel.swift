@@ -247,9 +247,8 @@ final class ChatViewModel {
     // MARK: Create Message
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
-        let textColor: UIColor = sender == ai ? .black : .white
         let messageText = NSMutableAttributedString()
-            .text(text, font: .bodyRegular, color: textColor)
+            .messageText(text, font: .bodyRegular, sender: sender)
         return Message(
             text: messageText,
             sender: sender,
