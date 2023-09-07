@@ -66,6 +66,7 @@
 		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57A54C872AA8C6BA0087B640 /* CustomImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */; };
+		57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8F2AA8D9350087B640 /* CustomButton.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */; };
@@ -195,6 +196,7 @@
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerViewController.swift; sourceTree = "<group>"; };
+		57A54C8F2AA8D9350087B640 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
@@ -489,6 +491,7 @@
 				576EC3B22A97B39F008C2D7C /* CircleIconView.swift */,
 				576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */,
 				5763DF082A9CAF220028B19F /* NotificationName+swift.swift */,
+				57A54C8F2AA8D9350087B640 /* CustomButton.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -900,6 +903,7 @@
 				57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */,
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,
+				57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */,
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */,
