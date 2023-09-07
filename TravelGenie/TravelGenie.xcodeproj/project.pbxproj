@@ -75,6 +75,7 @@
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
 		57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
+		57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
 		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
@@ -204,6 +205,7 @@
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
 		57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUseCase.swift; sourceTree = "<group>"; };
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
+		57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
 		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
@@ -713,6 +715,7 @@
 				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 				573BCD442A92140900116D2D /* RecommendationCell */,
+				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -784,7 +787,6 @@
 				D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */,
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
 				D2F8C5812A8F538500AA3BFC /* TagView */,
-				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = CustomTagCell;
 			sourceTree = "<group>";
@@ -798,6 +800,7 @@
 				D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */,
 				573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */,
 				D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */,
+				57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
 			sourceTree = "<group>";
@@ -949,6 +952,7 @@
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
+				57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */,

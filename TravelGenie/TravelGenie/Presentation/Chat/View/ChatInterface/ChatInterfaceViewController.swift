@@ -24,6 +24,8 @@ class ChatInterfaceViewController: MessagesViewController {
         = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var attributedTextCellSizeCalculator
         = AttributedTextCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var photoCellSizeCalculator
+        = PhotoMessageSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     // MARK: Override(s)
     
@@ -248,6 +250,14 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
 
         return attributedTextCellSizeCalculator
+    }
+    
+    func photoCellSizeCalculator(
+      for message: MessageType,
+      at indexPath: IndexPath,
+      in messagesCollectionView: MessagesCollectionView)
+    -> CellSizeCalculator? {
+        return photoCellSizeCalculator
     }
 }
 
