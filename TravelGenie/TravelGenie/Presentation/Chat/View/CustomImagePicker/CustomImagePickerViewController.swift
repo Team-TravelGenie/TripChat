@@ -125,6 +125,17 @@ final class CustomImagePickerViewController: UIViewController {
     }
 }
 
+extension CustomImagePickerViewController: CustomImagePickerHeaderViewDelegate {
+    func dismissModal() {
+        dismiss(animated: false)
+    }
+    
+    func send() {
+        viewModel.sendPhotos()
+        dismiss(animated: false)
+    }
+}
+
 // MARK: UICollectionViewDelegateFlowLayout
 
 extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
