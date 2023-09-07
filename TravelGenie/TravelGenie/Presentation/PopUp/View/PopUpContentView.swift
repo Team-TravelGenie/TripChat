@@ -182,6 +182,7 @@ final class PopUpContentView: UIView {
             self.configureSubmitButton()
             self.feedbackTextView.resignFirstResponder()
         }
+        
         thumbsUpButton.addAction(action, for: .touchUpInside)
     }
     
@@ -195,6 +196,7 @@ final class PopUpContentView: UIView {
             self.configureSubmitButton()
             self.feedbackTextView.resignFirstResponder()
         }
+        
         thumbsDownButton.addAction(action, for: .touchUpInside)
     }
         

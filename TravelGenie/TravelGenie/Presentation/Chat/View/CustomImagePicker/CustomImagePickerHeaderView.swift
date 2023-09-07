@@ -56,12 +56,14 @@ final class CustomImagePickerHeaderView: UIView {
     // MARK: Private
     
     private func configureSubviews() {
-        stackView.axis = .horizontal
         stackView.spacing = 12
+        stackView.axis = .horizontal
         stackView.alignment = .center
+        
         sendButton.isEnabled = false
-        closeButton.addAction(dismissAction(), for: .touchUpInside)
         sendButton.addAction(sendAction(), for: .touchUpInside)
+
+        closeButton.addAction(dismissAction(), for: .touchUpInside)
     }
     
     private func configureHierarchy() {

@@ -31,8 +31,8 @@ final class FeedbackButton: UIButton {
     // MARK: Internal
     
     func size(_ size: CGFloat) -> FeedbackButton {
-        layer.cornerRadius = size / 2
         layer.masksToBounds = true
+        layer.cornerRadius = size / 2
         configureLayout(with: size)
         
         return self

@@ -225,7 +225,6 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         let imageData = cell.image()?.pngData()
         viewModel.removeImage(data: imageData)
         cell.configureDeselectedState(viewModel.selectedPhotos.count)
-        
     }
     
     func collectionView(
