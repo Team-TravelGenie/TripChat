@@ -39,13 +39,15 @@ final class PopUpViewModel {
             rightButtonTitle: rightButtonTitle)
     }
     
-    func sendUserFeedback(_ userFeedback: UserFeedback) {
+    func sendUserFeedback(isPositive: Bool, content: String) {
         let tagValues: [String] = selectedTags.map { $0.value }
         let recommendationValues: [String] = recommendationItem.map { $0.spot }
-        userFeedbackUseCase.save(
-            userFeedback: userFeedback,
+        let userFeedback = UserFeedback(
+            isPositive: isPositive,
+            content: content,
             selectedTags: tagValues,
-            recommendations: recommendationValues) { error in
+            recommendations: recommendationValues)
+        userFeedbackUseCase.save(userFeedback: userFeedback) { error in
                 // TODO: - 에러 처리
             }
     }

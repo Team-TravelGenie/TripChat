@@ -65,6 +65,7 @@
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
 		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
+		57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A54C912AA996F00087B640 /* GoogleService-Info.plist */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */; };
@@ -75,6 +76,7 @@
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
 		57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
+		57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */; };
 		57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
@@ -83,6 +85,7 @@
 		57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98752A9E4B200074409B /* ImageSearchRepository.swift */; };
 		57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */; };
 		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
+		57DA987F2A9F4A100074409B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 57DA987E2A9F4A100074409B /* FirebaseAnalytics */; };
 		57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98872A9F81300074409B /* OpenAIRepository.swift */; };
 		57DA988B2A9F8C830074409B /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988A2A9F8C830074409B /* ImageManager.swift */; };
 		57DA988F2AA0663C0074409B /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */; };
@@ -196,6 +199,7 @@
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
+		57A54C912AA996F00087B640 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBarAccessoryView.swift; sourceTree = "<group>"; };
 		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
@@ -213,6 +217,7 @@
 		57DA98752A9E4B200074409B /* ImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
+		57DA987B2A9F44C90074409B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../TGAssets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57DA98872A9F81300074409B /* OpenAIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57DA988A2A9F8C830074409B /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
@@ -274,6 +279,8 @@
 			files = (
 				D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */,
 				57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */,
+				57DA987F2A9F4A100074409B /* FirebaseAnalytics in Frameworks */,
+				57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */,
 				D20FA2912A6B99B40081B039 /* Moya in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -516,6 +523,7 @@
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
 				D20FA2802A6B8DAC0081B039 /* Info.plist */,
+				57A54C912AA996F00087B640 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -527,6 +535,13 @@
 				57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */,
 			);
 			path = UserFeedbackStorage;
+			sourceTree = "<group>";
+		};
+		57C2BF072AA85E2D0074DA8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		57DA98892A9F8C770074409B /* Utility */ = {
@@ -553,6 +568,7 @@
 			children = (
 				D20FA2712A6B8DA90081B039 /* TravelGenie */,
 				D20FA2702A6B8DA90081B039 /* Products */,
+				57C2BF072AA85E2D0074DA8C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -567,6 +583,7 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
+				57DA987B2A9F44C90074409B /* GoogleService-Info.plist */,
 				57DA98892A9F8C770074409B /* Utility */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
@@ -835,6 +852,8 @@
 				D20FA2902A6B99B40081B039 /* Moya */,
 				57C1FFFB2A78CBAA00A664FD /* OpenAISwift */,
 				D2E3AA2C2A8B64740049DDEF /* MessageKit */,
+				57DA987E2A9F4A100074409B /* FirebaseAnalytics */,
+				57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */,
 			);
 			productName = TravelGenie;
 			productReference = D20FA26F2A6B8DA90081B039 /* TravelGenie.app */;
@@ -868,6 +887,7 @@
 				D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */,
 				57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */,
+				57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 			);
 			productRefGroup = D20FA2702A6B8DA90081B039 /* Products */;
 			projectDirPath = "";
@@ -883,6 +903,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */,
 				D20FA27F2A6B8DAC0081B039 /* LaunchScreen.storyboard in Resources */,
 				D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */,
 			);
@@ -1156,7 +1177,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2WW86KJNF;
+				DEVELOPMENT_TEAM = 3Q4UQ436SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1184,7 +1205,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = N2WW86KJNF;
+				DEVELOPMENT_TEAM = 3Q4UQ436SX;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1237,6 +1258,14 @@
 				kind = branch;
 			};
 		};
+		57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
@@ -1260,6 +1289,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
+		};
+		57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		57DA987E2A9F4A100074409B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
 		};
 		D20FA2902A6B99B40081B039 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;

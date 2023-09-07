@@ -10,4 +10,11 @@ struct UserFeedbackRequestModel: Encodable {
     let content: String
     let selectedTags: [String]
     let recommendations: [String]
+    
+    init(userFeedback: UserFeedback) {
+        self.isPositive = userFeedback.isPositive
+        self.content = userFeedback.content
+        self.selectedTags = userFeedback.selectedTags
+        self.recommendations = userFeedback.recommendations
+    }
 }
