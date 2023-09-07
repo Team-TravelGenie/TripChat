@@ -415,3 +415,9 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
         sendMessageToOpenAI(openAIChatMessage)
     }
 }
+
+extension ChatViewModel: ImagePickerDelegate {
+    func photoDataSent(_ data: [Data]) {
+        handlePhotoUploads(imageData: data)
+    }
+}
