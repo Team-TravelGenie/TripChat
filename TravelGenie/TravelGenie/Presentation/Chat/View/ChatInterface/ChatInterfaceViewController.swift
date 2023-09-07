@@ -86,7 +86,7 @@ class ChatInterfaceViewController: MessagesViewController {
     // MARK: Private
     
     private func bind() {
-        chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
+        chatInterfaceViewModel.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()

@@ -8,6 +8,7 @@
 final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
+    var didChangeMessageList: (() -> Void)?
     var didchangeUploadButtonState: ((Bool) -> Void)?
     var didchangeTagCellButtonState: ((Bool) -> Void)?
     
@@ -20,6 +21,20 @@ final class ChatInterfaceViewModel {
     private (set) var tagCellButtonState: Bool = true {
         didSet {
             didchangeTagCellButtonState?(tagCellButtonState)
+        }
+    }
+    
+    // MARK: Lifecycle
+    
+    init() {
+        bind()
+    }
+    
+    // MARK: Private
+    
+    private func bind() {
+        messageStorage.didChangeMessageList = { [weak self] in
+            self?.didChangeMessageList?()
         }
     }
 }
