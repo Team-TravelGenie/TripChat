@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */; };
 		573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */; };
 		573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFC2A8BAE4100116D2D /* Coordinator.swift */; };
 		573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD012A8BAF7600116D2D /* HomeViewController.swift */; };
@@ -137,6 +138,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerViewModel.swift; sourceTree = "<group>"; };
 		573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinationFinishDelegate.swift; sourceTree = "<group>"; };
 		573BCCFC2A8BAE4100116D2D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		573BCD002A8BAF7600116D2D /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -480,6 +482,7 @@
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
 				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
+				572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -957,6 +960,7 @@
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
+				572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */,
 				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
