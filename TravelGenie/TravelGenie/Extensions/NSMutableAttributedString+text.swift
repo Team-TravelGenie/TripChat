@@ -27,4 +27,25 @@ extension NSMutableAttributedString {
         
         return self
     }
+    
+    func messageText(_ value: String, font: Font, sender: Sender) -> NSMutableAttributedString {
+        let style = NSMutableParagraphStyle()
+        let fontSize: CGFloat = font.fontSize
+        let lineHeight: CGFloat = font.lineHeight
+        let font: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
+        let fontColor: UIColor = sender.displayName == "ai" ? .black : .white
+        style.minimumLineHeight = lineHeight
+        style.maximumLineHeight = lineHeight
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: fontColor,
+            .paragraphStyle: style,
+            .font: font,
+            .baselineOffset: (lineHeight - font.lineHeight) / 4,
+        ]
+        
+        self.append(NSAttributedString(string: value, attributes: attributes))
+        
+        return self
+    }
 }
