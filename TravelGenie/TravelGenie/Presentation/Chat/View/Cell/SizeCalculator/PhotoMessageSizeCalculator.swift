@@ -50,16 +50,6 @@ final class PhotoMessageSizeCalculator: MediaMessageSizeCalculator {
         at indexPath: IndexPath)
         -> CGSize
     {
-        let layoutDelegate = messagesLayout.messagesLayoutDelegate
-        let collectionView = messagesLayout.messagesCollectionView
-        
-        if let size = layoutDelegate.avatarSize(for: message, at: indexPath, in: collectionView) {
-          return size
-        }
-        
-        let dataSource = messagesLayout.messagesDataSource
-        let isFromCurrentSender = dataSource.isFromCurrentSender(message: message)
-        
-        return isFromCurrentSender ? CGSize(width: 0, height: 0) : CGSize(width: 40, height: 40)
+        return .zero
     }
 }
