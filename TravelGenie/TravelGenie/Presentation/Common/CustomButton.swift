@@ -8,15 +8,50 @@
 import UIKit
 
 final class CustomButton: UIButton {
+    
+    private let normalBackgroundColor: UIColor
+    private let normalBorderColor: UIColor
+    private let normalBorderWidth: CGFloat
+    private let selectedBackgroundColor: UIColor
+    private let selectedBorderColor: UIColor
+    private let selectedBorderWidth: CGFloat
+    
+    override var isSelected: Bool {
+        didSet {
+            backgroundColor = isSelected ? selectedBackgroundColor : normalBackgroundColor
+            layer.borderColor = isSelected ? selectedBorderColor.cgColor : normalBorderColor.cgColor
+            layer.borderWidth = isSelected ? selectedBorderWidth : normalBorderWidth
+        }
+    }
 
     // MARK: Lifecycle
     
-    init() {
+    init(
+        normalBackgroundColor: UIColor,
+        normalBorderColor: UIColor = .clear,
+        normalBorderWidth: CGFloat = .zero,
+        selectedBackgroundColor: UIColor,
+        selectedBorderColor: UIColor = .clear,
+        selectedBorderWidth: CGFloat = .zero
+    ) {
+        self.normalBackgroundColor = normalBackgroundColor
+        self.normalBorderColor = normalBorderColor
+        self.normalBorderWidth = normalBorderWidth
+        self.selectedBackgroundColor = selectedBackgroundColor
+        self.selectedBorderColor = selectedBorderColor
+        self.selectedBorderWidth = selectedBorderWidth
         super.init(frame: .zero)
         clipsToBounds = true
         backgroundColor = .clear
         adjustsImageWhenHighlighted = false
         layer.opacity = isEnabled ? 1 : 0.2
+        backgroundColor = normalBackgroundColor
+        layer.borderColor = normalBorderColor.cgColor
+        layer.borderWidth = normalBorderWidth
+    }
+    
+    convenience init(backgroundColor: UIColor) {
+        self.init(normalBackgroundColor: backgroundColor, selectedBackgroundColor: backgroundColor)
     }
     
     required init?(coder: NSCoder) {
@@ -38,27 +73,8 @@ final class CustomButton: UIButton {
         return self
     }
     
-    func backgroundColor(normal: UIColor, selected: UIColor) -> CustomButton {
-        backgroundColor = isSelected ? selected : normal
-        
-        return self
-    }
-    
     func tintColor(color: UIColor) -> CustomButton {
         imageView?.tintColor = color
-        
-        return self
-    }
-    
-    func border(
-        normalColor: UIColor,
-        normalWidth: CGFloat,
-        selectedColor: UIColor,
-        selectedWidth: CGFloat)
-        -> CustomButton
-    {
-        layer.borderColor = isSelected ? selectedColor.cgColor : normalColor.cgColor
-        layer.borderWidth = isSelected ? selectedWidth : normalWidth
         
         return self
     }
