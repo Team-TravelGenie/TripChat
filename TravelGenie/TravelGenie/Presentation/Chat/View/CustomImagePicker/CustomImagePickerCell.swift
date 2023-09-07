@@ -32,6 +32,7 @@ final class CustomImagePickerCell: UICollectionViewCell {
         super.init(frame: frame)
         contentView.clipsToBounds = true
         configureSubviews()
+        configureHierarchy()
         configureLayout()
     }
     
@@ -67,8 +68,11 @@ final class CustomImagePickerCell: UICollectionViewCell {
     // MARK: Private
     
     private func configureSubviews() {
-        [imageView, countButton].forEach { contentView.addSubview($0) }
         imageView.contentMode = .scaleAspectFill
+    }
+    
+    private func configureHierarchy() {
+        [imageView, countButton].forEach { contentView.addSubview($0) }
     }
     
     private func configureLayout() {
