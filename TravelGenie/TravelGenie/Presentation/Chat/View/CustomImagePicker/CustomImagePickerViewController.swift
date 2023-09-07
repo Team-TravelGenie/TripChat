@@ -67,6 +67,8 @@ final class CustomImagePickerViewController: UIViewController {
     }
     
     private func configureCollectionView() {
+        collectionView.delegate = self
+        collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = true
         collectionView.register(CustomImagePickerCell.self, forCellWithReuseIdentifier: CustomImagePickerCell.identifier)
@@ -120,6 +122,108 @@ final class CustomImagePickerViewController: UIViewController {
                 }
             }
         }
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout
+
+extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath)
+        -> CGSize
+    {
+        let width = (view.frame.width - 2) / 3
+        let height = width
+        return CGSize(width: width, height: height)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int)
+        -> CGFloat
+    {
+        return 1
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int)
+        -> CGFloat
+    {
+        return 1
+    }
+}
+
+// MARK: UICollectionViewDataSource
+
+extension CustomImagePickerViewController: UICollectionViewDataSource {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+        -> Int
+    {
+        return photos?.count ?? .zero
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        cellForItemAt indexPath: IndexPath)
+        -> UICollectionViewCell
+    {
+        guard let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: CustomImagePickerCell.identifier,
+            for: indexPath) as? CustomImagePickerCell,
+              let asset = photos?.object(at: indexPath.item)
+        else { return UICollectionViewCell() }
+        
+        PHImageManager.default().requestImage(
+            for: asset,
+            targetSize: thumbnailSize,
+            contentMode: .aspectFill,
+            options: nil) { (image, _) in
+                cell.setImage(image: image)}
+        
+        return cell
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath)
+    {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        
+        let imageData = cell.image()?.pngData()
+        viewModel.addImage(data: imageData)
+        cell.configureSelectedState(viewModel.selectedPhotos.count)
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didDeselectItemAt indexPath: IndexPath)
+    {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        
+        let imageData = cell.image()?.pngData()
+        viewModel.removeImage(data: imageData)
+        cell.configureDeselectedState(viewModel.selectedPhotos.count)
+        
+    }
+    
+    func collectionView(
+        _ collectionView: UICollectionView,
+        shouldSelectItemAt indexPath: IndexPath)
+        -> Bool
+    {
+        guard viewModel.selectedPhotos.count < 3 else {
+            // TODO: - alert 표시: 사진은 최대 3장까지만 선택할 수 있습니다.
+            return false
+        }
+        
+        return true
     }
 }
 
