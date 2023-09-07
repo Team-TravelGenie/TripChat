@@ -81,6 +81,8 @@ class ChatInterfaceViewController: MessagesViewController {
         return UICollectionViewCell()
     }
     
+    // MARK: Private
+    
     private func bind() {
         chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {

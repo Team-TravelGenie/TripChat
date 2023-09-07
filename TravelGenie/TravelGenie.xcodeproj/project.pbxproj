@@ -67,6 +67,8 @@
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
+		57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */; };
+		57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */; };
 		57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */; };
 		57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
@@ -194,6 +196,8 @@
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
+		57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBarAccessoryView.swift; sourceTree = "<group>"; };
+		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
 		57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
@@ -497,6 +501,7 @@
 				D23037752A8C61A80017950E /* Cell */,
 				D2E3AA312A8B83350049DDEF /* ChatInterface */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+				57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -697,6 +702,7 @@
 				573BCD632A934D4500116D2D /* DateFormatter+shared.swift */,
 				573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */,
 				5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */,
+				57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -887,6 +893,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */,
+				57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */,
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,
 				D2E3AA372A8B85AB0049DDEF /* Sender.swift in Sources */,
@@ -987,6 +994,7 @@
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */,
 				D272925D2AA5E2DF001878D0 /* ChatHistoryViewController.swift in Sources */,
 				57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */,
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
