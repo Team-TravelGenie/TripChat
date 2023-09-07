@@ -110,6 +110,7 @@
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
 		D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */; };
 		D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D263D7D02AA9E09400BBF8C1 /* Lottie */; };
+		D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */; };
 		D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846892AA10A5600831097 /* TranslateDTO.swift */; };
 		D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */; };
 		D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */; };
@@ -243,6 +244,7 @@
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
 		D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseCell.swift; sourceTree = "<group>"; };
+		D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
 		D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateAPI.swift; sourceTree = "<group>"; };
 		D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateRequestModel.swift; sourceTree = "<group>"; };
@@ -829,6 +831,7 @@
 				573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */,
 				D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */,
 				57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */,
+				D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
 			sourceTree = "<group>";
@@ -1027,6 +1030,7 @@
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */,
 				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
 				D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
