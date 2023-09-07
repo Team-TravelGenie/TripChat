@@ -24,6 +24,8 @@ class ChatInterfaceViewController: MessagesViewController {
         = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var attributedTextCellSizeCalculator
         = AttributedTextCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var photoCellSizeCalculator
+        = PhotoMessageSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     // MARK: Override(s)
     
@@ -38,10 +40,6 @@ class ChatInterfaceViewController: MessagesViewController {
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell
     {
-        guard let _ = messagesCollectionView.messagesDataSource else {
-            fatalError("Datasource error")
-        }
-        
         guard !isSectionReservedForTypingIndicator(indexPath.section) else {
             return super.collectionView(collectionView, cellForItemAt: indexPath)
         }
@@ -71,7 +69,7 @@ class ChatInterfaceViewController: MessagesViewController {
         if case let .custom(item) = message.kind {
             if item is TagItem {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
-                cell.sizedelegate = self
+                cell.sizeDelegate = self
                 cell.configure(with: message)
                 cell.configureButtonsState(chatInterfaceViewModel.tagCellButtonState)
                 return cell
@@ -85,8 +83,10 @@ class ChatInterfaceViewController: MessagesViewController {
         return UICollectionViewCell()
     }
     
+    // MARK: Private
+    
     private func bind() {
-        chatInterfaceViewModel.messageStorage.didChangedMessageList = { [weak self] in
+        chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()
@@ -250,6 +250,14 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
 
         return attributedTextCellSizeCalculator
+    }
+    
+    func photoCellSizeCalculator(
+      for message: MessageType,
+      at indexPath: IndexPath,
+      in messagesCollectionView: MessagesCollectionView)
+    -> CellSizeCalculator? {
+        return photoCellSizeCalculator
     }
 }
 
