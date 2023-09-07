@@ -323,7 +323,7 @@ final class PopUpContentView: UIView {
             
             let userFeedback = UserFeedback(
                 isPositive: self.thumbsUpButton.isSelected,
-                content: self.feedbackTextView.text)
+                content: self.feedbackTextView.text ?? String())
             
             self.delegate?.sendFeedback(userFeedback)
             self.delegate?.dismissAndPop()

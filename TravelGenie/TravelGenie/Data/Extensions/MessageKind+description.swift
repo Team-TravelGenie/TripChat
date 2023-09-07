@@ -11,9 +11,13 @@ import MessageKit
 extension MessageKind {
     var description: String {
         switch self {
+        case .attributedText:
+            return "attributedText"
+        case .photo:
+            return "photo"
         case .custom(let item):
             if item is TagItem { return "tag" }
-            else if item is RecommendationItem { return "recommendation" }
+            else if item is [RecommendationItem] { return "recommendation" }
             else { return String(describing: self) }
         default:
             return String(describing: self)

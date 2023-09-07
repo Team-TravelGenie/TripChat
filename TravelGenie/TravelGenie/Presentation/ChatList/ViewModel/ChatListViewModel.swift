@@ -26,7 +26,6 @@ final class ChatListViewModel {
     
     init(chatUseCase: ChatUseCase) {
         self.chatUseCase = chatUseCase
-//        addChat()
         fetchRecentChat()
     }
     
@@ -54,6 +53,12 @@ final class ChatListViewModel {
                 print(error)
             }
         }
+    }
+    
+    func didSelectChat(index: Int) {
+        let chat = chats[index]
+        
+        coordinator?.chatHistoryFlow(chat: chat)
     }
     
     // MARK: Private

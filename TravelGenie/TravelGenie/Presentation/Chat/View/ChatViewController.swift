@@ -18,7 +18,7 @@ final class ChatViewController: ChatInterfaceViewController {
     init(viewModel: ChatViewModel) {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
-        chatViewModel.delegate = chatInterfaceViewModel
+        chatViewModel.messageStorageDelegate = chatInterfaceViewModel
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
         bind()
     }
@@ -33,6 +33,7 @@ final class ChatViewController: ChatInterfaceViewController {
         super.viewDidLoad()
         setupNavigation()
         configureMessageInputBar()
+        chatViewModel.setupDefaultSystemMessages()
     }
     
     // MARK: Private

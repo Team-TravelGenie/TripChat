@@ -16,11 +16,14 @@ protocol MessageStorageDelegate: AnyObject {
 
 protocol ButtonStateDelegate: AnyObject {
     func setUploadButtonState(_ isEnabled: Bool)
+    func setTagCellButtonState(_ isEnabled: Bool)
 }
 
 final class ChatViewModel {
     
-    private enum OpenAIPrompt {
+    private enum Constant {
+        static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
+        
         static let openAISystemPrompt: String = """
             당신은 사용자가 입력한 키워드에 기반해서 3개의 여행지를 추천해주는 챗봇입니다.
             차근차근 생각해 봅시다.
@@ -62,7 +65,7 @@ final class ChatViewModel {
     }
     
     weak var coordinator: ChatCoordinator?
-    weak var delegate: MessageStorageDelegate?
+    weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
@@ -96,7 +99,7 @@ final class ChatViewModel {
     // MARK: Internal
     
     func insertMessage(_ message: Message) {
-        delegate?.insert(message: message)
+        messageStorageDelegate?.insert(message: message)
     }
     
     func handlePhotoUploads(images: [UIImage]) {
@@ -123,7 +126,7 @@ final class ChatViewModel {
     }
     
     func saveChat() {
-        guard let messages = delegate?.fetchMessages(),
+        guard let messages = messageStorageDelegate?.fetchMessages(),
               isValidChat()
         else { return }
         
@@ -152,6 +155,19 @@ final class ChatViewModel {
             object: nil)
     }
     
+    func setupDefaultSystemMessages() {
+        let defaultMessage = NSMutableAttributedString()
+            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
+        
+        let defaultMessages = [
+            Message(sender: Sender(name: .ai)),
+            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
+            Message(sender: Sender(name: .ai))
+        ]
+        
+        defaultMessages.forEach { insertMessage($0) }
+    }
+    
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
@@ -178,11 +194,19 @@ final class ChatViewModel {
             
             self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
-                let tagMessage = self.createTagMessage(from: $0)
+                let defaultTags = self.makeDefaultTags()
+                let appendedTags = defaultTags + $0
+                let tagMessage = self.createTagMessage(from: appendedTags)
                 
                 insertMessage(tagMessage)
             }
         }
+    }
+    
+    private func makeDefaultTags() -> [Tag] {
+        return [
+            Tag(category: .location, value: "국내"),
+            Tag(category: .location, value: "해외")]
     }
 
     private func convertImageToBase64(image: UIImage) -> String? {
@@ -287,7 +311,7 @@ final class ChatViewModel {
     // MARK: OpenAI
     
     private func addDefaultOpenAIPropmpt() {
-        let message = ChatMessage(role: .system, content: OpenAIPrompt.openAISystemPrompt)
+        let message = ChatMessage(role: .system, content: Constant.openAISystemPrompt)
         openAIChatMessages.append(message)
     }
     
@@ -328,7 +352,13 @@ final class ChatViewModel {
     // MARK: PopUp
     
     private func createPopUpViewModel() -> PopUpViewModel {
-        return PopUpViewModel()
+        return PopUpViewModel(
+            selectedTags: selectedTags,
+            recommendationItem: recommendationItems,
+            userFeedbackUseCase: DefaultUserFeedbackUseCase(
+                userFeedbackRepository: DefaultUserFeedbackRepository(
+                    userFeedbackStorage: FirebaseUserFeedbackStorage()))
+        )
     }
     
     private func createPopUpModel() -> PopUpModel {
@@ -374,10 +404,9 @@ final class ChatViewModel {
     @objc private func didTapTagSubmitButton(notification: Notification) {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
-        let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
-        let selectedTagTextMessage = createTextMessage(with: tagText, sender: user)
         self.selectedTags = selectedTags
-        insertMessage(selectedTagTextMessage)
+        
+        let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)
     }
 }
