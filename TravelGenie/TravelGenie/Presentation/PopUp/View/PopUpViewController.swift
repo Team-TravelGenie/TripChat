@@ -48,6 +48,14 @@ final class PopUpViewController: UIViewController {
         configureHierarchy()
         configureLayout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        registerObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeObservers()
     }
     
     // MARK: Private
@@ -81,6 +89,48 @@ final class PopUpViewController: UIViewController {
             feedbackContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             feedbackContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+    }
+    
+    private func registerObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moveFeedbackContentViewUp),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moveFeedbackContentViewDown),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    // MARK: objc methods
+    
+    @objc private func moveFeedbackContentViewUp(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self else { return }
+                
+                self.feedbackContentView.transform = CGAffineTransform(
+                    translationX: 0,
+                    y: self.feedbackContentView.frame.origin.y - keyboardSize.height)
+            }
+        }
+    }
+    
+    @objc private func moveFeedbackContentViewDown(_ notification: NSNotification) {
+        self.feedbackContentView.transform = .identity
     }
 }
 
