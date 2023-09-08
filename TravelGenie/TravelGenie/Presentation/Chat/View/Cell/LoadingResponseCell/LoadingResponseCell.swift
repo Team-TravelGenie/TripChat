@@ -10,11 +10,18 @@ import Lottie
 
 final class LoadingResponseCell: UICollectionViewCell {
     
+    private let avatarView = CircleIconView()
+        .backgroundColor(.white)
+        .size(40)
+        .iconImage(imageName: "chat", size: 32)
+    
     private let animationView = LottieAnimationView(name: "iHi4RYS3KJ-2")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         configureAnimationView()
+        configureHierarchy()
+        configureLayout()
     }
     
     required init?(coder: NSCoder) {
@@ -22,7 +29,31 @@ final class LoadingResponseCell: UICollectionViewCell {
     }
     
     private func configureAnimationView() {
+        animationView.contentMode = .scaleToFill
+        animationView.loopMode = .loop
         animationView.play()
+    }
+    
+    private func configureHierarchy() {
+        [avatarView, animationView]
+            .forEach { contentView.addSubview($0) }
+    }
+    
+    private func configureLayout() {
+        avatarView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            avatarView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            avatarView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12),
+        ])
+        
+        animationView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            animationView.topAnchor.constraint(equalTo: avatarView.topAnchor),
+            animationView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
+            animationView.widthAnchor.constraint(equalToConstant: 64),
+            animationView.heightAnchor.constraint(equalTo: avatarView.heightAnchor)
+        ])
+        
     }
     
 }
