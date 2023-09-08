@@ -47,6 +47,7 @@ final class PopUpViewModel {
             content: content,
             selectedTags: tagValues,
             recommendations: recommendationValues)
+        
         userFeedbackUseCase.save(userFeedback: userFeedback) { error in
                 // TODO: - 에러 처리
             }
