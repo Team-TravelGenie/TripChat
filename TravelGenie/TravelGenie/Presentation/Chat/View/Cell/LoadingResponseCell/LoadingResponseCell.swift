@@ -29,6 +29,7 @@ final class LoadingResponseCell: UICollectionViewCell {
     }
     
     private func configureAnimationView() {
+        contentView.clipsToBounds = true // 리사이징 후, AnimationView가 contentView보다 크기가 커지는 문제로 인한 clip (해결 후 제거)
         animationView.transform = CGAffineTransform(scaleX: 4.5, y: 4.5)
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop
