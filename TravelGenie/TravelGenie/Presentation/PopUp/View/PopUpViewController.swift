@@ -60,6 +60,7 @@ final class PopUpViewController: UIViewController {
     private func configureFeedbackContentView() {
         feedbackContentView.delegate = self
         feedbackContentView.textViewDelegate = self
+        feedbackContentView.isHidden = true
     }
     
     private func configureHierarchy() {
@@ -104,6 +105,8 @@ extension PopUpViewController: PopUpContentViewDelegate {
     }
     
     func showFeedbackContentView() {
+        feedbackContentView.isHidden = false
+        endChatContentView.isHidden = true
     }
     
     func dismissAndPop() {
