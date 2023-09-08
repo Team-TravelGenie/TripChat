@@ -29,7 +29,8 @@ final class LoadingResponseCell: UICollectionViewCell {
     }
     
     private func configureAnimationView() {
-        animationView.contentMode = .scaleToFill
+        animationView.transform = CGAffineTransform(scaleX: 4.5, y: 4.5)
+        animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop
         animationView.play()
     }
@@ -48,10 +49,10 @@ final class LoadingResponseCell: UICollectionViewCell {
         
         animationView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            animationView.topAnchor.constraint(equalTo: avatarView.topAnchor),
+            animationView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             animationView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
             animationView.widthAnchor.constraint(equalToConstant: 64),
-            animationView.heightAnchor.constraint(equalTo: avatarView.heightAnchor)
+            animationView.heightAnchor.constraint(equalToConstant: 10.5)
         ])
         
     }
