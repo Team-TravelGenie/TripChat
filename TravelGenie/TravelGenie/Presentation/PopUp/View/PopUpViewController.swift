@@ -17,7 +17,8 @@ final class PopUpViewController: UIViewController {
     weak var delegate: PopUpViewControllerDelegate?
     
     private let viewModel: PopUpViewModel
-    private var contentView: PopUpContentView
+    private var endChatContentView: PopUpContentView
+    private var feedbackContentView: PopUpContentView
     
     // MARK: Lifecycle
     
@@ -28,11 +29,13 @@ final class PopUpViewController: UIViewController {
     {
         self.viewModel = viewModel
         self.delegate = delegate
-        contentView = PopUpContentView(type: type)
+        let popUpModel = viewModel.createFeedbackModel()
+        endChatContentView = PopUpContentView(type: type)
+        feedbackContentView = PopUpContentView(type: .feedback(popUpModel))
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
-        contentView.delegate = self
-        contentView.textViewDelegate = self
+        endChatContentView.delegate = self
+        endChatContentView.textViewDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -43,25 +46,39 @@ final class PopUpViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureHierarchy()
-        configureContentViewLayout(contentView)
+        configureLayout()
+    }
     }
     
     // MARK: Private
     
     private func configureSubviews() {
         view.backgroundColor = .black.withAlphaComponent(0.2)
+        configureFeedbackContentView()
+    }
+    
+    private func configureFeedbackContentView() {
+        feedbackContentView.delegate = self
+        feedbackContentView.textViewDelegate = self
     }
     
     private func configureHierarchy() {
-        view.addSubview(contentView)
+        [endChatContentView, feedbackContentView].forEach { view.addSubview($0) }
     }
     
-    private func configureContentViewLayout(_ contentView: PopUpContentView) {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+    private func configureLayout() {
+        endChatContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalToConstant: 351),
-            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            endChatContentView.widthAnchor.constraint(equalToConstant: 351),
+            endChatContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            endChatContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+        
+        feedbackContentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            feedbackContentView.widthAnchor.constraint(equalToConstant: 351),
+            feedbackContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            feedbackContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
     }
 }
@@ -87,12 +104,6 @@ extension PopUpViewController: PopUpContentViewDelegate {
     }
     
     func showFeedbackContentView() {
-        let popUpModel = viewModel.createFeedbackModel()
-        let feedbackContentView = PopUpContentView(type: .feedback(popUpModel))
-        feedbackContentView.delegate = self
-        feedbackContentView.textViewDelegate = self
-        view.addSubview(feedbackContentView)
-        configureContentViewLayout(feedbackContentView)
     }
     
     func dismissAndPop() {
