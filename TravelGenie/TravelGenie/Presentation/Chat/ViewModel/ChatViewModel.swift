@@ -162,7 +162,8 @@ final class ChatViewModel {
         let defaultMessages = [
             Message(sender: Sender(name: .ai)),
             Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
-            Message(sender: Sender(name: .ai))
+            Message(sender: Sender(name: .ai)),
+            Message(sender: Sender(name: .ai), messageId: UUID().uuidString, sentDate: Date())
         ]
         
         defaultMessages.forEach { insertMessage($0) }
