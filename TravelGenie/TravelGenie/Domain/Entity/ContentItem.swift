@@ -71,6 +71,4 @@ struct RecommendationItem: Codable {
 
 // MARK: MessageKind - .custom(LoadingAnimationItem) 메시지 컨텐츠
 
-struct LoadingAnimationItem {
-    let responseMessage: String = "iHi4RYS3KJ-2"
-}
+struct LoadingAnimationItem { }
