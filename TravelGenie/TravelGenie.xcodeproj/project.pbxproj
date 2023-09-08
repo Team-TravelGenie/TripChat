@@ -69,7 +69,6 @@
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
 		57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */; };
-		57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */; };
 		57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */; };
 		57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
@@ -77,6 +76,7 @@
 		57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
 		57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */; };
+		57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */; };
 		57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
@@ -108,6 +108,9 @@
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
+		D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */; };
+		D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D263D7D02AA9E09400BBF8C1 /* Lottie */; };
+		D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */; };
 		D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846892AA10A5600831097 /* TranslateDTO.swift */; };
 		D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */; };
 		D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */; };
@@ -202,13 +205,13 @@
 		57A54C912AA996F00087B640 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
 		57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBarAccessoryView.swift; sourceTree = "<group>"; };
-		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
 		57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
 		57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUseCase.swift; sourceTree = "<group>"; };
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
+		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
 		57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
@@ -217,7 +220,6 @@
 		57DA98752A9E4B200074409B /* ImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultImageSearchRepository.swift; sourceTree = "<group>"; };
 		57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchUseCase.swift; sourceTree = "<group>"; };
-		57DA987B2A9F44C90074409B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../TGAssets/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57DA98872A9F81300074409B /* OpenAIRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OpenAIRepository.swift; sourceTree = "<group>"; };
 		57DA988A2A9F8C830074409B /* ImageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageManager.swift; sourceTree = "<group>"; };
 		57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataChatStorage.swift; sourceTree = "<group>"; };
@@ -241,6 +243,8 @@
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
+		D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseCell.swift; sourceTree = "<group>"; };
+		D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
 		D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateAPI.swift; sourceTree = "<group>"; };
 		D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateRequestModel.swift; sourceTree = "<group>"; };
@@ -282,6 +286,7 @@
 				57DA987F2A9F4A100074409B /* FirebaseAnalytics in Frameworks */,
 				57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */,
 				D20FA2912A6B99B40081B039 /* Moya in Frameworks */,
+				D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -583,7 +588,6 @@
 		D20FA2712A6B8DA90081B039 /* TravelGenie */ = {
 			isa = PBXGroup;
 			children = (
-				57DA987B2A9F44C90074409B /* GoogleService-Info.plist */,
 				57DA98892A9F8C770074409B /* Utility */,
 				D20FA2862A6B97A70081B039 /* Presentation */,
 				D20FA2872A6B97B90081B039 /* Domain */,
@@ -729,6 +733,7 @@
 		D23037752A8C61A80017950E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D263D7CC2AA9DFB400BBF8C1 /* LoadingResponseCell */,
 				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 				573BCD442A92140900116D2D /* RecommendationCell */,
@@ -744,6 +749,14 @@
 				D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */,
 			);
 			path = DefaultSystemSectionCell;
+			sourceTree = "<group>";
+		};
+		D263D7CC2AA9DFB400BBF8C1 /* LoadingResponseCell */ = {
+			isa = PBXGroup;
+			children = (
+				D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */,
+			);
+			path = LoadingResponseCell;
 			sourceTree = "<group>";
 		};
 		D27292572AA5E280001878D0 /* ChatHistory */ = {
@@ -818,6 +831,7 @@
 				573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */,
 				D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */,
 				57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */,
+				D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
 			sourceTree = "<group>";
@@ -854,6 +868,7 @@
 				D2E3AA2C2A8B64740049DDEF /* MessageKit */,
 				57DA987E2A9F4A100074409B /* FirebaseAnalytics */,
 				57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */,
+				D263D7D02AA9E09400BBF8C1 /* Lottie */,
 			);
 			productName = TravelGenie;
 			productReference = D20FA26F2A6B8DA90081B039 /* TravelGenie.app */;
@@ -888,6 +903,7 @@
 				57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */,
 				57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = D20FA2702A6B8DA90081B039 /* Products */;
 			projectDirPath = "";
@@ -1014,6 +1030,7 @@
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */,
 				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
 				D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
@@ -1033,6 +1050,7 @@
 				57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
+				D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */,
 				5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */,
 				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
 				576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */,
@@ -1177,7 +1195,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3Q4UQ436SX;
+				DEVELOPMENT_TEAM = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1205,7 +1223,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 3Q4UQ436SX;
+				DEVELOPMENT_TEAM = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -1274,6 +1292,14 @@
 				minimumVersion = 15.0.0;
 			};
 		};
+		D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
+			};
+		};
 		D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/MessageKit/MessageKit";
@@ -1304,6 +1330,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		D263D7D02AA9E09400BBF8C1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		D2E3AA2C2A8B64740049DDEF /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;

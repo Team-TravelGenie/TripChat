@@ -68,3 +68,7 @@ struct RecommendationItem: Codable {
     let spot: String
     let image: Data
 }
+
+// MARK: MessageKind - .custom(LoadingAnimationItem) 메시지 컨텐츠
+
+struct LoadingAnimationItem { }
