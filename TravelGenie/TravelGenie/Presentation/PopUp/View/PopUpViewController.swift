@@ -19,6 +19,7 @@ final class PopUpViewController: UIViewController {
     private let viewModel: PopUpViewModel
     private var endChatContentView: PopUpContentView
     private var feedbackContentView: PopUpContentView
+    private lazy var feedbackContentViewOriginY: Double = feedbackContentView.frame.origin.y
     
     // MARK: Lifecycle
     
@@ -124,7 +125,7 @@ final class PopUpViewController: UIViewController {
                 
                 self.feedbackContentView.transform = CGAffineTransform(
                     translationX: 0,
-                    y: self.feedbackContentView.frame.origin.y - keyboardSize.height)
+                    y: self.feedbackContentViewOriginY - keyboardSize.height)
             }
         }
     }
