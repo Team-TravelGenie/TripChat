@@ -45,7 +45,7 @@ final class MessageStorage {
         })
     }
     
-    func deleteLoadingMessage() {
+    func removeLoadingMessage() {
         if let loadingMessageIndex = messageList.firstIndex(where: { $0.messageId == "loading" }) {
             messageList.remove(at: loadingMessageIndex)
         }

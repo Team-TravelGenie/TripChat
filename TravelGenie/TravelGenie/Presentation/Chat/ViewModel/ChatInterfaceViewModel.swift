@@ -45,13 +45,13 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func insert(message: Message) {
         messageStorage.insertMessage(message)
     }
-    
+    d
     func fetchMessages() -> [Message] {
         return messageStorage.fetchMessages()
     }
     
-    func deleteLoadingMessage() {
-        messageStorage.deleteLoadingMessage()
+    func removeLoadingMessage() {
+        messageStorage.removeLoadingMessage()
     }
 }
 

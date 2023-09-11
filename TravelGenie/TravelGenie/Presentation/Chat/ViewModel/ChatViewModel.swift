@@ -12,7 +12,7 @@ import OpenAISwift
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
     func fetchMessages() -> [Message]
-    func deleteLoadingMessage()
+    func removeLoadingMessage()
 }
 
 protocol ButtonStateDelegate: AnyObject {
@@ -200,7 +200,7 @@ final class ChatViewModel {
                 let appendedTags = defaultTags + $0
                 let tagMessage = self.createTagMessage(from: appendedTags)
                 
-                deleteLoadingMessage()
+                removeLoadingMessage()
                 insertMessage(tagMessage)
             }
         }
@@ -281,7 +281,7 @@ final class ChatViewModel {
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             let message = Message(recommendations: self.recommendationItems)
-            deleteLoadingMessage()
+            removeLoadingMessage()
             insertMessage(message)
         }
     }
@@ -314,8 +314,8 @@ final class ChatViewModel {
         insertMessage(loadingMessage)
     }
     
-    private func deleteLoadingMessage() {
-        messageStorageDelegate?.deleteLoadingMessage()
+    private func removeLoadingMessage() {
+        messageStorageDelegate?.removeLoadingMessage()
     }
     
     private func createLoadingMessage() -> Message {
@@ -340,7 +340,7 @@ final class ChatViewModel {
         openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
             guard let self else { return }
             
-            self.deleteLoadingMessage()
+            self.removeLoadingMessage()
             
             switch result {
             case .success(let chatMessages):
