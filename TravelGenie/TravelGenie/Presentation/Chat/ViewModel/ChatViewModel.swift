@@ -5,9 +5,9 @@
 //  Created by 서현웅 on 2023/08/15.
 //
 
+import Foundation
 import InputBarAccessoryView
 import OpenAISwift
-import UIKit
 
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
@@ -102,11 +102,11 @@ final class ChatViewModel {
         messageStorageDelegate?.insert(message: message)
     }
     
-    func handlePhotoUploads(images: [UIImage]) {
-        let totalPhotosToUpload = images.count
+    func handlePhotoUploads(imageData: [Data]) {
+        let totalPhotosToUpload = imageData.count
         var photoUploadCount = 0
         
-        images.forEach {
+        imageData.forEach {
             let photoMessage = createPhotoMessage(from: $0)
             photoUploadCount += 1
             insertMessage(photoMessage)
@@ -114,7 +114,7 @@ final class ChatViewModel {
 
         if totalPhotosToUpload == photoUploadCount {
             updateUploadButtonState(false)
-            extractKeywordsFromImages(images: images)
+            extractKeywords(from: imageData)
         }
     }
     
@@ -172,11 +172,11 @@ final class ChatViewModel {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
     
-    private func extractKeywordsFromImages(images: [UIImage]) {
+    private func extractKeywords(from imageData: [Data]) {
         let group = DispatchGroup()
         
-        images.forEach {
-            if let base64String = convertImageToBase64(image: $0) {
+        imageData.forEach {
+            if let base64String = convertToBase64(from: $0) {
                 group.enter()
                 fetchKeywordsFromGoogleVision(base64String: base64String) {
                     group.leave()
@@ -209,13 +209,8 @@ final class ChatViewModel {
             Tag(category: .location, value: "해외")]
     }
 
-    private func convertImageToBase64(image: UIImage) -> String? {
-        guard let imageData = image.jpegData(compressionQuality: 1.0) else {
-            print("base64String 인코딩오류")
-            return nil
-        }
-        
-        return imageData.base64EncodedString()
+    private func convertToBase64(from data: Data) -> String? {
+        return data.base64EncodedString()
     }
 
     private func fetchKeywordsFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
@@ -247,18 +242,17 @@ final class ChatViewModel {
     // MARK: Create Message
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
-        let textColor: UIColor = sender == ai ? .black : .white
         let messageText = NSMutableAttributedString()
-            .text(text, font: .bodyRegular, color: textColor)
+            .messageText(text, font: .bodyRegular, sender: sender)
         return Message(
             text: messageText,
             sender: sender,
             sentDate: Date())
     }
     
-    private func createPhotoMessage(from image: UIImage) -> Message {
+    private func createPhotoMessage(from imageData: Data) -> Message {
         return Message(
-            image: image,
+            imageData: imageData,
             sender: user,
             sentDate: Date())
     }
@@ -419,5 +413,11 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
         let openAIChatMessage = ChatMessage(role: .user, content: text)
         insertMessage(textMessage)
         sendMessageToOpenAI(openAIChatMessage)
+    }
+}
+
+extension ChatViewModel: ImagePickerDelegate {
+    func photoDataSent(_ data: [Data]) {
+        handlePhotoUploads(imageData: data)
     }
 }

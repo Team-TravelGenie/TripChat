@@ -18,9 +18,10 @@ final class ChatViewController: ChatInterfaceViewController {
     init(viewModel: ChatViewModel) {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
+        bind()
         chatViewModel.messageStorageDelegate = chatInterfaceViewModel
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
-        bind()
+        messageInputBar.delegate = chatViewModel
     }
     
     required init?(coder: NSCoder) {
@@ -40,7 +41,7 @@ final class ChatViewController: ChatInterfaceViewController {
     
     private func bind() {
         chatViewModel.didTapImageUploadButton = { [weak self] in
-            self?.presentPHPickerViewController()
+            self?.showImagePicker()
         }
     }
     
@@ -85,67 +86,20 @@ final class ChatViewController: ChatInterfaceViewController {
     }
 }
 
-// MARK: PHPickerViewControllerDelegate
+// MARK: CustomImagePicker
 
-extension ChatViewController: PHPickerViewControllerDelegate {
-    func picker(
-        _ picker: PHPickerViewController,
-        didFinishPicking results: [PHPickerResult])
-    {
-        dismiss(animated: true) {
-            self.getImages(results: results) { [weak self] in
-                self?.chatViewModel.handlePhotoUploads(images: $0)
-            }
-        }
-    }
-    
-    private func presentPHPickerViewController() {
-        let configuration = setupPHPickerConfiguration()
-        let phPickerViewController = PHPickerViewController(configuration: configuration)
+extension ChatViewController {
+    private func showImagePicker() {
+        let customImagePickerViewModel = CustomImagePickerViewModel()
+        customImagePickerViewModel.delegate = chatViewModel
+        let vc = CustomImagePickerViewController(viewModel: customImagePickerViewModel)
+        vc.modalPresentationStyle = .pageSheet
         
-        phPickerViewController.delegate = self
-        phPickerViewController.modalPresentationStyle = .pageSheet
-        
-        if let sheet = phPickerViewController.sheetPresentationController {
+        if let sheet = vc.sheetPresentationController {
             sheet.detents = [.medium()]
         }
         
-        present(phPickerViewController, animated: true)
-    }
-    
-    private func setupPHPickerConfiguration() -> PHPickerConfiguration {
-        var configuration = PHPickerConfiguration(photoLibrary: .shared())
-        
-        configuration.filter = .images
-        configuration.preferredAssetRepresentationMode = .current
-        configuration.selectionLimit = 3
-        
-        return configuration
-    }
-    
-    private func getImages(
-        results: [PHPickerResult],
-        completion: @escaping ([UIImage]) -> Void)
-    {
-        var images: [UIImage] = []
-        let group = DispatchGroup()
-        
-        for result in results {
-            group.enter()
-            result.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
-                if let error = error {
-                    print(error.localizedDescription)
-                } else if let image = image as? UIImage {
-                    images.append(image)
-                }
-                
-                group.leave()
-            }
-        }
-        
-        group.notify(queue: .main) {
-            completion(images)
-        }
+        present(vc, animated: true)
     }
 }
 
