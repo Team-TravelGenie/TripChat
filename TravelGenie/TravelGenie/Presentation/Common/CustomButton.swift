@@ -7,18 +7,21 @@
 
 import UIKit
 
-final class CustomButton: UIButton {
+class CustomButton: UIButton {
     
     private let normalBackgroundColor: UIColor
+    private let normalTintColor: UIColor
     private let normalBorderColor: UIColor
     private let normalBorderWidth: CGFloat
     private let selectedBackgroundColor: UIColor
+    private let selectedTintColor: UIColor
     private let selectedBorderColor: UIColor
     private let selectedBorderWidth: CGFloat
     
     override var isSelected: Bool {
         didSet {
             backgroundColor = isSelected ? selectedBackgroundColor : normalBackgroundColor
+            tintColor = isSelected ? selectedTintColor : normalTintColor
             layer.borderColor = isSelected ? selectedBorderColor.cgColor : normalBorderColor.cgColor
             layer.borderWidth = isSelected ? selectedBorderWidth : normalBorderWidth
         }
@@ -28,16 +31,20 @@ final class CustomButton: UIButton {
     
     init(
         normalBackgroundColor: UIColor,
+        normalTintColor: UIColor = .clear,
         normalBorderColor: UIColor = .clear,
         normalBorderWidth: CGFloat = .zero,
         selectedBackgroundColor: UIColor,
+        selectedTintColor: UIColor = .clear,
         selectedBorderColor: UIColor = .clear,
         selectedBorderWidth: CGFloat = .zero
     ) {
         self.normalBackgroundColor = normalBackgroundColor
+        self.normalTintColor = normalTintColor
         self.normalBorderColor = normalBorderColor
         self.normalBorderWidth = normalBorderWidth
         self.selectedBackgroundColor = selectedBackgroundColor
+        self.selectedTintColor = selectedTintColor
         self.selectedBorderColor = selectedBorderColor
         self.selectedBorderWidth = selectedBorderWidth
         super.init(frame: .zero)

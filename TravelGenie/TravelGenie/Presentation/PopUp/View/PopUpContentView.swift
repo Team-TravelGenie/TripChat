@@ -61,13 +61,23 @@ final class PopUpContentView: UIView {
         .backgroundColor(.blueGrayBackground)
         .iconImage(imageName: DesignAssetName.chatAvatarImage, size: 32)
     
-    private let thumbsUpButton = FeedbackButton()
+    private let thumbsUpButton = FeedbackButton(
+        normalBackgroundColor: .blueGrayLine,
+        normalTintColor: .white,
+        selectedBackgroundColor: .tertiary,
+        selectedTintColor: .primary)
         .size(Design.thumbsUpDownButtonSize)
-        .image(name: DesignAsset.thumbsUpImage, size: Design.thumbsUpDownButtonImageSize)
+        .cornerRadius(Design.thumbsUpDownButtonSize / 2)
+        .assetIconImage(name: DesignAssetName.thumbsUpImage, size: Design.thumbsUpDownButtonImageSize)
     
-    private let thumbsDownButton = FeedbackButton()
+    private let thumbsDownButton = FeedbackButton(
+        normalBackgroundColor: .blueGrayLine,
+        normalTintColor: .white,
+        selectedBackgroundColor: .tertiary,
+        selectedTintColor: .primary)
         .size(Design.thumbsUpDownButtonSize)
-        .image(name: DesignAsset.thumbsDownImage, size: Design.thumbsUpDownButtonImageSize)
+        .cornerRadius(Design.thumbsUpDownButtonSize / 2)
+        .assetIconImage(name: DesignAssetName.thumbsDownImage, size: Design.thumbsUpDownButtonImageSize)
     
     private let leftButton = RectangleTextButton()
         .cornerRadius(Design.bottomButtonCornerRadius)
