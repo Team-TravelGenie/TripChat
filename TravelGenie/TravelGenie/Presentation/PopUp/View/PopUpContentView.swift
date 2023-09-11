@@ -63,6 +63,17 @@ final class PopUpContentView: UIView {
         .borderWidth(1)
         .cornerRadius(8)
     
+    private var feedbackTextViewHeightAnchor: NSLayoutConstraint?
+
+    private var leftButtonHeightAnchor: NSLayoutConstraint?
+    private var rightButtonHeightAnchor: NSLayoutConstraint?
+    
+    private var mainStackViewSpacing: CGFloat = 24 {
+        didSet {
+            mainStackView.spacing = mainStackViewSpacing
+        }
+    }
+    
     private var isFeedbackSelected: Bool {
         return thumbsUpButton.isSelected || thumbsDownButton.isSelected
     }
@@ -93,6 +104,23 @@ final class PopUpContentView: UIView {
     }
     
     // MARK: Internal
+    
+    func changeFeedbackModalLayout(spacing: CGFloat, textViewHeight: CGFloat) {
+        mainStackViewSpacing = spacing
+        feedbackTextViewHeightAnchor?.constant = textViewHeight
+    }
+    
+    func changeFeedbackModalLayoutForSE3(
+        spacing: CGFloat,
+        textViewHeight: CGFloat,
+        leftRightButtonHeight: CGFloat)
+    {
+        mainStackViewSpacing = spacing
+        feedbackTextViewHeightAnchor?.constant = textViewHeight
+        leftButtonHeightAnchor?.constant = leftRightButtonHeight
+        rightButtonHeightAnchor?.constant = leftRightButtonHeight
+        feedbackButtonWrapperStackView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+    }
     
     func endFeedbackTextViewEditing() {
         feedbackTextView.resignFirstResponder()
@@ -142,7 +170,7 @@ final class PopUpContentView: UIView {
     
     private func configureMainStackView() {
         mainStackView.axis = .vertical
-        mainStackView.spacing = 20
+        mainStackView.spacing = mainStackViewSpacing
     }
     
     private func configureCloseButtonStackView() {
@@ -277,19 +305,16 @@ final class PopUpContentView: UIView {
         ])
         
         feedbackTextView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            feedbackTextView.heightAnchor.constraint(equalToConstant: 100),
-        ])
+        feedbackTextViewHeightAnchor = feedbackTextView.heightAnchor.constraint(equalToConstant: 100)
+        feedbackTextViewHeightAnchor?.isActive = true
         
         leftButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            leftButton.heightAnchor.constraint(equalToConstant: 47),
-        ])
+        leftButtonHeightAnchor = leftButton.heightAnchor.constraint(equalToConstant: 48)
+        leftButtonHeightAnchor?.isActive = true
         
         rightButton.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            rightButton.heightAnchor.constraint(equalToConstant: 47),
-        ])
+        rightButtonHeightAnchor = rightButton.heightAnchor.constraint(equalToConstant: 48)
+        rightButtonHeightAnchor?.isActive = true
     }
     
     // MARK: Button Actions

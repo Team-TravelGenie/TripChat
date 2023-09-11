@@ -19,7 +19,6 @@ final class PopUpViewController: UIViewController {
     private let viewModel: PopUpViewModel
     private var endChatContentView: PopUpContentView
     private var feedbackContentView: PopUpContentView
-    private lazy var feedbackContentViewOriginY: Double = feedbackContentView.frame.origin.y
     
     // MARK: Lifecycle
     
@@ -129,7 +128,21 @@ final class PopUpViewController: UIViewController {
                 
                 self.feedbackContentView.transform = CGAffineTransform(
                     translationX: 0,
-                    y: self.feedbackContentViewOriginY - keyboardSize.height)
+                    y: -keyboardSize.height * 6 / 13)
+
+                switch UIScreen.main.bounds.height {
+                // SE
+                case ..<812:
+                    self.feedbackContentView.changeFeedbackModalLayoutForSE3(
+                        spacing: 12,
+                        textViewHeight: 52,
+                        leftRightButtonHeight: 40)
+                // mini
+                case 812..<844:
+                    self.feedbackContentView.changeFeedbackModalLayout(spacing: 16, textViewHeight: 52)
+                default:
+                    return
+                }
             }
         }
     }
