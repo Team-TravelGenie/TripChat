@@ -15,7 +15,7 @@ final class LoadingResponseCell: UICollectionViewCell {
         .size(40)
         .iconImage(imageName: "chat", size: 32)
     
-    private let animationView = LottieAnimationView(name: "iHi4RYS3KJ-2")
+    private let animationView = LottieAnimationView(name: "loadingChat")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -29,8 +29,6 @@ final class LoadingResponseCell: UICollectionViewCell {
     }
     
     private func configureAnimationView() {
-        contentView.clipsToBounds = true // 리사이징 후, AnimationView가 contentView보다 크기가 커지는 문제로 인한 clip (해결 후 제거)
-        animationView.transform = CGAffineTransform(scaleX: 4.5, y: 4.5)
         animationView.contentMode = .scaleAspectFill
         animationView.loopMode = .loop
         animationView.play()
@@ -52,8 +50,8 @@ final class LoadingResponseCell: UICollectionViewCell {
         NSLayoutConstraint.activate([
             animationView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             animationView.leadingAnchor.constraint(equalTo: avatarView.trailingAnchor, constant: 8),
-            animationView.widthAnchor.constraint(equalToConstant: 64),
-            animationView.heightAnchor.constraint(equalToConstant: 10.5)
+            animationView.widthAnchor.constraint(equalToConstant: 68),
+            animationView.heightAnchor.constraint(equalToConstant: 20)
         ])
         
     }

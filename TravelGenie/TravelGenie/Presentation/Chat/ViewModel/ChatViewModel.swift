@@ -12,6 +12,7 @@ import OpenAISwift
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
     func fetchMessages() -> [Message]
+    func removeLoadingMessage()
 }
 
 protocol ButtonStateDelegate: AnyObject {
@@ -173,6 +174,7 @@ final class ChatViewModel {
     }
     
     private func extractKeywords(from imageData: [Data]) {
+        insertLoadingMessage()
         let group = DispatchGroup()
         
         imageData.forEach {
@@ -198,6 +200,7 @@ final class ChatViewModel {
                 let appendedTags = defaultTags + $0
                 let tagMessage = self.createTagMessage(from: appendedTags)
                 
+                removeLoadingMessage()
                 insertMessage(tagMessage)
             }
         }
@@ -262,6 +265,8 @@ final class ChatViewModel {
     }
     
     private func insertRecommendationMessage(with result: OpenAIRecommendation) {
+        insertLoadingMessage()
+        
         let items = result.recommendationItems
         let group = DispatchGroup()
         
@@ -276,6 +281,7 @@ final class ChatViewModel {
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
             let message = Message(recommendations: self.recommendationItems)
+            removeLoadingMessage()
             insertMessage(message)
         }
     }
@@ -302,6 +308,20 @@ final class ChatViewModel {
         }
     }
     
+    private func insertLoadingMessage() {
+        let loadingMessage = createLoadingMessage()
+        
+        insertMessage(loadingMessage)
+    }
+    
+    private func removeLoadingMessage() {
+        messageStorageDelegate?.removeLoadingMessage()
+    }
+    
+    private func createLoadingMessage() -> Message {
+        return Message(sender: ai, messageId: "loading", sentDate: Date())
+    }
+    
     // MARK: OpenAI
     
     private func addDefaultOpenAIPropmpt() {
@@ -315,13 +335,17 @@ final class ChatViewModel {
     }
     
     private func sendMessageToOpenAI(_ message: ChatMessage) {
-        // TODO: - 챗지피티에 메시지 발송할 때 항상 답변 생성 애니메이션 넣어야 함
+        insertLoadingMessage()
         openAIChatMessages.append(message)
         openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
+            guard let self else { return }
+            
+            self.removeLoadingMessage()
+            
             switch result {
             case .success(let chatMessages):
-                self?.openAIChatMessages.append(contentsOf: chatMessages)
-                self?.configureOpenAIResponse(chatMessages)
+                self.openAIChatMessages.append(contentsOf: chatMessages)
+                self.configureOpenAIResponse(chatMessages)
             case .failure(let error):
                 print(error)
             }
