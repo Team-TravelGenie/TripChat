@@ -25,10 +25,15 @@ final class PopUpContentView: UIView {
     private enum Design {
         static let mainStackViewPadding: CGFloat = 20
         static let mainStackViewDefaultSpacing: CGFloat = 20
+        static let mainStackViewSESpacing: CGFloat = 12
+        static let mainStackViewMiniSpacing: CGFloat = 16
         static let textViewDefaultHeight: CGFloat = 100
+        static let textViewSEHeight: CGFloat = 52
+        static let textViewMiniHeight: CGFloat = 52
         static let thumbsUpDownButtonSize: CGFloat = 64
         static let thumbsUpDownButtonImageSize: CGFloat = 28
         static let bottomButtonDefaultHeight: CGFloat = 48
+        static let bottomButtonSEHeight: CGFloat = 40
         static let bottomButtonCornerRadius: CGFloat = 8
     }
     
@@ -116,20 +121,16 @@ final class PopUpContentView: UIView {
     
     // MARK: Internal
     
-    func changeFeedbackModalLayout(spacing: CGFloat, textViewHeight: CGFloat) {
-        mainStackViewSpacing = spacing
-        feedbackTextViewHeightAnchor?.constant = textViewHeight
+    func changeFeedbackModalLayoutForMini() {
+        mainStackViewSpacing = Design.mainStackViewMiniSpacing
+        feedbackTextViewHeightAnchor?.constant = Design.textViewMiniHeight
     }
     
-    func changeFeedbackModalLayoutForSE3(
-        spacing: CGFloat,
-        textViewHeight: CGFloat,
-        leftRightButtonHeight: CGFloat)
-    {
-        mainStackViewSpacing = spacing
-        feedbackTextViewHeightAnchor?.constant = textViewHeight
-        leftButtonHeightAnchor?.constant = leftRightButtonHeight
-        rightButtonHeightAnchor?.constant = leftRightButtonHeight
+    func changeFeedbackModalLayoutForSE3() {
+        mainStackViewSpacing = Design.mainStackViewSESpacing
+        feedbackTextViewHeightAnchor?.constant = Design.textViewSEHeight
+        leftButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
+        rightButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
         feedbackButtonWrapperStackView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
     }
     

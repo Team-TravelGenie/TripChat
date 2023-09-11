@@ -134,13 +134,10 @@ final class PopUpViewController: UIViewController {
                 switch UIScreen.main.bounds.height {
                 // SE
                 case ..<812:
-                    self.feedbackContentView.changeFeedbackModalLayoutForSE3(
-                        spacing: 12,
-                        textViewHeight: 52,
-                        leftRightButtonHeight: 40)
-                // mini
+                    self.feedbackContentView.changeFeedbackModalLayoutForSE3()
+                // Mini
                 case 812..<844:
-                    self.feedbackContentView.changeFeedbackModalLayout(spacing: 16, textViewHeight: 52)
+                    self.feedbackContentView.changeFeedbackModalLayoutForMini()
                 default:
                     return
                 }
