@@ -21,7 +21,7 @@ final class ChatViewController: ChatInterfaceViewController {
         bind()
         chatViewModel.messageStorageDelegate = chatInterfaceViewModel
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
-        messageInputBar.delegate = chatViewModel
+        chatViewModel.inputBarButtonStateDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -79,9 +79,11 @@ final class ChatViewController: ChatInterfaceViewController {
     }
     
     private func configureMessageInputBar() {
-        let messageInputBar = CustomInputBarAccessoryView()
-        messageInputBar.separatorLine.isHidden = true
-        messageInputBar.delegate = chatViewModel
+        let customInputBar = CustomInputBarAccessoryView()
+        customInputBar.inputBarButtonDelegate = self
+        customInputBar.separatorLine.isHidden = true
+        customInputBar.delegate = chatViewModel
+        messageInputBar = customInputBar
         inputBarType = .custom(messageInputBar)
     }
 }
@@ -112,5 +114,21 @@ extension ChatViewController: PopUpViewControllerDelegate {
     
     func pop() {
         chatViewModel.pop()
+    }
+}
+
+// MARK: CustomInputBarAccessoryViewDelegate
+
+extension ChatViewController: CustomInputBarAccessoryViewDelegate {
+    func photosButtonTapped() {
+        showImagePicker()
+    }
+}
+
+extension ChatViewController: InputBarButtonStateDelegate {
+    func setPhotosButtonState(_ isEnabled: Bool) {
+        guard let inputBar = messageInputBar as? CustomInputBarAccessoryView else { return }
+        
+        inputBar.updatePhotosButtonState(isEnabled)
     }
 }
