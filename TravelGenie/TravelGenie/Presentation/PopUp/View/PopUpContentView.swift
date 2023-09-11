@@ -135,7 +135,7 @@ final class PopUpContentView: UIView {
     
     private func configureMainStackView() {
         mainStackView.axis = .vertical
-        mainStackView.spacing = 24
+        mainStackView.spacing = 20
     }
     
     private func configureCloseButtonStackView() {
