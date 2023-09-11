@@ -186,10 +186,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
     fileprivate enum Section: Int {
         case location
         case theme
+        case keyword
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -197,9 +198,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return viewModel.locationTagListCount
+            return viewModel.locationTagList.count
         case .theme:
-            return viewModel.themeTagListCount
+            return viewModel.themeTagList.count
+        case .keyword:
+            return viewModel.keywordTagList.count
         }
     }
     
@@ -216,6 +219,8 @@ extension CustomTagContentCell: UICollectionViewDataSource {
                 cell.configure(tag: viewModel.locationTagList[indexPath.item])
             case .theme:
                 cell.configure(tag: viewModel.themeTagList[indexPath.item])
+            case .keyword:
+                cell.configure(tag: viewModel.keywordTagList[indexPath.item])
             }
         }
 

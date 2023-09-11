@@ -21,6 +21,10 @@ final class TagStorage {
         return tags.filter { $0.category == .theme }
     }
     
+    var keywordTags: [Tag] {
+        return tags.filter { $0.category == .keyword }
+    }
+    
     private var tags = [Tag]()
     private var selectedTags: [Tag] {
         return tags.filter { $0.isSelected == true }

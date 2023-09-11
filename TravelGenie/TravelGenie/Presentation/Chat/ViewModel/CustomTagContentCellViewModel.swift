@@ -9,14 +9,6 @@ import Foundation
 
 final class CustomTagContentCellViewModel {
     
-    var locationTagListCount: Int {
-        return tagStorage.locationTags.count
-    }
-    
-    var themeTagListCount: Int {
-        return tagStorage.themeTags.count
-    }
-    
     var locationTagList: [Tag] {
         return tagStorage.locationTags
     }
@@ -25,8 +17,12 @@ final class CustomTagContentCellViewModel {
         return tagStorage.themeTags
     }
     
+    var keywordTagList: [Tag] {
+        return tagStorage.keywordTags
+    }
+    
     var sectionsHeaderTexts: [String] {
-        return ["✈️지역", "⛵️테마"]
+        return ["✈️지역", "⛵️테마", "🔑️키워드"]
     }
     
     var didTapSubmitButton: ((Bool) -> Void)?
