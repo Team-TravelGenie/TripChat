@@ -19,6 +19,10 @@ protocol ButtonStateDelegate: AnyObject {
     func setTagCellButtonState(_ isEnabled: Bool)
 }
 
+protocol InputBarButtonStateDelegate: AnyObject {
+    func setPhotosButtonState(_ isEnabled: Bool)
+}
+
 final class ChatViewModel {
     
     private enum Constant {
@@ -67,6 +71,7 @@ final class ChatViewModel {
     weak var coordinator: ChatCoordinator?
     weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
+    weak var inputBarButtonStateDelegate: InputBarButtonStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
     private let ai: Sender = Sender(name: .ai)
@@ -170,6 +175,7 @@ final class ChatViewModel {
     
     private func updateUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
+        inputBarButtonStateDelegate?.setPhotosButtonState(isEnabled)
     }
     
     private func extractKeywords(from imageData: [Data]) {
