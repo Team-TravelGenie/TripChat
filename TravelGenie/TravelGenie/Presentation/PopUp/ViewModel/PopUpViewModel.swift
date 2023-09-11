@@ -25,7 +25,7 @@ final class PopUpViewModel {
     
     func createFeedbackModel() -> PopUpModel {
         let mainText = NSMutableAttributedString()
-            .text("오늘 대화는 어떠셨나요?\n", font: .bodyRegular, color: .black)
+            .text("오늘 대화는 어떠셨나요? ", font: .bodyRegular, color: .black)
             .text("피드백", font: .bodyBold, color: .primary)
             .text("을 주시면 이후 서비스 개선에 참고하겠습니다!", font: .bodyRegular, color: .black)
         let leftButtonTitle = NSMutableAttributedString()
@@ -47,6 +47,7 @@ final class PopUpViewModel {
             content: content,
             selectedTags: tagValues,
             recommendations: recommendationValues)
+        
         userFeedbackUseCase.save(userFeedback: userFeedback) { error in
                 // TODO: - 에러 처리
             }

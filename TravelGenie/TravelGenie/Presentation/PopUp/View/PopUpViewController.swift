@@ -17,7 +17,8 @@ final class PopUpViewController: UIViewController {
     weak var delegate: PopUpViewControllerDelegate?
     
     private let viewModel: PopUpViewModel
-    private var contentView: PopUpContentView
+    private var endChatContentView: PopUpContentView
+    private var feedbackContentView: PopUpContentView
     
     // MARK: Lifecycle
     
@@ -28,11 +29,13 @@ final class PopUpViewController: UIViewController {
     {
         self.viewModel = viewModel
         self.delegate = delegate
-        contentView = PopUpContentView(type: type)
+        let popUpModel = viewModel.createFeedbackModel()
+        endChatContentView = PopUpContentView(type: type)
+        feedbackContentView = PopUpContentView(type: .feedback(popUpModel))
         super.init(nibName: nil, bundle: nil)
         modalPresentationStyle = .overFullScreen
-        contentView.delegate = self
-        contentView.textViewDelegate = self
+        endChatContentView.delegate = self
+        endChatContentView.textViewDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -43,26 +46,107 @@ final class PopUpViewController: UIViewController {
         super.viewDidLoad()
         configureSubviews()
         configureHierarchy()
-        configureContentViewLayout(contentView)
+        configureLayout()
+        registerObservers()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        removeObservers()
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        feedbackContentView.endFeedbackTextViewEditing()
     }
     
     // MARK: Private
     
     private func configureSubviews() {
-        view.backgroundColor = .black.withAlphaComponent(0.2)
+        view.backgroundColor = .black.withAlphaComponent(0.6)
+        configureFeedbackContentView()
+    }
+    
+    private func configureFeedbackContentView() {
+        feedbackContentView.delegate = self
+        feedbackContentView.textViewDelegate = self
+        feedbackContentView.isHidden = true
     }
     
     private func configureHierarchy() {
-        view.addSubview(contentView)
+        [endChatContentView, feedbackContentView].forEach { view.addSubview($0) }
     }
     
-    private func configureContentViewLayout(_ contentView: PopUpContentView) {
-        contentView.translatesAutoresizingMaskIntoConstraints = false
+    private func configureLayout() {
+        endChatContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            contentView.widthAnchor.constraint(equalToConstant: 351),
-            contentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            contentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            endChatContentView.widthAnchor.constraint(equalToConstant: 351),
+            endChatContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            endChatContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
+        
+        feedbackContentView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            feedbackContentView.widthAnchor.constraint(equalToConstant: 351),
+            feedbackContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            feedbackContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+        ])
+    }
+    
+    private func registerObservers() {
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moveFeedbackContentViewUp),
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(moveFeedbackContentViewDown),
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    private func removeObservers() {
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillShowNotification,
+            object: nil)
+        NotificationCenter.default.removeObserver(
+            self,
+            name: UIResponder.keyboardWillHideNotification,
+            object: nil)
+    }
+    
+    // MARK: objc methods
+    
+    @objc private func moveFeedbackContentViewUp(_ notification: NSNotification) {
+        if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
+            UIView.animate(withDuration: 0.2) { [weak self] in
+                guard let self else { return }
+                
+                self.feedbackContentView.transform = CGAffineTransform(
+                    translationX: 0,
+                    y: -keyboardSize.height * 6 / 13)
+
+                switch UIScreen.main.bounds.height {
+                // SE
+                case ..<812:
+                    self.feedbackContentView.changeFeedbackModalLayoutForSE3(
+                        spacing: 12,
+                        textViewHeight: 52,
+                        leftRightButtonHeight: 40)
+                // mini
+                case 812..<844:
+                    self.feedbackContentView.changeFeedbackModalLayout(spacing: 16, textViewHeight: 52)
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
+    @objc private func moveFeedbackContentViewDown(_ notification: NSNotification) {
+        self.feedbackContentView.transform = .identity
+        self.feedbackContentView.restoreFeedbackModalLayout()
     }
 }
 
@@ -87,12 +171,8 @@ extension PopUpViewController: PopUpContentViewDelegate {
     }
     
     func showFeedbackContentView() {
-        let popUpModel = viewModel.createFeedbackModel()
-        let feedbackContentView = PopUpContentView(type: .feedback(popUpModel))
-        feedbackContentView.delegate = self
-        feedbackContentView.textViewDelegate = self
-        view.addSubview(feedbackContentView)
-        configureContentViewLayout(feedbackContentView)
+        feedbackContentView.isHidden = false
+        endChatContentView.isHidden = true
     }
     
     func dismissAndPop() {
