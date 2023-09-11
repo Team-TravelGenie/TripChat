@@ -192,7 +192,7 @@ final class ChatViewModel {
         group.notify(queue: .global(qos: .userInteractive)) { [weak self] in
             guard let self else { return }
             
-            self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
+            self.visionResultProcessor.getFourMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
                 let defaultTags = self.makeDefaultTags()
                 let appendedTags = defaultTags + $0
