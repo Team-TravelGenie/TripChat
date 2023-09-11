@@ -9,12 +9,19 @@ import InputBarAccessoryView
 import UIKit
 
 protocol CustomInputBarAccessoryViewDelegate: AnyObject {
-    func imageButtonTapped()
+    func photosButtonTapped()
 }
 
 final class CustomInputBarAccessoryView: InputBarAccessoryView {
     
-    weak var imageButtonDelegate: CustomInputBarAccessoryViewDelegate?
+    weak var photosButtonDelegate: CustomInputBarAccessoryViewDelegate?
+    
+    private lazy var photosButton: InputBarButtonItem = {
+        return InputBarButtonItem()
+            .onTouchUpInside { [weak self] _ in
+            self?.photosButtonDelegate?.photosButtonTapped()
+        }
+    }()
     
     // MARK: Lifecycle
     
@@ -41,24 +48,18 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         leftStackView.alignment = .fill
         setLeftStackViewWidthConstant(to: 24, animated: false)
         
-        let galleryButton: InputBarButtonItem = {
-            return InputBarButtonItem()
-                .onTouchUpInside { [weak self] _ in
-                self?.imageButtonDelegate?.imageButtonTapped()
-            }
-        }()
         let galleryButtonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
-        galleryButton.tintColor = .primary
-        galleryButton.setImage(galleryButtonImage, for: .normal)
-        galleryButton.setSize(CGSize(width: 24, height: 24), animated: false)
-        galleryButton.translatesAutoresizingMaskIntoConstraints = false
+        photosButton.tintColor = .primary
+        photosButton.setImage(galleryButtonImage, for: .normal)
+        photosButton.setSize(CGSize(width: 24, height: 24), animated: false)
+        photosButton.translatesAutoresizingMaskIntoConstraints = false
 
         let wrapperView = UIView()
-        wrapperView.addSubview(galleryButton)
+        wrapperView.addSubview(photosButton)
         NSLayoutConstraint.activate([
-            galleryButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
-            galleryButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-            galleryButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+            photosButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
+            photosButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            photosButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
         ])
         setStackViewItems([wrapperView], forStack: .left, animated: false)
     }
