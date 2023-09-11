@@ -32,7 +32,7 @@ final class VisionResultProcessor {
         visionResults.landmarks.append(contentsOf: landmarks)
     }
     
-    func getSixMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
+    func getFourMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
         let sortedAndJoinedKeywords = keywordsOrderedByConfidence().joined(separator: ",")
         
         translate(keyword: sortedAndJoinedKeywords) { [weak self] result in
@@ -40,8 +40,8 @@ final class VisionResultProcessor {
             
             var uniqueValues = self.removeDuplicateValues(text: result)
             
-            if uniqueValues.count > 6 {
-                uniqueValues = Array(uniqueValues.prefix(6))
+            if uniqueValues.count > 4 {
+                uniqueValues = Array(uniqueValues.prefix(4))
             }
             
             let topSixTags = self.convertToTags(texts: uniqueValues)
