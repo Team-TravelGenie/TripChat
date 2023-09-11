@@ -127,9 +127,11 @@ final class PopUpViewController: UIViewController {
             UIView.animate(withDuration: 0.2) { [weak self] in
                 guard let self else { return }
                 
+                let keyboardHeightOffsetRatio: CGFloat = 6 / 13
+                let keyboardHeightOffset: CGFloat = keyboardSize.height * keyboardHeightOffsetRatio
                 self.feedbackContentView.transform = CGAffineTransform(
                     translationX: 0,
-                    y: -keyboardSize.height * 6 / 13)
+                    y: -keyboardHeightOffset)
 
                 switch UIScreen.main.bounds.height {
                 // SE
