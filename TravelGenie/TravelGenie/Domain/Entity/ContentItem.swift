@@ -59,6 +59,7 @@ struct Tag: Codable {
 enum Category: String, Codable {
     case location
     case theme
+    case keyword
 }
 
 // MARK: MessageKind - .custom(RecommendationItem) 메시지 컨텐츠
