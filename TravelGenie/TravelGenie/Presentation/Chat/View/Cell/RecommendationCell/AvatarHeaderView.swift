@@ -38,7 +38,7 @@ final class AvatarHeaderView: UICollectionReusableView {
     }
     
     private func configureAvatarImageView() {
-        let icon = UIImage(named: "chat")
+        let icon = UIImage(named: DesignAsset.chatAvatarImage)
         avatarImageView.backgroundColor = .clear
         avatarImageView.image = icon?.resize(width: 32, height: 32)
     }

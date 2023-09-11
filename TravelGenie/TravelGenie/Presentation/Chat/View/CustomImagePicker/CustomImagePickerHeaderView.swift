@@ -19,7 +19,7 @@ final class CustomImagePickerHeaderView: UIView {
     private let stackView = UIStackView()
     private let statusLabel = UILabel()
     private let closeButton = CustomButton(backgroundColor: .clear)
-        .systemIconImage(name: "xmark", size: 24)
+        .systemIconImage(name: DesignAsset.xMarkImage, size: 24)
         .tintColor(color: .black)
     
     private let sendButton = CustomButton(backgroundColor: .clear)

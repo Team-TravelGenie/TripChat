@@ -59,15 +59,15 @@ final class PopUpContentView: UIView {
     private let chatIconView = CircleIconView()
         .size(40)
         .backgroundColor(.blueGrayBackground)
-        .iconImage(imageName: "chat", size: 32)
+        .iconImage(imageName: DesignAsset.chatAvatarImage, size: 32)
     
     private let thumbsUpButton = FeedbackButton()
         .size(Design.thumbsUpDownButtonSize)
-        .image(name: "thumbs-up-regular", size: Design.thumbsUpDownButtonImageSize)
+        .image(name: DesignAsset.thumbsUpImage, size: Design.thumbsUpDownButtonImageSize)
     
     private let thumbsDownButton = FeedbackButton()
         .size(Design.thumbsUpDownButtonSize)
-        .image(name: "thumbs-down-regular", size: Design.thumbsUpDownButtonImageSize)
+        .image(name: DesignAsset.thumbsDownImage, size: Design.thumbsUpDownButtonImageSize)
     
     private let leftButton = RectangleTextButton()
         .cornerRadius(Design.bottomButtonCornerRadius)
@@ -121,17 +121,17 @@ final class PopUpContentView: UIView {
     
     // MARK: Internal
     
-    func changeFeedbackModalLayoutForMini() {
-        mainStackViewSpacing = Design.mainStackViewMiniSpacing
-        feedbackTextViewHeightAnchor?.constant = Design.textViewMiniHeight
-    }
-    
     func changeFeedbackModalLayoutForSE3() {
         mainStackViewSpacing = Design.mainStackViewSESpacing
         feedbackTextViewHeightAnchor?.constant = Design.textViewSEHeight
         leftButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
         rightButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
         feedbackButtonWrapperStackView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
+    }
+    
+    func changeFeedbackModalLayoutForMini() {
+        mainStackViewSpacing = Design.mainStackViewMiniSpacing
+        feedbackTextViewHeightAnchor?.constant = Design.textViewMiniHeight
     }
     
     func restoreFeedbackModalLayout() {
@@ -200,7 +200,7 @@ final class PopUpContentView: UIView {
     }
     
     private func configureCloseButton() {
-        let buttonImage = UIImage(systemName: "xmark")
+        let buttonImage = UIImage(systemName: DesignAsset.xMarkImage)
         closeButton.setImage(buttonImage, for: .normal)
         closeButton.tintColor = .black
     }

@@ -24,7 +24,7 @@ final class CustomTagContentCell: UICollectionViewCell {
     private let avatarView = CircleIconView()
         .backgroundColor(.white)
         .size(40)
-        .iconImage(imageName: "chat", size: 32)
+        .iconImage(imageName: DesignAsset.chatAvatarImage, size: 32)
     
     private let submitKeywordButton = RectangleTextButton()
         .cornerRadius(8)
