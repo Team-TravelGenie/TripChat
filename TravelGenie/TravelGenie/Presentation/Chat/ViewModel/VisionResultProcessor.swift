@@ -78,6 +78,6 @@ final class VisionResultProcessor {
     }
     
     private func convertToTags(texts: [String]) -> [Tag] {
-        return texts.map { Tag(category: .theme, value: $0) }
+        return texts.map { Tag(category: .keyword, value: $0) }
     }
 }
