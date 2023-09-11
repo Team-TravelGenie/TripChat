@@ -338,9 +338,10 @@ final class ChatViewModel {
         insertLoadingMessage()
         openAIChatMessages.append(message)
         openAIUseCase.send(chatMessages: openAIChatMessages) { [weak self] result in
+            self?.deleteLoadingMessage()
+            
             switch result {
             case .success(let chatMessages):
-                self?.deleteLoadingMessage()
                 self?.openAIChatMessages.append(contentsOf: chatMessages)
                 self?.configureOpenAIResponse(chatMessages)
             case .failure(let error):
