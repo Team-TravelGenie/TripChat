@@ -34,6 +34,7 @@ final class PopUpContentView: UIView {
     private let mainStackView = UIStackView()
     private let closeButtonStackView = UIStackView()
     private let iconAndMainTextStackView = UIStackView()
+    private let feedbackButtonWrapperStackView = UIStackView()
     private let feedbackButtonStackView = UIStackView()
     private let bottomButtonStackView = UIStackView()
     private let closeButton = UIButton()
@@ -165,9 +166,11 @@ final class PopUpContentView: UIView {
     }
     
     private func configureFeedbackButtonStackView() {
+        feedbackButtonWrapperStackView.axis = .vertical
+        feedbackButtonWrapperStackView.alignment = .center
         feedbackButtonStackView.spacing = 12
         feedbackButtonStackView.axis = .horizontal
-        feedbackButtonStackView.distribution = .equalCentering
+        feedbackButtonStackView.distribution = .fill
         configureThumbsUpButton()
         configureThumbsDownButton()
     }
@@ -228,12 +231,11 @@ final class PopUpContentView: UIView {
         ].forEach { iconAndMainTextStackView.addArrangedSubview($0) }
         
         [
-            UIView(),
             thumbsUpButton,
             thumbsDownButton,
-            UIView(),
         ].forEach { feedbackButtonStackView.addArrangedSubview($0) }
         
+        feedbackButtonWrapperStackView.addArrangedSubview(feedbackButtonStackView)
         
         [
             leftButton,
@@ -241,7 +243,7 @@ final class PopUpContentView: UIView {
         ].forEach { bottomButtonStackView.addArrangedSubview($0) }
         
         if case .feedback = type {
-            [feedbackTextView, feedbackButtonStackView].forEach {
+            [feedbackTextView, feedbackButtonWrapperStackView].forEach {
                 mainStackView.insertArrangedSubview($0, at: 2)
             }
         }
