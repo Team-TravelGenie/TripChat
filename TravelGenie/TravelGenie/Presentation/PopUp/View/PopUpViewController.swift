@@ -61,7 +61,7 @@ final class PopUpViewController: UIViewController {
     // MARK: Private
     
     private func configureSubviews() {
-        view.backgroundColor = .black.withAlphaComponent(0.2)
+        view.backgroundColor = .black.withAlphaComponent(0.6)
         configureFeedbackContentView()
     }
     
