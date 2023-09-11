@@ -8,8 +8,6 @@
 protocol UserFeedbackUseCase {
     func save(
         userFeedback: UserFeedback,
-        selectedTags: [String],
-        recommendations: [String],
         completion: @escaping ((Error?) -> Void)
     )
 }
@@ -24,14 +22,10 @@ final class DefaultUserFeedbackUseCase: UserFeedbackUseCase {
     
     func save(
         userFeedback: UserFeedback,
-        selectedTags: [String],
-        recommendations: [String],
         completion: @escaping ((Error?) -> Void)
     ) {
         userFeedbackRepository.save(
             userFeedback: userFeedback,
-            selectedTags: selectedTags,
-            recommendations: recommendations,
             completion: completion)
     }
 }

@@ -131,11 +131,11 @@ extension ChatEntity {
                 let sender = Sender(name: senderName ?? .ai)
                 var messageModel = Message(sender: sender)
                 
-                if messageKind.hasPrefix("attributedText") {
+                if messageKind == "attributedText" {
                     messageModel = createAttributedTextMessage(
                         with: messageEntity,
                         sender: sender)
-                } else if messageKind.hasPrefix("photo") {
+                } else if messageKind == "photo" {
                     messageModel = createPhotoMessage(
                         with: messageEntity,
                         sender: sender)

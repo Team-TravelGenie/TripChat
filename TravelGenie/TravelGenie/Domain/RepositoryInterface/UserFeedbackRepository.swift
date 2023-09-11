@@ -8,8 +8,6 @@
 protocol UserFeedbackRepository {
     func save(
         userFeedback: UserFeedback,
-        selectedTags: [String],
-        recommendations: [String],
         completion: @escaping ((Error?) -> Void)
     )
 }

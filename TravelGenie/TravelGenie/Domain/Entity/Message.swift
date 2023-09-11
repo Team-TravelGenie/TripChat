@@ -76,6 +76,20 @@ struct Message: MessageType {
             sentDate: sentDate)
     }
     
+    // MARK: LoadingAnimation Kind Cell
+    
+    init(
+        sender: SenderType,
+        messageId: String = UUID().uuidString,
+        sentDate: Date = Date()
+    ) {
+        self.init(
+            kind: .custom(LoadingAnimationItem()),
+            sender: sender,
+            messageId: messageId,
+            sentDate: sentDate)
+    }
+    
     // MARK: Blank Init (default Message에 사용됨)
     
     init(sender: SenderType) {

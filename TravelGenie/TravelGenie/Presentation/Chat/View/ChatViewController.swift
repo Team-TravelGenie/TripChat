@@ -33,6 +33,7 @@ final class ChatViewController: ChatInterfaceViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigation()
+        configureMessageInputBar()
         chatViewModel.setupDefaultSystemMessages()
     }
     
@@ -75,6 +76,13 @@ final class ChatViewController: ChatInterfaceViewController {
                 type: popUpModels.type,
                 delegate: self)
         }
+    }
+    
+    private func configureMessageInputBar() {
+        let messageInputBar = CustomInputBarAccessoryView()
+        messageInputBar.separatorLine.isHidden = true
+        messageInputBar.delegate = chatViewModel
+        inputBarType = .custom(messageInputBar)
     }
 }
 

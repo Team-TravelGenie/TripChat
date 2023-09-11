@@ -8,18 +8,33 @@
 final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
-    var didchangeUploadButtonState: ((Bool) -> Void)?
-    var didchangeTagCellButtonState: ((Bool) -> Void)?
+    var didChangeMessageList: (() -> Void)?
+    var didChangeUploadButtonState: ((Bool) -> Void)?
+    var didChangeTagCellButtonState: ((Bool) -> Void)?
     
     private (set) var uploadButtonState: Bool = true {
         didSet {
-            didchangeUploadButtonState?(uploadButtonState)
+            didChangeUploadButtonState?(uploadButtonState)
         }
     }
     
     private (set) var tagCellButtonState: Bool = true {
         didSet {
-            didchangeTagCellButtonState?(tagCellButtonState)
+            didChangeTagCellButtonState?(tagCellButtonState)
+        }
+    }
+    
+    // MARK: Lifecycle
+    
+    init() {
+        bind()
+    }
+    
+    // MARK: Private
+    
+    private func bind() {
+        messageStorage.didChangeMessageList = { [weak self] in
+            self?.didChangeMessageList?()
         }
     }
 }

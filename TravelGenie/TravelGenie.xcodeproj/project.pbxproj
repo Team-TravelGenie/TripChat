@@ -70,14 +70,19 @@
 		57A54C8A2AA8CB280087B640 /* CustomImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */; };
 		57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */; };
 		57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8F2AA8D9350087B640 /* CustomButton.swift */; };
+		57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A54C912AA996F00087B640 /* GoogleService-Info.plist */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
 		57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */ = {isa = PBXBuildFile; productRef = 57C1FFFB2A78CBAA00A664FD /* OpenAISwift */; };
+		57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */; };
 		57C2BEFB2AA748720074DA8C /* UserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */; };
 		57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */; };
 		57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */; };
 		57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */; };
 		57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */; };
 		57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */; };
+		57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */; };
+		57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */; };
+		57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
 		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
@@ -85,6 +90,7 @@
 		57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98752A9E4B200074409B /* ImageSearchRepository.swift */; };
 		57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98772A9E4B420074409B /* DefaultImageSearchRepository.swift */; };
 		57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98792A9F00B30074409B /* ImageSearchUseCase.swift */; };
+		57DA987F2A9F4A100074409B /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 57DA987E2A9F4A100074409B /* FirebaseAnalytics */; };
 		57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98872A9F81300074409B /* OpenAIRepository.swift */; };
 		57DA988B2A9F8C830074409B /* ImageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988A2A9F8C830074409B /* ImageManager.swift */; };
 		57DA988F2AA0663C0074409B /* CoreDataChatStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA988E2AA0663C0074409B /* CoreDataChatStorage.swift */; };
@@ -107,6 +113,9 @@
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
+		D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */; };
+		D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D263D7D02AA9E09400BBF8C1 /* Lottie */; };
+		D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */; };
 		D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D26846892AA10A5600831097 /* TranslateDTO.swift */; };
 		D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */; };
 		D268468E2AA10E4700831097 /* PapagoTranslateRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */; };
@@ -203,13 +212,17 @@
 		57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerCell.swift; sourceTree = "<group>"; };
 		57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerHeaderView.swift; sourceTree = "<group>"; };
 		57A54C8F2AA8D9350087B640 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
+		57A54C912AA996F00087B640 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
+		57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomInputBarAccessoryView.swift; sourceTree = "<group>"; };
 		57C2BEFA2AA748720074DA8C /* UserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultUserFeedbackRepository.swift; sourceTree = "<group>"; };
 		57C2BEFF2AA74B510074DA8C /* UserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackRequestModel.swift; sourceTree = "<group>"; };
 		57C2BF032AA752840074DA8C /* UserFeedbackUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserFeedbackUseCase.swift; sourceTree = "<group>"; };
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
+		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
+		57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
 		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
@@ -240,6 +253,8 @@
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
+		D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseCell.swift; sourceTree = "<group>"; };
+		D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
 		D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateAPI.swift; sourceTree = "<group>"; };
 		D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PapagoTranslateRequestModel.swift; sourceTree = "<group>"; };
@@ -278,7 +293,10 @@
 			files = (
 				D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */,
 				57C1FFFC2A78CBAA00A664FD /* OpenAISwift in Frameworks */,
+				57DA987F2A9F4A100074409B /* FirebaseAnalytics in Frameworks */,
+				57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */,
 				D20FA2912A6B99B40081B039 /* Moya in Frameworks */,
+				D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,6 +528,7 @@
 				D23037752A8C61A80017950E /* Cell */,
 				57A54C882AA8CAD60087B640 /* CustomImagePicker */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
+				57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -532,6 +551,7 @@
 				D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */,
 				D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */,
 				D20FA2802A6B8DAC0081B039 /* Info.plist */,
+				57A54C912AA996F00087B640 /* GoogleService-Info.plist */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -543,6 +563,13 @@
 				57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */,
 			);
 			path = UserFeedbackStorage;
+			sourceTree = "<group>";
+		};
+		57C2BF072AA85E2D0074DA8C /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		57DA98892A9F8C770074409B /* Utility */ = {
@@ -569,6 +596,7 @@
 			children = (
 				D20FA2712A6B8DA90081B039 /* TravelGenie */,
 				D20FA2702A6B8DA90081B039 /* Products */,
+				57C2BF072AA85E2D0074DA8C /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -720,6 +748,7 @@
 				573BCD632A934D4500116D2D /* DateFormatter+shared.swift */,
 				573BCD6A2A936F0D00116D2D /* UIImage+resize.swift */,
 				5763DEF22A9908270028B19F /* UIViewController+showPopUp.swift */,
+				57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -727,9 +756,11 @@
 		D23037752A8C61A80017950E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
+				D263D7CC2AA9DFB400BBF8C1 /* LoadingResponseCell */,
 				D2F8C5762A8F47A800AA3BFC /* CustomTagCell */,
 				D23037762A8C65B20017950E /* DefaultSystemSectionCell */,
 				573BCD442A92140900116D2D /* RecommendationCell */,
+				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -741,6 +772,14 @@
 				D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */,
 			);
 			path = DefaultSystemSectionCell;
+			sourceTree = "<group>";
+		};
+		D263D7CC2AA9DFB400BBF8C1 /* LoadingResponseCell */ = {
+			isa = PBXGroup;
+			children = (
+				D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */,
+			);
+			path = LoadingResponseCell;
 			sourceTree = "<group>";
 		};
 		D27292572AA5E280001878D0 /* ChatHistory */ = {
@@ -801,7 +840,6 @@
 				D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */,
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
 				D2F8C5812A8F538500AA3BFC /* TagView */,
-				D2F8C5782A8F47CC00AA3BFC /* SizeCalculator */,
 			);
 			path = CustomTagCell;
 			sourceTree = "<group>";
@@ -815,6 +853,8 @@
 				D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */,
 				573BCD422A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift */,
 				D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */,
+				57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */,
+				D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */,
 			);
 			path = SizeCalculator;
 			sourceTree = "<group>";
@@ -849,6 +889,9 @@
 				D20FA2902A6B99B40081B039 /* Moya */,
 				57C1FFFB2A78CBAA00A664FD /* OpenAISwift */,
 				D2E3AA2C2A8B64740049DDEF /* MessageKit */,
+				57DA987E2A9F4A100074409B /* FirebaseAnalytics */,
+				57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */,
+				D263D7D02AA9E09400BBF8C1 /* Lottie */,
 			);
 			productName = TravelGenie;
 			productReference = D20FA26F2A6B8DA90081B039 /* TravelGenie.app */;
@@ -882,6 +925,8 @@
 				D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */,
 				57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */,
 				D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */,
+				57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */,
 			);
 			productRefGroup = D20FA2702A6B8DA90081B039 /* Products */;
 			projectDirPath = "";
@@ -897,6 +942,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */,
 				D20FA27F2A6B8DAC0081B039 /* LaunchScreen.storyboard in Resources */,
 				D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */,
 			);
@@ -910,6 +956,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */,
+				57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */,
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,
 				57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */,
@@ -968,6 +1015,7 @@
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */,
 				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
+				57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */,
@@ -1008,11 +1056,13 @@
 				57462B682A95E90700949D5C /* MessageEntity+CoreDataClass.swift in Sources */,
 				576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */,
 				D2E810EA2A7039E700136F99 /* LandmarkDetectionDTO.swift in Sources */,
+				D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */,
 				57462B5B2A95E12A00949D5C /* StorageError.swift in Sources */,
 				D268468C2AA10AA500831097 /* PapagoTranslateAPI.swift in Sources */,
 				D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */,
 				576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */,
 				D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */,
+				57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */,
 				D272925D2AA5E2DF001878D0 /* ChatHistoryViewController.swift in Sources */,
 				57462B4B2A95B5ED00949D5C /* ChatRepository.swift in Sources */,
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
@@ -1028,6 +1078,7 @@
 				57DA98762A9E4B200074409B /* ImageSearchRepository.swift in Sources */,
 				D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */,
 				57C100192A8B91E700A664FD /* Color.swift in Sources */,
+				D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */,
 				5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */,
 				D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */,
 				576EC3A92A9742DC008C2D7C /* SearchBarView.swift in Sources */,
@@ -1253,12 +1304,28 @@
 				kind = branch;
 			};
 		};
+		57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.0.0;
+			};
+		};
 		D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/Moya/Moya.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 15.0.0;
+			};
+		};
+		D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/airbnb/lottie-ios";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.0.0;
 			};
 		};
 		D2E3AA2B2A8B64740049DDEF /* XCRemoteSwiftPackageReference "MessageKit" */ = {
@@ -1277,10 +1344,25 @@
 			package = 57C1FFFA2A78CBAA00A664FD /* XCRemoteSwiftPackageReference "OpenAISwift" */;
 			productName = OpenAISwift;
 		};
+		57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+		57DA987E2A9F4A100074409B /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 57DA987D2A9F4A100074409B /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
 		D20FA2902A6B99B40081B039 /* Moya */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = D20FA28F2A6B99B40081B039 /* XCRemoteSwiftPackageReference "Moya" */;
 			productName = Moya;
+		};
+		D263D7D02AA9E09400BBF8C1 /* Lottie */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = D263D7CF2AA9E09400BBF8C1 /* XCRemoteSwiftPackageReference "lottie-ios" */;
+			productName = Lottie;
 		};
 		D2E3AA2C2A8B64740049DDEF /* MessageKit */ = {
 			isa = XCSwiftPackageProductDependency;

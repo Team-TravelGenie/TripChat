@@ -12,7 +12,7 @@ protocol PopUpContentViewDelegate: AnyObject {
     func showFeedbackContentView()
     func dismissAndPop()
     func saveChat()
-    func sendFeedback(_ feedback: UserFeedback)
+    func sendFeedback(isPositive: Bool, content: String)
 }
 
 final class PopUpContentView: UIView {
@@ -323,11 +323,9 @@ final class PopUpContentView: UIView {
                 return
             }
             
-            let userFeedback = UserFeedback(
+            self.delegate?.sendFeedback(
                 isPositive: self.thumbsUpButton.isSelected,
                 content: self.feedbackTextView.text ?? String())
-            
-            self.delegate?.sendFeedback(userFeedback)
             self.delegate?.dismissAndPop()
         }
     }

@@ -24,6 +24,10 @@ class ChatInterfaceViewController: MessagesViewController {
         = RecommendationCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     private lazy var attributedTextCellSizeCalculator
         = AttributedTextCellSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var photoCellSizeCalculator
+        = PhotoMessageSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
+    private lazy var loadingCellSizeCalculator
+        = LoadingResponseMessageSizeCalculator(layout: self.messagesCollectionView.messagesCollectionViewFlowLayout)
     
     // MARK: Override(s)
     
@@ -75,21 +79,26 @@ class ChatInterfaceViewController: MessagesViewController {
                 let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
                 cell.configure(with: message)
                 return cell
+            } else if item is LoadingAnimationItem {
+                let cell = messagesCollectionView.dequeueReusableCell(LoadingResponseCell.self, for: indexPath)
+                return cell
             }
         }
         
         return UICollectionViewCell()
     }
     
+    // MARK: Private
+    
     private func bind() {
-        chatInterfaceViewModel.messageStorage.didChangeMessageList = { [weak self] in
+        chatInterfaceViewModel.didChangeMessageList = { [weak self] in
             DispatchQueue.main.async {
                 self?.messagesCollectionView.reloadData()
                 self?.messagesCollectionView.scrollToLastItem()
             }
         }
         
-        chatInterfaceViewModel.didchangeUploadButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeUploadButtonState = { [weak self] state in
             let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
             let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
 
@@ -100,7 +109,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didchangeTagCellButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeTagCellButtonState = { [weak self] state in
             guard let tagMessageIndex = self?.chatInterfaceViewModel.messageStorage.findTagMessageIndex() else {
                 print("MessageStorage에서 TagMessage를 찾지못헀음")
                 return
@@ -138,6 +147,7 @@ class ChatInterfaceViewController: MessagesViewController {
         messagesCollectionView.register(
             RecommendationCell.self,
             forCellWithReuseIdentifier: RecommendationCell.identifier)
+        messagesCollectionView.register(LoadingResponseCell.self)
     }
     
     private func configureMessagesCollectionViewBackgroundColor() {
@@ -225,6 +235,8 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
             return tagMessageCellSizeCalculator
         } else if item is [RecommendationItem] {
             return recommendationCellSizeCalculator
+        } else if item is LoadingAnimationItem {
+            return loadingCellSizeCalculator
         }
         
         return MessageSizeCalculator()
@@ -246,6 +258,14 @@ extension ChatInterfaceViewController: MessagesLayoutDelegate {
         }
 
         return attributedTextCellSizeCalculator
+    }
+    
+    func photoCellSizeCalculator(
+      for message: MessageType,
+      at indexPath: IndexPath,
+      in messagesCollectionView: MessagesCollectionView)
+    -> CellSizeCalculator? {
+        return photoCellSizeCalculator
     }
 }
 
