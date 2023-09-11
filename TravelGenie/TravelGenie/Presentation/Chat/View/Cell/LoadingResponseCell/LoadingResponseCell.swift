@@ -15,7 +15,7 @@ final class LoadingResponseCell: UICollectionViewCell {
         .size(40)
         .iconImage(imageName: "chat", size: 32)
     
-    private let animationView = LottieAnimationView(name: "chatloading")
+    private let animationView = LottieAnimationView(name: "loadingChat")
     
     override init(frame: CGRect) {
         super.init(frame: frame)
