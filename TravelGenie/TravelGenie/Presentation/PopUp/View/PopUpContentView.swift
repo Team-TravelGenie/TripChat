@@ -45,12 +45,12 @@ final class PopUpContentView: UIView {
         .iconImage(imageName: "chat", size: 32)
     
     private let thumbsUpButton = FeedbackButton()
-        .size(72)
-        .image(name: "thumbs-up-regular", size: 32)
+        .size(64)
+        .image(name: "thumbs-up-regular", size: 28)
     
     private let thumbsDownButton = FeedbackButton()
-        .size(72)
-        .image(name: "thumbs-down-regular", size: 32)
+        .size(64)
+        .image(name: "thumbs-down-regular", size: 28)
     
     private let leftButton = RectangleTextButton()
         .cornerRadius(8)
