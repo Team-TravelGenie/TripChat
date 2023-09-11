@@ -198,11 +198,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return viewModel.locationTagList.count
+            return viewModel.locationTags.count
         case .theme:
-            return viewModel.themeTagList.count
+            return viewModel.themeTags.count
         case .keyword:
-            return viewModel.keywordTagList.count
+            return viewModel.keywordTags.count
         }
     }
     
@@ -216,11 +216,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                cell.configure(tag: viewModel.locationTagList[indexPath.item])
+                cell.configure(tag: viewModel.locationTags[indexPath.item])
             case .theme:
-                cell.configure(tag: viewModel.themeTagList[indexPath.item])
+                cell.configure(tag: viewModel.themeTags[indexPath.item])
             case .keyword:
-                cell.configure(tag: viewModel.keywordTagList[indexPath.item])
+                cell.configure(tag: viewModel.keywordTags[indexPath.item])
             }
         }
 

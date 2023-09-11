@@ -9,15 +9,15 @@ import Foundation
 
 final class CustomTagContentCellViewModel {
     
-    var locationTagList: [Tag] {
+    var locationTags: [Tag] {
         return tagStorage.locationTags
     }
     
-    var themeTagList: [Tag] {
+    var themeTags: [Tag] {
         return tagStorage.themeTags
     }
     
-    var keywordTagList: [Tag] {
+    var keywordTags: [Tag] {
         return tagStorage.keywordTags
     }
     
