@@ -120,7 +120,7 @@ final class PopUpViewController: UIViewController {
     
     @objc private func moveFeedbackContentViewUp(_ notification: NSNotification) {
         if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
-            UIView.animate(withDuration: 0.3) { [weak self] in
+            UIView.animate(withDuration: 0.2) { [weak self] in
                 guard let self else { return }
                 
                 self.feedbackContentView.transform = CGAffineTransform(
