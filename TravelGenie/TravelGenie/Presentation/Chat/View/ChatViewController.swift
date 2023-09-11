@@ -79,10 +79,11 @@ final class ChatViewController: ChatInterfaceViewController {
     }
     
     private func configureMessageInputBar() {
-        let messageInputBar = CustomInputBarAccessoryView()
-        messageInputBar.imageButtonDelegate = self
-        messageInputBar.separatorLine.isHidden = true
-        messageInputBar.delegate = chatViewModel
+        let customInputBar = CustomInputBarAccessoryView()
+        customInputBar.photosButtonDelegate = self
+        customInputBar.separatorLine.isHidden = true
+        customInputBar.delegate = chatViewModel
+        messageInputBar = customInputBar
         inputBarType = .custom(messageInputBar)
     }
 }
