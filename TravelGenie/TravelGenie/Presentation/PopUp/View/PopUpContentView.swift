@@ -92,6 +92,12 @@ final class PopUpContentView: UIView {
         super.touchesBegan(touches, with: event)
     }
     
+    // MARK: Internal
+    
+    func endFeedbackTextViewEditing() {
+        feedbackTextView.resignFirstResponder()
+    }
+    
     // MARK: Private
     
     private func configureSubviews() {

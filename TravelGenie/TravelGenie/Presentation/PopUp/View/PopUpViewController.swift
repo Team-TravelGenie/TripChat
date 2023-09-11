@@ -59,6 +59,10 @@ final class PopUpViewController: UIViewController {
         removeObservers()
     }
     
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        feedbackContentView.endFeedbackTextViewEditing()
+    }
+    
     // MARK: Private
     
     private func configureSubviews() {
