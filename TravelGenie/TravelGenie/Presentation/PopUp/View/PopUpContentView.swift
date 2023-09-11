@@ -260,14 +260,14 @@ final class PopUpContentView: UIView {
         
         thumbsUpButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thumbsUpButton.widthAnchor.constraint(equalToConstant: 72),
-            thumbsUpButton.heightAnchor.constraint(equalToConstant: 72),
+            thumbsUpButton.widthAnchor.constraint(equalToConstant: 64),
+            thumbsUpButton.heightAnchor.constraint(equalToConstant: 64),
         ])
         
         thumbsDownButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thumbsDownButton.widthAnchor.constraint(equalToConstant: 72),
-            thumbsDownButton.heightAnchor.constraint(equalToConstant: 72),
+            thumbsDownButton.widthAnchor.constraint(equalToConstant: 64),
+            thumbsDownButton.heightAnchor.constraint(equalToConstant: 64),
         ])
         
         feedbackTextView.translatesAutoresizingMaskIntoConstraints = false
