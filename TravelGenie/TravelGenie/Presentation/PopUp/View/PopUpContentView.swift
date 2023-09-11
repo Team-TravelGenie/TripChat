@@ -59,7 +59,7 @@ final class PopUpContentView: UIView {
     private let chatIconView = CircleIconView()
         .size(40)
         .backgroundColor(.blueGrayBackground)
-        .iconImage(imageName: DesignAsset.chatAvatarImage, size: 32)
+        .iconImage(imageName: DesignAssetName.chatAvatarImage, size: 32)
     
     private let thumbsUpButton = FeedbackButton()
         .size(Design.thumbsUpDownButtonSize)
@@ -200,7 +200,7 @@ final class PopUpContentView: UIView {
     }
     
     private func configureCloseButton() {
-        let buttonImage = UIImage(systemName: DesignAsset.xMarkImage)
+        let buttonImage = UIImage(systemName: DesignAssetName.xMarkImage)
         closeButton.setImage(buttonImage, for: .normal)
         closeButton.tintColor = .black
     }

@@ -1,11 +1,11 @@
 //
-//  Design.swift
+//  DesignAssetName.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/11.
 //
 
-enum DesignAsset {
+enum DesignAssetName {
     static let chatAvatarImage: String = "chat"
     static let xMarkImage: String = "xmark"
     static let thumbsUpImage: String = "thumbs-up-regular"

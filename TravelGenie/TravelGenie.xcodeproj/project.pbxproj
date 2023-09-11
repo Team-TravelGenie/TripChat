@@ -83,6 +83,7 @@
 		57C2BF092AA85E2D0074DA8C /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 57C2BF082AA85E2D0074DA8C /* FirebaseFirestore */; };
 		57C2BF0F2AA8890F0074DA8C /* UIView+InputItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */; };
 		57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */; };
+		57C52C962AAF344D000F7F30 /* DesignAssetName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C52C952AAF344D000F7F30 /* DesignAssetName.swift */; };
 		57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */; };
 		57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */; };
 		57DA98722A9E38E40074409B /* ImageSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */; };
@@ -223,6 +224,7 @@
 		57C2BF052AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseUserFeedbackStorage.swift; sourceTree = "<group>"; };
 		57C2BF0E2AA8890E0074DA8C /* UIView+InputItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+InputItem.swift"; sourceTree = "<group>"; };
 		57C2BF102AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoMessageSizeCalculator.swift; sourceTree = "<group>"; };
+		57C52C952AAF344D000F7F30 /* DesignAssetName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DesignAssetName.swift; sourceTree = "<group>"; };
 		57DA986D2A9DD1DA0074409B /* OpenAIUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIUseCase.swift; sourceTree = "<group>"; };
 		57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleCustomSearchAPI.swift; sourceTree = "<group>"; };
 		57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageSearchRequestModel.swift; sourceTree = "<group>"; };
@@ -517,6 +519,7 @@
 				576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */,
 				5763DF082A9CAF220028B19F /* NotificationName+swift.swift */,
 				57A54C8F2AA8D9350087B640 /* CustomButton.swift */,
+				57C52C952AAF344D000F7F30 /* DesignAssetName.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
+				57C52C962AAF344D000F7F30 /* DesignAssetName.swift in Sources */,
 				572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */,
 				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
 				57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */,
