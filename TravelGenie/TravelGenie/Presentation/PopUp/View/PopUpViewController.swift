@@ -14,6 +14,10 @@ protocol PopUpViewControllerDelegate: AnyObject {
 
 final class PopUpViewController: UIViewController {
     
+    private enum Design {
+        static let contentViewWidth: CGFloat = 352
+    }
+    
     weak var delegate: PopUpViewControllerDelegate?
     
     private let viewModel: PopUpViewModel
@@ -79,14 +83,14 @@ final class PopUpViewController: UIViewController {
     private func configureLayout() {
         endChatContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            endChatContentView.widthAnchor.constraint(equalToConstant: 351),
+            endChatContentView.widthAnchor.constraint(equalToConstant: Design.contentViewWidth),
             endChatContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             endChatContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
         feedbackContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            feedbackContentView.widthAnchor.constraint(equalToConstant: 351),
+            feedbackContentView.widthAnchor.constraint(equalToConstant: Design.contentViewWidth),
             feedbackContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             feedbackContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
