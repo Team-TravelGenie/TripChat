@@ -35,10 +35,11 @@ final class PopUpContentView: UIView {
     private let closeButtonStackView = UIStackView()
     private let iconAndMainTextStackView = UIStackView()
     private let feedbackButtonWrapperStackView = UIStackView()
-    private let feedbackButtonStackView = UIStackView()
     private let bottomButtonStackView = UIStackView()
+    
     private let closeButton = UIButton()
     private let mainTextView = UITextView()
+    private let feedbackButtonStackView = UIStackView()
     private let feedbackTextView = FeedbackTextView()
     private let chatIconView = CircleIconView()
         .size(40)
@@ -210,9 +211,11 @@ final class PopUpContentView: UIView {
     private func configureFeedbackButtonStackView() {
         feedbackButtonWrapperStackView.axis = .vertical
         feedbackButtonWrapperStackView.alignment = .center
+        
         feedbackButtonStackView.spacing = 12
         feedbackButtonStackView.axis = .horizontal
         feedbackButtonStackView.distribution = .fill
+        
         configureThumbsUpButton()
         configureThumbsDownButton()
     }
@@ -227,16 +230,20 @@ final class PopUpContentView: UIView {
             self.configureSubmitButton()
             self.feedbackTextView.resignFirstResponder()
         }
+        
         thumbsUpButton.addAction(action, for: .touchUpInside)
     }
     
     private func configureThumbsDownButton() {
         let action = UIAction { [weak self] _ in
             guard let self else { return }
+            
             self.thumbsDownButton.isSelected.toggle()
+            
             if self.thumbsDownButton.isSelected {
                 self.thumbsUpButton.isSelected = false
             }
+            
             self.configureSubmitButton()
             self.feedbackTextView.resignFirstResponder()
         }
@@ -252,6 +259,7 @@ final class PopUpContentView: UIView {
     
     private func configureSubmitButton() {
         guard case .feedback = type else { return }
+        
         leftButton.isEnabled = isFeedbackSelected
         leftButton.layer.opacity = isFeedbackSelected ? 1 : 0.2
     }
