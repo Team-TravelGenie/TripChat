@@ -14,12 +14,12 @@ protocol CustomInputBarAccessoryViewDelegate: AnyObject {
 
 final class CustomInputBarAccessoryView: InputBarAccessoryView {
     
-    weak var photosButtonDelegate: CustomInputBarAccessoryViewDelegate?
+    weak var inputBarButtonDelegate: CustomInputBarAccessoryViewDelegate?
     
     private lazy var photosButton: InputBarButtonItem = {
         return InputBarButtonItem()
             .onTouchUpInside { [weak self] _ in
-            self?.photosButtonDelegate?.photosButtonTapped()
+            self?.inputBarButtonDelegate?.photosButtonTapped()
         }
     }()
     
