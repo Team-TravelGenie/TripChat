@@ -214,6 +214,14 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         let imageData = cell.image()?.pngData()
         viewModel.addImage(indexPath: indexPath, imageData: imageData)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
+        
+        if viewModel.selectedPhotos.count == 3 {
+            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+            
+            cells.forEach {
+                if !$0.isSelected { $0.layer.opacity = 0.2 }
+            }
+        }
     }
     
     func collectionView(
@@ -222,8 +230,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
     {
         guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
         
-        let imageData = cell.image()?.pngData()
-        viewModel.removeImage(data: imageData)
+        viewModel.removeImage(at: indexPath)
         cell.configureDeselectedState(viewModel.selectedPhotos.count)
         
         if !viewModel.selectedPhotos.isEmpty {
@@ -233,6 +240,14 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
                 else { return }
                 
                 cell.configureSelectedState(index)
+            }
+        }
+        
+        if viewModel.selectedPhotos.count < 3 {
+            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+            
+            cells.forEach {
+                if !$0.isSelected { $0.layer.opacity = 1 }
             }
         }
     }
