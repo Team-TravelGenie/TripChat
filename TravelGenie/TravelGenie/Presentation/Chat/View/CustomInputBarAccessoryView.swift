@@ -34,6 +34,12 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: Internal
+    
+    func updatePhotosButtonState(_ isEnabled: Bool) {
+        photosButton.isEnabled = isEnabled
+    }
+    
     // MARK: Private
     
     private func configureSubviews() {
