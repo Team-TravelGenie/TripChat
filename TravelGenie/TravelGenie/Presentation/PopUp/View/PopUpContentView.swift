@@ -122,6 +122,14 @@ final class PopUpContentView: UIView {
         feedbackButtonWrapperStackView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
     }
     
+    func restoreFeedbackModalLayout() {
+        feedbackTextViewHeightAnchor?.constant = 100
+        leftButtonHeightAnchor?.constant = 48
+        rightButtonHeightAnchor?.constant = 48
+        mainStackViewSpacing = 24
+        feedbackButtonWrapperStackView.transform = .identity
+    }
+    
     func endFeedbackTextViewEditing() {
         feedbackTextView.resignFirstResponder()
     }

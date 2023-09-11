@@ -149,6 +149,7 @@ final class PopUpViewController: UIViewController {
     
     @objc private func moveFeedbackContentViewDown(_ notification: NSNotification) {
         self.feedbackContentView.transform = .identity
+        self.feedbackContentView.restoreFeedbackModalLayout()
     }
 }
 
