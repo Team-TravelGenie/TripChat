@@ -8,12 +8,18 @@
 import InputBarAccessoryView
 import UIKit
 
+protocol CustomInputBarAccessoryViewDelegate: AnyObject {
+    func imageButtonTapped()
+}
+
 final class CustomInputBarAccessoryView: InputBarAccessoryView {
+    
+    weak var imageButtonDelegate: CustomInputBarAccessoryViewDelegate?
     
     // MARK: Lifecycle
     
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+    init() {
+        super.init(frame: .zero)
         configureSubviews()
     }
     
@@ -35,7 +41,12 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         leftStackView.alignment = .fill
         setLeftStackViewWidthConstant(to: 24, animated: false)
         
-        let galleryButton = InputBarButtonItem()
+        let galleryButton: InputBarButtonItem = {
+            return InputBarButtonItem()
+                .onTouchUpInside { [weak self] _ in
+                self?.imageButtonDelegate?.imageButtonTapped()
+            }
+        }()
         let galleryButtonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
         galleryButton.tintColor = .primary
         galleryButton.setImage(galleryButtonImage, for: .normal)
