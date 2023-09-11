@@ -49,6 +49,10 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func fetchMessages() -> [Message] {
         return messageStorage.fetchMessages()
     }
+    
+    func deleteLoadingMessage() {
+        messageStorage.deleteLoadingMessage()
+    }
 }
 
 // MARK: ButtonStateDelegate

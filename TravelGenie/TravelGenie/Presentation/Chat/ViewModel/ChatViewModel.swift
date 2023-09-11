@@ -12,6 +12,7 @@ import OpenAISwift
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
     func fetchMessages() -> [Message]
+    func deleteLoadingMessage()
 }
 
 protocol ButtonStateDelegate: AnyObject {
