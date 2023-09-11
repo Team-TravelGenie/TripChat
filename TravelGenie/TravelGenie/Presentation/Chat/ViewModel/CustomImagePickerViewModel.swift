@@ -26,8 +26,8 @@ final class CustomImagePickerViewModel {
         selectedPhotos.append((indexPath: indexPath, imageData: imageData))
     }
     
-    func removeImage(data: Data?) {
-        selectedPhotos = selectedPhotos.filter { $0.imageData != data }
+    func removeImage(at indexPath: IndexPath) {
+        selectedPhotos = selectedPhotos.filter { $0.indexPath != indexPath }
     }
     
     func isSelected(selectedIndexPath: IndexPath) -> Int? {
