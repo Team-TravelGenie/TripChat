@@ -47,9 +47,6 @@ final class PopUpViewController: UIViewController {
         configureSubviews()
         configureHierarchy()
         configureLayout()
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
         registerObservers()
     }
     
