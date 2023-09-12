@@ -69,7 +69,7 @@ final class BottomMenuCell: UITableViewCell {
             iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.widthAnchor.constraint(equalToConstant: 12),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
+            iconImageView.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
 }
