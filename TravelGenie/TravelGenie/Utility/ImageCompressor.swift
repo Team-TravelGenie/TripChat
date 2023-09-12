@@ -10,12 +10,13 @@ import UIKit
 struct ImageCompressor {
     
     static func compress(
-        image: UIImage,
-        maxByte: Int,
+        imageData: Data,
+        maxByte: Int = 1_024_000,
         completion: @escaping (Data?) -> Void)
     {
         DispatchQueue.global().async {
-            guard let currentImageSize = image.jpegData(compressionQuality: 1.0)?.count else {
+            guard let image = UIImage(data: imageData),
+                  let currentImageSize = image.jpegData(compressionQuality: 1.0)?.count else {
                 return completion(nil)
             }
             

@@ -37,11 +37,10 @@ final class ImageManager {
     {
         let task = URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data,
-                  let image = UIImage(data: data),
                   let response = response as? HTTPURLResponse,
                   (200..<300) ~= response.statusCode else { return }
             
-            ImageCompressor.compress(image: image, maxByte: 1024_000) { compressedImageData in
+            ImageCompressor.compress(imageData: data) { compressedImageData in
                 guard let compressedImageData else { return }
                 
                 let cachedResponse: CachedURLResponse = CachedURLResponse(response: response, data: compressedImageData)
