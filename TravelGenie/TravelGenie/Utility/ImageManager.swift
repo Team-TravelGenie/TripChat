@@ -8,12 +8,13 @@
 import UIKit
 
 final class ImageManager {
+    
     static let cache: URLCache = URLCache.shared
     
     static func retrieveImage(
         with url: String,
-        completion: @escaping (Data) -> Void
-    ) {
+        completion: @escaping (Data) -> Void)
+    {
         guard let url = URL(string: url) else { return }
         
         let request: URLRequest = URLRequest(url: url)
@@ -32,8 +33,8 @@ final class ImageManager {
     
     private static func downloadImage(
         with request: URLRequest,
-        completion: @escaping (Data) -> Void
-    ) {
+        completion: @escaping (Data) -> Void)
+    {
         let task = URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data,
                   let image = UIImage(data: data),

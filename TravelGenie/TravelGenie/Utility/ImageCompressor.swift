@@ -8,6 +8,7 @@
 import UIKit
 
 struct ImageCompressor {
+    
     static func compress(
         image: UIImage,
         maxByte: Int,
