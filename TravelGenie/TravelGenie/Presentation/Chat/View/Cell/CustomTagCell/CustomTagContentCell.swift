@@ -313,8 +313,9 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let messageLabelHeight = defaultMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
+        let accuracyLimit = 16.0
         
-        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
+        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight - accuracyLimit
     }
 }
 
