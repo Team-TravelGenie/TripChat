@@ -14,6 +14,10 @@ protocol PopUpViewControllerDelegate: AnyObject {
 
 final class PopUpViewController: UIViewController {
     
+    private enum Design {
+        static let contentViewWidth: CGFloat = 352
+    }
+    
     weak var delegate: PopUpViewControllerDelegate?
     
     private let viewModel: PopUpViewModel
@@ -79,14 +83,14 @@ final class PopUpViewController: UIViewController {
     private func configureLayout() {
         endChatContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            endChatContentView.widthAnchor.constraint(equalToConstant: 351),
+            endChatContentView.widthAnchor.constraint(equalToConstant: Design.contentViewWidth),
             endChatContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             endChatContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
         
         feedbackContentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            feedbackContentView.widthAnchor.constraint(equalToConstant: 351),
+            feedbackContentView.widthAnchor.constraint(equalToConstant: Design.contentViewWidth),
             feedbackContentView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             feedbackContentView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
         ])
@@ -123,20 +127,19 @@ final class PopUpViewController: UIViewController {
             UIView.animate(withDuration: 0.2) { [weak self] in
                 guard let self else { return }
                 
+                let keyboardHeightOffsetRatio: CGFloat = 6 / 13
+                let keyboardHeightOffset: CGFloat = keyboardSize.height * keyboardHeightOffsetRatio
                 self.feedbackContentView.transform = CGAffineTransform(
                     translationX: 0,
-                    y: -keyboardSize.height * 6 / 13)
+                    y: -keyboardHeightOffset)
 
                 switch UIScreen.main.bounds.height {
                 // SE
                 case ..<812:
-                    self.feedbackContentView.changeFeedbackModalLayoutForSE3(
-                        spacing: 12,
-                        textViewHeight: 52,
-                        leftRightButtonHeight: 40)
-                // mini
+                    self.feedbackContentView.changeFeedbackModalLayoutForSE3()
+                // Mini
                 case 812..<844:
-                    self.feedbackContentView.changeFeedbackModalLayout(spacing: 16, textViewHeight: 52)
+                    self.feedbackContentView.changeFeedbackModalLayoutForMini()
                 default:
                     return
                 }

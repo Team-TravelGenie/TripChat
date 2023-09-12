@@ -161,7 +161,7 @@ final class HomeViewController: UIViewController {
     private func configureChatButton() {
         let chatButtonTitle = NSMutableAttributedString()
             .text("채팅하기", font: .headline, color: .black)
-        chatButton.setImage(UIImage(named: "chat"), for: .normal)
+        chatButton.setImage(UIImage(named: DesignAssetName.chatAvatarImage), for: .normal)
         chatButton.setAttributedTitle(chatButtonTitle, for: .normal)
         configureChatButtonAction()
     }

@@ -73,7 +73,7 @@ final class ChatListCell: UITableViewCell {
     }
     
     private func configureAvatarImageView() {
-        let image = UIImage(named: "chat")
+        let image = UIImage(named: DesignAssetName.chatAvatarImage)
         avatarImageView.image = image
         avatarImageView.contentMode = .center
         avatarImageView.layer.cornerRadius = 26

@@ -13,7 +13,7 @@ final class LoadingResponseCell: UICollectionViewCell {
     private let avatarView = CircleIconView()
         .backgroundColor(.white)
         .size(40)
-        .iconImage(imageName: "chat", size: 32)
+        .iconImage(imageName: DesignAssetName.chatAvatarImage, size: 32)
     
     private let animationView = LottieAnimationView(name: "loadingChat")
     

@@ -22,6 +22,21 @@ final class PopUpContentView: UIView {
         case feedback(PopUpModel)
     }
     
+    private enum Design {
+        static let mainStackViewPadding: CGFloat = 20
+        static let mainStackViewDefaultSpacing: CGFloat = 20
+        static let mainStackViewSESpacing: CGFloat = 12
+        static let mainStackViewMiniSpacing: CGFloat = 16
+        static let textViewDefaultHeight: CGFloat = 100
+        static let textViewSEHeight: CGFloat = 52
+        static let textViewMiniHeight: CGFloat = 52
+        static let thumbsUpDownButtonSize: CGFloat = 64
+        static let thumbsUpDownButtonImageSize: CGFloat = 28
+        static let bottomButtonDefaultHeight: CGFloat = 48
+        static let bottomButtonSEHeight: CGFloat = 40
+        static let bottomButtonCornerRadius: CGFloat = 8
+    }
+    
     weak var delegate: PopUpContentViewDelegate?
     weak var textViewDelegate: UITextViewDelegate? {
         didSet {
@@ -44,32 +59,42 @@ final class PopUpContentView: UIView {
     private let chatIconView = CircleIconView()
         .size(40)
         .backgroundColor(.blueGrayBackground)
-        .iconImage(imageName: "chat", size: 32)
+        .iconImage(imageName: DesignAssetName.chatAvatarImage, size: 32)
     
-    private let thumbsUpButton = FeedbackButton()
-        .size(64)
-        .image(name: "thumbs-up-regular", size: 28)
+    private let thumbsUpButton = FeedbackButton(
+        normalBackgroundColor: .blueGrayLine,
+        normalTintColor: .white,
+        selectedBackgroundColor: .tertiary,
+        selectedTintColor: .primary)
+        .size(Design.thumbsUpDownButtonSize)
+        .cornerRadius(Design.thumbsUpDownButtonSize / 2)
+        .assetIconImage(name: DesignAssetName.thumbsUpImage, size: Design.thumbsUpDownButtonImageSize)
     
-    private let thumbsDownButton = FeedbackButton()
-        .size(64)
-        .image(name: "thumbs-down-regular", size: 28)
+    private let thumbsDownButton = FeedbackButton(
+        normalBackgroundColor: .blueGrayLine,
+        normalTintColor: .white,
+        selectedBackgroundColor: .tertiary,
+        selectedTintColor: .primary)
+        .size(Design.thumbsUpDownButtonSize)
+        .cornerRadius(Design.thumbsUpDownButtonSize / 2)
+        .assetIconImage(name: DesignAssetName.thumbsDownImage, size: Design.thumbsUpDownButtonImageSize)
     
     private let leftButton = RectangleTextButton()
-        .cornerRadius(8)
+        .cornerRadius(Design.bottomButtonCornerRadius)
         .backgroundColor(.primary)
     
     private let rightButton = RectangleTextButton()
         .backgroundColor(.white)
         .borderColor(.blueGrayLine)
         .borderWidth(1)
-        .cornerRadius(8)
+        .cornerRadius(Design.bottomButtonCornerRadius)
     
     private var feedbackTextViewHeightAnchor: NSLayoutConstraint?
 
     private var leftButtonHeightAnchor: NSLayoutConstraint?
     private var rightButtonHeightAnchor: NSLayoutConstraint?
     
-    private var mainStackViewSpacing: CGFloat = 24 {
+    private var mainStackViewSpacing: CGFloat = Design.mainStackViewDefaultSpacing {
         didSet {
             mainStackView.spacing = mainStackViewSpacing
         }
@@ -106,28 +131,24 @@ final class PopUpContentView: UIView {
     
     // MARK: Internal
     
-    func changeFeedbackModalLayout(spacing: CGFloat, textViewHeight: CGFloat) {
-        mainStackViewSpacing = spacing
-        feedbackTextViewHeightAnchor?.constant = textViewHeight
-    }
-    
-    func changeFeedbackModalLayoutForSE3(
-        spacing: CGFloat,
-        textViewHeight: CGFloat,
-        leftRightButtonHeight: CGFloat)
-    {
-        mainStackViewSpacing = spacing
-        feedbackTextViewHeightAnchor?.constant = textViewHeight
-        leftButtonHeightAnchor?.constant = leftRightButtonHeight
-        rightButtonHeightAnchor?.constant = leftRightButtonHeight
+    func changeFeedbackModalLayoutForSE3() {
+        mainStackViewSpacing = Design.mainStackViewSESpacing
+        feedbackTextViewHeightAnchor?.constant = Design.textViewSEHeight
+        leftButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
+        rightButtonHeightAnchor?.constant = Design.bottomButtonSEHeight
         feedbackButtonWrapperStackView.transform = CGAffineTransform(scaleX: 0.85, y: 0.85)
     }
     
+    func changeFeedbackModalLayoutForMini() {
+        mainStackViewSpacing = Design.mainStackViewMiniSpacing
+        feedbackTextViewHeightAnchor?.constant = Design.textViewMiniHeight
+    }
+    
     func restoreFeedbackModalLayout() {
-        feedbackTextViewHeightAnchor?.constant = 100
-        leftButtonHeightAnchor?.constant = 48
-        rightButtonHeightAnchor?.constant = 48
-        mainStackViewSpacing = 24
+        feedbackTextViewHeightAnchor?.constant = Design.textViewDefaultHeight
+        leftButtonHeightAnchor?.constant = Design.bottomButtonDefaultHeight
+        rightButtonHeightAnchor?.constant = Design.bottomButtonDefaultHeight
+        mainStackViewSpacing = Design.mainStackViewDefaultSpacing
         feedbackButtonWrapperStackView.transform = .identity
     }
     
@@ -189,7 +210,7 @@ final class PopUpContentView: UIView {
     }
     
     private func configureCloseButton() {
-        let buttonImage = UIImage(systemName: "xmark")
+        let buttonImage = UIImage(systemName: DesignAssetName.xMarkImage)
         closeButton.setImage(buttonImage, for: .normal)
         closeButton.tintColor = .black
     }
@@ -303,34 +324,37 @@ final class PopUpContentView: UIView {
     private func configureLayout() {
         mainStackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -24),
-            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
-            mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+            mainStackView.topAnchor.constraint(equalTo: topAnchor, constant: Design.mainStackViewPadding),
+            mainStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -Design.mainStackViewPadding),
+            mainStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: Design.mainStackViewPadding),
+            mainStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -Design.mainStackViewPadding),
         ])
         
         thumbsUpButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thumbsUpButton.widthAnchor.constraint(equalToConstant: 64),
-            thumbsUpButton.heightAnchor.constraint(equalToConstant: 64),
+            thumbsUpButton.widthAnchor.constraint(equalToConstant: Design.thumbsUpDownButtonSize),
+            thumbsUpButton.heightAnchor.constraint(equalToConstant: Design.thumbsUpDownButtonSize),
         ])
         
         thumbsDownButton.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            thumbsDownButton.widthAnchor.constraint(equalToConstant: 64),
-            thumbsDownButton.heightAnchor.constraint(equalToConstant: 64),
+            thumbsDownButton.widthAnchor.constraint(equalToConstant: Design.thumbsUpDownButtonSize),
+            thumbsDownButton.heightAnchor.constraint(equalToConstant: Design.thumbsUpDownButtonSize),
         ])
         
         feedbackTextView.translatesAutoresizingMaskIntoConstraints = false
-        feedbackTextViewHeightAnchor = feedbackTextView.heightAnchor.constraint(equalToConstant: 100)
+        feedbackTextViewHeightAnchor
+            = feedbackTextView.heightAnchor.constraint(equalToConstant: Design.textViewDefaultHeight)
         feedbackTextViewHeightAnchor?.isActive = true
         
         leftButton.translatesAutoresizingMaskIntoConstraints = false
-        leftButtonHeightAnchor = leftButton.heightAnchor.constraint(equalToConstant: 48)
+        leftButtonHeightAnchor
+            = leftButton.heightAnchor.constraint(equalToConstant: Design.bottomButtonDefaultHeight)
         leftButtonHeightAnchor?.isActive = true
         
         rightButton.translatesAutoresizingMaskIntoConstraints = false
-        rightButtonHeightAnchor = rightButton.heightAnchor.constraint(equalToConstant: 48)
+        rightButtonHeightAnchor
+            = rightButton.heightAnchor.constraint(equalToConstant: Design.bottomButtonDefaultHeight)
         rightButtonHeightAnchor?.isActive = true
     }
     
