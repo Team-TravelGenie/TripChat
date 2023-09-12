@@ -41,7 +41,21 @@ final class CustomImagePickerViewModel {
     }
     
     func sendPhotos() {
-        let photos = selectedPhotos.compactMap { $0.imageData }
-        delegate?.photoDataSent(photos)
+        var compressedPhotoData: [Data] = []
+        let group = DispatchGroup()
+        
+        selectedPhotos.forEach {
+            group.enter()
+            ImageCompressor.compress(imageData: $0.imageData) { compressedData in
+                guard let data = compressedData else { return }
+                
+                compressedPhotoData.append(data)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.delegate?.photoDataSent(compressedPhotoData)
+        }
     }
 }
