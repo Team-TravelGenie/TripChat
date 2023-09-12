@@ -211,22 +211,40 @@ final class HomeViewController: UIViewController {
 // MARK: UITableViewDataSource & UITableViewDelegate
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int
+    {
         return viewModel.bottomMenus.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BottomMenuCell.identifier, for: indexPath) as? BottomMenuCell else { return UITableViewCell() }
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BottomMenuCell.identifier,
+            for: indexPath) as? BottomMenuCell else { return UITableViewCell() }
+        
         cell.setTitle(with: viewModel.bottomMenus[indexPath.row].title)
 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath)
+        -> CGFloat
+    {
         return 56
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath)
+    {
         viewModel.didTapBottomMenuCell(at: indexPath.row)
     }
 }
