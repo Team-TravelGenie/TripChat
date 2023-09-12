@@ -13,8 +13,8 @@ final class HomeViewModel {
     var showBottomMenu: ((BottomMenuItem) -> Void)?
     
     var bottomMenus: [BottomMenuItem] = [
-        BottomMenuItem(title: "서비스 이용약관", description: ""),
-        BottomMenuItem(title: "개인정보처리방침", description: ""),
+        BottomMenuItem(type: .termsOfService),
+        BottomMenuItem(type: .privacyPolicy),
     ]
     
     func didTapNewChatButton() {
