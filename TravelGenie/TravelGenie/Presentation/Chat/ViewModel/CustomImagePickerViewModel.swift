@@ -16,13 +16,13 @@ final class CustomImagePickerViewModel {
     weak var delegate: ImagePickerDelegate?
     var selectedPhotoCountChanged: ((Int) -> Void)?
     
-    private(set) var selectedPhotos: [(indexPath: IndexPath, imageData: Data?)] = [] {
+    private(set) var selectedPhotos: [(indexPath: IndexPath, imageData: Data)] = [] {
         didSet {
             selectedPhotoCountChanged?(selectedPhotos.count)
         }
     }
     
-    func addImage(indexPath: IndexPath, imageData: Data?) {
+    func addImage(indexPath: IndexPath, imageData: Data) {
         selectedPhotos.append((indexPath: indexPath, imageData: imageData))
     }
     
