@@ -51,6 +51,7 @@
 		57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */; };
 		57462B7C2A9630D200949D5C /* TagEntity+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */; };
 		57462B7D2A9630D200949D5C /* TagEntity+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */; };
+		57567F812AAF13EF00B1F7CB /* ImageCompressor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57567F802AAF13EF00B1F7CB /* ImageCompressor.swift */; };
 		5763DEEB2A9885E40028B19F /* FeedbackButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEA2A9885E40028B19F /* FeedbackButton.swift */; };
 		5763DEEF2A9896EE0028B19F /* FeedbackTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */; };
 		5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5763DEF02A98FA950028B19F /* PopUpViewController.swift */; };
@@ -193,6 +194,7 @@
 		57462B772A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RecommendationEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		57462B7A2A9630D200949D5C /* TagEntity+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataClass.swift"; sourceTree = "<group>"; };
 		57462B7B2A9630D200949D5C /* TagEntity+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TagEntity+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		57567F802AAF13EF00B1F7CB /* ImageCompressor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCompressor.swift; sourceTree = "<group>"; };
 		5763DEEA2A9885E40028B19F /* FeedbackButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackButton.swift; sourceTree = "<group>"; };
 		5763DEEE2A9896EE0028B19F /* FeedbackTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedbackTextView.swift; sourceTree = "<group>"; };
 		5763DEF02A98FA950028B19F /* PopUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopUpViewController.swift; sourceTree = "<group>"; };
@@ -576,6 +578,7 @@
 			isa = PBXGroup;
 			children = (
 				57DA988A2A9F8C830074409B /* ImageManager.swift */,
+				57567F802AAF13EF00B1F7CB /* ImageCompressor.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -1071,6 +1074,7 @@
 				57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				57A54C8A2AA8CB280087B640 /* CustomImagePickerCell.swift in Sources */,
+				57567F812AAF13EF00B1F7CB /* ImageCompressor.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,
 				D272925F2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift in Sources */,
