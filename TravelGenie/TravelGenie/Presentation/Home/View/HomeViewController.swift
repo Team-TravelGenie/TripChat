@@ -43,8 +43,10 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     private func bind() {
-        viewModel.showBottomMenu = { [weak self] item in
-            self?.showTermsDetail(item: item)
+        viewModel.bottomMenuCellTapped = { [weak self] url in
+            guard let url = url else { return }
+            
+            self?.showWebLink(url: url)
         }
     }
     
@@ -201,8 +203,8 @@ final class HomeViewController: UIViewController {
         coverView.backgroundColor = .white
     }
     
-    private func showTermsDetail(item: BottomMenuItem) {
-        // TODO: - 서비스 이용약관, 개인정보 처리방침 modal
+    private func showWebLink(url: URL) {
+        UIApplication.shared.open(url)
     }
 }
 

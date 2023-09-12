@@ -10,7 +10,7 @@ import Foundation
 final class HomeViewModel {
     
     weak var coordinator: HomeCoordinator?
-    var showBottomMenu: ((BottomMenuItem) -> Void)?
+    var bottomMenuCellTapped: ((URL?) -> Void)?
     
     let bottomMenus: [BottomMenuItem] = [
         BottomMenuItem(type: .termsOfService),
@@ -26,8 +26,10 @@ final class HomeViewModel {
         coordinator?.chatListFlow()
     }
     
-    // TODO: 코디네이터 패턴 적용으로 변경
     func didTapBottomMenuCell(at row: Int) {
-        showBottomMenu?(bottomMenus[row])
+        let selectedMenu = bottomMenus[row]
+        let url = URL(string: selectedMenu.url)
+
+        bottomMenuCellTapped?(url)
     }
 }
