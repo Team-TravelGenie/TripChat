@@ -5,7 +5,7 @@
 //  Created by summercat on 2023/08/30.
 //
 
-import Foundation
+import UIKit
 
 final class ImageManager {
     static let cache: URLCache = URLCache()
@@ -36,13 +36,18 @@ final class ImageManager {
     ) {
         let task = URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data,
+                  let image = UIImage(data: data),
                   let response = response as? HTTPURLResponse,
                   (200..<300) ~= response.statusCode else { return }
             
-            let cachedResponse: CachedURLResponse = CachedURLResponse(response: response, data: data)
-            cache.storeCachedResponse(cachedResponse, for: request)
-            
-            completion(data)
+            ImageCompressor.compress(image: image, maxByte: 1024_000) { compressedImageData in
+                guard let compressedImageData else { return }
+                
+                let cachedResponse: CachedURLResponse = CachedURLResponse(response: response, data: compressedImageData)
+                cache.storeCachedResponse(cachedResponse, for: request)
+                completion(compressedImageData)
+            }
+
         }
         task.resume()
     }
