@@ -8,7 +8,7 @@
 import UIKit
 
 final class ImageManager {
-    static let cache: URLCache = URLCache()
+    static let cache: URLCache = URLCache.shared
     
     static func retrieveImage(
         with url: String,
