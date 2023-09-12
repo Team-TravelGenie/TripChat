@@ -75,6 +75,11 @@ final class CustomTagContentCellViewModel {
             let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].value.count)
             
             return calculateSizeForCharacters(count: numberOfCharactersInTag)
+            
+        case 2:
+            let numberOfCharactersInTag = CGFloat(tagStorage.keywordTags[indexPath.item].value.count)
+            
+            return calculateSizeForCharacters(count: numberOfCharactersInTag)
         default:
             break
         }

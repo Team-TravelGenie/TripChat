@@ -206,7 +206,15 @@ final class ChatViewModel {
     private func makeDefaultTags() -> [Tag] {
         return [
             Tag(category: .location, value: "국내"),
-            Tag(category: .location, value: "해외")]
+            Tag(category: .location, value: "해외"),
+            
+            Tag(category: .theme, value: "관광"),
+            Tag(category: .theme, value: "휴식"),
+            Tag(category: .theme, value: "음식"),
+            Tag(category: .theme, value: "역사탐방"),
+            Tag(category: .theme, value: "액티비티")
+            
+        ]
     }
 
     private func convertToBase64(from data: Data) -> String? {
