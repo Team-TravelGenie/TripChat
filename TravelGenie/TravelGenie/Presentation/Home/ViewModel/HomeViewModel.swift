@@ -12,9 +12,10 @@ final class HomeViewModel {
     weak var coordinator: HomeCoordinator?
     var showBottomMenu: ((BottomMenuItem) -> Void)?
     
-    var bottomMenus: [BottomMenuItem] = [
+    let bottomMenus: [BottomMenuItem] = [
         BottomMenuItem(type: .termsOfService),
         BottomMenuItem(type: .privacyPolicy),
+        BottomMenuItem(type: .inquiries),
     ]
     
     func didTapNewChatButton() {
