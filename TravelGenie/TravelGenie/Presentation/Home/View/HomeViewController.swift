@@ -17,7 +17,7 @@ final class HomeViewController: UIViewController {
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
     private let chatListButton = HomeMenuButton()
-    private let bottomMenuTableView = UITableView(frame: .zero, style: .plain)
+    private let bottomMenuTableView = SelfSizingTableView(frame: .zero, style: .plain)
     private let coverView = UIView()
     
     // MARK: Lifecycle
@@ -121,7 +121,6 @@ final class HomeViewController: UIViewController {
             bottomMenuTableView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
             bottomMenuTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             bottomMenuTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            bottomMenuTableView.heightAnchor.constraint(equalToConstant: 112),
         ])
         
         coverView.translatesAutoresizingMaskIntoConstraints = false
