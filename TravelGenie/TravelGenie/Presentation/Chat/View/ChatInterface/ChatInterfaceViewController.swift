@@ -98,7 +98,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didChangeUploadButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeUploadButtonState = { [weak self] in
             let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
             let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
 
