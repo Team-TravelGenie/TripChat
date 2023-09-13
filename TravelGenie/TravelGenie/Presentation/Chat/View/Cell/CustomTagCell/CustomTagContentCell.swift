@@ -56,7 +56,7 @@ final class CustomTagContentCell: UICollectionViewCell {
         }
     }
     
-    func configureButtonsState(_ state: Bool) {
+    func configureAllButtonsState(_ state: Bool) {
         viewModel.updateSubmitButtonState(state)
         tagCollectionView.isUserInteractionEnabled = state
     }
