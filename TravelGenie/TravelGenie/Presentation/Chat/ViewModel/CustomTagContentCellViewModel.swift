@@ -89,6 +89,19 @@ final class CustomTagContentCellViewModel {
     
     // MARK: Private
     
+    private func bind() {
+        tagStorage.didChangeTags = { [weak self] in
+            self?.handleTagSelectionChange()
+        }
+    }
+    
+    private func handleTagSelectionChange() {
+        guard let selectedTagsCount = self.getSelectedTags()?.count else { return }
+        let hasRequiredTagCount = selectedTagsCount >= 2
+        
+        self.updateSubmitButtonState(hasRequiredTagCount)
+    }
+    
     private func calculateSizeForCharacters(count: CGFloat) -> CGSize {
         let additionalWidthForOneCharacterSize: CGFloat = 13.0
         let defaultHeight: CGFloat = 47.0
