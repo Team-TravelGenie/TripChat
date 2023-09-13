@@ -402,7 +402,7 @@ final class ChatViewModel {
         
         self.selectedTags = selectedTags
         updateTagMessageSelectedState(selectedTags)
-        buttonStateDelegate?.setTagCellButtonState(false)
+        buttonStateDelegate?.setTagCellButtonState(submitButtonState: false, interactionState: false)
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)

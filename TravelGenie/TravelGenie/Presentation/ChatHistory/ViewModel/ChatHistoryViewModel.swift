@@ -25,6 +25,6 @@ final class ChatHistoryViewModel {
     
     func deactivateButtons() {
         buttonStateDelegate?.setUploadButtonState(false)
-        buttonStateDelegate?.setTagCellButtonState(false)
+        buttonStateDelegate?.setTagCellButtonState(submitButtonState: false, interactionState: false)
     }
 }
