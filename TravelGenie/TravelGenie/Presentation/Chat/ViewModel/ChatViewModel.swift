@@ -401,9 +401,17 @@ final class ChatViewModel {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
         self.selectedTags = selectedTags
+        updateTagMessageSelectedState(selectedTags)
+        buttonStateDelegate?.setTagCellButtonState(false)
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)
+    }
+    
+    private func updateTagMessageSelectedState(_ tags: [Tag]) {
+        let tagMessage = createTagMessage(from: tags)
+        
+        messageStorageDelegate?.updateTagMessage(tagMessage: tagMessage)
     }
 }
 

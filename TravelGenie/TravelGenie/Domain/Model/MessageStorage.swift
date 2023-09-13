@@ -44,4 +44,12 @@ final class MessageStorage {
             return false
         })
     }
+    
+    func updateTagMessage(_ message: Message) {
+        guard let index = findTagMessageIndex() else { return }
+        
+        messageList[index] = message
+    }
+    
+    
 }
