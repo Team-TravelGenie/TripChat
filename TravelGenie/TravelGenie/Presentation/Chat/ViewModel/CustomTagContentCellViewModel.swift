@@ -35,6 +35,12 @@ final class CustomTagContentCellViewModel {
         }
     }
     
+    // MARK: Lifecycle
+    
+    init() {
+        bind()
+    }
+    
     // MARK: Internal
     
     func insertTags(tags: [Tag]) {
@@ -43,7 +49,6 @@ final class CustomTagContentCellViewModel {
     
     func getSelectedTags() -> [Tag]? {
         guard let isSelectedTags = tagStorage.getSelectedTags() else {
-            print("선택된 태그없음")
             return nil
         }
         
