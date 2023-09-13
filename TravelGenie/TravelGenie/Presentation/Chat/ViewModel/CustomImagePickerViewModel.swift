@@ -16,13 +16,13 @@ final class CustomImagePickerViewModel {
     weak var delegate: ImagePickerDelegate?
     var selectedPhotoCountChanged: ((Int) -> Void)?
     
-    private(set) var selectedPhotos: [(indexPath: IndexPath, imageData: Data?)] = [] {
+    private(set) var selectedPhotos: [(indexPath: IndexPath, imageData: Data)] = [] {
         didSet {
             selectedPhotoCountChanged?(selectedPhotos.count)
         }
     }
     
-    func addImage(indexPath: IndexPath, imageData: Data?) {
+    func addImage(indexPath: IndexPath, imageData: Data) {
         selectedPhotos.append((indexPath: indexPath, imageData: imageData))
     }
     
@@ -41,7 +41,21 @@ final class CustomImagePickerViewModel {
     }
     
     func sendPhotos() {
-        let photos = selectedPhotos.compactMap { $0.imageData }
-        delegate?.photoDataSent(photos)
+        var compressedPhotoData: [Data] = []
+        let group = DispatchGroup()
+        
+        selectedPhotos.forEach {
+            group.enter()
+            ImageCompressor.compress(imageData: $0.imageData) { compressedData in
+                guard let data = compressedData else { return }
+                
+                compressedPhotoData.append(data)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.delegate?.photoDataSent(compressedPhotoData)
+        }
     }
 }

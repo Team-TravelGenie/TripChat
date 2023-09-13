@@ -209,9 +209,10 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell,
+              let imageData = cell.image()?.pngData()
+        else { return }
         
-        let imageData = cell.image()?.pngData()
         viewModel.addImage(indexPath: indexPath, imageData: imageData)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
         
