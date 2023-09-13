@@ -17,7 +17,7 @@ protocol MessageStorageDelegate: AnyObject {
 
 protocol ButtonStateDelegate: AnyObject {
     func setUploadButtonState(_ isEnabled: Bool)
-    func setTagCellButtonState(_ isEnabled: Bool)
+    func setTagCellButtonState(submitButtonState: Bool, interactionState: Bool)
 }
 
 final class ChatViewModel {
