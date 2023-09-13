@@ -10,11 +10,12 @@ import Foundation
 final class HomeViewModel {
     
     weak var coordinator: HomeCoordinator?
-    var showBottomMenu: ((BottomMenuItem) -> Void)?
+    var bottomMenuCellTapped: ((URL?) -> Void)?
     
-    var bottomMenus: [BottomMenuItem] = [
-        BottomMenuItem(title: "서비스 이용약관", description: ""),
-        BottomMenuItem(title: "개인정보처리방침", description: ""),
+    let bottomMenus: [BottomMenuItem] = [
+        BottomMenuItem(type: .termsOfService),
+        BottomMenuItem(type: .privacyPolicy),
+        BottomMenuItem(type: .inquiries),
     ]
     
     func didTapNewChatButton() {
@@ -25,8 +26,10 @@ final class HomeViewModel {
         coordinator?.chatListFlow()
     }
     
-    // TODO: 코디네이터 패턴 적용으로 변경
     func didTapBottomMenuCell(at row: Int) {
-        showBottomMenu?(bottomMenus[row])
+        let selectedMenu = bottomMenus[row]
+        let url = URL(string: selectedMenu.url)
+
+        bottomMenuCellTapped?(url)
     }
 }

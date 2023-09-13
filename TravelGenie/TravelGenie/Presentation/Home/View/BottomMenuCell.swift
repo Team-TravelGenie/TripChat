@@ -12,11 +12,14 @@ final class BottomMenuCell: UITableViewCell {
     static var identifier: String { return String(describing: self) }
     
     private let titleLabel = UILabel()
-    private let iconImageView = UIImageView()
+    private let disclosureIconImageView = UIImageView()
     
     // MARK: Lifecycle
 
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    override init(
+        style: UITableViewCell.CellStyle,
+        reuseIdentifier: String?)
+    {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         selectionStyle = .none
         backgroundColor = .clear
@@ -49,12 +52,12 @@ final class BottomMenuCell: UITableViewCell {
     
     private func configureDisclosureIcon() {
         let icon: UIImage? = UIImage(systemName: "chevron.right")
-        iconImageView.image = icon
-        iconImageView.tintColor = .blueGrayFont
+        disclosureIconImageView.image = icon
+        disclosureIconImageView.tintColor = .blueGrayFont
     }
     
     private func configureHierarchy() {
-        [titleLabel, iconImageView].forEach { contentView.addSubview($0) }
+        [titleLabel, disclosureIconImageView].forEach { contentView.addSubview($0) }
     }
     
     private func configureLayout() {
@@ -64,12 +67,12 @@ final class BottomMenuCell: UITableViewCell {
             titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
         ])
         
-        iconImageView.translatesAutoresizingMaskIntoConstraints = false
+        disclosureIconImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            iconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-            iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            iconImageView.widthAnchor.constraint(equalToConstant: 12),
-            iconImageView.heightAnchor.constraint(equalToConstant: 24),
+            disclosureIconImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            disclosureIconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+            disclosureIconImageView.widthAnchor.constraint(equalToConstant: 12),
+            disclosureIconImageView.heightAnchor.constraint(equalToConstant: 20),
         ])
     }
 }

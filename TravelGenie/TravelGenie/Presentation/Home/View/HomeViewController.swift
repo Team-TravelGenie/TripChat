@@ -17,7 +17,7 @@ final class HomeViewController: UIViewController {
     private let bodyTextView = UITextView()
     private let chatButton = HomeMenuButton()
     private let chatListButton = HomeMenuButton()
-    private let bottomMenuTableView = UITableView(frame: .zero, style: .plain)
+    private let bottomMenuTableView = SelfSizingTableView(frame: .zero, style: .plain)
     private let coverView = UIView()
     
     // MARK: Lifecycle
@@ -43,8 +43,10 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     private func bind() {
-        viewModel.showBottomMenu = { [weak self] item in
-            self?.showTermsDetail(item: item)
+        viewModel.bottomMenuCellTapped = { [weak self] url in
+            guard let url = url else { return }
+            
+            self?.showWebLink(url: url)
         }
     }
     
@@ -121,7 +123,6 @@ final class HomeViewController: UIViewController {
             bottomMenuTableView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
             bottomMenuTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             bottomMenuTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
-            bottomMenuTableView.heightAnchor.constraint(equalToConstant: 112),
         ])
         
         coverView.translatesAutoresizingMaskIntoConstraints = false
@@ -202,30 +203,48 @@ final class HomeViewController: UIViewController {
         coverView.backgroundColor = .white
     }
     
-    private func showTermsDetail(item: BottomMenuItem) {
-        // TODO: - 서비스 이용약관, 개인정보 처리방침 modal
+    private func showWebLink(url: URL) {
+        UIApplication.shared.open(url)
     }
 }
 
 // MARK: UITableViewDataSource & UITableViewDelegate
 
 extension HomeViewController: UITableViewDataSource, UITableViewDelegate {
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int
+    {
         return viewModel.bottomMenus.count
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: BottomMenuCell.identifier, for: indexPath) as? BottomMenuCell else { return UITableViewCell() }
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+        -> UITableViewCell
+    {
+        guard let cell = tableView.dequeueReusableCell(
+            withIdentifier: BottomMenuCell.identifier,
+            for: indexPath) as? BottomMenuCell else { return UITableViewCell() }
+        
         cell.setTitle(with: viewModel.bottomMenus[indexPath.row].title)
 
         return cell
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func tableView(
+        _ tableView: UITableView,
+        heightForRowAt indexPath: IndexPath)
+        -> CGFloat
+    {
         return 56
     }
     
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath)
+    {
         viewModel.didTapBottomMenuCell(at: indexPath.row)
     }
 }
