@@ -10,7 +10,7 @@ final class ChatInterfaceViewModel {
     let messageStorage: MessageStorage = MessageStorage()
     var didChangeMessageList: (() -> Void)?
     var didChangeUploadButtonState: ((Bool) -> Void)?
-    var didChangeTagCellButtonState: ((Bool) -> Void)?
+    var didChangeTagCellInteractionStates: (() -> Void)?
     
     private (set) var uploadButtonState: Bool = true {
         didSet {
@@ -18,9 +18,9 @@ final class ChatInterfaceViewModel {
         }
     }
     
-    private (set) var tagCellButtonState: Bool = true {
+    private (set) var tagCellInteractionStates = (submitButtonState: false, interaction: true) {
         didSet {
-            didChangeTagCellButtonState?(tagCellButtonState)
+            didChangeTagCellInteractionStates?()
         }
     }
     
