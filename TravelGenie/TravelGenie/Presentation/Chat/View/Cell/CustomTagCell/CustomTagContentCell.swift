@@ -56,9 +56,9 @@ final class CustomTagContentCell: UICollectionViewCell {
         }
     }
     
-    func configureAllButtonsState(_ state: Bool) {
-        viewModel.updateSubmitButtonState(state)
-        tagCollectionView.isUserInteractionEnabled = state
+    func configureButtonsState(_ state: (Bool, Bool)) {
+        viewModel.updateSubmitButtonState(state.0)
+        tagCollectionView.isUserInteractionEnabled = state.1
     }
     
     // MARK: Private
@@ -127,7 +127,6 @@ final class CustomTagContentCell: UICollectionViewCell {
             }
             
             self.viewModel.submitSelectedTags(selectedList)
-            self.viewModel.updateSubmitButtonState(false)
         }
         submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }

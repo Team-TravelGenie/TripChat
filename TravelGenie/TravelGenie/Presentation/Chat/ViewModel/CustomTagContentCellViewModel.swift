@@ -29,7 +29,7 @@ final class CustomTagContentCellViewModel {
 
     private let tagStorage: TagStorage = TagStorage()
 
-    private var submitButtonState: Bool = true {
+    private var submitButtonState: Bool = false {
         didSet {
             didTapSubmitButton?(submitButtonState)
         }
