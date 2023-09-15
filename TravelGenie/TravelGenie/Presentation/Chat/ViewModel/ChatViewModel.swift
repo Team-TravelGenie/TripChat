@@ -12,7 +12,7 @@ import OpenAISwift
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
     func fetchMessages() -> [Message]
-    func updateTagMessage(tagMessage: Message)
+    func updateTagMessage(selectedTags: [Tag])
 }
 
 protocol ButtonStateDelegate: AnyObject {
@@ -408,10 +408,8 @@ final class ChatViewModel {
         sendSelectedTags(tagText)
     }
     
-    private func updateTagMessageSelectedState(_ tags: [Tag]) {
-        let tagMessage = createTagMessage(from: tags)
-        
-        messageStorageDelegate?.updateTagMessage(tagMessage: tagMessage)
+    private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
+        messageStorageDelegate?.updateTagMessage(selectedTags: selectedTags)
     }
 }
 

@@ -50,8 +50,8 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
         return messageStorage.fetchMessages()
     }
 
-    func updateTagMessage(tagMessage: Message) {
-        messageStorage.updateTagMessage(tagMessage)
+    func updateTagMessage(selectedTags: [Tag]) {
+        messageStorage.updateTagMessage(selectedTags)
     }
 }
 

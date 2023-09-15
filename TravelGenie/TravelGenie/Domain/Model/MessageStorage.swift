@@ -15,13 +15,13 @@ final class MessageStorage {
         return messageList.count
     }
     var didChangeMessageList: (() -> Void)?
-
+    
     private var messageList: [Message] = [Message]() {
         didSet {
             didChangeMessageList?()
         }
     }
-        
+    
     // MARK: Internal
     
     func insertMessage(_ message: Message) {
@@ -45,11 +45,22 @@ final class MessageStorage {
         })
     }
     
-    func updateTagMessage(_ message: Message) {
+    func updateTagMessage(_ tags: [Tag]) {
         guard let index = findTagMessageIndex() else { return }
+        var tagMessage = messageList[index]
         
-        messageList[index] = message
+        if case let .custom(tagItem) = tagMessage.kind, let currentTagItem = tagItem as? TagItem {
+            var currentTags = currentTagItem.tags
+            
+            for newTag in tags {
+                if let matchingTagIndex = currentTags.firstIndex(where: { $0.value == newTag.value }) {
+                    currentTags[matchingTagIndex].isSelected = newTag.isSelected
+                }
+            }
+            
+            let updatedTagItem = TagItem(tags: currentTags)
+            tagMessage.kind = .custom(updatedTagItem)
+            messageList[index] = tagMessage
+        }
     }
-    
-    
 }
