@@ -34,8 +34,8 @@ final class MessageStorage {
     
     func fetchMessages() -> [Message] {
         return messageList
-	}
-
+    }
+    
     func findTagMessageIndex() -> Int? {
         return messageList.firstIndex(where: {
             if case let .custom(item) = $0.kind, item is TagItem {
@@ -61,6 +61,9 @@ final class MessageStorage {
             let updatedTagItem = TagItem(tags: currentTags)
             tagMessage.kind = .custom(updatedTagItem)
             messageList[index] = tagMessage
+        }
+    }
+    
     func removeLoadingMessage() {
         if let loadingMessageIndex = messageList.firstIndex(where: { $0.messageId == "loading" }) {
             messageList.remove(at: loadingMessageIndex)

@@ -49,9 +49,10 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func fetchMessages() -> [Message] {
         return messageStorage.fetchMessages()
     }
-
+    
     func updateTagMessage(selectedTags: [Tag]) {
         messageStorage.updateTagMessage(selectedTags)
+    }
     
     func removeLoadingMessage() {
         messageStorage.removeLoadingMessage()
