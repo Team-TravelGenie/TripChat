@@ -9,18 +9,18 @@ final class ChatInterfaceViewModel {
     
     let messageStorage: MessageStorage = MessageStorage()
     var didChangeMessageList: (() -> Void)?
-    var didChangeUploadButtonState: ((Bool) -> Void)?
-    var didChangeTagCellButtonState: ((Bool) -> Void)?
+    var disabledUploadButtonState: (() -> Void)?
+    var didChangeTagMessageInteractionState: (() -> Void)?
     
     private (set) var uploadButtonState: Bool = true {
         didSet {
-            didChangeUploadButtonState?(uploadButtonState)
+            disabledUploadButtonState?()
         }
     }
     
-    private (set) var tagCellButtonState: Bool = true {
+    private (set) var tagMessageInteractionState = TagMessageInteractionState() {
         didSet {
-            didChangeTagCellButtonState?(tagCellButtonState)
+            didChangeTagMessageInteractionState?()
         }
     }
     
@@ -49,6 +49,9 @@ extension ChatInterfaceViewModel: MessageStorageDelegate {
     func fetchMessages() -> [Message] {
         return messageStorage.fetchMessages()
     }
+
+    func updateTagMessage(selectedTags: [Tag]) {
+        messageStorage.updateTagMessage(selectedTags)
     
     func removeLoadingMessage() {
         messageStorage.removeLoadingMessage()
@@ -63,7 +66,9 @@ extension ChatInterfaceViewModel: ButtonStateDelegate {
         uploadButtonState = isEnabled
     }
     
-    func setTagCellButtonState(_ isEnabled: Bool) {
-        tagCellButtonState = isEnabled
+    func setTagMessageInteractionState(submitButtonState: Bool, interactionState: Bool) {
+        let state = TagMessageInteractionState(submitButtonState: submitButtonState, interactionState: interactionState)
+        
+        tagMessageInteractionState = state
     }
 }

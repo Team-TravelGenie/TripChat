@@ -9,34 +9,36 @@ import Foundation
 
 final class CustomTagContentCellViewModel {
     
-    var locationTagListCount: Int {
-        return tagStorage.locationTags.count
-    }
-    
-    var themeTagListCount: Int {
-        return tagStorage.themeTags.count
-    }
-    
-    var locationTagList: [Tag] {
+    var locationTags: [Tag] {
         return tagStorage.locationTags
     }
     
-    var themeTagList: [Tag] {
+    var themeTags: [Tag] {
         return tagStorage.themeTags
     }
     
+    var keywordTags: [Tag] {
+        return tagStorage.keywordTags
+    }
+    
     var sectionsHeaderTexts: [String] {
-        return ["✈️지역", "⛵️테마"]
+        return ["✈️지역", "⛵️테마", "🔑️키워드"]
     }
     
     var didTapSubmitButton: ((Bool) -> Void)?
 
     private let tagStorage: TagStorage = TagStorage()
 
-    private var submitButtonState: Bool = true {
+    private var submitButtonState: Bool = false {
         didSet {
             didTapSubmitButton?(submitButtonState)
         }
+    }
+    
+    // MARK: Lifecycle
+    
+    init() {
+        bind()
     }
     
     // MARK: Internal
@@ -47,7 +49,6 @@ final class CustomTagContentCellViewModel {
     
     func getSelectedTags() -> [Tag]? {
         guard let isSelectedTags = tagStorage.getSelectedTags() else {
-            print("선택된 태그없음")
             return nil
         }
         
@@ -79,6 +80,11 @@ final class CustomTagContentCellViewModel {
             let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].value.count)
             
             return calculateSizeForCharacters(count: numberOfCharactersInTag)
+            
+        case 2:
+            let numberOfCharactersInTag = CGFloat(tagStorage.keywordTags[indexPath.item].value.count)
+            
+            return calculateSizeForCharacters(count: numberOfCharactersInTag)
         default:
             break
         }
@@ -87,6 +93,19 @@ final class CustomTagContentCellViewModel {
     }
     
     // MARK: Private
+    
+    private func bind() {
+        tagStorage.didChangeTags = { [weak self] in
+            self?.handleTagSelectionChange()
+        }
+    }
+    
+    private func handleTagSelectionChange() {
+        guard let selectedTagsCount = self.getSelectedTags()?.count else { return }
+        let hasRequiredTagCount = selectedTagsCount >= 2
+        
+        self.updateSubmitButtonState(hasRequiredTagCount)
+    }
     
     private func calculateSizeForCharacters(count: CGFloat) -> CGSize {
         let additionalWidthForOneCharacterSize: CGFloat = 13.0

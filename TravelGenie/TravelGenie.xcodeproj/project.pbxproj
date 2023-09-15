@@ -133,6 +133,7 @@
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
 		D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */; };
 		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
+		D2D7DD182AB4345A0045D1EC /* TagMessageInteractionState.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2D7DD172AB4345A0045D1EC /* TagMessageInteractionState.swift */; };
 		D2E3AA262A8B62320049DDEF /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA252A8B62320049DDEF /* ChatViewController.swift */; };
 		D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */; };
 		D2E3AA2D2A8B64740049DDEF /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = D2E3AA2C2A8B64740049DDEF /* MessageKit */; };
@@ -275,6 +276,7 @@
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
 		D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProcessor.swift; sourceTree = "<group>"; };
 		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
+		D2D7DD172AB4345A0045D1EC /* TagMessageInteractionState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMessageInteractionState.swift; sourceTree = "<group>"; };
 		D2E3AA252A8B62320049DDEF /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatInterfaceViewController.swift; sourceTree = "<group>"; };
@@ -847,6 +849,7 @@
 			isa = PBXGroup;
 			children = (
 				D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */,
+				D2D7DD172AB4345A0045D1EC /* TagMessageInteractionState.swift */,
 				D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */,
 				D2F8C5812A8F538500AA3BFC /* TagView */,
 			);
@@ -965,6 +968,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				57DA98742A9E3B580074409B /* ImageSearchDTO.swift in Sources */,
+				D2D7DD182AB4345A0045D1EC /* TagMessageInteractionState.swift in Sources */,
 				57C2BEF72AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift in Sources */,
 				D20FA2A82A6BD4830081B039 /* GoogleVisionRequestModel.swift in Sources */,
 				573BCD262A8F46B900116D2D /* ChatCoordinator.swift in Sources */,

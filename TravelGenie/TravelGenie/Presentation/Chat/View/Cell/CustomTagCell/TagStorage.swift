@@ -9,6 +9,8 @@ import Foundation
 
 final class TagStorage {
     
+    var didChangeTags: (() -> Void)?
+    
     var count: Int {
         return tags.count
     }
@@ -21,7 +23,16 @@ final class TagStorage {
         return tags.filter { $0.category == .theme }
     }
     
-    private var tags = [Tag]()
+    var keywordTags: [Tag] {
+        return tags.filter { $0.category == .keyword }
+    }
+    
+    private var tags = [Tag]() {
+        didSet {
+            didChangeTags?()
+        }
+    }
+    
     private var selectedTags: [Tag] {
         return tags.filter { $0.isSelected == true }
     }

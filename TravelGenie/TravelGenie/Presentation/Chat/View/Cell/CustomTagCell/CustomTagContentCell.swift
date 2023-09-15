@@ -56,9 +56,9 @@ final class CustomTagContentCell: UICollectionViewCell {
         }
     }
     
-    func configureButtonsState(_ state: Bool) {
-        viewModel.updateSubmitButtonState(state)
-        tagCollectionView.isUserInteractionEnabled = state
+    func configureButtonsState(_ state: TagMessageInteractionState) {
+        viewModel.updateSubmitButtonState(state.submitButtonState)
+        tagCollectionView.isUserInteractionEnabled = state.tagCollectionViewCellInteractionState
     }
     
     // MARK: Private
@@ -127,7 +127,6 @@ final class CustomTagContentCell: UICollectionViewCell {
             }
             
             self.viewModel.submitSelectedTags(selectedList)
-            self.viewModel.updateSubmitButtonState(false)
         }
         submitKeywordButton.addAction(buttonAction, for: .touchUpInside)
     }
@@ -186,10 +185,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
     fileprivate enum Section: Int {
         case location
         case theme
+        case keyword
     }
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 3
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -197,9 +197,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         
         switch section {
         case .location:
-            return viewModel.locationTagListCount
+            return viewModel.locationTags.count
         case .theme:
-            return viewModel.themeTagListCount
+            return viewModel.themeTags.count
+        case .keyword:
+            return viewModel.keywordTags.count
         }
     }
     
@@ -213,9 +215,11 @@ extension CustomTagContentCell: UICollectionViewDataSource {
         if let section = Section(rawValue: indexPath.section) {
             switch section {
             case .location:
-                cell.configure(tag: viewModel.locationTagList[indexPath.item])
+                cell.configure(tag: viewModel.locationTags[indexPath.item])
             case .theme:
-                cell.configure(tag: viewModel.themeTagList[indexPath.item])
+                cell.configure(tag: viewModel.themeTags[indexPath.item])
+            case .keyword:
+                cell.configure(tag: viewModel.keywordTags[indexPath.item])
             }
         }
 
@@ -308,8 +312,12 @@ extension CustomTagContentCell: UICollectionViewDelegateFlowLayout {
         let messageLabelHeight = defaultMessageLabel.frame.height
         let tagCollectionViewContentHeight = tagCollectionViewLayout.totalHeight
         let submitKeywordButtonHeight = submitKeywordButton.frame.height
+        // 2개의 섹션으로 사이즈 측정시엔 문제가없었는데, 3개의 섹션을 활용하였을 때, tagCollectionViewContentHeight에서 16.0 가량의 오차가 발생하였습니다.
+        // 정확한 원인은 아직 파악하지 못하였습니다. 해결이 필요 할 것 같습니다.
+        // 현재는 임시방편으로 -16.0으로 계산되도록 구현해두었습니다.
+        let accuracyLimit = 16.0
         
-        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight
+        return tagCollectionViewContentHeight + messageLabelHeight + submitKeywordButtonHeight - accuracyLimit
     }
 }
 

@@ -73,7 +73,7 @@ class ChatInterfaceViewController: MessagesViewController {
                 let cell = messagesCollectionView.dequeueReusableCell(CustomTagContentCell.self, for: indexPath)
                 cell.sizeDelegate = self
                 cell.configure(with: message)
-                cell.configureButtonsState(chatInterfaceViewModel.tagCellButtonState)
+                cell.configureButtonsState(chatInterfaceViewModel.tagMessageInteractionState)
                 return cell
             } else if item is [RecommendationItem] {
                 let cell = messagesCollectionView.dequeueReusableCell(RecommendationCell.self, for: indexPath)
@@ -98,7 +98,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didChangeUploadButtonState = { [weak self] state in
+        chatInterfaceViewModel.disabledUploadButtonState = { [weak self] in
             let uploadButtonCellSectionIndex = MessagesDefaultSection.uploadButtonMessage.rawValue
             let indexSet = IndexSet(integer: uploadButtonCellSectionIndex)
 
@@ -109,7 +109,7 @@ class ChatInterfaceViewController: MessagesViewController {
             }
         }
         
-        chatInterfaceViewModel.didChangeTagCellButtonState = { [weak self] state in
+        chatInterfaceViewModel.didChangeTagMessageInteractionState = { [weak self] in
             guard let tagMessageIndex = self?.chatInterfaceViewModel.messageStorage.findTagMessageIndex() else {
                 print("MessageStorage에서 TagMessage를 찾지못헀음")
                 return

@@ -12,12 +12,13 @@ import OpenAISwift
 protocol MessageStorageDelegate: AnyObject {
     func insert(message: Message)
     func fetchMessages() -> [Message]
+    func updateTagMessage(selectedTags: [Tag])
     func removeLoadingMessage()
 }
 
 protocol ButtonStateDelegate: AnyObject {
     func setUploadButtonState(_ isEnabled: Bool)
-    func setTagCellButtonState(_ isEnabled: Bool)
+    func setTagMessageInteractionState(submitButtonState: Bool, interactionState: Bool)
 }
 
 protocol InputBarButtonStateDelegate: AnyObject {
@@ -204,7 +205,7 @@ final class ChatViewModel {
         group.notify(queue: .global(qos: .userInteractive)) { [weak self] in
             guard let self else { return }
             
-            self.visionResultProcessor.getSixMostConfidentTranslatedTags() { [weak self] in
+            self.visionResultProcessor.getFourMostConfidentTranslatedTags() { [weak self] in
                 guard let self else { return }
                 let defaultTags = self.makeDefaultTags()
                 let appendedTags = defaultTags + $0
@@ -217,9 +218,10 @@ final class ChatViewModel {
     }
     
     private func makeDefaultTags() -> [Tag] {
-        return [
-            Tag(category: .location, value: "국내"),
-            Tag(category: .location, value: "해외")]
+        let locationTags = ["국내", "해외"].map { Tag(category: .location, value: $0) }
+        let themeTags = ["관광", "휴양", "음식", "역사탐방", "액티비티"].map { Tag(category: .theme, value: $0) }
+        
+        return locationTags + themeTags
     }
 
     private func convertToBase64(from data: Data) -> String? {
@@ -433,9 +435,15 @@ final class ChatViewModel {
         guard let selectedTags = notification.userInfo?[NotificationKey.selectedTags] as? [Tag] else { return }
         
         self.selectedTags = selectedTags
+        updateTagMessageSelectedState(selectedTags)
+        buttonStateDelegate?.setTagMessageInteractionState(submitButtonState: false, interactionState: false)
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)
+    }
+    
+    private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
+        messageStorageDelegate?.updateTagMessage(selectedTags: selectedTags)
     }
 }
 
