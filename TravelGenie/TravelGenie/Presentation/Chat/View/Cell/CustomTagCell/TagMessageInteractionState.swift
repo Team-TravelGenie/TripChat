@@ -9,10 +9,10 @@ import Foundation
 
 struct TagMessageInteractionState {
     private (set) var submitButtonState: Bool
-    private (set) var interactionState: Bool
+    private (set) var tagCollectionViewCellInteractionState: Bool
     
     init(submitButtonState: Bool = false, interactionState: Bool = true) {
         self.submitButtonState = submitButtonState
-        self.interactionState = interactionState
+        self.tagCollectionViewCellInteractionState = interactionState
     }
 }
