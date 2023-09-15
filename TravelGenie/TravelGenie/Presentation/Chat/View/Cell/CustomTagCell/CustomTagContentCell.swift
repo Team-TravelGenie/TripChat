@@ -56,9 +56,9 @@ final class CustomTagContentCell: UICollectionViewCell {
         }
     }
     
-    func configureButtonsState(_ state: (Bool, Bool)) {
-        viewModel.updateSubmitButtonState(state.0)
-        tagCollectionView.isUserInteractionEnabled = state.1
+    func configureButtonsState(_ state: TagMessageInteractionState) {
+        viewModel.updateSubmitButtonState(state.submitButtonState)
+        tagCollectionView.isUserInteractionEnabled = state.interactionState
     }
     
     // MARK: Private
