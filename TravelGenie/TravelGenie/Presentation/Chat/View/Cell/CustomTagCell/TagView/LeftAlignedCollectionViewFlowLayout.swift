@@ -18,7 +18,9 @@ class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
         var leftMargin = sectionInset.left
         var maxY: CGFloat = originAttributes.first?.frame.origin.y ?? 0
         
-        let adjustAttributes = originAttributes.map { layoutAttribute -> UICollectionViewLayoutAttributes in
+        let adjustAttributes = originAttributes.compactMap { originalAttribute -> UICollectionViewLayoutAttributes? in
+            guard let layoutAttribute = originalAttribute.copy() as? UICollectionViewLayoutAttributes else { return nil }
+            
             let isCell = layoutAttribute.representedElementCategory == .cell
             let isHeader = layoutAttribute.representedElementCategory == .supplementaryView
             
