@@ -8,8 +8,8 @@
 import Foundation
 
 struct TagMessageInteractionState {
-    var submitButtonState: Bool
-    var interactionState: Bool
+    private (set) var submitButtonState: Bool
+    private (set) var interactionState: Bool
     
     init(submitButtonState: Bool = false, interactionState: Bool = true) {
         self.submitButtonState = submitButtonState
