@@ -17,7 +17,7 @@ protocol MessageStorageDelegate: AnyObject {
 
 protocol ButtonStateDelegate: AnyObject {
     func setUploadButtonState(_ isEnabled: Bool)
-    func setTagCellButtonState(submitButtonState: Bool, interactionState: Bool)
+    func setTagMessageInteractionState(submitButtonState: Bool, interactionState: Bool)
 }
 
 final class ChatViewModel {
@@ -402,7 +402,7 @@ final class ChatViewModel {
         
         self.selectedTags = selectedTags
         updateTagMessageSelectedState(selectedTags)
-        buttonStateDelegate?.setTagCellButtonState(submitButtonState: false, interactionState: false)
+        buttonStateDelegate?.setTagMessageInteractionState(submitButtonState: false, interactionState: false)
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)

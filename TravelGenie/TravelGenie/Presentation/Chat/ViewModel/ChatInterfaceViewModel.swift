@@ -63,7 +63,7 @@ extension ChatInterfaceViewModel: ButtonStateDelegate {
         uploadButtonState = isEnabled
     }
     
-    func setTagCellButtonState(submitButtonState: Bool, interactionState: Bool) {
+    func setTagMessageInteractionState(submitButtonState: Bool, interactionState: Bool) {
         let state = TagMessageInteractionState(submitButtonState: submitButtonState, interactionState: interactionState)
         
         tagMessageInteractionState = state
