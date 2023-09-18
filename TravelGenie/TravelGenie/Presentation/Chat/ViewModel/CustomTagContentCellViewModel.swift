@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class CustomTagContentCellViewModel {
     
@@ -71,25 +72,20 @@ final class CustomTagContentCellViewModel {
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {
+        let tagValue: String
+        
         switch indexPath.section {
         case 0:
-            let numberofCharactoersInTag = CGFloat(tagStorage.locationTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberofCharactoersInTag)
+            tagValue = tagStorage.locationTags[indexPath.item].value
         case 1:
-            let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberOfCharactersInTag)
-            
+            tagValue = tagStorage.themeTags[indexPath.item].value
         case 2:
-            let numberOfCharactersInTag = CGFloat(tagStorage.keywordTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberOfCharactersInTag)
+            tagValue = tagStorage.keywordTags[indexPath.item].value
         default:
-            break
+            return .zero
         }
         
-        return CGSize(width: 0, height: 0)
+        return calculateSizeForCharacters(tagValue: tagValue)
     }
     
     // MARK: Private
