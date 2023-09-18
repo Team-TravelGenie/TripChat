@@ -15,9 +15,9 @@ extension String {
         let tagValueSize = (prefixedTagValue as NSString).size(withAttributes: [NSAttributedString.Key.font: font])
         
         let leadingTrailingPadding: CGFloat = 20.0 * 2
-        let defaultHeight = 47.0
         
         let widthResult = tagValueSize.width + leadingTrailingPadding
+        let defaultHeight: CGFloat = 47.0
         
         return CGSize(width: widthResult, height: defaultHeight)
     }
