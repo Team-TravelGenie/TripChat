@@ -20,8 +20,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let rootViewController = UINavigationController()
-        coordinator = AppCoordinator(window: window, navigationController: rootViewController)
-        coordinator?.start()
+        window.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
+        window.makeKeyAndVisible()
+
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
+            let rootViewController = UINavigationController()
+            self?.coordinator = AppCoordinator(window: window, navigationController: rootViewController)
+            self?.coordinator?.start()
+        }
     }
 }
