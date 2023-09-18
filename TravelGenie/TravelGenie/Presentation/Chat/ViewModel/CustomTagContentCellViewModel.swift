@@ -115,4 +115,3 @@ final class CustomTagContentCellViewModel {
         return CGSize(width: widthResult, height: defaultHeight)
     }
 }
-
