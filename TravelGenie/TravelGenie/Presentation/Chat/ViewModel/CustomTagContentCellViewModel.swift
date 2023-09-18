@@ -84,7 +84,7 @@ final class CustomTagContentCellViewModel {
             return .zero
         }
         
-        return calculateSizeForCharacters(tagValue: tagValue)
+        return tagValue.calculatedCellSizeForTag()
     }
     
     // MARK: Private
