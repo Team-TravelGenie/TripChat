@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import UIKit
 
 final class CustomTagContentCellViewModel {
     
@@ -101,17 +100,5 @@ final class CustomTagContentCellViewModel {
         let hasRequiredTagCount = selectedTagsCount >= 2
         
         self.updateSubmitButtonState(hasRequiredTagCount)
-    }
-    
-    private func calculateSizeForCharacters(tagValue: String) -> CGSize {
-        let font = UIFont.systemFont(ofSize: Font.bodyBold.fontSize, weight: Font.bodyBold.weight)
-        let tagValueSize = (tagValue as NSString).size(withAttributes: [NSAttributedString.Key.font: font])
-        
-        let padding: CGFloat = 48.0
-        let defaultHeight: CGFloat = 47.0
-
-        let widthResult = tagValueSize.width + padding
-        
-        return CGSize(width: widthResult, height: defaultHeight)
     }
 }
