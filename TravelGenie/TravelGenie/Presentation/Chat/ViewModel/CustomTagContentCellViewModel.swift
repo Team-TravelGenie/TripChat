@@ -107,7 +107,7 @@ final class CustomTagContentCellViewModel {
         let font = UIFont.systemFont(ofSize: Font.bodyBold.fontSize, weight: Font.bodyBold.weight)
         let tagValueSize = (tagValue as NSString).size(withAttributes: [NSAttributedString.Key.font: font])
         
-        let padding: CGFloat = 48.05
+        let padding: CGFloat = 48.0
         let defaultHeight: CGFloat = 47.0
 
         let widthResult = tagValueSize.width + padding
