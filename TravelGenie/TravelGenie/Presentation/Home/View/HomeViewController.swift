@@ -44,10 +44,13 @@ final class HomeViewController: UIViewController {
     // MARK: Private
     
     private func bind() {
-        viewModel.bottomMenuCellTapped = { [weak self] url in
+        viewModel.externalLinkCellTapped = { [weak self] url in
             guard let url = url else { return }
-            
-            self?.showWebLink(url: url)
+            self?.connectToWebLink(url: url)
+        }
+        
+        viewModel.copyLinkCellTapped = { [weak self] emailAddress in
+            UIPasteboard.general.string = emailAddress
         }
     }
     
@@ -210,7 +213,7 @@ final class HomeViewController: UIViewController {
         coverView.backgroundColor = .white
     }
     
-    private func showWebLink(url: URL) {
+    private func connectToWebLink(url: URL) {
         UIApplication.shared.open(url)
     }
 }
