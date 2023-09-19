@@ -57,6 +57,7 @@ final class RecommendationCell: UICollectionViewCell {
         recommendationCollectionView.dataSource = self
         recommendationCollectionView.backgroundColor = .clear
         recommendationCollectionView.collectionViewLayout = layout
+        recommendationCollectionView.showsHorizontalScrollIndicator = false
         recommendationCollectionView.register(
             AvatarHeaderView.self,
             forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
