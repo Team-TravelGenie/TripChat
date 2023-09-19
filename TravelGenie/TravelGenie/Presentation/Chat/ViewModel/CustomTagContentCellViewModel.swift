@@ -71,25 +71,20 @@ final class CustomTagContentCellViewModel {
     }
     
     func cellSizeForSection(indexPath: IndexPath) -> CGSize {
+        let tagValue: String
+        
         switch indexPath.section {
         case 0:
-            let numberofCharactoersInTag = CGFloat(tagStorage.locationTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberofCharactoersInTag)
+            tagValue = tagStorage.locationTags[indexPath.item].value
         case 1:
-            let numberOfCharactersInTag = CGFloat(tagStorage.themeTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberOfCharactersInTag)
-            
+            tagValue = tagStorage.themeTags[indexPath.item].value
         case 2:
-            let numberOfCharactersInTag = CGFloat(tagStorage.keywordTags[indexPath.item].value.count)
-            
-            return calculateSizeForCharacters(count: numberOfCharactersInTag)
+            tagValue = tagStorage.keywordTags[indexPath.item].value
         default:
-            break
+            return .zero
         }
         
-        return CGSize(width: 0, height: 0)
+        return tagValue.calculatedCellSizeForTag()
     }
     
     // MARK: Private
@@ -106,15 +101,4 @@ final class CustomTagContentCellViewModel {
         
         self.updateSubmitButtonState(hasRequiredTagCount)
     }
-    
-    private func calculateSizeForCharacters(count: CGFloat) -> CGSize {
-        let additionalWidthForOneCharacterSize: CGFloat = 13.0
-        let defaultHeight: CGFloat = 47.0
-        let defaultWidth: CGFloat = 48.0
-        
-        let widthResult = defaultWidth + (count * additionalWidthForOneCharacterSize)
-
-        return CGSize(width: widthResult, height: defaultHeight)
-    }   
 }
-
