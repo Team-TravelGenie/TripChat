@@ -10,12 +10,7 @@ import UIKit
 
 final class SystemMessageCell: UICollectionViewCell {
     
-    enum Constant {
-        static let welcomeText = """
-            입력 데이터는 OpenAI의 데이터 사용 정책과 XXX의 개인정보 처리방침에 따라 관리됩니다. 이 서비스는 초기버전으로 AI 답변의 신뢰성과 사용 시 생기는 문제에 책임을 지지 않으며 사정에 따라 사전 안내없이 중단 할 수 있습니다. 개인 정보를 입력하지 않도록 유의해 주세요.
-            """
-    }
-    
+    private let viewModel = SystemMessageCellViewModel()
     private let welcomeMessageTextView = UITextView()
     
     // MARK: Lifecycle
@@ -33,12 +28,15 @@ final class SystemMessageCell: UICollectionViewCell {
     // MARK: Private
     
     private func configureWelcomeMessageTextView() {
-        welcomeMessageTextView.backgroundColor = .blueGrayBackground
         welcomeMessageTextView.isEditable = false
         welcomeMessageTextView.textAlignment = .left
         welcomeMessageTextView.isScrollEnabled = false
-        welcomeMessageTextView.attributedText = NSMutableAttributedString()
-            .text(Constant.welcomeText, font: .captionRegular, color: .blueGrayFont)
+        welcomeMessageTextView.dataDetectorTypes = .link
+        welcomeMessageTextView.backgroundColor = .blueGrayBackground
+        welcomeMessageTextView.attributedText = viewModel.createAttributedString()
+        welcomeMessageTextView.linkTextAttributes = [
+            .foregroundColor: UIColor.blueGrayFont
+        ]
     }
     
     private func configureLayout() {

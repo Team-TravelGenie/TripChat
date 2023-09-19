@@ -116,6 +116,8 @@
 		D24DF9C42A9695BB0066C5B3 /* TagStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */; };
 		D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */; };
 		D25E3EC62A8C7038006AD283 /* UploadButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */; };
+		D2629A372AB992670006CEF5 /* SystemMessageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */; };
+		D2629A392AB9978B0006CEF5 /* HyperLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2629A382AB9978B0006CEF5 /* HyperLink.swift */; };
 		D263D7CE2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */; };
 		D263D7D12AA9E09400BBF8C1 /* Lottie in Frameworks */ = {isa = PBXBuildFile; productRef = D263D7D02AA9E09400BBF8C1 /* Lottie */; };
 		D263D7D32AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */; };
@@ -261,6 +263,8 @@
 		D24DF9C32A9695BB0066C5B3 /* TagStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagStorage.swift; sourceTree = "<group>"; };
 		D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCellViewModel.swift; sourceTree = "<group>"; };
 		D25E3EC52A8C7038006AD283 /* UploadButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UploadButtonCell.swift; sourceTree = "<group>"; };
+		D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemMessageViewModel.swift; sourceTree = "<group>"; };
+		D2629A382AB9978B0006CEF5 /* HyperLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HyperLink.swift; sourceTree = "<group>"; };
 		D263D7CD2AA9DFDA00BBF8C1 /* LoadingResponseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseCell.swift; sourceTree = "<group>"; };
 		D263D7D22AA9E3FE00BBF8C1 /* LoadingResponseMessageSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingResponseMessageSizeCalculator.swift; sourceTree = "<group>"; };
 		D26846892AA10A5600831097 /* TranslateDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranslateDTO.swift; sourceTree = "<group>"; };
@@ -516,6 +520,8 @@
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
 				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 				572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */,
+				D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */,
+				D2629A382AB9978B0006CEF5 /* HyperLink.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -991,6 +997,7 @@
 				D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */,
 				57DA98702A9E376B0074409B /* GoogleCustomSearchAPI.swift in Sources */,
 				573BCD222A8F42DA00116D2D /* SecretStorage.swift in Sources */,
+				D2629A372AB992670006CEF5 /* SystemMessageViewModel.swift in Sources */,
 				D20FA2732A6B8DA90081B039 /* AppDelegate.swift in Sources */,
 				D26846922AA1134900831097 /* TranslateUseCase.swift in Sources */,
 				57C2BEFD2AA749210074DA8C /* DefaultUserFeedbackRepository.swift in Sources */,
@@ -1000,6 +1007,7 @@
 				573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */,
 				57EA83162AB06DDF00AB872B /* SelfSizingTableView.swift in Sources */,
 				D268468A2AA10A5600831097 /* TranslateDTO.swift in Sources */,
+				D2629A392AB9978B0006CEF5 /* HyperLink.swift in Sources */,
 				D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */,
 				D2E3AA332A8B83520049DDEF /* ChatInterfaceViewController.swift in Sources */,
 				57462B712A95F74500949D5C /* MediaItemDAO.swift in Sources */,
