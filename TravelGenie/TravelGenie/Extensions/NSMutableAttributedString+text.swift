@@ -48,4 +48,25 @@ extension NSMutableAttributedString {
         
         return self
     }
+    
+    func linkText(_ value: String, hyperLinks: [HyperLink], font: Font, color: UIColor) -> NSMutableAttributedString {
+        let baseAttributedString = text(value, font: font, color: color)
+        
+        hyperLinks.forEach {
+            if let range = value.range(of: $0.text) {
+                let nsRange = NSRange(range, in: value)
+                
+                let linkAttributes: [NSAttributedString.Key: Any] = [
+                    .link: $0.url,
+                    .underlineStyle: NSUnderlineStyle.single.rawValue
+                ]
+                
+                linkAttributes.forEach { key, value in
+                    baseAttributedString.addAttribute(key, value: value, range: nsRange)
+                }
+            }
+        }
+        
+        return baseAttributedString
+    }
 }
