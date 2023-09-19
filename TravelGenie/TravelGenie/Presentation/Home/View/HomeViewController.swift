@@ -35,6 +35,7 @@ final class HomeViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         bind()
+        configureNavigationBar()
         configureSubviews()
         configureHierarchy()
         configureLayout()
@@ -48,6 +49,12 @@ final class HomeViewController: UIViewController {
             
             self?.showWebLink(url: url)
         }
+    }
+    
+    private func configureNavigationBar() {
+        let backBarButton = UIBarButtonItem(customView: HomeTextLogoView())
+        backBarButton.isEnabled = false
+        navigationItem.leftBarButtonItem = backBarButton
     }
     
     private func configureSubviews() {
