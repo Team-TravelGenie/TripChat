@@ -11,6 +11,8 @@ final class CustomImagePickerCell: UICollectionViewCell {
     
     static var identifier: String { return String(describing: self) }
     
+    var assetIdentifier = String()
+    
     override var isSelected: Bool {
         didSet {
             countButton.isSelected = isSelected

@@ -191,12 +191,17 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
               let asset = photos?.object(at: indexPath.item)
         else { return UICollectionViewCell() }
         
+        cell.assetIdentifier = asset.localIdentifier
+        
         PHImageManager.default().requestImage(
             for: asset,
             targetSize: thumbnailSize,
             contentMode: .aspectFill,
             options: nil) { (image, _) in
-                cell.setImage(image: image)}
+                if cell.assetIdentifier == asset.localIdentifier {
+                    cell.setImage(image: image)
+                }
+            }
         
         if let count = viewModel.isSelected(selectedIndexPath: indexPath) {
             cell.configureSelectedState(count)
