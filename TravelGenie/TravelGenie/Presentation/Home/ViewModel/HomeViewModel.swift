@@ -10,7 +10,8 @@ import Foundation
 final class HomeViewModel {
     
     weak var coordinator: HomeCoordinator?
-    var bottomMenuCellTapped: ((URL?) -> Void)?
+    var externalLinkCellTapped: ((URL?) -> Void)?
+    var copyLinkCellTapped: ((String) -> Void)?
     
     let bottomMenus: [BottomMenuItem] = [
         BottomMenuItem(type: .termsOfService),
@@ -28,8 +29,14 @@ final class HomeViewModel {
     
     func didTapBottomMenuCell(at row: Int) {
         let selectedMenu = bottomMenus[row]
-        let url = URL(string: selectedMenu.url)
-
-        bottomMenuCellTapped?(url)
+        
+        switch selectedMenu.type {
+        case .termsOfService, .privacyPolicy:
+            let url = URL(string: selectedMenu.url)
+            externalLinkCellTapped?(url)
+        case .inquiries:
+            let emailAddress: String = selectedMenu.url
+            copyLinkCellTapped?(emailAddress)
+        }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 enum DesignAssetName {
+    static let homeNavigationTitleLogo: String = "text-logo"
     static let chatAvatarImage: String = "chat"
     static let xMarkImage: String = "xmark"
     static let thumbsUpImage: String = "thumbs-up-regular"
