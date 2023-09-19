@@ -15,10 +15,10 @@ final class SystemMessageCellViewModel {
     }
     
     private let hyperLinks: [HyperLink] = [
-        HyperLink(type: .OpenAIPolicy),
-        HyperLink(type: .GoogleAPITerms),
-        HyperLink(type: .GoogleAPIPrivacyPolicy),
-        HyperLink(type: .NaverDeveloperTerms)
+        HyperLink(type: .openAIPolicy),
+        HyperLink(type: .googleAPITerms),
+        HyperLink(type: .googleAPIPrivacyPolicy),
+        HyperLink(type: .naverDeveloperTerms)
     ]
     
     func createAttributedString() -> NSMutableAttributedString {

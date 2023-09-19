@@ -9,36 +9,36 @@ import Foundation
 
 struct HyperLink {
     enum HyperLinkType {
-        case OpenAIPolicy
-        case GoogleAPITerms
-        case GoogleAPIPrivacyPolicy
-        case NaverDeveloperTerms
+        case openAIPolicy
+        case googleAPITerms
+        case googleAPIPrivacyPolicy
+        case naverDeveloperTerms
     }
     
     let type: HyperLinkType
     
     var text: String {
         switch type {
-        case .OpenAIPolicy:
+        case .openAIPolicy:
             return "OpenAI의 데이터 사용 정책"
-        case .GoogleAPITerms:
+        case .googleAPITerms:
             return "Google API의 서비스이용약관"
-        case .GoogleAPIPrivacyPolicy:
+        case .googleAPIPrivacyPolicy:
             return "Google API 사용자 데이터 정책"
-        case .NaverDeveloperTerms:
+        case .naverDeveloperTerms:
             return "NAVER Developers 운영 정책"
         }
     }
     
     var url: String {
         switch type {
-        case .OpenAIPolicy:
+        case .openAIPolicy:
             return "https://www.openai.com/policies/"
-        case .GoogleAPITerms:
+        case .googleAPITerms:
             return "https://developers.google.com/terms"
-        case .GoogleAPIPrivacyPolicy:
+        case .googleAPIPrivacyPolicy:
             return "https://developers.google.com/terms/api-services-user-data-policy"
-        case .NaverDeveloperTerms:
+        case .naverDeveloperTerms:
             return "https://developers.naver.com/products/intro/operation/operation.md"
         }
     }
