@@ -27,7 +27,6 @@ final class CustomImagePickerViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
     }
     
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -35,8 +34,6 @@ final class CustomImagePickerViewController: UIViewController {
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
-    
-    // MARK: Override(s)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,7 +68,9 @@ final class CustomImagePickerViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = true
-        collectionView.register(CustomImagePickerCell.self, forCellWithReuseIdentifier: CustomImagePickerCell.identifier)
+        collectionView.register(
+            CustomImagePickerCell.self,
+            forCellWithReuseIdentifier: CustomImagePickerCell.identifier)
     }
     
     private func configureHeaderView() {
