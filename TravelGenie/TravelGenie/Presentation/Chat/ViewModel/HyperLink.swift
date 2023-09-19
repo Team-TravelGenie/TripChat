@@ -35,11 +35,11 @@ struct HyperLink {
         case .OpenAIPolicy:
             return "https://www.openai.com/policies/"
         case .GoogleAPITerms:
-            return "https://www.google.com/terms"
+            return "https://developers.google.com/terms"
         case .GoogleAPIPrivacyPolicy:
-            return "https://www.google.com/policies/privacy"
+            return "https://developers.google.com/terms/api-services-user-data-policy"
         case .NaverDeveloperTerms:
-            return "https://developers.naver.com/terms"
+            return "https://developers.naver.com/products/intro/operation/operation.md"
         }
     }
 }
