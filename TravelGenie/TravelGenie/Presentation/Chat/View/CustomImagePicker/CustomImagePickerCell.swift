@@ -17,7 +17,7 @@ final class CustomImagePickerCell: UICollectionViewCell {
         }
     }
     
-    private let imageView = UIImageView()
+    private let thumbnailImageView = UIImageView()
     private let countButton = CustomButton(
         normalBackgroundColor: .white,
         normalBorderColor: .blueGrayLine,
@@ -43,14 +43,14 @@ final class CustomImagePickerCell: UICollectionViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         isSelected = false
-        imageView.image = nil
+        thumbnailImageView.image = nil
         countButton.titleLabel?.attributedText = nil
     }
     
     // MARK: Internal
     
     func setImage(image: UIImage?) {
-        imageView.image = image
+        thumbnailImageView.image = image
     }
     
     func configureSelectedState(_ count: Int) {
@@ -62,26 +62,26 @@ final class CustomImagePickerCell: UICollectionViewCell {
     }
     
     func image() -> UIImage? {
-        return imageView.image
+        return thumbnailImageView.image
     }
     
     // MARK: Private
     
     private func configureSubviews() {
-        imageView.contentMode = .scaleAspectFill
+        thumbnailImageView.contentMode = .scaleAspectFill
     }
     
     private func configureHierarchy() {
-        [imageView, countButton].forEach { contentView.addSubview($0) }
+        [thumbnailImageView, countButton].forEach { contentView.addSubview($0) }
     }
     
     private func configureLayout() {
-        imageView.translatesAutoresizingMaskIntoConstraints = false
+        thumbnailImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            imageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            imageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            imageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            thumbnailImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            thumbnailImageView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            thumbnailImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            thumbnailImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
         ])
         
         countButton.translatesAutoresizingMaskIntoConstraints = false
