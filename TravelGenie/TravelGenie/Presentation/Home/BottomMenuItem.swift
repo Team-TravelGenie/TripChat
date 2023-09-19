@@ -29,11 +29,11 @@ struct BottomMenuItem {
     var url: String {
         switch type {
         case .termsOfService:
-            return "https://github.com/Team-TravelGenie/TripChat"
+            return "https://tripchat.notion.site/TripChat-103ba24fe2254fc2980b5468f921f705?pvs=4"
         case .privacyPolicy:
-            return "https://github.com/Team-TravelGenie/TripChat"
+            return "https://tripchat.notion.site/TripChat-9126da1746e84f518b9b9ecfb5373149?pvs=4"
         case .inquiries:
-            return "https://github.com/Team-TravelGenie/TripChat"
+            return "tripchatting@gmail.com"
         }
     }
 }
