@@ -20,8 +20,8 @@ final class ChatViewController: ChatInterfaceViewController {
         super.init(nibName: nil, bundle: nil)
         bind()
         chatViewModel.messageStorageDelegate = chatInterfaceViewModel
+        chatViewModel.inputBarStateDelegate = self
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
-        chatViewModel.inputBarButtonStateDelegate = self
     }
     
     required init?(coder: NSCoder) {
@@ -125,7 +125,7 @@ extension ChatViewController: CustomInputBarAccessoryViewDelegate {
     }
 }
 
-extension ChatViewController: InputBarButtonStateDelegate {
+extension ChatViewController: InputBarStateDelegate {
     func setPhotosButtonState(_ isEnabled: Bool) {
         guard let inputBar = messageInputBar as? CustomInputBarAccessoryView else { return }
         

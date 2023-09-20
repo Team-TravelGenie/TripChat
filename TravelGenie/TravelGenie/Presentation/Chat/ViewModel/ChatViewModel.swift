@@ -21,7 +21,7 @@ protocol ButtonStateDelegate: AnyObject {
     func setTagMessageInteractionState(submitButtonState: Bool, interactionState: Bool)
 }
 
-protocol InputBarButtonStateDelegate: AnyObject {
+protocol InputBarStateDelegate: AnyObject {
     func setPhotosButtonState(_ isEnabled: Bool)
 }
 
@@ -39,7 +39,7 @@ final class ChatViewModel {
     weak var coordinator: ChatCoordinator?
     weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
-    weak var inputBarButtonStateDelegate: InputBarButtonStateDelegate?
+    weak var inputBarStateDelegate: InputBarStateDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
     private let ai: Sender = Sender(name: .ai)
@@ -147,7 +147,7 @@ final class ChatViewModel {
     }
     
     private func updateInputBarPhotosButtonState(_ isEnabled: Bool) {
-        inputBarButtonStateDelegate?.setPhotosButtonState(isEnabled)
+        inputBarStateDelegate?.setPhotosButtonState(isEnabled)
     }
     
     private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
