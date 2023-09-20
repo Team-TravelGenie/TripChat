@@ -49,10 +49,10 @@ extension NSMutableAttributedString {
         return self
     }
     
-    func hyperlinkText(_ value: String, hyperLinks: [HyperLink], font: Font, color: UIColor) -> NSMutableAttributedString {
+    func hyperlinkText(_ value: String, hyperlinks: [Hyperlink], font: Font, color: UIColor) -> NSMutableAttributedString {
         let baseAttributedString = text(value, font: font, color: color)
         
-        hyperLinks.forEach {
+        hyperlinks.forEach {
             if let range = value.range(of: $0.text) {
                 let nsRange = NSRange(range, in: value)
                 

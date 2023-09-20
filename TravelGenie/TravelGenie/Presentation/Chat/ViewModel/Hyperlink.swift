@@ -7,15 +7,15 @@
 
 import Foundation
 
-struct HyperLink {
-    enum HyperLinkType {
+struct Hyperlink {
+    enum HyperlinkType {
         case openAIPolicy
         case googleAPITerms
         case googleAPIPrivacyPolicy
         case naverDeveloperTerms
     }
     
-    let type: HyperLinkType
+    let type: HyperlinkType
     
     var text: String {
         switch type {

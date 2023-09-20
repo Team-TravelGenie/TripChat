@@ -14,15 +14,15 @@ final class SystemMessageCellViewModel {
         """
     }
     
-    private let hyperLinks: [HyperLink] = [
-        HyperLink(type: .openAIPolicy),
-        HyperLink(type: .googleAPITerms),
-        HyperLink(type: .googleAPIPrivacyPolicy),
-        HyperLink(type: .naverDeveloperTerms)
+    private let hyperlinks: [Hyperlink] = [
+        Hyperlink(type: .openAIPolicy),
+        Hyperlink(type: .googleAPITerms),
+        Hyperlink(type: .googleAPIPrivacyPolicy),
+        Hyperlink(type: .naverDeveloperTerms)
     ]
     
     func createAttributedString() -> NSMutableAttributedString {
         return NSMutableAttributedString()
-            .hyperlinkText(Constant.systemMessageText, hyperLinks: hyperLinks, font: .captionRegular, color: .blueGrayFont)
+            .hyperlinkText(Constant.systemMessageText, hyperlinks: hyperlinks, font: .captionRegular, color: .blueGrayFont)
     }
 }
