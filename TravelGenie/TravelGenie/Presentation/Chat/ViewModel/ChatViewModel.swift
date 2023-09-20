@@ -23,6 +23,7 @@ protocol ButtonStateDelegate: AnyObject {
 
 protocol InputBarStateDelegate: AnyObject {
     func setPhotosButtonState(_ isEnabled: Bool)
+    func updateInputTextViewState(_ isEditable: Bool)
 }
 
 final class ChatViewModel {
@@ -82,6 +83,7 @@ final class ChatViewModel {
         ]
         
         defaultMessages.forEach { insertMessage($0) }
+        updateInputTextViewState(isEditable: false)
     }
     
     func insertMessage(_ message: Message) {
@@ -152,6 +154,10 @@ final class ChatViewModel {
     
     private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
         messageStorageDelegate?.updateTagMessage(selectedTags: selectedTags)
+    }
+    
+    private func updateInputTextViewState(isEditable: Bool) {
+        inputBarStateDelegate?.updateInputTextViewState(isEditable)
     }
     
     private func extractKeywords(from imageData: [Data]) {

@@ -131,4 +131,10 @@ extension ChatViewController: InputBarStateDelegate {
         
         inputBar.updatePhotosButtonState(isEnabled)
     }
+    
+    func updateInputTextViewState(_ isEditable: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.messageInputBar.inputTextView.isEditable = isEditable
+        }
+    }
 }
