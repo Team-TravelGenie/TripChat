@@ -9,18 +9,17 @@ import UIKit
 
 extension NSMutableAttributedString {
     func text(_ value: String, font: Font, color: UIColor) -> NSMutableAttributedString {
-        let style = NSMutableParagraphStyle()
         let fontSize: CGFloat = font.fontSize
-        let lineHeight: CGFloat = font.lineHeight
-        let font: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
-        style.minimumLineHeight = lineHeight
-        style.maximumLineHeight = lineHeight
+        let systemFont: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
+                
+        let style = NSMutableParagraphStyle()
+        let lineSpacing: CGFloat = font.lineSpacing
+        style.lineSpacing = lineSpacing
         
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: color,
+            .font: systemFont,
             .paragraphStyle: style,
-            .font: font,
-            .baselineOffset: (lineHeight - font.lineHeight) / 4,
+            .foregroundColor: color,
         ]
         
         self.append(NSAttributedString(string: value, attributes: attributes))
@@ -29,19 +28,19 @@ extension NSMutableAttributedString {
     }
     
     func messageText(_ value: String, font: Font, sender: Sender) -> NSMutableAttributedString {
-        let style = NSMutableParagraphStyle()
         let fontSize: CGFloat = font.fontSize
-        let lineHeight: CGFloat = font.lineHeight
-        let font: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
-        let fontColor: UIColor = sender.displayName == "ai" ? .black : .white
-        style.minimumLineHeight = lineHeight
-        style.maximumLineHeight = lineHeight
+        let systemFont: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
+                
+        let style = NSMutableParagraphStyle()
+        let lineSpacing: CGFloat = font.lineSpacing
+        style.lineSpacing = lineSpacing
         
+        let fontColor: UIColor = sender.displayName == "ai" ? .black : .white
+
         let attributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: fontColor,
+            .font: systemFont,
             .paragraphStyle: style,
-            .font: font,
-            .baselineOffset: (lineHeight - font.lineHeight) / 4,
+            .foregroundColor: fontColor,
         ]
         
         self.append(NSAttributedString(string: value, attributes: attributes))
