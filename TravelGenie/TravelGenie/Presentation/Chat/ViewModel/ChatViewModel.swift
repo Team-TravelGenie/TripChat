@@ -155,16 +155,15 @@ final class ChatViewModel {
         let group = DispatchGroup()
         
         imageData.forEach {
-            if let base64String = convertToBase64(from: $0) {
-                group.enter()
-                fetchKeywordsFromGoogleVision(base64String: base64String) {
-                    group.leave()
-                }
-                
-                group.enter()
-                fetchLandMarksFromGoogleVision(base64String: base64String) {
-                    group.leave()
-                }
+            let base64String = $0.base64EncodedString()
+            group.enter()
+            fetchKeywordsFromGoogleVision(base64String: base64String) {
+                group.leave()
+            }
+            
+            group.enter()
+            fetchLandMarksFromGoogleVision(base64String: base64String) {
+                group.leave()
             }
         }
         
@@ -188,10 +187,6 @@ final class ChatViewModel {
         let themeTags = ["관광", "휴양", "음식", "역사탐방", "액티비티"].map { Tag(category: .theme, value: $0) }
         
         return locationTags + themeTags
-    }
-
-    private func convertToBase64(from data: Data) -> String? {
-        return data.base64EncodedString()
     }
 
     private func fetchKeywordsFromGoogleVision(base64String: String, completion: @escaping () -> Void) {
