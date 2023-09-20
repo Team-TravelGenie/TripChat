@@ -455,6 +455,11 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
         let openAIChatMessage = ChatMessage(role: .user, content: text)
         insertMessage(textMessage)
         sendMessageToOpenAI(openAIChatMessage)
+        clearInputText(from: inputBar)
+    }
+    
+    private func clearInputText(from inputBar: InputBarAccessoryView) {
+        inputBar.inputTextView.text = String()
     }
 }
 
