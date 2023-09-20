@@ -118,3 +118,11 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         return wrapperView
     }
 }
+
+extension InputTextView {
+    public override var isEditable: Bool {
+        didSet {
+            layer.opacity = isEditable ? 1.0 : 0.2
+        }
+    }
+}
