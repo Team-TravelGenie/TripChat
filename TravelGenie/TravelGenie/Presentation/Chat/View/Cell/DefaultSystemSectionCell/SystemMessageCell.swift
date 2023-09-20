@@ -32,7 +32,7 @@ final class SystemMessageCell: UICollectionViewCell {
         welcomeMessageTextView.textAlignment = .left
         welcomeMessageTextView.isScrollEnabled = false
         welcomeMessageTextView.dataDetectorTypes = .link
-        welcomeMessageTextView.backgroundColor = .blueGrayBackground
+        welcomeMessageTextView.backgroundColor = .clear
         welcomeMessageTextView.attributedText = viewModel.createAttributedString()
         welcomeMessageTextView.linkTextAttributes = [
             .foregroundColor: UIColor.blueGrayFont
