@@ -27,40 +27,6 @@ protocol InputBarButtonStateDelegate: AnyObject {
 
 final class ChatViewModel {
     
-    private enum Constant {
-        static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
-        
-        static let openAISystemPrompt: String = """
-            당신은 사용자가 입력한 키워드에 기반해서 3개의 여행지를 추천해주는 챗봇입니다.
-            차근차근 생각해 봅시다.
-
-            step 1. 사용자가 최소 2개 이상의 키워드를 선택합니다. 키워드에 "국내"가 있다면 "국내"는 "한국"을, "해외"가 있다면 해외는 "한국 외 국가"를 의미합니다.
-            step 2. 여행 주제의 문서들 내에 해당 키워드와 자주 등장하거나 높은 유사도를 갖는 여행지를 오름차순으로 정렬하여 세 곳의 여행지를 선별합니다.
-            step 3. 사용자에게 답변할 내용이 여행지 추천인 경우 답변은 JSON 형태로 반환합니다. recommendationItems의 country에 여행지의 국가를, spot에 관련 명소를 할당해 반환합니다. 답변 내용이 여행지 추천이 아닌 경우, JSON 형태로 반환하지 않습니다.
-
-            아래의 예시를 참고하세요:
-            Q: 오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요! 키워드를 선택해주세요!
-            A: 해외, 레저, 휴식
-            Q:
-            {
-              "recommendationItems": [
-                {
-                  "country": "태국",
-                  "spot": "후아힌 해변"
-                },
-                {
-                  "country": "인도네시아",
-                  "spot": "발리 Tegenungan Waterfall"
-                },
-                {
-                  "country": "말레이시아",
-                  "spot": "쿠알라룸푸르 선웨이라군 워터파크"
-                }
-              ]
-            }
-            """
-    }
-    
     private struct OpenAIRecommendation: Decodable {
         struct RecommendationItem: Decodable {
             let country: String
@@ -461,5 +427,44 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
 extension ChatViewModel: ImagePickerDelegate {
     func photoDataSent(_ data: [Data]) {
         handlePhotoUploads(imageData: data)
+    }
+}
+
+// MARK: Constant
+
+private extension ChatViewModel {
+    
+    enum Constant {
+        static let welcomeText = "오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요!"
+        
+        static let openAISystemPrompt: String = """
+            당신은 사용자가 입력한 키워드에 기반해서 3개의 여행지를 추천해주는 챗봇입니다.
+            차근차근 생각해 봅시다.
+
+            step 1. 사용자가 최소 2개 이상의 키워드를 선택합니다. 키워드에 "국내"가 있다면 "국내"는 "한국"을, "해외"가 있다면 해외는 "한국 외 국가"를 의미합니다.
+            step 2. 여행 주제의 문서들 내에 해당 키워드와 자주 등장하거나 높은 유사도를 갖는 여행지를 오름차순으로 정렬하여 세 곳의 여행지를 선별합니다.
+            step 3. 사용자에게 답변할 내용이 여행지 추천인 경우 답변은 JSON 형태로 반환합니다. recommendationItems의 country에 여행지의 국가를, spot에 관련 명소를 할당해 반환합니다. 답변 내용이 여행지 추천이 아닌 경우, JSON 형태로 반환하지 않습니다.
+
+            아래의 예시를 참고하세요:
+            Q: 오늘은 어디로 여행을 떠나고 싶나요? 사진을 보내주시면 원하는 분위기의 여행지를 추천해드릴게요! 키워드를 선택해주세요!
+            A: 해외, 레저, 휴식
+            Q:
+            {
+              "recommendationItems": [
+                {
+                  "country": "태국",
+                  "spot": "후아힌 해변"
+                },
+                {
+                  "country": "인도네시아",
+                  "spot": "발리 Tegenungan Waterfall"
+                },
+                {
+                  "country": "말레이시아",
+                  "spot": "쿠알라룸푸르 선웨이라군 워터파크"
+                }
+              ]
+            }
+            """
     }
 }
