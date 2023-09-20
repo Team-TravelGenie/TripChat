@@ -134,10 +134,17 @@ final class ChatViewModel {
     }
     
     func saveChat() {
-        guard let messages = messageStorageDelegate?.fetchMessages(),
+        guard var messages = messageStorageDelegate?.fetchMessages(),
               isValidChat()
         else { return }
         
+        if let lastMessage = messages.last,
+           lastMessage.messageId == "loading"
+        {
+            messages.removeLast()
+        }
+        
+
         let chat = createChat(with: messages)
         chatUseCase.save(chat: chat) { error in
             print(error?.localizedDescription)
