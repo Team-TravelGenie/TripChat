@@ -11,4 +11,5 @@ enum DesignAssetName {
     static let xMarkImage: String = "xmark"
     static let thumbsUpImage: String = "thumbs-up-regular"
     static let thumbsDownImage: String = "thumbs-down-regular"
+    static let backButtonImage: String = "chevron.left"
 }
