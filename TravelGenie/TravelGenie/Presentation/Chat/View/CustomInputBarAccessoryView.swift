@@ -53,20 +53,9 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
     private func configureLeftStackView() {
         leftStackView.alignment = .fill
         setLeftStackViewWidthConstant(to: 24, animated: false)
+        configurePhotosButton()
         
-        let galleryButtonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
-        photosButton.tintColor = .primary
-        photosButton.setImage(galleryButtonImage, for: .normal)
-        photosButton.setSize(CGSize(width: 24, height: 24), animated: false)
-        photosButton.translatesAutoresizingMaskIntoConstraints = false
-
-        let wrapperView = UIView()
-        wrapperView.addSubview(photosButton)
-        NSLayoutConstraint.activate([
-            photosButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
-            photosButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-            photosButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
-        ])
+        let wrapperView = createWrapperView(with: photosButton)
         setStackViewItems([wrapperView], forStack: .left, animated: false)
     }
     
@@ -94,21 +83,38 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         rightStackView.alignment = .fill
         rightStackView.removeArrangedSubview(sendButton)
         setRightStackViewWidthConstant(to: 24, animated: false)
+        configureSendButton()
         
+        let wrapperView = createWrapperView(with: sendButton)
+        setStackViewItems([wrapperView], forStack: .right, animated: false)
+    }
+    
+    private func configurePhotosButton() {
+        let buttonImage = UIImage(named: "images-regular")?.withRenderingMode(.alwaysTemplate)
+        photosButton.tintColor = .primary
+        photosButton.setImage(buttonImage, for: .normal)
+        photosButton.setSize(CGSize(width: 24, height: 24), animated: false)
+        photosButton.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    private func configureSendButton() {
         let sendButtonImage = UIImage(named: "paper-plane")?.withRenderingMode(.alwaysTemplate)
         sendButton.title = nil
         sendButton.tintColor = .primary
         sendButton.setImage(sendButtonImage, for: .normal)
         sendButton.setSize(CGSize(width: 24, height: 24), animated: false)
         sendButton.translatesAutoresizingMaskIntoConstraints = false
-        
+    }
+    
+    private func createWrapperView(with button: InputBarButtonItem) -> UIView {
         let wrapperView = UIView()
-        wrapperView.addSubview(sendButton)
+        wrapperView.addSubview(button)
         NSLayoutConstraint.activate([
-            sendButton.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
-            sendButton.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
-            sendButton.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
+            button.bottomAnchor.constraint(equalTo: wrapperView.bottomAnchor, constant: -5),
+            button.leadingAnchor.constraint(equalTo: wrapperView.leadingAnchor),
+            button.trailingAnchor.constraint(equalTo: wrapperView.trailingAnchor),
         ])
-        setStackViewItems([wrapperView], forStack: .right, animated: false)
+        
+        return wrapperView
     }
 }
