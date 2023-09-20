@@ -38,9 +38,9 @@ final class ChatViewModel {
     }
     
     weak var coordinator: ChatCoordinator?
-    weak var messageStorageDelegate: MessageStorageDelegate?
     weak var buttonStateDelegate: ButtonStateDelegate?
     weak var inputBarStateDelegate: InputBarStateDelegate?
+    weak var messageStorageDelegate: MessageStorageDelegate?
     var didTapImageUploadButton: (() -> Void)?
     
     private let ai: Sender = Sender(name: .ai)
