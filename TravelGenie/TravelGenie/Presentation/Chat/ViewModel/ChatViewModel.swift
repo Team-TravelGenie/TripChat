@@ -295,6 +295,7 @@ final class ChatViewModel {
             let message = Message(recommendations: self.recommendationItems)
             removeLoadingMessage()
             insertMessage(message)
+            insertAdditionalQuestionMessage()
         }
     }
     
@@ -332,6 +333,12 @@ final class ChatViewModel {
     
     private func createLoadingMessage() -> Message {
         return Message(sender: ai, messageId: "loading", sentDate: Date())
+    }
+    
+    private func insertAdditionalQuestionMessage() {
+        let additionalQuestionTextMessage = createTextMessage(with: "더 궁금한 점이 있으신가요?", sender: ai)
+        
+        insertMessage(additionalQuestionTextMessage)
     }
     
     // MARK: OpenAI
