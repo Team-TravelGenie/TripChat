@@ -188,6 +188,7 @@ final class ChatViewModel {
                 
                 removeLoadingMessage()
                 insertMessage(tagMessage)
+                updateInputTextViewState(isEditable: true)
             }
         }
     }
@@ -294,10 +295,12 @@ final class ChatViewModel {
     private func insertLoadingMessage() {
         let loadingMessage = createLoadingMessage()
         insertMessage(loadingMessage)
+        updateInputTextViewState(isEditable: false)
     }
     
     private func removeLoadingMessage() {
         messageStorageDelegate?.removeLoadingMessage()
+        updateInputTextViewState(isEditable: true)
     }
     
     private func createLoadingMessage() -> Message {
