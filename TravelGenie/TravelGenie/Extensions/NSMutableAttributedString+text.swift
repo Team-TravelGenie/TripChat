@@ -49,7 +49,7 @@ extension NSMutableAttributedString {
         return self
     }
     
-    func linkText(_ value: String, hyperLinks: [HyperLink], font: Font, color: UIColor) -> NSMutableAttributedString {
+    func hyperlinkText(_ value: String, hyperLinks: [HyperLink], font: Font, color: UIColor) -> NSMutableAttributedString {
         let baseAttributedString = text(value, font: font, color: color)
         
         hyperLinks.forEach {

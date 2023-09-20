@@ -23,6 +23,6 @@ final class SystemMessageCellViewModel {
     
     func createAttributedString() -> NSMutableAttributedString {
         return NSMutableAttributedString()
-            .linkText(Constant.systemMessageText, hyperLinks: hyperLinks, font: .captionRegular, color: .blueGrayFont)
+            .hyperlinkText(Constant.systemMessageText, hyperLinks: hyperLinks, font: .captionRegular, color: .blueGrayFont)
     }
 }
