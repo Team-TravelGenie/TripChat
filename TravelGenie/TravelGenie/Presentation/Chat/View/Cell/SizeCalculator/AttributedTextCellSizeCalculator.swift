@@ -23,24 +23,27 @@ final class AttributedTextCellSizeCalculator: MessageSizeCalculator {
         at indexPath: IndexPath)
         -> CGSize
     {
-        let size = super.messageContainerSize(
-            for: message,
-            at: indexPath)
-        let labelSize = messageLabelSize(
-            for: message,
-            at: indexPath)
-        let selfWidth = labelSize.width + 20 + 20
-        let width = max(selfWidth, size.width)
-        let height = size.height + labelSize.height + 12 + 8
+        let labelSize = messageLabelSize(for: message, at: indexPath)
+        let messageInsets = UIEdgeInsets(
+            top: Design.verticalPadding,
+            left: Design.horizontalPadding,
+            bottom: Design.verticalPadding,
+            right: Design.horizontalPadding)
         
-        return CGSize(width: width, height: height)
+        return CGSize(
+            width: labelSize.width + messageInsets.left + messageInsets.right,
+            height: labelSize.height + messageInsets.top + messageInsets.bottom)
     }
     
     override func configure(attributes: UICollectionViewLayoutAttributes) {
         super.configure(attributes: attributes)
         guard let attributes = attributes as? MessagesCollectionViewLayoutAttributes else { return }
         
-        attributes.messageLabelInsets = UIEdgeInsets(top: 8, left: 20, bottom: 12, right: 20)
+        attributes.messageLabelInsets = UIEdgeInsets(
+            top: Design.verticalPadding,
+            left: Design.horizontalPadding,
+            bottom: Design.verticalPadding,
+            right: Design.horizontalPadding)
     }
     
     override func cellContentHeight(
@@ -103,9 +106,22 @@ final class AttributedTextCellSizeCalculator: MessageSizeCalculator {
         default:
             fatalError("messageLabelSize received unhandled MessageDataType: \(message.kind)")
         }
+
+        let maxWidth = messageContainerMaxWidth(for: message, at: indexPath) - Design.horizontalPadding * 2
+        let constraintBox = CGSize(width: maxWidth, height: .greatestFiniteMagnitude)
+        let messageLabelSize = attributedText.boundingRect(
+            with: constraintBox,
+            options: [.usesLineFragmentOrigin, .usesFontLeading],
+            context: nil)
+            .integral
         
-        let maxWidth = messageContainerMaxWidth(for: message, at: indexPath) - 20 - 20
-        
-        return attributedText.size(consideringWidth: maxWidth)
+        return messageLabelSize.size
+    }
+}
+
+private extension AttributedTextCellSizeCalculator {
+    enum Design {
+        static let horizontalPadding: CGFloat = 20
+        static let verticalPadding: CGFloat = 12
     }
 }
