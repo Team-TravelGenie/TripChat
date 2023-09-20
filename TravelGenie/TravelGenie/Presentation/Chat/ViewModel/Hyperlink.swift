@@ -22,7 +22,7 @@ struct Hyperlink {
         case .openAIPolicy:
             return "OpenAI의 데이터 사용 정책"
         case .googleAPITerms:
-            return "Google API의 서비스이용약관"
+            return "Google API의 서비스 이용약관"
         case .googleAPIPrivacyPolicy:
             return "Google API 사용자 데이터 정책"
         case .naverDeveloperTerms:
