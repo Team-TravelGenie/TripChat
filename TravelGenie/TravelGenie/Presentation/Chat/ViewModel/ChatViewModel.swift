@@ -71,6 +71,19 @@ final class ChatViewModel {
     
     // MARK: Internal
     
+    func setupDefaultSystemMessages() {
+        let defaultMessage = NSMutableAttributedString()
+            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
+        
+        let defaultMessages = [
+            Message(sender: Sender(name: .ai)),
+            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
+            Message(sender: Sender(name: .ai))
+        ]
+        
+        defaultMessages.forEach { insertMessage($0) }
+    }
+    
     func insertMessage(_ message: Message) {
         messageStorageDelegate?.insert(message: message)
     }
@@ -129,25 +142,16 @@ final class ChatViewModel {
             object: nil)
     }
     
-    func setupDefaultSystemMessages() {
-        let defaultMessage = NSMutableAttributedString()
-            .text(Constant.welcomeText, font: .bodyRegular, color: .black)
-        
-        let defaultMessages = [
-            Message(sender: Sender(name: .ai)),
-            Message(text: defaultMessage, sender: Sender(name: .ai), sentDate: Date()),
-            Message(sender: Sender(name: .ai))
-        ]
-        
-        defaultMessages.forEach { insertMessage($0) }
-    }
-    
     private func updateImageUploadButtonState(_ isEnabled: Bool) {
         buttonStateDelegate?.setUploadButtonState(isEnabled)
     }
     
     private func updateInputBarPhotosButtonState(_ isEnabled: Bool) {
         inputBarButtonStateDelegate?.setPhotosButtonState(isEnabled)
+    }
+    
+    private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
+        messageStorageDelegate?.updateTagMessage(selectedTags: selectedTags)
     }
     
     private func extractKeywords(from imageData: [Data]) {
@@ -215,7 +219,7 @@ final class ChatViewModel {
         }
     }
     
-    // MARK: Create Message
+    // MARK: Message
     
     private func createTextMessage(with text: String, sender: Sender) -> Message {
         let messageText = NSMutableAttributedString()
@@ -283,7 +287,6 @@ final class ChatViewModel {
     
     private func insertLoadingMessage() {
         let loadingMessage = createLoadingMessage()
-        
         insertMessage(loadingMessage)
     }
     
@@ -401,10 +404,6 @@ final class ChatViewModel {
         
         let tagText = selectedTags.map { $0.value }.joined(separator: ", ")
         sendSelectedTags(tagText)
-    }
-    
-    private func updateTagMessageSelectedState(_ selectedTags: [Tag]) {
-        messageStorageDelegate?.updateTagMessage(selectedTags: selectedTags)
     }
 }
 
