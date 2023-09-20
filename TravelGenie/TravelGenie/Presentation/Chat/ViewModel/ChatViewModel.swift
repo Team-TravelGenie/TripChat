@@ -188,7 +188,6 @@ final class ChatViewModel {
                 
                 removeLoadingMessage()
                 insertMessage(tagMessage)
-                updateInputTextViewState(isEditable: true)
             }
         }
     }
@@ -267,6 +266,7 @@ final class ChatViewModel {
             let message = Message(recommendations: self.recommendationItems)
             removeLoadingMessage()
             insertMessage(message)
+            updateInputTextViewState(isEditable: true)
         }
     }
     
