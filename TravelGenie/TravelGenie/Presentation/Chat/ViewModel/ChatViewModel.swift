@@ -188,6 +188,7 @@ final class ChatViewModel {
                 
                 removeLoadingMessage()
                 insertMessage(tagMessage)
+                updateInputTextViewState(isEditable: false)
             }
         }
     }
