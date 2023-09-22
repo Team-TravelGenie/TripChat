@@ -19,8 +19,6 @@ struct ImageSearchRequestModel: Encodable {
     let q: String
     let exactTerms: String
     
-    // TODO: - exactTerms에는 spot이 들어가고
-    // q에는 사용자가 선택한 태그 + country가 들어가면 좋을 듯
     init(q: String, exactTerms: String) {
         self.q = q
         self.exactTerms = exactTerms
