@@ -115,10 +115,17 @@ final class ChatViewModel {
     }
     
     func saveChat() {
-        guard let messages = messageStorageDelegate?.fetchMessages(),
+        guard var messages = messageStorageDelegate?.fetchMessages(),
               isValidChat()
         else { return }
         
+        if let lastMessage = messages.last,
+           lastMessage.messageId == "loading"
+        {
+            messages.removeLast()
+        }
+        
+
         let chat = createChat(with: messages)
         chatUseCase.save(chat: chat) { error in
             print(error?.localizedDescription)
@@ -267,6 +274,7 @@ final class ChatViewModel {
             let message = Message(recommendations: self.recommendationItems)
             removeLoadingMessage()
             insertMessage(message)
+            insertAdditionalQuestionMessage()
             updateInputTextViewState(isEditable: true)
         }
     }
@@ -306,6 +314,12 @@ final class ChatViewModel {
     
     private func createLoadingMessage() -> Message {
         return Message(sender: ai, messageId: "loading", sentDate: Date())
+    }
+    
+    private func insertAdditionalQuestionMessage() {
+        let additionalQuestionTextMessage = createTextMessage(with: "더 궁금한 점이 있으신가요?", sender: ai)
+        
+        insertMessage(additionalQuestionTextMessage)
     }
     
     // MARK: OpenAI
@@ -425,6 +439,11 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
         let openAIChatMessage = ChatMessage(role: .user, content: text)
         insertMessage(textMessage)
         sendMessageToOpenAI(openAIChatMessage)
+        clearInputText(from: inputBar)
+    }
+    
+    private func clearInputText(from inputBar: InputBarAccessoryView) {
+        inputBar.inputTextView.text = String()
     }
 }
 

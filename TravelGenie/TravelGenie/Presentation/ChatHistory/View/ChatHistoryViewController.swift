@@ -59,7 +59,7 @@ final class ChatHistoryViewController: ChatInterfaceViewController {
     }
     
     private func createBackBarButtonAction() -> UIAction {
-        let backBarButtonImage = UIImage(systemName: "chevron.left")
+        let backBarButtonImage = UIImage(systemName: DesignAssetName.backButtonImage)
         
         return UIAction(image: backBarButtonImage) { [weak self] _ in
             guard let self else { return }
