@@ -521,10 +521,8 @@
 				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
-				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 				572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */,
 				D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */,
-				D2629A382AB9978B0006CEF5 /* Hyperlink.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -837,6 +835,8 @@
 				5763DEFB2A99AAE70028B19F /* ViewModel */,
 				576EC3AF2A97B1BF008C2D7C /* View */,
 				573BCD252A8F46B900116D2D /* ChatCoordinator.swift */,
+				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
+				D2629A382AB9978B0006CEF5 /* Hyperlink.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
