@@ -124,7 +124,8 @@ extension CoreDataChatStorage: ChatStorage {
             entityName: "RecommendationEntity",
             values: [
                 "country": recommendation.country,
-                "spot": recommendation.spot,
+                "spotKorean": recommendation.spotKorean,
+                "spotEnglish": recommendation.spotEnglish,
                 "image": recommendation.image,
             ]) as? RecommendationEntity else { return }
         

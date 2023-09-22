@@ -31,7 +31,8 @@ final class ChatViewModel {
     private struct OpenAIRecommendation: Decodable {
         struct RecommendationItem: Decodable {
             let country: String
-            let spot: String
+            let spotKorean: String
+            let spotEnglish: String
         }
         
         let recommendationItems: [RecommendationItem]
@@ -283,18 +284,22 @@ final class ChatViewModel {
         with item: OpenAIRecommendation.RecommendationItem,
         completion: @escaping ((RecommendationItem) -> Void))
     {
-        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spot) { result in
+        // TODO: country == "한국"일 경우 spotKorean, 아닐 경우 spotEnglish 활용
+        // TODO: TripAdvisor API 선 요청 후 구글 API 요청
+        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spotEnglish) { result in
             switch result {
             case .success(let imageData):
                 let recommendationItem = RecommendationItem(
                     country: item.country,
-                    spot: item.spot,
+                    spotKorean: item.spotKorean,
+                    spotEnglish: item.spotEnglish,
                     image: imageData)
                 completion(recommendationItem)
             case .failure:
                 let recommendationItem = RecommendationItem(
                     country: item.country,
-                    spot: item.spot,
+                    spotKorean: item.spotKorean,
+                    spotEnglish: item.spotEnglish,
                     image: Data())
                 completion(recommendationItem)
             }

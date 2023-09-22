@@ -17,7 +17,8 @@ extension RecommendationEntity {
     }
 
     @NSManaged public var country: String
-    @NSManaged public var spot: String
+    @NSManaged public var spotKorean: String
+    @NSManaged public var spotEnglish: String
     @NSManaged public var image: Data
     @NSManaged public var chat: NSOrderedSet?
 
