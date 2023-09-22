@@ -662,7 +662,6 @@
 			children = (
 				57462B722A96000A00949D5C /* UseCase */,
 				57462B492A95B5C600949D5C /* RepositoryInterface */,
-				D2E3AA352A8B85980049DDEF /* Model */,
 				D20FA29B2A6BBA010081B039 /* Entity */,
 			);
 			path = Domain;
@@ -837,6 +836,7 @@
 				573BCD252A8F46B900116D2D /* ChatCoordinator.swift */,
 				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 				D2629A382AB9978B0006CEF5 /* Hyperlink.swift */,
+				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -847,14 +847,6 @@
 				D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */,
 			);
 			path = ChatInterface;
-			sourceTree = "<group>";
-		};
-		D2E3AA352A8B85980049DDEF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D2F8C5762A8F47A800AA3BFC /* CustomTagCell */ = {
