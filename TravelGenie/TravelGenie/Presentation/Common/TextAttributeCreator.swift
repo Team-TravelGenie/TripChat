@@ -9,18 +9,18 @@ import UIKit
 
 final class TextAttributeCreator {
     
-    static func create(
-        font: Font,
-        color: UIColor)
-        -> [NSAttributedString.Key: Any]
-    {
+    static func create(font: Font, color: UIColor) -> [NSAttributedString.Key: Any] {
         let fontSize: CGFloat = font.fontSize
-        let lineHeight: CGFloat = font.lineHeight
-        let font: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
+        let systemFont: UIFont = .systemFont(ofSize: fontSize, weight: font.weight)
+                
+        let style = NSMutableParagraphStyle()
+        let lineSpacing: CGFloat = font.lineSpacing
+        style.lineSpacing = lineSpacing
+        
         let attributes: [NSAttributedString.Key: Any] = [
+            .font: systemFont,
+            .paragraphStyle: style,
             .foregroundColor: color,
-            .font: font,
-            .baselineOffset: (lineHeight - font.lineHeight) / 4,
         ]
         
         return attributes

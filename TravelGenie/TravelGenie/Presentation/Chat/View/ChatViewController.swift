@@ -19,9 +19,9 @@ final class ChatViewController: ChatInterfaceViewController {
         self.chatViewModel = viewModel
         super.init(nibName: nil, bundle: nil)
         bind()
-        chatViewModel.messageStorageDelegate = chatInterfaceViewModel
+        chatViewModel.inputBarStateDelegate = self
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
-        chatViewModel.inputBarButtonStateDelegate = self
+        chatViewModel.messageStorageDelegate = chatInterfaceViewModel
         scrollsToLastItemOnKeyboardBeginsEditing = true
     }
     
@@ -67,7 +67,7 @@ final class ChatViewController: ChatInterfaceViewController {
     }
     
     private func createBackBarButtonAction() -> UIAction {
-        let backBarButtonImage = UIImage(systemName: "chevron.left")
+        let backBarButtonImage = UIImage(systemName: DesignAssetName.backButtonImage)
         
         return UIAction(image: backBarButtonImage) { [weak self] _ in
             guard let self else { return }
@@ -125,10 +125,16 @@ extension ChatViewController: CustomInputBarAccessoryViewDelegate {
     }
 }
 
-extension ChatViewController: InputBarButtonStateDelegate {
+extension ChatViewController: InputBarStateDelegate {
     func setPhotosButtonState(_ isEnabled: Bool) {
         guard let inputBar = messageInputBar as? CustomInputBarAccessoryView else { return }
         
         inputBar.updatePhotosButtonState(isEnabled)
+    }
+    
+    func updateInputTextViewState(_ isEditable: Bool) {
+        DispatchQueue.main.async { [weak self] in
+            self?.messageInputBar.inputTextView.isEditable = isEditable
+        }
     }
 }
