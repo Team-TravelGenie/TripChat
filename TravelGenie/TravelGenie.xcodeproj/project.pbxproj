@@ -521,10 +521,8 @@
 				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
-				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
 				572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */,
 				D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */,
-				D2629A382AB9978B0006CEF5 /* Hyperlink.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -664,7 +662,6 @@
 			children = (
 				57462B722A96000A00949D5C /* UseCase */,
 				57462B492A95B5C600949D5C /* RepositoryInterface */,
-				D2E3AA352A8B85980049DDEF /* Model */,
 				D20FA29B2A6BBA010081B039 /* Entity */,
 			);
 			path = Domain;
@@ -837,6 +834,9 @@
 				5763DEFB2A99AAE70028B19F /* ViewModel */,
 				576EC3AF2A97B1BF008C2D7C /* View */,
 				573BCD252A8F46B900116D2D /* ChatCoordinator.swift */,
+				D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */,
+				D2629A382AB9978B0006CEF5 /* Hyperlink.swift */,
+				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -847,14 +847,6 @@
 				D2E3AA322A8B83520049DDEF /* ChatInterfaceViewController.swift */,
 			);
 			path = ChatInterface;
-			sourceTree = "<group>";
-		};
-		D2E3AA352A8B85980049DDEF /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */,
-			);
-			path = Model;
 			sourceTree = "<group>";
 		};
 		D2F8C5762A8F47A800AA3BFC /* CustomTagCell */ = {
