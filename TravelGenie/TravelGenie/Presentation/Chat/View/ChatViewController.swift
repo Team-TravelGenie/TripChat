@@ -22,6 +22,7 @@ final class ChatViewController: ChatInterfaceViewController {
         chatViewModel.inputBarStateDelegate = self
         chatViewModel.buttonStateDelegate = chatInterfaceViewModel
         chatViewModel.messageStorageDelegate = chatInterfaceViewModel
+        scrollsToLastItemOnKeyboardBeginsEditing = true
     }
     
     required init?(coder: NSCoder) {
@@ -31,9 +32,9 @@ final class ChatViewController: ChatInterfaceViewController {
     // MARK: Override(s)
     
     override func viewDidLoad() {
+        configureMessageInputBar()
         super.viewDidLoad()
         setupNavigation()
-        configureMessageInputBar()
         chatViewModel.setupDefaultSystemMessages()
     }
     
@@ -83,8 +84,7 @@ final class ChatViewController: ChatInterfaceViewController {
         customInputBar.inputBarButtonDelegate = self
         customInputBar.separatorLine.isHidden = true
         customInputBar.delegate = chatViewModel
-        messageInputBar = customInputBar
-        inputBarType = .custom(messageInputBar)
+        inputBarType = .custom(customInputBar)
     }
 }
 
