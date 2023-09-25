@@ -143,7 +143,7 @@ extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        let width = (view.frame.width - 2) / 3
+        let width = (view.frame.width - CGFloat(Constant.photosPerRow - 1)) / CGFloat(Constant.photosPerRow)
         let height = width
         return CGSize(width: width, height: height)
     }
@@ -218,7 +218,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         viewModel.addImage(indexPath: indexPath, imageData: imageData)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
         
-        if viewModel.selectedPhotos.count == 3 {
+        if viewModel.selectedPhotos.count == Constant.maximumSelectedPhotoCount {
             guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
             
             cells.forEach {
@@ -246,7 +246,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
             }
         }
         
-        if viewModel.selectedPhotos.count < 3 {
+        if viewModel.selectedPhotos.count < Constant.maximumSelectedPhotoCount {
             guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
             
             cells.forEach {
@@ -260,7 +260,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         shouldSelectItemAt indexPath: IndexPath)
         -> Bool
     {
-        guard viewModel.selectedPhotos.count < 3 else {
+        guard viewModel.selectedPhotos.count < Constant.maximumSelectedPhotoCount else {
             self.presentPhotoLimitAlert()
             return false
         }
@@ -336,5 +336,14 @@ extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
                 self.collectionView.reloadData()
             }
         }
+    }
+}
+
+// MARK: Constant
+
+private extension CustomImagePickerViewController {
+    enum Constant {
+        static let maximumSelectedPhotoCount: Int = 3
+        static let photosPerRow: Int = 3
     }
 }
