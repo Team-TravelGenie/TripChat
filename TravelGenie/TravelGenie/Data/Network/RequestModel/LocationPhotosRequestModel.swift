@@ -9,10 +9,11 @@ import Foundation
 
 struct LocationPhotosRequestModel: Encodable {
     let key: String = SecretStorage.TripadvisorClientKey
-    let language: String = "en"
+    let language: String
     let locationId: String
     
-    init(locationId: String) {
+    init(language: String, locationId: String) {
+        self.language = language
         self.locationId = locationId
     }
 }
