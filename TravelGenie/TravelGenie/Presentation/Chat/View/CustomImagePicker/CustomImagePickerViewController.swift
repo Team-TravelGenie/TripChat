@@ -58,6 +58,28 @@ final class CustomImagePickerViewController: UIViewController {
         }
     }
     
+    private func configurePhotoLibrary() {
+        checkAuthorization()
+        PHPhotoLibrary.shared().register(self)
+        
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOption)
+    }
+    
+    private func checkAuthorization() {
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+            DispatchQueue.main.async {
+                switch status {
+                case .restricted, .denied:
+                    self?.presentPhotoAuthorizationDeniedAlert()
+                default:
+                    return
+                }
+            }
+        }
+    }
+    
     private func configureSubviews() {
         configureCollectionView()
         configureHeaderView()
@@ -98,28 +120,6 @@ final class CustomImagePickerViewController: UIViewController {
             collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
-    }
-    
-    private func configurePhotoLibrary() {
-        checkAuthorization()
-        PHPhotoLibrary.shared().register(self)
-        
-        let fetchOption = PHFetchOptions()
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOption)
-    }
-    
-    private func checkAuthorization() {
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
-            DispatchQueue.main.async {
-                switch status {
-                case .restricted, .denied:
-                    self?.presentPhotoAuthorizationDeniedAlert()
-                default:
-                    return
-                }
-            }
-        }
     }
 }
 
