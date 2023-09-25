@@ -94,8 +94,8 @@ final class ImagePickerViewController: UIViewController {
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = true
         collectionView.register(
-            CustomImagePickerCell.self,
-            forCellWithReuseIdentifier: CustomImagePickerCell.identifier)
+            ImagePickerCell.self,
+            forCellWithReuseIdentifier: ImagePickerCell.identifier)
     }
     
     private func configureHeaderView() {
@@ -208,8 +208,8 @@ extension ImagePickerViewController: UICollectionViewDataSource {
         -> UICollectionViewCell
     {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CustomImagePickerCell.identifier,
-            for: indexPath) as? CustomImagePickerCell,
+            withReuseIdentifier: ImagePickerCell.identifier,
+            for: indexPath) as? ImagePickerCell,
               let asset = fetchResult?.object(at: indexPath.item)
         else { return UICollectionViewCell() }
         
@@ -235,13 +235,13 @@ extension ImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImagePickerCell else { return }
         
         self.viewModel.addImage(at: indexPath)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
         
         if viewModel.selectedPhotos.count == Constant.maximumSelectedPhotoCount {
-            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+            guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
                 if !$0.isSelected { $0.layer.opacity = 0.2 }
@@ -253,14 +253,14 @@ extension ImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didDeselectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImagePickerCell else { return }
         
         viewModel.removeImage(at: indexPath)
         cell.configureDeselectedState(viewModel.selectedPhotos.count)
         
         if !viewModel.selectedPhotos.isEmpty {
             viewModel.selectedPhotos.forEach {
-                guard let cell = collectionView.cellForItem(at: $0) as? CustomImagePickerCell,
+                guard let cell = collectionView.cellForItem(at: $0) as? ImagePickerCell,
                       let index = viewModel.selectedIndexForCurrentPhoto(at: $0)
                 else { return }
                 
@@ -269,7 +269,7 @@ extension ImagePickerViewController: UICollectionViewDataSource {
         }
         
         if viewModel.selectedPhotos.count < Constant.maximumSelectedPhotoCount {
-            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+            guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
                 if !$0.isSelected { $0.layer.opacity = 1 }

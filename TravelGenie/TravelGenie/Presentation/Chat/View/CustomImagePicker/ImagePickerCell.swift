@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerCell.swift
+//  ImagePickerCell.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/06.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CustomImagePickerCell: UICollectionViewCell {
+final class ImagePickerCell: UICollectionViewCell {
     
     static var identifier: String { return String(describing: self) }
     
