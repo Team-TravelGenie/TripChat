@@ -536,21 +536,21 @@
 			children = (
 				D2E3AA312A8B83350049DDEF /* ChatInterface */,
 				D23037752A8C61A80017950E /* Cell */,
-				57A54C882AA8CAD60087B640 /* CustomImagePicker */,
+				57A54C882AA8CAD60087B640 /* ImagePicker */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
 				57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		57A54C882AA8CAD60087B640 /* CustomImagePicker */ = {
+		57A54C882AA8CAD60087B640 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
 				57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */,
 				57A54C892AA8CB280087B640 /* ImagePickerCell.swift */,
 				57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */,
 			);
-			path = CustomImagePicker;
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
