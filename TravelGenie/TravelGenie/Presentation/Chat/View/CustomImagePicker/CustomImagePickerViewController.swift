@@ -17,7 +17,7 @@ final class CustomImagePickerViewController: UIViewController {
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout())
     
-    private var photos: PHFetchResult<PHAsset>?
+    private var fetchResult: PHFetchResult<PHAsset>?
     private var thumbnailSize: CGSize = .zero
     
     // MARK: Lifecycle
@@ -106,7 +106,7 @@ final class CustomImagePickerViewController: UIViewController {
         
         let fetchOption = PHFetchOptions()
         fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        photos = PHAsset.fetchAssets(with: .image, options: fetchOption)
+        fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOption)
     }
     
     private func checkAuthorization() {
@@ -176,7 +176,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         numberOfItemsInSection section: Int)
         -> Int
     {
-        return photos?.count ?? .zero
+        return fetchResult?.count ?? .zero
     }
     
     func collectionView(
@@ -187,7 +187,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         guard let cell = collectionView.dequeueReusableCell(
             withReuseIdentifier: CustomImagePickerCell.identifier,
             for: indexPath) as? CustomImagePickerCell,
-              let asset = photos?.object(at: indexPath.item)
+              let asset = fetchResult?.object(at: indexPath.item)
         else { return UICollectionViewCell() }
         
         cell.assetIdentifier = asset.localIdentifier
@@ -306,11 +306,11 @@ extension CustomImagePickerViewController {
 
 extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let photos = photos,
+        guard let photos = fetchResult,
               let changes = changeInstance.changeDetails(for: photos) else { return }
         
         DispatchQueue.main.async {
-            self.photos = changes.fetchResultAfterChanges
+            self.fetchResult = changes.fetchResultAfterChanges
             
             if changes.hasIncrementalChanges {
                 self.collectionView.performBatchUpdates {
