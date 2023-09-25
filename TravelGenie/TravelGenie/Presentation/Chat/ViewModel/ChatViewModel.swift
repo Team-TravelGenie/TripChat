@@ -109,23 +109,6 @@ final class ChatViewModel {
         messageStorageDelegate?.insert(message: message)
     }
     
-    private func handlePhotoUploads(with data: [Data]) {
-        let totalPhotosToUpload = data.count
-        var photoUploadCount = 0
-        
-        data.forEach {
-            let photoMessage = createPhotoMessage(from: $0)
-            photoUploadCount += 1
-            insertMessage(photoMessage)
-        }
-
-        if totalPhotosToUpload == photoUploadCount {
-            updateImageUploadButtonState(false)
-            updateInputBarPhotosButtonState(false)
-            extractKeywords(from: data)
-        }
-    }
-    
     func backButtonTapped() -> (viewModel: PopUpViewModel, type: PopUpContentView.PopUpType) {
         let popUpViewModel = createPopUpViewModel()
         let popUpModel = createPopUpModel()
@@ -202,6 +185,23 @@ final class ChatViewModel {
         
         group.notify(queue: .main) {
             completion(compressedData)
+        }
+    }
+    
+    private func handlePhotoUploads(with data: [Data]) {
+        let totalPhotosToUpload = data.count
+        var photoUploadCount = 0
+        
+        data.forEach {
+            let photoMessage = createPhotoMessage(from: $0)
+            photoUploadCount += 1
+            insertMessage(photoMessage)
+        }
+
+        if totalPhotosToUpload == photoUploadCount {
+            updateImageUploadButtonState(false)
+            updateInputBarPhotosButtonState(false)
+            extractKeywords(from: data)
         }
     }
     
