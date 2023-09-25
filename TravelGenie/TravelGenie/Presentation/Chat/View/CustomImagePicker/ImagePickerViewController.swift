@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerViewController.swift
+//  ImagePickerViewController.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/06.
@@ -8,7 +8,7 @@
 import Photos
 import UIKit
 
-final class CustomImagePickerViewController: UIViewController {
+final class ImagePickerViewController: UIViewController {
     
     let viewModel: CustomImagePickerViewModel
     
@@ -126,7 +126,7 @@ final class CustomImagePickerViewController: UIViewController {
     }
 }
 
-extension CustomImagePickerViewController: CustomImagePickerHeaderViewDelegate {
+extension ImagePickerViewController: CustomImagePickerHeaderViewDelegate {
     func dismissModal() {
         dismiss(animated: false)
     }
@@ -162,7 +162,7 @@ extension CustomImagePickerViewController: CustomImagePickerHeaderViewDelegate {
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
+extension ImagePickerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
@@ -193,7 +193,7 @@ extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: UICollectionViewDataSource
 
-extension CustomImagePickerViewController: UICollectionViewDataSource {
+extension ImagePickerViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int)
@@ -293,7 +293,7 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
 
 // MARK: Alerts
 
-extension CustomImagePickerViewController {
+extension ImagePickerViewController {
     private func presentPhotoAuthorizationDeniedAlert() {
         let alertController = UIAlertController(
             title: "사진 접근 권한 필요",
@@ -320,7 +320,7 @@ extension CustomImagePickerViewController {
 
 // MARK: PHPhotoLibraryChangeObserver
 
-extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
+extension ImagePickerViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
         guard let photos = fetchResult,
               let changes = changeInstance.changeDetails(for: photos) else { return }
@@ -363,7 +363,7 @@ extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
 
 // MARK: Constant
 
-private extension CustomImagePickerViewController {
+private extension ImagePickerViewController {
     enum Constant {
         static let maximumSelectedPhotoCount: Int = 3
         static let photosPerRow: Int = 3

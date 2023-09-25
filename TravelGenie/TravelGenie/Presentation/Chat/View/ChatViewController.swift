@@ -94,7 +94,7 @@ extension ChatViewController {
     private func showImagePicker() {
         let customImagePickerViewModel = CustomImagePickerViewModel()
         customImagePickerViewModel.delegate = chatViewModel
-        let vc = CustomImagePickerViewController(viewModel: customImagePickerViewModel)
+        let vc = ImagePickerViewController(viewModel: customImagePickerViewModel)
         vc.modalPresentationStyle = .pageSheet
         
         if let sheet = vc.sheetPresentationController {

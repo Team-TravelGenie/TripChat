@@ -67,7 +67,7 @@
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
 		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
-		57A54C872AA8C6BA0087B640 /* CustomImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */; };
+		57A54C872AA8C6BA0087B640 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */; };
 		57A54C8A2AA8CB280087B640 /* CustomImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */; };
 		57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */; };
 		57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8F2AA8D9350087B640 /* CustomButton.swift */; };
@@ -213,7 +213,7 @@
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
-		57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerViewController.swift; sourceTree = "<group>"; };
+		57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerCell.swift; sourceTree = "<group>"; };
 		57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerHeaderView.swift; sourceTree = "<group>"; };
 		57A54C8F2AA8D9350087B640 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
@@ -546,7 +546,7 @@
 		57A54C882AA8CAD60087B640 /* CustomImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */,
+				57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */,
 				57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */,
 				57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */,
 			);
@@ -1009,7 +1009,7 @@
 				57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */,
 				D26846902AA1109E00831097 /* DefaultTranslateRepository.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
-				57A54C872AA8C6BA0087B640 /* CustomImagePickerViewController.swift in Sources */,
+				57A54C872AA8C6BA0087B640 /* ImagePickerViewController.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				57DA98912AA0BECC0074409B /* AttributedTextCellSizeCalculator.swift in Sources */,
 				57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */,
