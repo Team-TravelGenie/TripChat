@@ -29,7 +29,7 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
         }
     }
     
-    func searchPhotos(
+    func searchPhoto(
         locationID: String,
         languageCode: String,
         completion: @escaping ((Result<String, Error>) -> Void))

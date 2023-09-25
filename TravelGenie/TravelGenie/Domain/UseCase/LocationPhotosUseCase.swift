@@ -18,7 +18,7 @@ protocol LocationPhotosUseCase {
         languageCode: LanguageCode,
         completion: @escaping ((Result<String, Error>) -> Void))
     
-    func searchPhotos(
+    func searchPhoto(
         locationID: String,
         languageCode: LanguageCode,
         completion: @escaping ((Result<String, Error>) -> Void))
@@ -47,12 +47,12 @@ final class DefaultLocationPhotosUseCase: LocationPhotosUseCase {
         }
     }
     
-    func searchPhotos(
+    func searchPhoto(
         locationID: String,
         languageCode: LanguageCode,
         completion: @escaping ((Result<String, Error>) -> Void))
     {
-        locationPhotosRepository.searchPhotos(locationID: locationID, languageCode: languageCode.rawValue) { result in
+        locationPhotosRepository.searchPhoto(locationID: locationID, languageCode: languageCode.rawValue) { result in
             switch result {
             case .success(let imageUrl):
                 completion(.success(imageUrl))

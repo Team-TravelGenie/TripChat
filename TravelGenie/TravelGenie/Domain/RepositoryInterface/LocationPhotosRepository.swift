@@ -13,7 +13,7 @@ protocol LocationPhotosRepository {
         languageCode: String,
         completion: @escaping ((Result<String, Error>) -> Void))
     
-    func searchPhotos(
+    func searchPhoto(
         locationID: String,
         languageCode: String,
         completion: @escaping ((Result<String, Error>) -> Void))
