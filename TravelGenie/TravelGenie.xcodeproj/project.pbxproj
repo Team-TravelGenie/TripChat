@@ -69,7 +69,7 @@
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
 		57A54C872AA8C6BA0087B640 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */; };
 		57A54C8A2AA8CB280087B640 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C892AA8CB280087B640 /* ImagePickerCell.swift */; };
-		57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */; };
+		57A54C8E2AA8D8B50087B640 /* ImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */; };
 		57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8F2AA8D9350087B640 /* CustomButton.swift */; };
 		57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A54C912AA996F00087B640 /* GoogleService-Info.plist */; };
 		57C100192A8B91E700A664FD /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57C100182A8B91E700A664FD /* Color.swift */; };
@@ -215,7 +215,7 @@
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
 		57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
 		57A54C892AA8CB280087B640 /* ImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
-		57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerHeaderView.swift; sourceTree = "<group>"; };
+		57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHeaderView.swift; sourceTree = "<group>"; };
 		57A54C8F2AA8D9350087B640 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		57A54C912AA996F00087B640 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57C100182A8B91E700A664FD /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Color.swift; path = Color/Color.swift; sourceTree = "<group>"; };
@@ -548,7 +548,7 @@
 			children = (
 				57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */,
 				57A54C892AA8CB280087B640 /* ImagePickerCell.swift */,
-				57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */,
+				57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */,
 			);
 			path = CustomImagePicker;
 			sourceTree = "<group>";
@@ -1083,7 +1083,7 @@
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
 				5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */,
 				57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */,
-				57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */,
+				57A54C8E2AA8D8B50087B640 /* ImagePickerHeaderView.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				57A54C8A2AA8CB280087B640 /* ImagePickerCell.swift in Sources */,
 				57567F812AAF13EF00B1F7CB /* ImageCompressor.swift in Sources */,

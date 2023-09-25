@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerHeaderView.swift
+//  ImagePickerHeaderView.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/07.
@@ -12,7 +12,7 @@ protocol CustomImagePickerHeaderViewDelegate: AnyObject {
     func send()
 }
 
-final class CustomImagePickerHeaderView: UIView {
+final class ImagePickerHeaderView: UIView {
     
     weak var delegate: CustomImagePickerHeaderViewDelegate?
     

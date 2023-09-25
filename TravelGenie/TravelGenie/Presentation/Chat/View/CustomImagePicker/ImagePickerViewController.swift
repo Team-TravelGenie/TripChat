@@ -12,7 +12,7 @@ final class ImagePickerViewController: UIViewController {
     
     let viewModel: CustomImagePickerViewModel
     
-    private let headerView = CustomImagePickerHeaderView()
+    private let headerView = ImagePickerHeaderView()
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout())
