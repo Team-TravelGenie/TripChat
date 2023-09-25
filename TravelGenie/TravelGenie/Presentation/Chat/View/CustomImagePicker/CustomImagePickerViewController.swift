@@ -115,7 +115,6 @@ final class CustomImagePickerViewController: UIViewController {
                 switch status {
                 case .restricted, .denied:
                     self?.presentPhotoAuthorizationDeniedAlert()
-                    return
                 default:
                     return
                 }
