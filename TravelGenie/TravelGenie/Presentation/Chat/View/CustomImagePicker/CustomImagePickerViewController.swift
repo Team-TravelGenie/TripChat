@@ -132,8 +132,31 @@ extension CustomImagePickerViewController: CustomImagePickerHeaderViewDelegate {
     }
     
     func send() {
-        viewModel.sendPhotos()
-        dismiss(animated: false)
+        var imageData: [Data] = []
+        let group = DispatchGroup()
+        let selectedIndices = viewModel.selectedPhotos
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        
+        for index in selectedIndices {
+            group.enter()
+            guard let asset = fetchResult?.object(at: index.item) else { continue }
+            
+            PHImageManager.default().requestImage(
+                for: asset,
+                targetSize: PHImageManagerMaximumSize,
+                contentMode: PHImageContentMode.default,
+                options: options) { image, info in
+                    guard let data = image?.pngData() else { return }
+                    imageData.append(data)
+                    group.leave()
+                }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.viewModel.sendPhotos(data: imageData)
+            self?.dismiss(animated: false)
+        }
     }
 }
 
@@ -195,15 +218,15 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
             for: asset,
             targetSize: thumbnailSize,
             contentMode: .aspectFill,
-            options: nil) { (image, _) in
+            options: nil) { [weak self] (image, _) in
                 if cell.assetIdentifier == asset.localIdentifier {
                     cell.setImage(image: image)
+                    
+                    if let count = self?.viewModel.selectedIndexForCurrentPhoto(at: indexPath) {
+                        cell.configureSelectedState(count)
+                    }
                 }
             }
-        
-        if let count = viewModel.isSelected(selectedIndexPath: indexPath) {
-            cell.configureSelectedState(count)
-        }
         
         return cell
     }
@@ -212,11 +235,9 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell,
-              let imageData = cell.image()?.pngData()
-        else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
         
-        viewModel.addImage(indexPath: indexPath, imageData: imageData)
+        self.viewModel.addImage(at: indexPath)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
         
         if viewModel.selectedPhotos.count == Constant.maximumSelectedPhotoCount {
@@ -239,8 +260,8 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         
         if !viewModel.selectedPhotos.isEmpty {
             viewModel.selectedPhotos.forEach {
-                guard let cell = collectionView.cellForItem(at: $0.indexPath) as? CustomImagePickerCell,
-                      let index = viewModel.isSelected(selectedIndexPath: $0.indexPath)
+                guard let cell = collectionView.cellForItem(at: $0) as? CustomImagePickerCell,
+                      let index = viewModel.selectedIndexForCurrentPhoto(at: $0)
                 else { return }
                 
                 cell.configureSelectedState(index)

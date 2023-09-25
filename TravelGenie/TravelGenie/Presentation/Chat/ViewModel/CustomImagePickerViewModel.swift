@@ -16,23 +16,23 @@ final class CustomImagePickerViewModel {
     weak var delegate: ImagePickerDelegate?
     var selectedPhotoCountChanged: ((Int) -> Void)?
     
-    private(set) var selectedPhotos: [(indexPath: IndexPath, imageData: Data)] = [] {
+    private(set) var selectedPhotos: [IndexPath] = [] {
         didSet {
             selectedPhotoCountChanged?(selectedPhotos.count)
         }
     }
     
-    func addImage(indexPath: IndexPath, imageData: Data) {
-        selectedPhotos.append((indexPath: indexPath, imageData: imageData))
+    func addImage(at indexPath: IndexPath) {
+        selectedPhotos.append(indexPath)
     }
     
     func removeImage(at indexPath: IndexPath) {
-        selectedPhotos = selectedPhotos.filter { $0.indexPath != indexPath }
+        selectedPhotos = selectedPhotos.filter { $0 != indexPath }
     }
     
-    func isSelected(selectedIndexPath: IndexPath) -> Int? {
-        let index = selectedPhotos.firstIndex { (indexPath, _) in
-            return selectedIndexPath == indexPath
+    func selectedIndexForCurrentPhoto(at indexPath: IndexPath) -> Int? {
+        let index = selectedPhotos.firstIndex { selectedIndex in
+            return indexPath == selectedIndex
         }
         
         if let index { return index + 1 }
@@ -40,22 +40,7 @@ final class CustomImagePickerViewModel {
         return nil
     }
     
-    func sendPhotos() {
-        var compressedPhotoData: [Data] = []
-        let group = DispatchGroup()
-        
-        selectedPhotos.forEach {
-            group.enter()
-            ImageCompressor.compress(imageData: $0.imageData) { compressedData in
-                guard let data = compressedData else { return }
-                
-                compressedPhotoData.append(data)
-                group.leave()
-            }
-        }
-        
-        group.notify(queue: .main) { [weak self] in
-            self?.delegate?.photoDataSent(compressedPhotoData)
-        }
+    func sendPhotos(data: [Data]) {
+        delegate?.photoDataSent(data)
     }
 }
