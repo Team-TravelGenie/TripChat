@@ -109,11 +109,11 @@ final class ChatViewModel {
         messageStorageDelegate?.insert(message: message)
     }
     
-    func handlePhotoUploads(imageData: [Data]) {
-        let totalPhotosToUpload = imageData.count
+    private func handlePhotoUploads(with data: [Data]) {
+        let totalPhotosToUpload = data.count
         var photoUploadCount = 0
         
-        imageData.forEach {
+        data.forEach {
             let photoMessage = createPhotoMessage(from: $0)
             photoUploadCount += 1
             insertMessage(photoMessage)
@@ -122,7 +122,7 @@ final class ChatViewModel {
         if totalPhotosToUpload == photoUploadCount {
             updateImageUploadButtonState(false)
             updateInputBarPhotosButtonState(false)
-            extractKeywords(from: imageData)
+            extractKeywords(from: data)
         }
     }
     
@@ -182,6 +182,27 @@ final class ChatViewModel {
     
     private func updateInputBarPhotosButtonState(_ isEnabled: Bool) {
         inputBarButtonStateDelegate?.setPhotosButtonState(isEnabled)
+    }
+    
+    private func compressImage(
+        _ data: [Data],
+        completion: @escaping ([Data]) -> Void)
+    {
+        let group = DispatchGroup()
+        var compressedData: [Data] = []
+        
+        data.forEach {
+            group.enter()
+            ImageCompressor.compress(imageData: $0) { compressedImage in
+                guard let data = compressedImage else { return }
+                compressedData.append(data)
+                group.leave()
+            }
+        }
+        
+        group.notify(queue: .main) {
+            completion(compressedData)
+        }
     }
     
     private func extractKeywords(from imageData: [Data]) {
@@ -460,6 +481,8 @@ extension ChatViewModel: InputBarAccessoryViewDelegate {
 
 extension ChatViewModel: ImagePickerDelegate {
     func photoDataSent(_ data: [Data]) {
-        handlePhotoUploads(imageData: data)
+        compressImage(data) { [weak self] data in
+            self?.handlePhotoUploads(with: data)
+        }
     }
 }
