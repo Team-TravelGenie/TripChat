@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerViewModel.swift
+//  ImagePickerViewModel.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/07.
@@ -11,7 +11,7 @@ protocol ImagePickerDelegate: AnyObject {
     func photoDataSent(_ data: [Data])
 }
 
-final class CustomImagePickerViewModel {
+final class ImagePickerViewModel {
     
     weak var delegate: ImagePickerDelegate?
     var selectedPhotoCountChanged: ((Int) -> Void)?

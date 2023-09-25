@@ -10,7 +10,7 @@ import UIKit
 
 final class ImagePickerViewController: UIViewController {
     
-    let viewModel: CustomImagePickerViewModel
+    let viewModel: ImagePickerViewModel
     
     private let headerView = ImagePickerHeaderView()
     private let collectionView = UICollectionView(
@@ -22,7 +22,7 @@ final class ImagePickerViewController: UIViewController {
     
     // MARK: Lifecycle
     
-    init(viewModel: CustomImagePickerViewModel) {
+    init(viewModel: ImagePickerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
