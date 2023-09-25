@@ -39,14 +39,11 @@ final class CustomImagePickerViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
         bind()
+        configureThumbnailSize()
         configurePhotoLibrary()
         configureSubviews()
         configureHierarchy()
         configureLayout()
-
-        let width = view.frame.width / 3
-        let height = width
-        thumbnailSize = CGSize(width: width, height: height)
     }
     
     // MARK: Private
@@ -56,6 +53,12 @@ final class CustomImagePickerViewController: UIViewController {
             self?.headerView.setLabelText(with: count)
             self?.headerView.changeSendButtonState(count > 0)
         }
+    }
+    
+    private func configureThumbnailSize() {
+        let width = (view.frame.width - CGFloat(Constant.photosPerRow - 1)) / CGFloat(Constant.photosPerRow)
+        let height = width
+        thumbnailSize = CGSize(width: width, height: height)
     }
     
     private func configurePhotoLibrary() {
@@ -143,9 +146,7 @@ extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        let width = (view.frame.width - CGFloat(Constant.photosPerRow - 1)) / CGFloat(Constant.photosPerRow)
-        let height = width
-        return CGSize(width: width, height: height)
+        return thumbnailSize
     }
     
     func collectionView(
