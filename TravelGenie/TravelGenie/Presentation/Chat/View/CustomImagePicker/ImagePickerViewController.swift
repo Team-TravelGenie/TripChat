@@ -126,7 +126,7 @@ final class ImagePickerViewController: UIViewController {
     }
 }
 
-extension ImagePickerViewController: CustomImagePickerHeaderViewDelegate {
+extension ImagePickerViewController: ImagePickerHeaderViewDelegate {
     func dismissModal() {
         dismiss(animated: false)
     }

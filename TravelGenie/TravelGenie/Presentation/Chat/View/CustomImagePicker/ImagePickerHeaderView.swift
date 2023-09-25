@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol CustomImagePickerHeaderViewDelegate: AnyObject {
+protocol ImagePickerHeaderViewDelegate: AnyObject {
     func dismissModal()
     func send()
 }
 
 final class ImagePickerHeaderView: UIView {
     
-    weak var delegate: CustomImagePickerHeaderViewDelegate?
+    weak var delegate: ImagePickerHeaderViewDelegate?
     
     private let stackView = UIStackView()
     private let statusLabel = UILabel()
