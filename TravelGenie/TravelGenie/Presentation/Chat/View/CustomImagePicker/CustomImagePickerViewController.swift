@@ -191,7 +191,6 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         else { return UICollectionViewCell() }
         
         cell.assetIdentifier = asset.localIdentifier
-        
         PHImageManager.default().requestImage(
             for: asset,
             targetSize: thumbnailSize,
@@ -264,7 +263,6 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
     {
         guard viewModel.selectedPhotos.count < 3 else {
             self.presentPhotoLimitAlert()
-            
             return false
         }
         
@@ -280,7 +278,6 @@ extension CustomImagePickerViewController {
             title: "사진 접근 권한 필요",
             message: "사진을 업로드하기 위해서는 사진 접근 권한이 필요합니다. '설정'에서 사진 접근 권한을 허용해주세요.",
             preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             self?.dismiss(animated: false)
         }
@@ -294,9 +291,7 @@ extension CustomImagePickerViewController {
             title: "사진 선택 가능 갯수 초과",
             message: "사진은 3장 까지만 업로드 할 수 있습니다.",
             preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "확인", style: .default)
-        
         alertController.addAction(action)
         self.present(alertController, animated: false)
     }
