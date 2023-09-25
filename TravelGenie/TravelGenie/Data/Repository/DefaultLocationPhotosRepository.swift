@@ -21,7 +21,8 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
         networkService.request(TripadvisorLocationSearchAPI.locationSearch(requestModel)) { result in
             switch result {
             case .success(let response):
-                print(response)
+                let locationID = response.data[0].locationID
+                completion(.success(locationID))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -38,7 +39,8 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
         networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
             switch result {
             case .success(let response):
-                print(response)
+                let imageUrl = response.data[0].images.large.url
+                completion(.success(imageUrl))
             case .failure(let error):
                 completion(.failure(error))
             }

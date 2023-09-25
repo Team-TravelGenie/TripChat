@@ -39,8 +39,8 @@ final class DefaultLocationPhotosUseCase: LocationPhotosUseCase {
     {
         locationPhotosRepository.searchLocation(query: query, languageCode: languageCode.rawValue) { result in
             switch result {
-            case .success(let entity):
-                print(entity)
+            case .success(let locationID):
+                completion(.success(locationID))
             case .failure(let error):
                 completion(.failure(error))
             }
@@ -54,8 +54,8 @@ final class DefaultLocationPhotosUseCase: LocationPhotosUseCase {
     {
         locationPhotosRepository.searchPhotos(locationID: locationID, languageCode: languageCode.rawValue) { result in
             switch result {
-            case .success(let entity):
-                print(entity)
+            case .success(let imageUrl):
+                completion(.success(imageUrl))
             case .failure(let error):
                 completion(.failure(error))
             }
