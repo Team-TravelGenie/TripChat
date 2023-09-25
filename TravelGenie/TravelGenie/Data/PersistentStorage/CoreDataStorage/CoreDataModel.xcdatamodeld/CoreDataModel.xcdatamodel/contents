@@ -18,7 +18,8 @@
     <entity name="RecommendationEntity" representedClassName="RecommendationEntity" syncable="YES">
         <attribute name="country" optional="YES" attributeType="String"/>
         <attribute name="image" optional="YES" attributeType="Binary"/>
-        <attribute name="spot" optional="YES" attributeType="String"/>
+        <attribute name="spotEnglish" optional="YES" attributeType="String"/>
+        <attribute name="spotKorean" optional="YES" attributeType="String"/>
         <relationship name="chat" optional="YES" toMany="YES" deletionRule="Nullify" ordered="YES" destinationEntity="ChatEntity" inverseName="recommendations" inverseEntity="ChatEntity"/>
     </entity>
     <entity name="TagEntity" representedClassName="TagEntity" syncable="YES">

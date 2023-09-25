@@ -28,7 +28,10 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
         completion: @escaping (Result<Data, Error>) -> Void)
     {
         let themeTags = tags.filter { $0.category == .theme }
-        repository.searchImage(with: themeTags, spot: spot) { result in
+        let keywordTags = tags.filter { $0.category == .keyword }
+        let tags = themeTags + keywordTags
+        
+        repository.searchImage(with: tags, spot: spot) { result in
             switch result {
             case .success(let imageURL):
                 ImageManager.retrieveImage(with: imageURL) { data in

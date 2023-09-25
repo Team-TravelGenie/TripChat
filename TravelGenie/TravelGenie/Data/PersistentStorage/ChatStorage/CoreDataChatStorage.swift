@@ -124,7 +124,8 @@ extension CoreDataChatStorage: ChatStorage {
             entityName: "RecommendationEntity",
             values: [
                 "country": recommendation.country,
-                "spot": recommendation.spot,
+                "spotKorean": recommendation.spotKorean,
+                "spotEnglish": recommendation.spotEnglish,
                 "image": recommendation.image,
             ]) as? RecommendationEntity else { return }
         
@@ -194,12 +195,14 @@ extension CoreDataChatStorage: ChatStorage {
         var result: [Chat] = []
         let request = RecommendationEntity.fetchRequest()
         let countryPredicate = NSPredicate(format: "country CONTAINS[c] %@", keyword)
-        let spotPredicate = NSPredicate(format: "spot CONTAINS[c] %@", keyword)
+        let spotKoreanPredicate = NSPredicate(format: "spotKorean CONTAINS[c] %@", keyword)
+        let spotEnglishPredicate = NSPredicate(format: "spotEnglish CONTAINS[c] %@", keyword)
         let predicate = NSCompoundPredicate(
             type: .or,
             subpredicates: [
                 countryPredicate,
-                spotPredicate,
+                spotKoreanPredicate,
+                spotEnglishPredicate,
             ])
         
         do {

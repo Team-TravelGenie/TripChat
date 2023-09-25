@@ -118,7 +118,8 @@ extension ChatEntity {
             if let recommendationEntity = $0 as? RecommendationEntity {
                 let recommendation = RecommendationItem(
                     country: recommendationEntity.country,
-                    spot: recommendationEntity.spot,
+                    spotKorean: recommendationEntity.spotKorean,
+                    spotEnglish: recommendationEntity.spotEnglish,
                     image: recommendationEntity.image)
                 recommendationList.append(recommendation)
             }

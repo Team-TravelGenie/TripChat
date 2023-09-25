@@ -41,7 +41,7 @@ final class PopUpViewModel {
     
     func sendUserFeedback(isPositive: Bool, content: String) {
         let tagValues: [String] = selectedTags.map { $0.value }
-        let recommendationValues: [String] = recommendationItem.map { $0.spot }
+        let recommendationValues: [String] = recommendationItem.map { $0.spotEnglish }
         let userFeedback = UserFeedback(
             isPositive: isPositive,
             content: content,
