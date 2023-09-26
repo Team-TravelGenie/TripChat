@@ -39,7 +39,7 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
         let keywordTags = tags.filter { $0.category == .keyword }
         let tags = themeTags + keywordTags
         
-        repository.searchImage(with: tags, spot: spot) { result in
+        imageSearchRepository.searchImage(with: tags, spot: spot) { result in
             switch result {
             case .success(let imageURL):
                 ImageManager.retrieveImage(with: imageURL) { data in
