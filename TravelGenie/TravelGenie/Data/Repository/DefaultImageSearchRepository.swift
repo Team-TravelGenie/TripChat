@@ -22,15 +22,14 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
             switch result {
             case .success(let response):
                 guard let link = response.items.first?.link else {
-                    completion(.failure(ResponseError.emptyResponse))
+                    completion(.failure(.emptyResponse))
                     return
                 }
                 
                 completion(.success(link))
             case .failure(let error):
-                completion(.failure(ResponseError.moyaError(error)))
+                completion(.failure(.moyaError(error)))
             }
         }
     }
-    
 }

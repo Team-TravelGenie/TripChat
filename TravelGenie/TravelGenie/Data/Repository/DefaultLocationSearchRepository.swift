@@ -22,13 +22,13 @@ final class DefaultLocationSearchRepository: LocationSearchRepository {
             switch result {
             case .success(let response):
                 guard let imageUrl = response.data.first?.images.large.url else {
-                    completion(.failure(ResponseError.emptyResponse))
+                    completion(.failure(.emptyResponse))
                     return
                 }
                 
                 completion(.success(imageUrl))
             case .failure(let error):
-                completion(.failure(ResponseError.moyaError(error)))
+                completion(.failure(.moyaError(error)))
             }
         }
     }

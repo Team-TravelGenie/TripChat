@@ -22,13 +22,13 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
             switch result {
             case .success(let response):
                 guard let locationID = response.data.first?.locationID else {
-                    completion(.failure(ResponseError.emptyResponse))
+                    completion(.failure(.emptyResponse))
                     return
                 }
                 
                 completion(.success(locationID))
             case .failure(let error):
-                completion(.failure(ResponseError.moyaError(error)))
+                completion(.failure(.moyaError(error)))
             }
         }
     }
