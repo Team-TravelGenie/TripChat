@@ -16,7 +16,7 @@ protocol ImageSearchUseCase {
 
 final class DefaultImageSearchUseCase: ImageSearchUseCase {
     
-    private let repository: ImageSearchRepository
+    private let imageSearchRepository: ImageSearchRepository
     private let locationSearchRepository: LocationSearchRepository
     private let locationPhotosRepository: LocationPhotosRepository
     
@@ -25,7 +25,7 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
         locationSearchRepository: LocationSearchRepository,
         locationPhotosRepository: LocationPhotosRepository)
     {
-        self.repository = repository
+        self.imageSearchRepository = repository
         self.locationSearchRepository = locationSearchRepository
         self.locationPhotosRepository = locationPhotosRepository
     }
@@ -36,7 +36,7 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
         completion: @escaping (Result<Data, Error>) -> Void)
     {
         let themeTags = tags.filter { $0.category == .theme }
-        repository.searchImage(with: themeTags, spot: spot) { result in
+        imageSearchRepository.searchImage(with: themeTags, spot: spot) { result in
             switch result {
             case .success(let imageURL):
                 ImageManager.retrieveImage(with: imageURL) { data in
