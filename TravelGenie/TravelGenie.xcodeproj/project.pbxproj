@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */; };
+		572145A42AA9BEFD00F7BC4E /* ImagePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572145A32AA9BEFD00F7BC4E /* ImagePickerViewModel.swift */; };
 		573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */; };
 		573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCCFC2A8BAE4100116D2D /* Coordinator.swift */; };
 		573BCD042A8BAF7600116D2D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573BCD012A8BAF7600116D2D /* HomeViewController.swift */; };
@@ -67,9 +67,9 @@
 		576EC3AE2A978077008C2D7C /* TextAttributeCreator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */; };
 		576EC3B32A97B39F008C2D7C /* CircleIconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B22A97B39F008C2D7C /* CircleIconView.swift */; };
 		576EC3B52A97BE8F008C2D7C /* RectangleTextButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */; };
-		57A54C872AA8C6BA0087B640 /* CustomImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */; };
-		57A54C8A2AA8CB280087B640 /* CustomImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */; };
-		57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */; };
+		57A54C872AA8C6BA0087B640 /* ImagePickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */; };
+		57A54C8A2AA8CB280087B640 /* ImagePickerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C892AA8CB280087B640 /* ImagePickerCell.swift */; };
+		57A54C8E2AA8D8B50087B640 /* ImagePickerHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */; };
 		57A54C902AA8D9350087B640 /* CustomButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57A54C8F2AA8D9350087B640 /* CustomButton.swift */; };
 		57A54C922AA997560087B640 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 57A54C912AA996F00087B640 /* GoogleService-Info.plist */; };
 		57BD5F1A2AB960FE00457C1F /* HomeTextLogoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57BD5F192AB960FE00457C1F /* HomeTextLogoView.swift */; };
@@ -157,7 +157,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerViewModel.swift; sourceTree = "<group>"; };
+		572145A32AA9BEFD00F7BC4E /* ImagePickerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewModel.swift; sourceTree = "<group>"; };
 		573BCCFB2A8BAE4100116D2D /* CoordinationFinishDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoordinationFinishDelegate.swift; sourceTree = "<group>"; };
 		573BCCFC2A8BAE4100116D2D /* Coordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		573BCD002A8BAF7600116D2D /* HomeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewModel.swift; sourceTree = "<group>"; };
@@ -217,9 +217,9 @@
 		576EC3AD2A978077008C2D7C /* TextAttributeCreator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextAttributeCreator.swift; sourceTree = "<group>"; };
 		576EC3B22A97B39F008C2D7C /* CircleIconView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleIconView.swift; sourceTree = "<group>"; };
 		576EC3B42A97BE8F008C2D7C /* RectangleTextButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RectangleTextButton.swift; sourceTree = "<group>"; };
-		57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerViewController.swift; sourceTree = "<group>"; };
-		57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerCell.swift; sourceTree = "<group>"; };
-		57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImagePickerHeaderView.swift; sourceTree = "<group>"; };
+		57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerViewController.swift; sourceTree = "<group>"; };
+		57A54C892AA8CB280087B640 /* ImagePickerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerCell.swift; sourceTree = "<group>"; };
+		57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePickerHeaderView.swift; sourceTree = "<group>"; };
 		57A54C8F2AA8D9350087B640 /* CustomButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomButton.swift; sourceTree = "<group>"; };
 		57A54C912AA996F00087B640 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		57BD5F192AB960FE00457C1F /* HomeTextLogoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTextLogoView.swift; sourceTree = "<group>"; };
@@ -521,7 +521,7 @@
 				D24DF9C52A9876620066C5B3 /* CustomTagContentCellViewModel.swift */,
 				D2E3AA272A8B62400049DDEF /* ChatViewModel.swift */,
 				5763DF062A9CA8020028B19F /* ChatInterfaceViewModel.swift */,
-				572145A32AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift */,
+				572145A32AA9BEFD00F7BC4E /* ImagePickerViewModel.swift */,
 				D2629A362AB992670006CEF5 /* SystemMessageViewModel.swift */,
 			);
 			path = ViewModel;
@@ -545,21 +545,21 @@
 			children = (
 				D2E3AA312A8B83350049DDEF /* ChatInterface */,
 				D23037752A8C61A80017950E /* Cell */,
-				57A54C882AA8CAD60087B640 /* CustomImagePicker */,
+				57A54C882AA8CAD60087B640 /* ImagePicker */,
 				D2E3AA252A8B62320049DDEF /* ChatViewController.swift */,
 				57C2BEF62AA47D1D0074DA8C /* CustomInputBarAccessoryView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
 		};
-		57A54C882AA8CAD60087B640 /* CustomImagePicker */ = {
+		57A54C882AA8CAD60087B640 /* ImagePicker */ = {
 			isa = PBXGroup;
 			children = (
-				57A54C862AA8C6BA0087B640 /* CustomImagePickerViewController.swift */,
-				57A54C892AA8CB280087B640 /* CustomImagePickerCell.swift */,
-				57A54C8D2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift */,
+				57A54C862AA8C6BA0087B640 /* ImagePickerViewController.swift */,
+				57A54C892AA8CB280087B640 /* ImagePickerCell.swift */,
+				57A54C8D2AA8D8B50087B640 /* ImagePickerHeaderView.swift */,
 			);
-			path = CustomImagePicker;
+			path = ImagePicker;
 			sourceTree = "<group>";
 		};
 		57C100162A8B91CF00A664FD /* Resources */ = {
@@ -1015,7 +1015,7 @@
 				57C2BF062AA7539B0074DA8C /* FirebaseUserFeedbackStorage.swift in Sources */,
 				D26846902AA1109E00831097 /* DefaultTranslateRepository.swift in Sources */,
 				573BCD432A920D2E00116D2D /* SystemMessageCellSizeCalculator.swift in Sources */,
-				57A54C872AA8C6BA0087B640 /* CustomImagePickerViewController.swift in Sources */,
+				57A54C872AA8C6BA0087B640 /* ImagePickerViewController.swift in Sources */,
 				D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */,
 				57DA98912AA0BECC0074409B /* AttributedTextCellSizeCalculator.swift in Sources */,
 				57C2BF002AA74B510074DA8C /* UserFeedbackStorage.swift in Sources */,
@@ -1034,7 +1034,7 @@
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				57C52C962AAF344D000F7F30 /* DesignAssetName.swift in Sources */,
-				572145A42AA9BEFD00F7BC4E /* CustomImagePickerViewModel.swift in Sources */,
+				572145A42AA9BEFD00F7BC4E /* ImagePickerViewModel.swift in Sources */,
 				D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */,
 				57C2BF112AA8BD2B0074DA8C /* PhotoMessageSizeCalculator.swift in Sources */,
 				D24DF9C62A9876620066C5B3 /* CustomTagContentCellViewModel.swift in Sources */,
@@ -1091,9 +1091,9 @@
 				D2F8C5872A8F6E2700AA3BFC /* TagCollectionViewCell.swift in Sources */,
 				5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */,
 				57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */,
-				57A54C8E2AA8D8B50087B640 /* CustomImagePickerHeaderView.swift in Sources */,
+				57A54C8E2AA8D8B50087B640 /* ImagePickerHeaderView.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
-				57A54C8A2AA8CB280087B640 /* CustomImagePickerCell.swift in Sources */,
+				57A54C8A2AA8CB280087B640 /* ImagePickerCell.swift in Sources */,
 				57567F812AAF13EF00B1F7CB /* ImageCompressor.swift in Sources */,
 				D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */,
 				D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */,

@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerViewController.swift
+//  ImagePickerViewController.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/06.
@@ -8,25 +8,24 @@
 import Photos
 import UIKit
 
-final class CustomImagePickerViewController: UIViewController {
+final class ImagePickerViewController: UIViewController {
     
-    let viewModel: CustomImagePickerViewModel
+    let viewModel: ImagePickerViewModel
     
-    private let headerView = CustomImagePickerHeaderView()
+    private let headerView = ImagePickerHeaderView()
     private let collectionView = UICollectionView(
         frame: .zero,
         collectionViewLayout: UICollectionViewFlowLayout())
     
-    private var photos: PHFetchResult<PHAsset>?
+    private var fetchResult: PHFetchResult<PHAsset>?
     private var thumbnailSize: CGSize = .zero
     
     // MARK: Lifecycle
     
-    init(viewModel: CustomImagePickerViewModel) {
+    init(viewModel: ImagePickerViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
-    
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -35,21 +34,16 @@ final class CustomImagePickerViewController: UIViewController {
     deinit {
         PHPhotoLibrary.shared().unregisterChangeObserver(self)
     }
-    
-    // MARK: Override(s)
 
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
         bind()
+        configureThumbnailSize()
         configurePhotoLibrary()
         configureSubviews()
         configureHierarchy()
         configureLayout()
-
-        let width = view.frame.width / 3
-        let height = width
-        thumbnailSize = CGSize(width: width, height: height)
     }
     
     // MARK: Private
@@ -58,6 +52,34 @@ final class CustomImagePickerViewController: UIViewController {
         viewModel.selectedPhotoCountChanged = { [weak self] count in
             self?.headerView.setLabelText(with: count)
             self?.headerView.changeSendButtonState(count > 0)
+        }
+    }
+    
+    private func configureThumbnailSize() {
+        let width = (view.frame.width - CGFloat(Constant.photosPerRow - 1)) / CGFloat(Constant.photosPerRow)
+        let height = width
+        thumbnailSize = CGSize(width: width, height: height)
+    }
+    
+    private func configurePhotoLibrary() {
+        checkAuthorization()
+        PHPhotoLibrary.shared().register(self)
+        
+        let fetchOption = PHFetchOptions()
+        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
+        fetchResult = PHAsset.fetchAssets(with: .image, options: fetchOption)
+    }
+    
+    private func checkAuthorization() {
+        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
+            DispatchQueue.main.async {
+                switch status {
+                case .restricted, .denied:
+                    self?.presentPhotoAuthorizationDeniedAlert()
+                default:
+                    return
+                }
+            }
         }
     }
     
@@ -71,7 +93,9 @@ final class CustomImagePickerViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.backgroundColor = .clear
         collectionView.allowsMultipleSelection = true
-        collectionView.register(CustomImagePickerCell.self, forCellWithReuseIdentifier: CustomImagePickerCell.identifier)
+        collectionView.register(
+            ImagePickerCell.self,
+            forCellWithReuseIdentifier: ImagePickerCell.identifier)
     }
     
     private func configureHeaderView() {
@@ -100,54 +124,71 @@ final class CustomImagePickerViewController: UIViewController {
             collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
         ])
     }
-    
-    private func configurePhotoLibrary() {
-        checkAuthorization()
-        PHPhotoLibrary.shared().register(self)
-        
-        let fetchOption = PHFetchOptions()
-        fetchOption.sortDescriptors = [NSSortDescriptor(key: "creationDate", ascending: false)]
-        photos = PHAsset.fetchAssets(with: .image, options: fetchOption)
-    }
-    
-    private func checkAuthorization() {
-        PHPhotoLibrary.requestAuthorization(for: .readWrite) { [weak self] status in
-            DispatchQueue.main.async {
-                switch status {
-                case .restricted, .denied:
-                    self?.presentPhotoAuthorizationDeniedAlert()
-                    return
-                default:
-                    return
-                }
-            }
-        }
-    }
 }
 
-extension CustomImagePickerViewController: CustomImagePickerHeaderViewDelegate {
+extension ImagePickerViewController: ImagePickerHeaderViewDelegate {
     func dismissModal() {
         dismiss(animated: false)
     }
     
     func send() {
-        viewModel.sendPhotos()
-        dismiss(animated: false)
+        let maxSize: Int = 1024
+        let group = DispatchGroup()
+        let selectedIndices = viewModel.selectedPhotos
+        let options = PHImageRequestOptions()
+        options.deliveryMode = .highQualityFormat
+        
+        var imageData: [Data] = []
+        
+        for index in selectedIndices {
+            group.enter()
+            guard let asset = fetchResult?.object(at: index.item) else { continue }
+            
+            let assetWidth = asset.pixelWidth
+            let assetHeight = asset.pixelHeight
+            var targetWidth = CGFloat(assetWidth)
+            var targetHeight = CGFloat(assetHeight)
+            
+            if assetWidth > assetHeight {
+                if assetWidth > maxSize {
+                    targetWidth = CGFloat(maxSize)
+                    targetHeight = CGFloat(maxSize * assetHeight / assetWidth)
+                }
+            } else {
+                if assetHeight > maxSize {
+                    targetHeight = CGFloat(maxSize)
+                    targetWidth = CGFloat(maxSize * assetWidth / assetHeight)
+                }
+            }
+            
+            PHImageManager.default().requestImage(
+                for: asset,
+                targetSize: CGSize(width: targetWidth, height: targetHeight),
+                contentMode: PHImageContentMode.default,
+                options: options) { image, info in
+                    guard let data = image?.pngData() else { return }
+                    imageData.append(data)
+                    group.leave()
+                }
+        }
+        
+        group.notify(queue: .main) { [weak self] in
+            self?.viewModel.sendPhotos(data: imageData)
+            self?.dismiss(animated: false)
+        }
     }
 }
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
+extension ImagePickerViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(
         _ collectionView: UICollectionView,
         layout collectionViewLayout: UICollectionViewLayout,
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
-        let width = (view.frame.width - 2) / 3
-        let height = width
-        return CGSize(width: width, height: height)
+        return thumbnailSize
     }
     
     func collectionView(
@@ -171,13 +212,13 @@ extension CustomImagePickerViewController: UICollectionViewDelegateFlowLayout {
 
 // MARK: UICollectionViewDataSource
 
-extension CustomImagePickerViewController: UICollectionViewDataSource {
+extension ImagePickerViewController: UICollectionViewDataSource {
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int)
         -> Int
     {
-        return photos?.count ?? .zero
+        return fetchResult?.count ?? .zero
     }
     
     func collectionView(
@@ -186,21 +227,25 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         -> UICollectionViewCell
     {
         guard let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: CustomImagePickerCell.identifier,
-            for: indexPath) as? CustomImagePickerCell,
-              let asset = photos?.object(at: indexPath.item)
+            withReuseIdentifier: ImagePickerCell.identifier,
+            for: indexPath) as? ImagePickerCell,
+              let asset = fetchResult?.object(at: indexPath.item)
         else { return UICollectionViewCell() }
         
+        cell.assetIdentifier = asset.localIdentifier
         PHImageManager.default().requestImage(
             for: asset,
             targetSize: thumbnailSize,
             contentMode: .aspectFill,
-            options: nil) { (image, _) in
-                cell.setImage(image: image)}
-        
-        if let count = viewModel.isSelected(selectedIndexPath: indexPath) {
-            cell.configureSelectedState(count)
-        }
+            options: nil) { [weak self] (image, _) in
+                if cell.assetIdentifier == asset.localIdentifier {
+                    cell.setImage(image: image)
+                    
+                    if let count = self?.viewModel.selectedIndexForCurrentPhoto(at: indexPath) {
+                        cell.configureSelectedState(count)
+                    }
+                }
+            }
         
         return cell
     }
@@ -209,15 +254,13 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell,
-              let imageData = cell.image()?.pngData()
-        else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImagePickerCell else { return }
         
-        viewModel.addImage(indexPath: indexPath, imageData: imageData)
+        self.viewModel.addImage(at: indexPath)
         cell.configureSelectedState(viewModel.selectedPhotos.count)
         
-        if viewModel.selectedPhotos.count == 3 {
-            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+        if viewModel.selectedPhotos.count == Constant.maximumSelectedPhotoCount {
+            guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
                 if !$0.isSelected { $0.layer.opacity = 0.2 }
@@ -229,23 +272,23 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         _ collectionView: UICollectionView,
         didDeselectItemAt indexPath: IndexPath)
     {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? CustomImagePickerCell else { return }
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ImagePickerCell else { return }
         
         viewModel.removeImage(at: indexPath)
         cell.configureDeselectedState(viewModel.selectedPhotos.count)
         
         if !viewModel.selectedPhotos.isEmpty {
             viewModel.selectedPhotos.forEach {
-                guard let cell = collectionView.cellForItem(at: $0.indexPath) as? CustomImagePickerCell,
-                      let index = viewModel.isSelected(selectedIndexPath: $0.indexPath)
+                guard let cell = collectionView.cellForItem(at: $0) as? ImagePickerCell,
+                      let index = viewModel.selectedIndexForCurrentPhoto(at: $0)
                 else { return }
                 
                 cell.configureSelectedState(index)
             }
         }
         
-        if viewModel.selectedPhotos.count < 3 {
-            guard let cells = collectionView.visibleCells as? [CustomImagePickerCell] else { return }
+        if viewModel.selectedPhotos.count < Constant.maximumSelectedPhotoCount {
+            guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
                 if !$0.isSelected { $0.layer.opacity = 1 }
@@ -258,9 +301,8 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
         shouldSelectItemAt indexPath: IndexPath)
         -> Bool
     {
-        guard viewModel.selectedPhotos.count < 3 else {
+        guard viewModel.selectedPhotos.count < Constant.maximumSelectedPhotoCount else {
             self.presentPhotoLimitAlert()
-            
             return false
         }
         
@@ -270,13 +312,12 @@ extension CustomImagePickerViewController: UICollectionViewDataSource {
 
 // MARK: Alerts
 
-extension CustomImagePickerViewController {
+extension ImagePickerViewController {
     private func presentPhotoAuthorizationDeniedAlert() {
         let alertController = UIAlertController(
             title: "사진 접근 권한 필요",
-            message: "사진을 올리기 위해서는 사진 접근 권한이 필요합니다. '설정'에서 사진 접근 권한을 허용해주세요.",
+            message: "사진을 업로드하기 위해서는 사진 접근 권한이 필요합니다. '설정'에서 사진 접근 권한을 허용해주세요.",
             preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "확인", style: .default) { [weak self] _ in
             self?.dismiss(animated: false)
         }
@@ -288,11 +329,9 @@ extension CustomImagePickerViewController {
     private func presentPhotoLimitAlert() {
         let alertController = UIAlertController(
             title: "사진 선택 가능 갯수 초과",
-            message: "사진은 3장 까지만 업로드 가능합니다.",
+            message: "사진은 3장 까지만 업로드 할 수 있습니다.",
             preferredStyle: .alert)
-        
         let action = UIAlertAction(title: "확인", style: .default)
-        
         alertController.addAction(action)
         self.present(alertController, animated: false)
     }
@@ -300,13 +339,13 @@ extension CustomImagePickerViewController {
 
 // MARK: PHPhotoLibraryChangeObserver
 
-extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
+extension ImagePickerViewController: PHPhotoLibraryChangeObserver {
     func photoLibraryDidChange(_ changeInstance: PHChange) {
-        guard let photos = photos,
+        guard let photos = fetchResult,
               let changes = changeInstance.changeDetails(for: photos) else { return }
         
         DispatchQueue.main.async {
-            self.photos = changes.fetchResultAfterChanges
+            self.fetchResult = changes.fetchResultAfterChanges
             
             if changes.hasIncrementalChanges {
                 self.collectionView.performBatchUpdates {
@@ -338,5 +377,14 @@ extension CustomImagePickerViewController: PHPhotoLibraryChangeObserver {
                 self.collectionView.reloadData()
             }
         }
+    }
+}
+
+// MARK: Constant
+
+private extension ImagePickerViewController {
+    enum Constant {
+        static let maximumSelectedPhotoCount: Int = 3
+        static let photosPerRow: Int = 3
     }
 }

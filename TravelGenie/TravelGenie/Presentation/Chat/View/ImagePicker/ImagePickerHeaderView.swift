@@ -1,5 +1,5 @@
 //
-//  CustomImagePickerHeaderView.swift
+//  ImagePickerHeaderView.swift
 //  TravelGenie
 //
 //  Created by summercat on 2023/09/07.
@@ -7,14 +7,14 @@
 
 import UIKit
 
-protocol CustomImagePickerHeaderViewDelegate: AnyObject {
+protocol ImagePickerHeaderViewDelegate: AnyObject {
     func dismissModal()
     func send()
 }
 
-final class CustomImagePickerHeaderView: UIView {
+final class ImagePickerHeaderView: UIView {
     
-    weak var delegate: CustomImagePickerHeaderViewDelegate?
+    weak var delegate: ImagePickerHeaderViewDelegate?
     
     private let stackView = UIStackView()
     private let statusLabel = UILabel()
