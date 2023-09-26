@@ -28,22 +28,4 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
             }
         }
     }
-    
-    func searchPhoto(
-        locationID: String,
-        languageCode: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
-    {
-        let requestModel = LocationPhotosRequestModel(language: languageCode, locationId: locationID)
-        
-        networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                let imageUrl = response.data[0].images.large.url
-                completion(.success(imageUrl))
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
 }

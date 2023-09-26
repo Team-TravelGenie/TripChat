@@ -12,9 +12,4 @@ protocol LocationPhotosRepository {
         query: String,
         languageCode: String,
         completion: @escaping ((Result<String, Error>) -> Void))
-    
-    func searchPhoto(
-        locationID: String,
-        languageCode: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
 }
