@@ -21,12 +21,15 @@ final class DefaultLocationSearchRepository: LocationSearchRepository {
         networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
             switch result {
             case .success(let response):
-                let imageUrl = response.data[0].images.large.url
+                guard let imageUrl = response.data.first?.images.large.url else {
+                    completion(.failure(ResponseError.emptyResponse))
+                    return
+                }
+                
                 completion(.success(imageUrl))
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
-    
 }

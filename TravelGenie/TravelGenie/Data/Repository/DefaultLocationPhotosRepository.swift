@@ -21,7 +21,11 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
         networkService.request(TripadvisorLocationSearchAPI.locationSearch(requestModel)) { result in
             switch result {
             case .success(let response):
-                let locationID = response.data[0].locationID
+                guard let locationID = response.data.first?.locationID else {
+                    completion(.failure(ResponseError.emptyResponse))
+                    return
+                }
+                
                 completion(.success(locationID))
             case .failure(let error):
                 completion(.failure(error))
