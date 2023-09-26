@@ -49,14 +49,14 @@ enum Font {
         }
     }
     
-    var lineHeight: CGFloat {
+    var lineSpacing: CGFloat {
         switch self {
         case .largeTitle:
-            return fontSize * 1.3
+            return 1.3
         case .micro:
-            return fontSize * 1.0
+            return 1.0
         default:
-            return fontSize * 1.5
+            return 1.5
         }
     }
 }

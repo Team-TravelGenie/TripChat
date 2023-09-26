@@ -19,9 +19,26 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
-        let window = UIWindow(windowScene: windowScene)
+        window = UIWindow(windowScene: windowScene)
+        window?.overrideUserInterfaceStyle = .light
+        displayLaunchScreen()
+    }
+    
+    // MARK: Private
+    
+    private func displayLaunchScreen() {
+        window?.rootViewController = UIStoryboard(name: "LaunchScreen", bundle: nil).instantiateInitialViewController()
+        window?.makeKeyAndVisible()
+        
+        DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 2) { [weak self] in
+            self?.startApp()
+        }
+    }
+    
+    private func startApp() {
         let rootViewController = UINavigationController()
         coordinator = AppCoordinator(window: window, navigationController: rootViewController)
         coordinator?.start()
     }
 }
+
