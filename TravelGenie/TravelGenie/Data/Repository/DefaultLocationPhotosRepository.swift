@@ -14,7 +14,7 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
     func searchLocation(
         query: String,
         languageCode: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
+        completion: @escaping ((Result<String, ResponseError>) -> Void))
     {
         let requestModel = LocationSearchRequestModel(language: languageCode, searchQuery: query)
         
@@ -28,7 +28,7 @@ final class DefaultLocationPhotosRepository: LocationPhotosRepository {
                 
                 completion(.success(locationID))
             case .failure(let error):
-                completion(.failure(error))
+                completion(.failure(ResponseError.moyaError(error)))
             }
         }
     }

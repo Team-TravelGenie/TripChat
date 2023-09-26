@@ -9,5 +9,5 @@ protocol LocationPhotosRepository {
     func searchLocation(
         query: String,
         languageCode: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
+        completion: @escaping ((Result<String, ResponseError>) -> Void))
 }
