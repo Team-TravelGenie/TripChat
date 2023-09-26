@@ -5,7 +5,7 @@
 //  Created by 서현웅 on 2023/09/26.
 //
 
-import Foundation
+import Moya
 
 enum ResponseError: Error {
     case emptyResponse
