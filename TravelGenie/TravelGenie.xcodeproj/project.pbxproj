@@ -158,6 +158,8 @@
 		D2EA3ACB2AC15D78009686D8 /* LocationPhotosDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACA2AC15D78009686D8 /* LocationPhotosDTO.swift */; };
 		D2EA3ACD2AC16017009686D8 /* DefaultLocationPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */; };
 		D2EA3ACF2AC164AD009686D8 /* LocationPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */; };
+		D2EA3AD32AC30D33009686D8 /* DefaultLocationSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */; };
+		D2EA3AD52AC30EE8009686D8 /* LocationSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */; };
 		D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */; };
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 		D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */; };
@@ -312,6 +314,8 @@
 		D2EA3ACA2AC15D78009686D8 /* LocationPhotosDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosDTO.swift; sourceTree = "<group>"; };
 		D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationPhotosRepository.swift; sourceTree = "<group>"; };
 		D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosRepository.swift; sourceTree = "<group>"; };
+		D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationSearchRepository.swift; sourceTree = "<group>"; };
+		D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchRepository.swift; sourceTree = "<group>"; };
 		D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
@@ -485,6 +489,7 @@
 				57DA98872A9F81300074409B /* OpenAIRepository.swift */,
 				D26846932AA115AB00831097 /* TranslateRepository.swift */,
 				D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */,
+				D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -705,6 +710,7 @@
 				D268468F2AA1109E00831097 /* DefaultTranslateRepository.swift */,
 				57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */,
 				D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */,
+				D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -1011,6 +1017,7 @@
 				57462B2C2A94EB5B00949D5C /* CoreDataService.swift in Sources */,
 				D2EA3AC72AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift in Sources */,
 				D2EA3ACB2AC15D78009686D8 /* LocationPhotosDTO.swift in Sources */,
+				D2EA3AD52AC30EE8009686D8 /* LocationSearchRepository.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */,
 				57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */,
@@ -1059,6 +1066,7 @@
 				D2EA3AC52AC150A9009686D8 /* LocationSearchDTO.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
+				D2EA3AD32AC30D33009686D8 /* DefaultLocationSearchRepository.swift in Sources */,
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				57C52C962AAF344D000F7F30 /* DesignAssetName.swift in Sources */,
