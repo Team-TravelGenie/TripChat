@@ -17,9 +17,17 @@ protocol ImageSearchUseCase {
 final class DefaultImageSearchUseCase: ImageSearchUseCase {
     
     private let repository: ImageSearchRepository
+    private let locationSearchRepository: LocationSearchRepository
+    private let locationPhotosRepository: LocationPhotosRepository
     
-    init(repository: ImageSearchRepository) {
+    init(
+        repository: ImageSearchRepository,
+        locationSearchRepository: LocationSearchRepository,
+        locationPhotosRepository: LocationPhotosRepository)
+    {
         self.repository = repository
+        self.locationSearchRepository = locationSearchRepository
+        self.locationPhotosRepository = locationPhotosRepository
     }
     
     func searchImage(
