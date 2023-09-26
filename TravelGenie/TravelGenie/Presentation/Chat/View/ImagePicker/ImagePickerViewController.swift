@@ -132,19 +132,38 @@ extension ImagePickerViewController: ImagePickerHeaderViewDelegate {
     }
     
     func send() {
-        var imageData: [Data] = []
+        let maxSize: Int = 1024
         let group = DispatchGroup()
         let selectedIndices = viewModel.selectedPhotos
         let options = PHImageRequestOptions()
         options.deliveryMode = .highQualityFormat
         
+        var imageData: [Data] = []
+        
         for index in selectedIndices {
             group.enter()
             guard let asset = fetchResult?.object(at: index.item) else { continue }
             
+            let assetWidth = asset.pixelWidth
+            let assetHeight = asset.pixelHeight
+            var targetWidth = CGFloat(assetWidth)
+            var targetHeight = CGFloat(assetHeight)
+            
+            if assetWidth > assetHeight {
+                if assetWidth > maxSize {
+                    targetWidth = CGFloat(maxSize)
+                    targetHeight = CGFloat(maxSize * assetHeight / assetWidth)
+                }
+            } else {
+                if assetHeight > maxSize {
+                    targetHeight = CGFloat(maxSize)
+                    targetWidth = CGFloat(maxSize * assetWidth / assetHeight)
+                }
+            }
+            
             PHImageManager.default().requestImage(
                 for: asset,
-                targetSize: PHImageManagerMaximumSize,
+                targetSize: CGSize(width: targetWidth, height: targetHeight),
                 contentMode: PHImageContentMode.default,
                 options: options) { image, info in
                     guard let data = image?.pngData() else { return }
