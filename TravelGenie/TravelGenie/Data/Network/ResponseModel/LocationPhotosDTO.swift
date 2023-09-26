@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationPhotosDTO: Codable {
+struct LocationPhotosDTO: Decodable {
     let data: [Datum]
 }
 

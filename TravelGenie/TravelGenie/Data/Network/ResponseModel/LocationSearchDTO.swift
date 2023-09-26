@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct LocationSearchDTO: Codable {
+struct LocationSearchDTO: Decodable {
     let data: [Datum]
 }
 
