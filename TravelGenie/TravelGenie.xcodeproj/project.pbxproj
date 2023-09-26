@@ -150,6 +150,17 @@
 		D2E81B8A2A9116F6006A5236 /* ContentItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B892A9116F6006A5236 /* ContentItem.swift */; };
 		D2E81B8C2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B8B2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift */; };
 		D2E81B8E2A913AF8006A5236 /* TagCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2E81B8D2A913AF8006A5236 /* TagCollectionHeaderView.swift */; };
+		D2EA3AC12AC15031009686D8 /* TripadvisorLocationSearchAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AC02AC15031009686D8 /* TripadvisorLocationSearchAPI.swift */; };
+		D2EA3AC32AC1505D009686D8 /* LocationSearchRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AC22AC1505D009686D8 /* LocationSearchRequestModel.swift */; };
+		D2EA3AC52AC150A9009686D8 /* LocationSearchDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AC42AC150A9009686D8 /* LocationSearchDTO.swift */; };
+		D2EA3AC72AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AC62AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift */; };
+		D2EA3AC92AC15D5C009686D8 /* LocationPhotosRequestModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AC82AC15D5C009686D8 /* LocationPhotosRequestModel.swift */; };
+		D2EA3ACB2AC15D78009686D8 /* LocationPhotosDTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACA2AC15D78009686D8 /* LocationPhotosDTO.swift */; };
+		D2EA3ACD2AC16017009686D8 /* DefaultLocationPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */; };
+		D2EA3ACF2AC164AD009686D8 /* LocationPhotosRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */; };
+		D2EA3AD32AC30D33009686D8 /* DefaultLocationSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */; };
+		D2EA3AD52AC30EE8009686D8 /* LocationSearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */; };
+		D2EA3AD72AC319E4009686D8 /* ResponseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2EA3AD62AC319E4009686D8 /* ResponseError.swift */; };
 		D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */; };
 		D2F8C57E2A8F4AEF00AA3BFC /* CustomTagContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */; };
 		D2F8C5802A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */; };
@@ -296,6 +307,17 @@
 		D2E81B892A9116F6006A5236 /* ContentItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentItem.swift; sourceTree = "<group>"; };
 		D2E81B8B2A9138E9006A5236 /* LeftAlignedCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftAlignedCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
 		D2E81B8D2A913AF8006A5236 /* TagCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagCollectionHeaderView.swift; sourceTree = "<group>"; };
+		D2EA3AC02AC15031009686D8 /* TripadvisorLocationSearchAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripadvisorLocationSearchAPI.swift; sourceTree = "<group>"; };
+		D2EA3AC22AC1505D009686D8 /* LocationSearchRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchRequestModel.swift; sourceTree = "<group>"; };
+		D2EA3AC42AC150A9009686D8 /* LocationSearchDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchDTO.swift; sourceTree = "<group>"; };
+		D2EA3AC62AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripadvisorLocationPhotosAPI.swift; sourceTree = "<group>"; };
+		D2EA3AC82AC15D5C009686D8 /* LocationPhotosRequestModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosRequestModel.swift; sourceTree = "<group>"; };
+		D2EA3ACA2AC15D78009686D8 /* LocationPhotosDTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosDTO.swift; sourceTree = "<group>"; };
+		D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationPhotosRepository.swift; sourceTree = "<group>"; };
+		D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPhotosRepository.swift; sourceTree = "<group>"; };
+		D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultLocationSearchRepository.swift; sourceTree = "<group>"; };
+		D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationSearchRepository.swift; sourceTree = "<group>"; };
+		D2EA3AD62AC319E4009686D8 /* ResponseError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResponseError.swift; sourceTree = "<group>"; };
 		D2F8C57B2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomCellSizeCalculator.swift; sourceTree = "<group>"; };
 		D2F8C57D2A8F4AEF00AA3BFC /* CustomTagContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTagContentCell.swift; sourceTree = "<group>"; };
 		D2F8C57F2A8F4BAD00AA3BFC /* TagMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
@@ -468,6 +490,8 @@
 				57DA98752A9E4B200074409B /* ImageSearchRepository.swift */,
 				57DA98872A9F81300074409B /* OpenAIRepository.swift */,
 				D26846932AA115AB00831097 /* TranslateRepository.swift */,
+				D2EA3ACE2AC164AD009686D8 /* LocationPhotosRepository.swift */,
+				D2EA3AD42AC30EE8009686D8 /* LocationSearchRepository.swift */,
 			);
 			path = RepositoryInterface;
 			sourceTree = "<group>";
@@ -687,6 +711,8 @@
 				57462B4C2A95B6AC00949D5C /* DefaultChatRepository.swift */,
 				D268468F2AA1109E00831097 /* DefaultTranslateRepository.swift */,
 				57C2BEFC2AA749210074DA8C /* DefaultUserFeedbackRepository.swift */,
+				D2EA3ACC2AC16017009686D8 /* DefaultLocationPhotosRepository.swift */,
+				D2EA3AD22AC30D33009686D8 /* DefaultLocationSearchRepository.swift */,
 			);
 			path = Repository;
 			sourceTree = "<group>";
@@ -697,6 +723,7 @@
 				D20FA2A62A6BD30F0081B039 /* RequestModel */,
 				D20FA28B2A6B98100081B039 /* ResponseModel */,
 				D20FA28C2A6B984C0081B039 /* Infrastructure */,
+				D2EA3AD62AC319E4009686D8 /* ResponseError.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -708,6 +735,8 @@
 				D2E810E92A7039E700136F99 /* LandmarkDetectionDTO.swift */,
 				57DA98732A9E3B580074409B /* ImageSearchDTO.swift */,
 				D26846892AA10A5600831097 /* TranslateDTO.swift */,
+				D2EA3AC42AC150A9009686D8 /* LocationSearchDTO.swift */,
+				D2EA3ACA2AC15D78009686D8 /* LocationPhotosDTO.swift */,
 			);
 			path = ResponseModel;
 			sourceTree = "<group>";
@@ -730,6 +759,8 @@
 				D2E810E72A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift */,
 				57DA986F2A9E376B0074409B /* GoogleCustomSearchAPI.swift */,
 				D268468B2AA10AA500831097 /* PapagoTranslateAPI.swift */,
+				D2EA3AC02AC15031009686D8 /* TripadvisorLocationSearchAPI.swift */,
+				D2EA3AC62AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -755,6 +786,8 @@
 				57DA98712A9E38E40074409B /* ImageSearchRequestModel.swift */,
 				D268468D2AA10E4700831097 /* PapagoTranslateRequestModel.swift */,
 				57C2BF012AA74FB20074DA8C /* UserFeedbackRequestModel.swift */,
+				D2EA3AC22AC1505D009686D8 /* LocationSearchRequestModel.swift */,
+				D2EA3AC82AC15D5C009686D8 /* LocationPhotosRequestModel.swift */,
 			);
 			path = RequestModel;
 			sourceTree = "<group>";
@@ -983,7 +1016,11 @@
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
 				57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
+				D2EA3AC12AC15031009686D8 /* TripadvisorLocationSearchAPI.swift in Sources */,
 				57462B2C2A94EB5B00949D5C /* CoreDataService.swift in Sources */,
+				D2EA3AC72AC151D0009686D8 /* TripadvisorLocationPhotosAPI.swift in Sources */,
+				D2EA3ACB2AC15D78009686D8 /* LocationPhotosDTO.swift in Sources */,
+				D2EA3AD52AC30EE8009686D8 /* LocationSearchRepository.swift in Sources */,
 				573BCD692A9365B300116D2D /* AvatarHeaderView.swift in Sources */,
 				5763DEF12A98FA950028B19F /* PopUpViewController.swift in Sources */,
 				57DA986E2A9DD1DA0074409B /* OpenAIUseCase.swift in Sources */,
@@ -1029,8 +1066,10 @@
 				D20FA29A2A6BB9E20081B039 /* LabelDectionDTO.swift in Sources */,
 				57DA987A2A9F00B30074409B /* ImageSearchUseCase.swift in Sources */,
 				5763DEFD2A99B81F0028B19F /* PopUpContentView.swift in Sources */,
+				D2EA3AC52AC150A9009686D8 /* LocationSearchDTO.swift in Sources */,
 				57462B742A96001700949D5C /* ChatUseCase.swift in Sources */,
 				573BCD562A925BA700116D2D /* ChatListViewController.swift in Sources */,
+				D2EA3AD32AC30D33009686D8 /* DefaultLocationSearchRepository.swift in Sources */,
 				D26E6BA52A9E20440069A6DC /* GoogleVisionRepository.swift in Sources */,
 				573BCD5C2A925C3700116D2D /* ChatListCoordinator.swift in Sources */,
 				57C52C962AAF344D000F7F30 /* DesignAssetName.swift in Sources */,
@@ -1041,15 +1080,18 @@
 				D23037782A8C65E40017950E /* SystemMessageCell.swift in Sources */,
 				57DA98782A9E4B420074409B /* DefaultImageSearchRepository.swift in Sources */,
 				573BCD4A2A92149F00116D2D /* RecommendationItemCell.swift in Sources */,
+				D2EA3ACD2AC16017009686D8 /* DefaultLocationPhotosRepository.swift in Sources */,
 				D20FA2A22A6BC8650081B039 /* DefaultGoogleVisionRepository.swift in Sources */,
 				573BCD1B2A8E543800116D2D /* BottomMenuCell.swift in Sources */,
 				573BCD482A92146F00116D2D /* RecommendationCellViewModel.swift in Sources */,
 				573BCD0B2A8BBBC000116D2D /* NSMutableAttributedString+text.swift in Sources */,
+				D2EA3AD72AC319E4009686D8 /* ResponseError.swift in Sources */,
 				573BCD242A8F43BD00116D2D /* HomeViewModel.swift in Sources */,
 				57684BF92A73CAFE008AB8C9 /* DefaultOpenAIRepository.swift in Sources */,
 				57C2BF022AA74FB20074DA8C /* UserFeedbackRequestModel.swift in Sources */,
 				573BCD072A8BAFE300116D2D /* AppCoordinator.swift in Sources */,
 				573BCD412A91FE7700116D2D /* RecommendationCellSizeCalculator.swift in Sources */,
+				D2EA3AC32AC1505D009686D8 /* LocationSearchRequestModel.swift in Sources */,
 				573BCCFD2A8BAE4100116D2D /* CoordinationFinishDelegate.swift in Sources */,
 				573BCD152A8D21E800116D2D /* Font.swift in Sources */,
 				573BCD642A934D4500116D2D /* DateFormatter+shared.swift in Sources */,
@@ -1057,6 +1099,7 @@
 				D2E477492AB83D0D0059EF35 /* String+calculatedCellSizeForTag.swift in Sources */,
 				5763DEF32A9908270028B19F /* UIViewController+showPopUp.swift in Sources */,
 				573BCCFE2A8BAE4100116D2D /* Coordinator.swift in Sources */,
+				D2EA3AC92AC15D5C009686D8 /* LocationPhotosRequestModel.swift in Sources */,
 				57C2BF042AA752840074DA8C /* UserFeedbackUseCase.swift in Sources */,
 				D2E3AA282A8B62400049DDEF /* ChatViewModel.swift in Sources */,
 				57462B6F2A95EAF700949D5C /* ChatEntity+CoreDataProperties.swift in Sources */,
@@ -1092,6 +1135,7 @@
 				5763DF092A9CAF220028B19F /* NotificationName+swift.swift in Sources */,
 				57462B792A96302C00949D5C /* RecommendationEntity+CoreDataProperties.swift in Sources */,
 				57A54C8E2AA8D8B50087B640 /* ImagePickerHeaderView.swift in Sources */,
+				D2EA3ACF2AC164AD009686D8 /* LocationPhotosRepository.swift in Sources */,
 				573BCD5A2A925C2F00116D2D /* ChatListViewModel.swift in Sources */,
 				57A54C8A2AA8CB280087B640 /* ImagePickerCell.swift in Sources */,
 				57567F812AAF13EF00B1F7CB /* ImageCompressor.swift in Sources */,
