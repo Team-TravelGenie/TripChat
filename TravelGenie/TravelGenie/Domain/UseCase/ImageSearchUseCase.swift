@@ -10,7 +10,7 @@ import Foundation
 protocol ImageSearchUseCase {
     func searchImage(
         with tags: [Tag],
-        spot: String,
+        item: OpenAIRecommendation.RecommendationItem,
         completion: @escaping (Result<Data, Error>) -> Void)
 }
 
@@ -32,14 +32,14 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
     
     func searchImage(
         with tags: [Tag],
-        spot: String,
+        item: OpenAIRecommendation.RecommendationItem,
         completion: @escaping (Result<Data, Error>) -> Void)
     {
         let themeTags = tags.filter { $0.category == .theme }
         let keywordTags = tags.filter { $0.category == .keyword }
         let tags = themeTags + keywordTags
         
-        imageSearchRepository.searchImage(with: tags, spot: spot) { result in
+        imageSearchRepository.searchImage(with: tags, spot: item.spotEnglish) { result in
             switch result {
             case .success(let imageURL):
                 ImageManager.retrieveImage(with: imageURL) { data in
