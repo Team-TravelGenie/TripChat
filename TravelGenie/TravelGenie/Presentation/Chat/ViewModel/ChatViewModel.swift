@@ -27,17 +27,6 @@ protocol InputBarStateDelegate: AnyObject {
 }
 
 final class ChatViewModel {
-    
-    private struct OpenAIRecommendation: Decodable {
-        struct RecommendationItem: Decodable {
-            let country: String
-            let spotKorean: String
-            let spotEnglish: String
-        }
-        
-        let recommendationItems: [RecommendationItem]
-    }
-    
     weak var coordinator: ChatCoordinator?
     weak var buttonStateDelegate: ButtonStateDelegate?
     weak var inputBarStateDelegate: InputBarStateDelegate?
