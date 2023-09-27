@@ -18,16 +18,16 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
     
     private let imageSearchRepository: ImageSearchRepository
     private let locationSearchRepository: LocationSearchRepository
-    private let locationPhotosRepository: LocationPhotosRepository
+    private let locationPhotosRepository: LocationPhotoRepository
     
     init(
-        repository: ImageSearchRepository,
-        locationSearchRepository: LocationSearchRepository,
-        locationPhotosRepository: LocationPhotosRepository)
+        imageSearchRepository: ImageSearchRepository,
+        locationPhotoRepository: LocationPhotoRepository,
+        locationSearchRepository: LocationSearchRepository)
     {
-        self.imageSearchRepository = repository
+        self.imageSearchRepository = imageSearchRepository
         self.locationSearchRepository = locationSearchRepository
-        self.locationPhotosRepository = locationPhotosRepository
+        self.locationPhotosRepository = locationPhotoRepository
     }
     
     func searchImage(

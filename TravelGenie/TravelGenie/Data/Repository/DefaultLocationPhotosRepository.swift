@@ -1,32 +1,32 @@
 //
-//  DefaultLocationPhotosRepository.swift
+//  DefaultLocationSearchRepository.swift
 //  TravelGenie
 //
-//  Created by 서현웅 on 2023/09/25.
+//  Created by 서현웅 on 2023/09/26.
 //
 
 import Foundation
 
-final class DefaultLocationPhotosRepository: LocationPhotosRepository {
+final class DefaultLocationPhotosRepository: LocationPhotoRepository {
     
     private let networkService = NetworkService()
     
-    func searchLocation(
-        query: String,
+    func searchPhoto(
+        locationID: String,
         languageCode: String,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
     {
-        let requestModel = LocationSearchRequestModel(language: languageCode, searchQuery: query)
+        let requestModel = LocationPhotosRequestModel(language: languageCode, locationId: locationID)
         
-        networkService.request(TripadvisorLocationSearchAPI.locationSearch(requestModel)) { result in
+        networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
             switch result {
             case .success(let response):
-                guard let locationID = response.data.first?.locationID else {
+                guard let imageUrl = response.data.first?.images.large.url else {
                     completion(.failure(.emptyResponse))
                     return
                 }
                 
-                completion(.success(locationID))
+                completion(.success(imageUrl))
             case .failure(let error):
                 completion(.failure(.moyaError(error)))
             }

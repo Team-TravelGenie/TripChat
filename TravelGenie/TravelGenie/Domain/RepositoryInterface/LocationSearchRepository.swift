@@ -1,13 +1,13 @@
 //
-//  LocationSearchRepository.swift
+//  LocationPhotosRepository.swift
 //  TravelGenie
 //
-//  Created by 서현웅 on 2023/09/26.
+//  Created by 서현웅 on 2023/09/25.
 //
 
 protocol LocationSearchRepository {
-    func searchPhoto(
-        locationID: String,
+    func searchLocation(
+        query: String,
         languageCode: String,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
 }
