@@ -8,6 +8,6 @@
 protocol LocationPhotoRepository {
     func searchPhoto(
         locationID: String,
-        languageCode: String,
+        languageCode: LanguageCode,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
 }

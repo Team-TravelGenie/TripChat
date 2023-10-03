@@ -8,6 +8,6 @@
 protocol LocationSearchRepository {
     func searchLocation(
         query: String,
-        languageCode: String,
+        languageCode: LanguageCode,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
 }

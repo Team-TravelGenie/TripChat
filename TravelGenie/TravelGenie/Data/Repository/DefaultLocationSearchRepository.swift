@@ -13,10 +13,10 @@ final class DefaultLocationSearchRepository: LocationSearchRepository {
     
     func searchLocation(
         query: String,
-        languageCode: String,
+        languageCode: LanguageCode,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
     {
-        let requestModel = LocationSearchRequestModel(language: languageCode, searchQuery: query)
+        let requestModel = LocationSearchRequestModel(language: languageCode.locationSearchCode, searchQuery: query)
         
         networkService.request(TripadvisorLocationSearchAPI.locationSearch(requestModel)) { result in
             switch result {

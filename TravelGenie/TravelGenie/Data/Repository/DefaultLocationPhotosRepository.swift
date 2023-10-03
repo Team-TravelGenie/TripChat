@@ -13,10 +13,10 @@ final class DefaultLocationPhotosRepository: LocationPhotoRepository {
     
     func searchPhoto(
         locationID: String,
-        languageCode: String,
+        languageCode: LanguageCode,
         completion: @escaping ((Result<String, ResponseError>) -> Void))
     {
-        let requestModel = LocationPhotosRequestModel(language: languageCode, locationId: locationID)
+        let requestModel = LocationPhotosRequestModel(language: languageCode.photosSearchCode, locationId: locationID)
         
         networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
             switch result {
