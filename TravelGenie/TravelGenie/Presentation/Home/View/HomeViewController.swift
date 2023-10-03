@@ -93,7 +93,6 @@ final class HomeViewController: UIViewController {
             contentView.leadingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.leadingAnchor),
             contentView.trailingAnchor.constraint(equalTo: scrollView.contentLayoutGuide.trailingAnchor),
             contentView.widthAnchor.constraint(equalTo: scrollView.frameLayoutGuide.widthAnchor),
-            contentView.heightAnchor.constraint(equalTo: scrollView.frameLayoutGuide.heightAnchor),
         ])
         
         planeImageView.translatesAutoresizingMaskIntoConstraints = false
@@ -131,6 +130,7 @@ final class HomeViewController: UIViewController {
         bottomMenuTableView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottomMenuTableView.topAnchor.constraint(equalTo: chatButton.bottomAnchor, constant: 52),
+            bottomMenuTableView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -1),
             bottomMenuTableView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
             bottomMenuTableView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
         ])
