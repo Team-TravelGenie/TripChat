@@ -127,14 +127,14 @@ extension ChatViewController: CustomInputBarAccessoryViewDelegate {
 
 extension ChatViewController: InputBarStateDelegate {
     func setPhotosButtonState(_ isEnabled: Bool) {
-        guard let inputBar = messageInputBar as? CustomInputBarAccessoryView else { return }
+        guard let inputBar = inputContainerView.subviews.first as? CustomInputBarAccessoryView else { return }
         
         inputBar.updatePhotosButtonState(isEnabled)
     }
     
     func updateInputTextViewState(_ isEditable: Bool) {
-        DispatchQueue.main.async { [weak self] in
-            self?.messageInputBar.inputTextView.isEditable = isEditable
-        }
+        guard let inputBar = inputContainerView.subviews.first as? CustomInputBarAccessoryView else { return }
+        
+        inputBar.updateInputTextViewState(isEditable)
     }
 }
