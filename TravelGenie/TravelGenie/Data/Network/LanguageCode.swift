@@ -19,4 +19,13 @@ enum LanguageCode {
             return "en"
         }
     }
+    
+    var photosSearchCode: String {
+        switch self {
+        case .korean:
+            return "ko"
+        case .english:
+            return "en"
+        }
+    }
 }
