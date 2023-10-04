@@ -294,8 +294,6 @@ final class ChatViewModel {
         with item: OpenAIRecommendation.RecommendationItem,
         completion: @escaping ((RecommendationItem) -> Void))
     {
-        // TODO: country == "한국"일 경우 spotKorean, 아닐 경우 spotEnglish 활용
-        // TODO: TripAdvisor API 선 요청 후 구글 API 요청
         imageSearchUseCase.searchImage(with: selectedTags, item: item) { result in
             switch result {
             case .success(let imageData):
