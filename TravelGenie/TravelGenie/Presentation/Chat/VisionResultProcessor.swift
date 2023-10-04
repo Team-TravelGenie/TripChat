@@ -15,6 +15,18 @@ final class VisionResultProcessor {
     }
     
     private let translateUseCase: TranslateUseCase
+    private let keywordsToFilter: [String] = [
+        "Water",
+        "Water resources",
+        "Fluvial landforms of streams",
+        "Body of water",
+        "Natural environment",
+        "Watercourse",
+        "Landscape",
+        "Atmosphere",
+        "World",
+        "Groundcover",
+    ]
     
     private var visionResults = VisionResults(keywords: [], landmarks: [])
     
