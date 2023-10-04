@@ -20,7 +20,7 @@ extension TripadvisorLocationSearchAPI: DecodableTargetType {
     }
     
     var path: String {
-        return "/api/v1/location"
+        return "/api/v1/location/search"
     }
     
     var method: Moya.Method {

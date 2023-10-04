@@ -13,7 +13,8 @@ struct LocationSearchDTO: Decodable {
 
 extension LocationSearchDTO {
     struct Datum: Codable {
-        let locationID, name: String
+        let locationID: String
+        let name: String
         let addressObj: AddressObj
 
         enum CodingKeys: String, CodingKey {
@@ -27,15 +28,16 @@ extension LocationSearchDTO {
 extension LocationSearchDTO.Datum {
     struct AddressObj: Codable {
         let street1: String?
-        let city, country: String
+        let street2: String?
+        let city: String?
+        let state: String?
+        let country: String
         let postalcode: String?
         let addressString: String
-        let street2, state: String?
         
         enum CodingKeys: String, CodingKey {
-            case street1, city, country, postalcode
+            case street1, street2, city, state, country, postalcode
             case addressString = "address_string"
-            case street2, state
         }
     }
 }

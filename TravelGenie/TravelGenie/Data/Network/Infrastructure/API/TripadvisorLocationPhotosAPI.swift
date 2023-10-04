@@ -22,7 +22,7 @@ extension TripadvisorLocationPhotosAPI: DecodableTargetType {
     var path: String {
         switch self {
         case .locationPhotos(let requestModel):
-            return "/location/\(requestModel.locationId)/photos"
+            return "/api/v1/location/\(requestModel.locationId)/photos"
         }
     }
     

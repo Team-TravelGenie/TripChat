@@ -27,17 +27,6 @@ protocol InputBarStateDelegate: AnyObject {
 }
 
 final class ChatViewModel {
-    
-    private struct OpenAIRecommendation: Decodable {
-        struct RecommendationItem: Decodable {
-            let country: String
-            let spotKorean: String
-            let spotEnglish: String
-        }
-        
-        let recommendationItems: [RecommendationItem]
-    }
-    
     weak var coordinator: ChatCoordinator?
     weak var buttonStateDelegate: ButtonStateDelegate?
     weak var inputBarStateDelegate: InputBarStateDelegate?
@@ -303,9 +292,7 @@ final class ChatViewModel {
         with item: OpenAIRecommendation.RecommendationItem,
         completion: @escaping ((RecommendationItem) -> Void))
     {
-        // TODO: country == "한국"일 경우 spotKorean, 아닐 경우 spotEnglish 활용
-        // TODO: TripAdvisor API 선 요청 후 구글 API 요청
-        imageSearchUseCase.searchImage(with: selectedTags, spot: item.spotEnglish) { result in
+        imageSearchUseCase.searchImage(with: selectedTags, item: item) { result in
             switch result {
             case .success(let imageData):
                 let recommendationItem = RecommendationItem(

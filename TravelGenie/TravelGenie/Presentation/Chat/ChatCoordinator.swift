@@ -25,9 +25,9 @@ final class ChatCoordinator: Coordinator {
             openAIUseCase: DefaultOpenAIUseCase(
                 openAIRepository: DefaultOpenAIRepository()),
             imageSearchUseCase: DefaultImageSearchUseCase(
-                repository: DefaultImageSearchRepository(),
-                locationSearchRepository: DefaultLocationSearchRepository(),
-                locationPhotosRepository: DefaultLocationPhotosRepository()),
+                imageSearchRepository: DefaultImageSearchRepository(),
+                locationPhotoRepository: DefaultLocationPhotosRepository(),
+                locationSearchRepository: DefaultLocationSearchRepository()),
             googleVisionUseCase: DefaultGoogleVisionUseCase(
                 googleVisionRepository: DefaultGoogleVisionRepository()))
         let chatViewController = ChatViewController(viewModel: chatViewModel)

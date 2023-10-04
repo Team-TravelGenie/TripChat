@@ -13,32 +13,36 @@ struct LocationPhotosDTO: Decodable {
 
 extension LocationPhotosDTO {
     struct Datum: Codable {
+        let images: Images
+        let source: Source
+        let user: User?
         let id: Int
         let isBlessed: Bool
-        let caption, publishedDate: String
-        let images: Images
         let album: String
-        let source: Source
-        let user: User
+        let caption: String
+        let publishedDate: String
         
         enum CodingKeys: String, CodingKey {
-            case id
+            case images, source, user, id
             case isBlessed = "is_blessed"
-            case caption
+            case album, caption
             case publishedDate = "published_date"
-            case images, album, source, user
         }
     }
 }
 
 extension LocationPhotosDTO.Datum {
     struct Images: Codable {
-        let thumbnail, medium, small, large: Large
-        let original: Large
+        let original: ImageDetail
+        let large: ImageDetail
+        let medium: ImageDetail
+        let small: ImageDetail
+        let thumbnail: ImageDetail
     }
     
     struct Source: Codable {
-        let name, localizedName: String
+        let name: String
+        let localizedName: String
 
         enum CodingKeys: String, CodingKey {
             case name
@@ -52,7 +56,7 @@ extension LocationPhotosDTO.Datum {
 }
 
 extension LocationPhotosDTO.Datum.Images {
-    struct Large: Codable {
+    struct ImageDetail: Codable {
         let height, width: Int
         let url: String
     }
