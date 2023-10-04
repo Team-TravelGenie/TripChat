@@ -14,8 +14,9 @@ final class VisionResultProcessor {
         var landmarks: [Landmark]
     }
     
-    private var visionResults = VisionResults(keywords: [], landmarks: [])
     private let translateUseCase: TranslateUseCase
+    
+    private var visionResults = VisionResults(keywords: [], landmarks: [])
     
     init(
         translateUseCase: TranslateUseCase = DefaultTranslateUseCase(
