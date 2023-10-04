@@ -49,8 +49,11 @@ final class HomeViewController: UIViewController {
             self?.connectToWebLink(url: url)
         }
         
-        viewModel.copyLinkCellTapped = { [weak self] emailAddress in
+        viewModel.copyLinkCellTapped = { emailAddress in
             UIPasteboard.general.string = emailAddress
+
+            let copyToastView = CopyToastView()
+            copyToastView.show(in: self.view)
         }
     }
     
