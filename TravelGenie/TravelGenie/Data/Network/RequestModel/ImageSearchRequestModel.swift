@@ -18,6 +18,8 @@ struct ImageSearchRequestModel: Encodable {
     let rights = "(cc_publicdomain%7Ccc_attribute%7Ccc_sharealike).-(cc_noncommercial)"
     let q: String
     let exactTerms: String
+    let siteSearch = "fbsbx.com"
+    let siteSearchFilter = "e"
     
     init(q: String, exactTerms: String) {
         self.q = q
