@@ -80,10 +80,22 @@ final class VisionResultProcessor {
     }
     
     private func keywordsOrderedByConfidence() -> [String] {
-        let sortedLandmarks = visionResults.landmarks.sorted(by: { $0.confidence > $1.confidence }).map { $0.place }
-        let sortedKeywords = visionResults.keywords.sorted(by: { $0.confidence > $1.confidence }).map { $0.name }
+        let sortedLandmarks = visionResults.landmarks
+            .sorted(by: { $0.confidence > $1.confidence })
+            .map { $0.place }
+        let sortedKeywords = visionResults.keywords
+            .sorted(by: { $0.confidence > $1.confidence })
+            .map { $0.name }
         
-        return sortedLandmarks + sortedKeywords
+        var twoMostConfidentLandmarks: [String] = []
+        var index: Int = 0
+        while twoMostConfidentLandmarks.count < 2 {
+            if index >= sortedLandmarks.count { break }
+            twoMostConfidentLandmarks.append(sortedLandmarks[index])
+            index += 1
+        }
+        
+        return twoMostConfidentLandmarks + sortedKeywords
     }
     
     private func removeDuplicateValues(text: String) -> [String] {
