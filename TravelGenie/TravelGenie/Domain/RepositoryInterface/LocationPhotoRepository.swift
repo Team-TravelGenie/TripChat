@@ -1,5 +1,5 @@
 //
-//  LocationSearchRepository.swift
+//  LocationPhotoRepository.swift
 //  TravelGenie
 //
 //  Created by 서현웅 on 2023/09/26.
