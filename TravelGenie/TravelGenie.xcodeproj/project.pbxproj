@@ -133,6 +133,7 @@
 		D272925B2AA5E2C5001878D0 /* ChatHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925A2AA5E2C5001878D0 /* ChatHistoryViewModel.swift */; };
 		D272925D2AA5E2DF001878D0 /* ChatHistoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925C2AA5E2DF001878D0 /* ChatHistoryViewController.swift */; };
 		D272925F2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D272925E2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift */; };
+		D27C12A72ACD35BE00A40B16 /* CopyToastView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D27C12A62ACD35BE00A40B16 /* CopyToastView.swift */; };
 		D2833A302A8E1578000FEE30 /* MessageStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */; };
 		D29DBD352A9F7EA100C856C0 /* VisionResultProcessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */; };
 		D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */; };
@@ -291,6 +292,7 @@
 		D272925A2AA5E2C5001878D0 /* ChatHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewModel.swift; sourceTree = "<group>"; };
 		D272925C2AA5E2DF001878D0 /* ChatHistoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryViewController.swift; sourceTree = "<group>"; };
 		D272925E2AA5E3D8001878D0 /* ChatHistoryCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatHistoryCoordinator.swift; sourceTree = "<group>"; };
+		D27C12A62ACD35BE00A40B16 /* CopyToastView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyToastView.swift; sourceTree = "<group>"; };
 		D2833A2F2A8E1578000FEE30 /* MessageStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageStorage.swift; sourceTree = "<group>"; };
 		D29DBD342A9F7EA100C856C0 /* VisionResultProcessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VisionResultProcessor.swift; sourceTree = "<group>"; };
 		D2C2476A2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonMessageCellSizeCalculator.swift; sourceTree = "<group>"; };
@@ -385,6 +387,7 @@
 			children = (
 				573BCD012A8BAF7600116D2D /* HomeViewController.swift */,
 				57BD5F192AB960FE00457C1F /* HomeTextLogoView.swift */,
+				D27C12A62ACD35BE00A40B16 /* CopyToastView.swift */,
 				573BCD0C2A8BC10E00116D2D /* HomeMenuButton.swift */,
 				573BCD1A2A8E543800116D2D /* BottomMenuCell.swift */,
 				57EA83152AB06DDF00AB872B /* SelfSizingTableView.swift */,
@@ -1014,6 +1017,7 @@
 				D2E810E82A70394F00136F99 /* GoogleVisionLandmarkDetectionAPI.swift in Sources */,
 				57DA98882A9F81300074409B /* OpenAIRepository.swift in Sources */,
 				D20FA2982A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift in Sources */,
+				D27C12A72ACD35BE00A40B16 /* CopyToastView.swift in Sources */,
 				57462B322A94EC8800949D5C /* CoreDataModel.xcdatamodeld in Sources */,
 				573BCD0D2A8BC10E00116D2D /* HomeMenuButton.swift in Sources */,
 				D2EA3AC12AC15031009686D8 /* TripadvisorLocationSearchAPI.swift in Sources */,
