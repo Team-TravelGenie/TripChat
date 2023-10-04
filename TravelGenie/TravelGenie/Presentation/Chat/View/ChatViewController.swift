@@ -32,8 +32,8 @@ final class ChatViewController: ChatInterfaceViewController {
     // MARK: Override(s)
     
     override func viewDidLoad() {
-        configureMessageInputBar()
         super.viewDidLoad()
+        configureMessageInputBar()
         setupNavigation()
         chatViewModel.setupDefaultSystemMessages()
     }
@@ -127,14 +127,18 @@ extension ChatViewController: CustomInputBarAccessoryViewDelegate {
 
 extension ChatViewController: InputBarStateDelegate {
     func setPhotosButtonState(_ isEnabled: Bool) {
-        guard let inputBar = messageInputBar as? CustomInputBarAccessoryView else { return }
-        
-        inputBar.updatePhotosButtonState(isEnabled)
+        DispatchQueue.main.async { [weak self] in
+            guard let inputBar = self?.inputContainerView.subviews.first as? CustomInputBarAccessoryView else { return }
+            
+            inputBar.updatePhotosButtonState(isEnabled)
+        }
     }
     
     func updateInputTextViewState(_ isEditable: Bool) {
         DispatchQueue.main.async { [weak self] in
-            self?.messageInputBar.inputTextView.isEditable = isEditable
+            guard let inputBar = self?.inputContainerView.subviews.first as? CustomInputBarAccessoryView else { return }
+            
+            inputBar.updateInputTextViewState(isEditable)
         }
     }
 }

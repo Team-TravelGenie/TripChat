@@ -217,7 +217,6 @@ final class ChatViewModel {
                 
                 removeLoadingMessage()
                 insertMessage(tagMessage)
-                updateInputTextViewState(isEditable: false)
             }
         }
     }
@@ -297,7 +296,6 @@ final class ChatViewModel {
             removeLoadingMessage()
             insertMessage(message)
             insertAdditionalQuestionMessage()
-            updateInputTextViewState(isEditable: true)
         }
     }
     

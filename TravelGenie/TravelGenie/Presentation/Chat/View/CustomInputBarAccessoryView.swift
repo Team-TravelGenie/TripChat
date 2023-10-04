@@ -40,6 +40,10 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
         photosButton.isEnabled = isEnabled
     }
     
+    func updateInputTextViewState(_ isEditable: Bool) {
+        inputTextView.isEditable = isEditable
+    }
+    
     // MARK: Private
     
     private func configureSubviews() {
