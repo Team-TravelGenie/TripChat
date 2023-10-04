@@ -46,9 +46,10 @@ final class VisionResultProcessor {
     }
     
     func getFourMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
-        let sortedAndJoinedKeywords = keywordsOrderedByConfidence().joined(separator: ",")
+        let filteredKeywords = filteredKeywords()
+        let jointKeywords = filteredKeywords.joined(separator: ", ")
         
-        translate(keyword: sortedAndJoinedKeywords) { [weak self] result in
+        translate(keyword: jointKeywords) { [weak self] result in
             guard let self else { return }
             
             var uniqueValues = self.removeDuplicateValues(text: result)
