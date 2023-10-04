@@ -12,6 +12,8 @@ final class ImageManager {
     static let cache: URLCache = URLCache.shared
     static var dataTask: URLSessionDataTask?
     
+    // MARK: Internal
+    
     static func retrieveImage(
         with url: String,
         completion: @escaping (Data) -> Void)
@@ -27,6 +29,13 @@ final class ImageManager {
             }
         }
     }
+    
+    static func cancelRetrieveImageDataTask() {
+        dataTask?.cancel()
+        dataTask = nil
+    }
+    
+    // MARK: Private
     
     private static func loadImageFromCache(with request: URLRequest) -> Data? {
         return cache.cachedResponse(for: request)?.data
