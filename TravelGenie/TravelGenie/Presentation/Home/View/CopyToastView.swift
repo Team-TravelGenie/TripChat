@@ -11,8 +11,6 @@ final class CopyToastView: UIView {
     
     private enum Design {
         static let displayDuration: TimeInterval = 3.0
-        static let toastViewWidthProportionToParent: CGFloat = 0.9146
-        static let toastViewHeightProportionToParent: CGFloat = 0.0714
     }
     
     private let messageLabel = UILabel()
@@ -38,8 +36,8 @@ final class CopyToastView: UIView {
 
         self.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            self.widthAnchor.constraint(equalTo: parentView.widthAnchor, multiplier: Design.toastViewWidthProportionToParent),
-            self.heightAnchor.constraint(equalTo: parentView.heightAnchor, multiplier: Design.toastViewHeightProportionToParent),
+            self.widthAnchor.constraint(equalToConstant: 343),
+            self.heightAnchor.constraint(equalToConstant: 58),
             self.bottomAnchor.constraint(equalTo: parentView.bottomAnchor, constant: -40),
             self.centerXAnchor.constraint(equalTo: parentView.centerXAnchor)
         ])
