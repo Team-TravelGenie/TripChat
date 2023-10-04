@@ -63,6 +63,22 @@ final class VisionResultProcessor {
         }
     }
     
+    private func filteredKeywords() -> [String] {
+        let filteredKeywords = keywordsOrderedByConfidence().difference(from: keywordsToFilter)
+        var result: [String] = []
+        
+        for change in filteredKeywords {
+            switch change {
+            case .insert(_, let keyword, _):
+                result.append(keyword)
+            case .remove:
+                continue
+            }
+        }
+        
+        return result
+    }
+    
     private func keywordsOrderedByConfidence() -> [String] {
         let sortedLandmarks = visionResults.landmarks.sorted(by: { $0.confidence > $1.confidence }).map { $0.place }
         let sortedKeywords = visionResults.keywords.sorted(by: { $0.confidence > $1.confidence }).map { $0.name }
