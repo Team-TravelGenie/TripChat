@@ -14,7 +14,7 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
     func searchImage(
         with tags: [Tag],
         spot: String,
-        completion: @escaping (Result<String, ResponseError>) -> Void)
+        completion: @escaping (Result<[String], ResponseError>) -> Void)
     {
         let query = tags.map { $0.value }.joined(separator: " ")
         let requestModel = ImageSearchRequestModel(q: query, exactTerms: spot)
