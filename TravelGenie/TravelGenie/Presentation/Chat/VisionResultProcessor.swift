@@ -14,8 +14,21 @@ final class VisionResultProcessor {
         var landmarks: [Landmark]
     }
     
-    private var visionResults = VisionResults(keywords: [], landmarks: [])
     private let translateUseCase: TranslateUseCase
+    private let keywordsToFilter: [String] = [
+        "Water",
+        "Water resources",
+        "Fluvial landforms of streams",
+        "Body of water",
+        "Natural environment",
+        "Watercourse",
+        "Landscape",
+        "Atmosphere",
+        "World",
+        "Groundcover",
+    ]
+    
+    private var visionResults = VisionResults(keywords: [], landmarks: [])
     
     init(
         translateUseCase: TranslateUseCase = DefaultTranslateUseCase(
@@ -33,9 +46,10 @@ final class VisionResultProcessor {
     }
     
     func getFourMostConfidentTranslatedTags(completion: @escaping ([Tag]) -> Void) {
-        let sortedAndJoinedKeywords = keywordsOrderedByConfidence().joined(separator: ",")
+        let filteredKeywords = filteredKeywords()
+        let jointKeywords = filteredKeywords.joined(separator: ", ")
         
-        translate(keyword: sortedAndJoinedKeywords) { [weak self] result in
+        translate(keyword: jointKeywords) { [weak self] result in
             guard let self else { return }
             
             var uniqueValues = self.removeDuplicateValues(text: result)
@@ -50,11 +64,39 @@ final class VisionResultProcessor {
         }
     }
     
-    private func keywordsOrderedByConfidence() -> [String] {
-        let sortedLandmarks = visionResults.landmarks.sorted(by: { $0.confidence > $1.confidence }).map { $0.place }
-        let sortedKeywords = visionResults.keywords.sorted(by: { $0.confidence > $1.confidence }).map { $0.name }
+    private func filteredKeywords() -> [String] {
+        let filteredKeywords = keywordsOrderedByConfidence().difference(from: keywordsToFilter)
+        var result: [String] = []
         
-        return sortedLandmarks + sortedKeywords
+        for change in filteredKeywords {
+            switch change {
+            case .insert(_, let keyword, _):
+                result.append(keyword)
+            case .remove:
+                continue
+            }
+        }
+        
+        return result
+    }
+    
+    private func keywordsOrderedByConfidence() -> [String] {
+        let sortedLandmarks = visionResults.landmarks
+            .sorted(by: { $0.confidence > $1.confidence })
+            .map { $0.place }
+        let sortedKeywords = visionResults.keywords
+            .sorted(by: { $0.confidence > $1.confidence })
+            .map { $0.name }
+        
+        var twoMostConfidentLandmarks: [String] = []
+        var index: Int = 0
+        while twoMostConfidentLandmarks.count < 2 {
+            if index >= sortedLandmarks.count { break }
+            twoMostConfidentLandmarks.append(sortedLandmarks[index])
+            index += 1
+        }
+        
+        return twoMostConfidentLandmarks + sortedKeywords
     }
     
     private func removeDuplicateValues(text: String) -> [String] {
