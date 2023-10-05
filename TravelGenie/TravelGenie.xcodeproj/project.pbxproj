@@ -1308,6 +1308,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "트립챗";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Displays photos and send selected photos to API to provide photo-driven data to user";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
@@ -1344,6 +1345,7 @@
 				"DEVELOPMENT_TEAM[sdk=iphoneos*]" = N2WW86KJNF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = TravelGenie/Resources/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "트립챗";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "Displays photos and send selected photos to API to provide photo-driven data to user";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = "";
