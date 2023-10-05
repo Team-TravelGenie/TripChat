@@ -13,7 +13,7 @@ struct ImageSearchRequestModel: Encodable {
     let searchType = "image"
     let imgType = "photo"
     let imgColorType = "color"
-    let num: Int = 1
+    let num: Int = 5
     let safe = "active"
     let rights = "(cc_publicdomain%7Ccc_attribute%7Ccc_sharealike).-(cc_noncommercial)"
     let q: String
