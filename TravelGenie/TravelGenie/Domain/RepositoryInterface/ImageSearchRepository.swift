@@ -9,5 +9,5 @@ protocol ImageSearchRepository {
     func searchImage(
         with tags: [Tag],
         spot: String,
-        completion: @escaping (Result<String, ResponseError>) -> Void)
+        completion: @escaping (Result<[String], ResponseError>) -> Void)
 }

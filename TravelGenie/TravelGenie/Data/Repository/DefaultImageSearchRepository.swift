@@ -14,7 +14,7 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
     func searchImage(
         with tags: [Tag],
         spot: String,
-        completion: @escaping (Result<String, ResponseError>) -> Void)
+        completion: @escaping (Result<[String], ResponseError>) -> Void)
     {
         let query = tags.map { $0.value }.joined(separator: " ")
         let requestModel = ImageSearchRequestModel(q: query, exactTerms: spot)
@@ -25,8 +25,9 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
                     completion(.failure(.emptyResponse))
                     return
                 }
+                let links = response.items.map { $0.link }
                 
-                completion(.success(link))
+                completion(.success(links))
             case .failure(let error):
                 completion(.failure(.moyaError(error)))
             }

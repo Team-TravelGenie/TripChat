@@ -85,15 +85,32 @@ final class DefaultImageSearchUseCase: ImageSearchUseCase {
         spot: String,
         completion: @escaping (Result<Data, Error>) -> Void)
     {
-        imageSearchRepository.searchImage(with: tags, spot: spot, completion: { result in
+        imageSearchRepository.searchImage(with: tags, spot: spot, completion: { [weak self] result in
             switch result {
-            case .success(let imageURL):
-                ImageManager.retrieveImage(with: imageURL) { data in
-                    completion(.success(data))
-                }
+            case .success(let imageURLs):
+                self?.retrieveImageFromURLs(with: imageURLs, completion: completion)
             case .failure(let error):
                 completion(.failure(error))
             }
         })
+    }
+    
+    private func retrieveImageFromURLs(
+        with imageURLs: [String],
+        completion: @escaping (Result<Data, Error>) -> Void)
+    {
+        guard let imageURL = imageURLs.first else { return }
+        let remainingURLs = Array(imageURLs.dropFirst())
+        let workItem = DispatchWorkItem { [weak self] in
+            ImageManager.cancelRetrieveImageDataTask()
+            self?.retrieveImageFromURLs(with: remainingURLs, completion: completion)
+        }
+        
+        ImageManager.retrieveImage(with: imageURL) { data in
+            workItem.cancel()
+            completion(.success(data))
+        }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3, execute: workItem)
     }
 }

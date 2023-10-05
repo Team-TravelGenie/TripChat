@@ -10,6 +10,9 @@ import UIKit
 final class ImageManager {
     
     static let cache: URLCache = URLCache.shared
+    static var dataTask: URLSessionDataTask?
+    
+    // MARK: Internal
     
     static func retrieveImage(
         with url: String,
@@ -27,6 +30,13 @@ final class ImageManager {
         }
     }
     
+    static func cancelRetrieveImageDataTask() {
+        dataTask?.cancel()
+        dataTask = nil
+    }
+    
+    // MARK: Private
+    
     private static func loadImageFromCache(with request: URLRequest) -> Data? {
         return cache.cachedResponse(for: request)?.data
     }
@@ -35,7 +45,7 @@ final class ImageManager {
         with request: URLRequest,
         completion: @escaping (Data) -> Void)
     {
-        let task = URLSession.shared.dataTask(with: request) { data, response, _ in
+        dataTask = URLSession.shared.dataTask(with: request) { data, response, _ in
             guard let data = data,
                   let response = response as? HTTPURLResponse,
                   (200..<300) ~= response.statusCode else { return }
@@ -49,6 +59,6 @@ final class ImageManager {
             }
 
         }
-        task.resume()
+        dataTask?.resume()
     }
 }
