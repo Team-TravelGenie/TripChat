@@ -50,7 +50,12 @@ final class HomeViewController: UIViewController {
         }
         
         viewModel.copyLinkCellTapped = { [weak self] emailAddress in
+            guard let self else { return }
+            
             UIPasteboard.general.string = emailAddress
+
+            let copyToastView = CopyToastView()
+            copyToastView.show(in: self.view)
         }
     }
     
