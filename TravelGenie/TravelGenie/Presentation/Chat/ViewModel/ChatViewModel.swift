@@ -484,7 +484,7 @@ private extension ChatViewModel {
             step 3. 여행지 정보는 JSON 형식으로 반환합니다. JSON 응답의 구조는 다음과 같습니다. recommendationItems라는 배열 안에 각각의 여행지 정보를 포함합니다. 각 여행지 정보에는 "country" (한국어 국가 이름), "spotKorean" (여행지 이름 국문), "spotEnglish" (여행지 이름 영문)을 할당합니다.
 
             예시:
-            ```json
+            ```
             {
               "recommendationItems": [
                 {
