@@ -263,7 +263,7 @@ extension ImagePickerViewController: UICollectionViewDataSource {
             guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
-                if !$0.isSelected { $0.layer.opacity = 0.2 }
+                if !$0.isSelected { $0.alpha = 0.2 }
             }
         }
     }
@@ -291,7 +291,7 @@ extension ImagePickerViewController: UICollectionViewDataSource {
             guard let cells = collectionView.visibleCells as? [ImagePickerCell] else { return }
             
             cells.forEach {
-                if !$0.isSelected { $0.layer.opacity = 1 }
+                if !$0.isSelected { $0.alpha = 1 }
             }
         }
     }

@@ -50,8 +50,8 @@ class CustomButton: UIButton {
         super.init(frame: .zero)
         clipsToBounds = true
         backgroundColor = .clear
+        alpha = isEnabled ? 1 : 0.2
         adjustsImageWhenHighlighted = false
-        layer.opacity = isEnabled ? 1 : 0.2
         backgroundColor = normalBackgroundColor
         layer.borderColor = normalBorderColor.cgColor
         layer.borderWidth = normalBorderWidth
