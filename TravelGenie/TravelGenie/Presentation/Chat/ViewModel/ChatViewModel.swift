@@ -371,6 +371,7 @@ final class ChatViewModel {
         else { return }
         
         // ChatGPT의 답변이 장소 추천인지, 일반 텍스트인지 구분
+        // TODO: - 디코딩 로직 Repository로 옮기기
         do {
             let openAIRecommendation = try JSONDecoder().decode(OpenAIRecommendation.self, from: messageContentData)
             insertRecommendationMessage(with: openAIRecommendation)
