@@ -126,7 +126,7 @@ final class CustomInputBarAccessoryView: InputBarAccessoryView {
 extension InputTextView {
     public override var isEditable: Bool {
         didSet {
-            layer.opacity = isEditable ? 1.0 : 0.2
+            alpha = isEditable ? 1.0 : 0.2
         }
     }
 }

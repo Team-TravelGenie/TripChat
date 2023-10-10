@@ -283,7 +283,7 @@ final class PopUpContentView: UIView {
         guard case .feedback = type else { return }
         
         leftButton.isEnabled = isFeedbackSelected
-        leftButton.layer.opacity = isFeedbackSelected ? 1 : 0.2
+        leftButton.alpha = isFeedbackSelected ? 1 : 0.2
     }
     
     private func configureHierarchy() {
