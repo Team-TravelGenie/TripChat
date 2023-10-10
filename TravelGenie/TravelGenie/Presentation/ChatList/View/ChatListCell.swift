@@ -47,7 +47,7 @@ final class ChatListCell: UITableViewCell {
             .text(date, font: .captionBold, color: .black)
         tags.forEach {
             labelText.append(NSMutableAttributedString()
-                .text("# \($0) ", font: .captionRegular, color: .grayFont))}
+                .text("#\($0) ", font: .captionRegular, color: .grayFont))}
         tagLabel.attributedText = labelText
     }
     
