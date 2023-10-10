@@ -270,21 +270,23 @@ final class ChatViewModel {
         
         let items = result.recommendationItems
         let group = DispatchGroup()
+        var currentRecommendations: [RecommendationItem] = []
         
         for item in items {
             group.enter()
-            createRecommendationItem(with: item) { [weak self] recommendationItem in
-                self?.recommendationItems.append(recommendationItem)
+            createRecommendationItem(with: item) { recommendationItem in
+                currentRecommendations.append(recommendationItem)
                 group.leave()
             }
         }
         
         group.notify(queue: .main) { [weak self] in
             guard let self else { return }
-            let message = Message(recommendations: self.recommendationItems)
+            let message = Message(recommendations: currentRecommendations)
             removeLoadingMessage()
             insertMessage(message)
             insertAdditionalQuestionMessage()
+            self.recommendationItems.append(contentsOf: currentRecommendations)
         }
     }
     
