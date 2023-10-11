@@ -1,14 +1,13 @@
 # 트립챗(TripChat)
 > 사진을 보내주시면 비슷한 분위기의 여행지를 추천해 드려요!
 
+<a href="https://apps.apple.com/kr/app/%ED%8A%B8%EB%A6%BD%EC%B1%97/id6467383592?l=ko-KR)" title="앱스토어 링크"><img src="Images/appstorelogo.png" width="200"></a>
+
 1️⃣ 좋았던 여행지 사진이나, SNS를 하다가 우연히 보고 저장한 여행지 사진을 보내주세요. AI가 사진에서 키워드를 찾아 드립니다. </br>
 2️⃣ 원하는 키워드를 선택하면 해당 키워드를 기반으로 새로운 여행지를 추천해 드립니다. </br>
 3️⃣ 추천된 여행지에 대해 더 궁금하다면 AI에게 질문해보세요! </br>
 
-<img src="https://github.com/Team-TravelGenie/TripChat/assets/98260324/0c49344a-cce6-4b77-81aa-cbfbadb4d8ed" width = 240>
-<img src="https://github.com/Team-TravelGenie/TripChat/assets/98260324/b044939a-de17-4d66-a61c-94420d2345b8" width = 240>
-<img src="https://github.com/Team-TravelGenie/TripChat/assets/98260324/db9cac80-100f-417c-b62c-6b892454f5ca" width = 240>
-<img src="https://github.com/Team-TravelGenie/TripChat/assets/98260324/65f942af-4008-42e0-a4c2-d72a38f5ecb9" width = 240>
+<img src="Images/screenshot01.png" width = 240><img src="Images/screenshot02.png" width = 240><img src="Images/screenshot03.png" width = 240><img src="Images/screenshot04.png" width = 240>
 
 ### 프로젝트 기간
 - 개발: 2023.07.22 ~
