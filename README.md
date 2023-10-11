@@ -17,23 +17,32 @@
 |:-:|:-:|:-:|:-:|:-:|
 | 아영 | 현 | 우란 | Woong | SummerCat |
 
-## 🛠️ Skill
+## 🛠️ Skills
+### 개발환경
 <!--배지로 변경 가능한 것은 배지로 변경!-->
+![Swift](https://img.shields.io/badge/Swift-5.8-F05138?logo=swift)
+![Xcode](https://img.shields.io/badge/Xcode-14.3-147EFB?logo=xcode)
+
+### 협업 툴
+![Git](https://img.shields.io/badge/git-%23F05033.svg?logo=git&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?&logo=figma&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-%23000000.svg?&logo=notion&logoColor=white)
+
+### Library
+![Moya](https://img.shields.io/badge/Moya-15.0.3-FB1892)
+![Firebase](https://img.shields.io/badge/Firebase-10.15.0-FFCA28?logo=firebase)
+![Lottie](https://img.shields.io/badge/Lottie-4.3.3-00DDB3)
+![MessageKit](https://img.shields.io/badge/MessageKit-4.2.0-3FC354)
+
+### API
+![ChatGPT](https://img.shields.io/badge/chatGPT-74aa9c?&logo=openai&logoColor=white)
+![TripAdvisor](https://img.shields.io/badge/TripAdvisor-34E0A1?&logo=tripadvisor&logoColor=white)
+![Papago](https://img.shields.io/badge/Papago-03C75A?&logo=naver&logoColor=white)
+![GoogleCloudVision](https://img.shields.io/badge/GoogleCloudVision-4285F4?&logo=googlecloud&logoColor=white)
+![GoogleCustomSearch](https://img.shields.io/badge/GoogleCustomSearch-4285F4?&logo=google&logoColor=white)
 
 ### Architecture
 - MVVM + Coordinator
 - Clean Architecture
 
-### Tech Stack
-- UIKit
-- Photos (PHPhotoLibrary)
-
-### Library
-- Moya
-- MessageKit
-- OpenAISwift
-- Lottie
-- Firebase
-
-## ⭐️ Feature
-
+<!-- ## ⭐️ Feature -->
