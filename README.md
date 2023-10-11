@@ -7,8 +7,7 @@
 2️⃣ 원하는 키워드를 선택하면 해당 키워드를 기반으로 새로운 여행지를 추천해 드립니다. </br>
 3️⃣ 추천된 여행지에 대해 더 궁금하다면 AI에게 질문해보세요! </br>
 
-<img src="Images/screenshot01.png" width = 240><img src="Images/screenshot02.png" width = 240><img src="Images/screenshot03.png" width = 240><img src="Images/screenshot04.png" width = 240>
-
+<img src="Images/screenshot01.png" width = 220><img src="Images/screenshot02.png" width = 220><img src="Images/screenshot03.png" width = 220><img src="Images/screenshot04.png" width = 220>
 ### 프로젝트 기간
 - 개발: 2023.07.22 ~
 - 출시: 2023.10.10
