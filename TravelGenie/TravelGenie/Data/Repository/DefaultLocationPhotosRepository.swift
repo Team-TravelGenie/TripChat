@@ -9,7 +9,7 @@ import Foundation
 
 final class DefaultLocationPhotosRepository: LocationPhotoRepository {
     
-    private let networkService = NetworkService()
+    private let provider = MultiMoyaProvider()
     
     func searchPhoto(
         locationID: String,
@@ -18,18 +18,24 @@ final class DefaultLocationPhotosRepository: LocationPhotoRepository {
     {
         let requestModel = LocationPhotosRequestModel(language: languageCode.photosSearchCode, locationId: locationID)
         
-        networkService.request(TripadvisorLocationPhotosAPI.locationPhotos(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                guard let imageUrl = response.data.first?.images.large.url else {
-                    completion(.failure(.emptyResponse))
-                    return
+        provider.request(.target(TripadvisorLocationPhotosAPI.locationPhotos(requestModel))) {
+            let result = $0.mapError { error -> ResponseError in
+                return .moyaError(error)
+            }.flatMap { response -> Result<String, ResponseError> in
+                do {
+                    let dto = try response.map(TripadvisorLocationPhotosAPI.ResultType.self)
+                    
+                    if let imageURL = dto.data.first?.images.large.url {
+                        return .success(imageURL)
+                    }
+                    
+                    return .failure(.emptyResponse)
+                } catch {
+                    return .failure(.moyaError(.jsonMapping(response)))
                 }
-                
-                completion(.success(imageUrl))
-            case .failure(let error):
-                completion(.failure(.moyaError(error)))
             }
+            
+            completion(result)
         }
     }
 }

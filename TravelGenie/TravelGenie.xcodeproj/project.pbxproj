@@ -103,7 +103,6 @@
 		D20FA2752A6B8DA90081B039 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2742A6B8DA90081B039 /* SceneDelegate.swift */; };
 		D20FA27C2A6B8DAC0081B039 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */; };
 		D20FA27F2A6B8DAC0081B039 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D20FA27D2A6B8DAC0081B039 /* LaunchScreen.storyboard */; };
-		D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA28D2A6B98AC0081B039 /* NetworkService.swift */; };
 		D20FA2912A6B99B40081B039 /* Moya in Frameworks */ = {isa = PBXBuildFile; productRef = D20FA2902A6B99B40081B039 /* Moya */; };
 		D20FA2932A6BB3C40081B039 /* MultiMoyaProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */; };
 		D20FA2952A6BB4400081B039 /* DecodableTargetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */; };
@@ -266,7 +265,6 @@
 		D20FA27B2A6B8DAC0081B039 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D20FA27E2A6B8DAC0081B039 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D20FA2802A6B8DAC0081B039 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D20FA28D2A6B98AC0081B039 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MultiMoyaProvider.swift; sourceTree = "<group>"; };
 		D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecodableTargetType.swift; sourceTree = "<group>"; };
 		D20FA2972A6BB9340081B039 /* GoogleVisionLabelDetectionAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleVisionLabelDetectionAPI.swift; sourceTree = "<group>"; };
@@ -755,7 +753,6 @@
 				D20FA2962A6BB8F90081B039 /* API */,
 				D20FA2942A6BB4400081B039 /* DecodableTargetType.swift */,
 				D20FA2922A6BB3C40081B039 /* MultiMoyaProvider.swift */,
-				D20FA28D2A6B98AC0081B039 /* NetworkService.swift */,
 			);
 			path = Infrastructure;
 			sourceTree = "<group>";
@@ -1121,7 +1118,6 @@
 				D20FA2AB2A6BE34D0081B039 /* Encodable+toDictionary.swift in Sources */,
 				573BCD1D2A8E682200116D2D /* BottomMenuItem.swift in Sources */,
 				57462B782A96302C00949D5C /* RecommendationEntity+CoreDataClass.swift in Sources */,
-				D20FA28E2A6B98AC0081B039 /* NetworkService.swift in Sources */,
 				D2F8C57C2A8F490C00AA3BFC /* CustomCellSizeCalculator.swift in Sources */,
 				D2C2476B2A93606800C547EC /* ButtonMessageCellSizeCalculator.swift in Sources */,
 				D26846942AA115AB00831097 /* TranslateRepository.swift in Sources */,

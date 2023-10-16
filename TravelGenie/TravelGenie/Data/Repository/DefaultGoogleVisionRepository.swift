@@ -9,7 +9,8 @@ import Foundation
 import Moya
 
 final class DefaultGoogleVisionRepository: GoogleVisionRepository {
-    private let networkService = NetworkService()
+    
+    private let provider = MultiMoyaProvider()
     
     func requestImageLabelDetection(
         _ content: String,
@@ -20,14 +21,21 @@ final class DefaultGoogleVisionRepository: GoogleVisionRepository {
             base64EncodedImageData: content,
             requestType: .labelDetection)
         
-        return networkService.request(GoogleVisionLabelDetectionAPI.labelDetection(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                let mappedResponse = response.mapToDetectedImageLabel()
-                completion(.success(mappedResponse))
-            case .failure(let error):
-                completion(.failure(error))
+        return provider.request(.target(GoogleVisionLabelDetectionAPI.labelDetection(requestModel))) {
+            let result = $0.mapError { error -> ResponseError in
+                return .moyaError(error)
+            }.flatMap { response -> Result<DetectedImageLabel, ResponseError> in
+                do {
+                    let dto = try response.map(GoogleVisionLabelDetectionAPI.ResultType.self)
+                    let mappedResponse = dto.mapToDetectedImageLabel()
+                    
+                    return .success(mappedResponse)
+                } catch {
+                    return .failure(.moyaError(.jsonMapping(response)))
+                }
             }
+            
+            completion(result)
         }
     }
     
@@ -40,15 +48,21 @@ final class DefaultGoogleVisionRepository: GoogleVisionRepository {
             base64EncodedImageData: content,
             requestType: .landmarkDetection)
         
-        return networkService.request(GoogleVisionLandmarkDetectionAPI.landmarkDetection(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                let mappedResponse = response.mapToDetectedLandmark()
-                completion(.success(mappedResponse))
-            case .failure(let error):
-                completion(.failure(error))
+        return provider.request(.target(GoogleVisionLandmarkDetectionAPI.landmarkDetection(requestModel))) {
+            let result = $0.mapError { error -> ResponseError in
+                return .moyaError(error)
+            }.flatMap { response -> Result<DetectedLandmark, ResponseError> in
+                do {
+                    let dto = try response.map(GoogleVisionLandmarkDetectionAPI.ResultType.self)
+                    let mappedResponse = dto.mapToDetectedLandmark()
+                    
+                    return .success(mappedResponse)
+                } catch {
+                    return .failure(.moyaError(.jsonMapping(response)))
+                }
             }
+            
+            completion(result)
         }
     }
-    
 }

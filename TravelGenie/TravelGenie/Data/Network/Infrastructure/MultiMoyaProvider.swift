@@ -32,28 +32,6 @@ final class MultiMoyaProvider: MoyaProvider<MultiTarget> {
     }
 }
 
-extension MultiMoyaProvider {
-    func requestDecoded<T: DecodableTargetType>(
-        _ target: T,
-        completion: @escaping (Result<T.ResultType, MoyaError>) -> Void)
-        -> Cancellable
-    {
-        request(.target(target)) { result in
-            switch result {
-            case .success(let response):
-                do {
-                    let parsed = try response.map(T.ResultType.self)
-                    completion(.success(parsed))
-                } catch {
-                    completion(.failure(.jsonMapping(response)))
-                }
-            case .failure(let error):
-                completion(.failure(error))
-            }
-        }
-    }
-}
-
 /*
  // MARK: 디버깅메서드 : Json을 prettyPrint Dictionary로 프린트합니다.
  

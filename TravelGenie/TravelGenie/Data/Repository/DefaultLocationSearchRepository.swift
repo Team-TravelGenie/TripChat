@@ -9,7 +9,7 @@ import Foundation
 
 final class DefaultLocationSearchRepository: LocationSearchRepository {
     
-    private let networkService = NetworkService()
+    private let provider = MultiMoyaProvider()
     
     func searchLocation(
         query: String,
@@ -18,18 +18,24 @@ final class DefaultLocationSearchRepository: LocationSearchRepository {
     {
         let requestModel = LocationSearchRequestModel(language: languageCode.locationSearchCode, searchQuery: query)
         
-        networkService.request(TripadvisorLocationSearchAPI.locationSearch(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                guard let locationID = response.data.first?.locationID else {
-                    completion(.failure(.emptyResponse))
-                    return
+        provider.request(.target(TripadvisorLocationSearchAPI.locationSearch(requestModel))) {
+            let result = $0.mapError { error -> ResponseError in
+                return .moyaError(error)
+            }.flatMap { response -> Result<String, ResponseError> in
+                do {
+                    let dto = try response.map(TripadvisorLocationSearchAPI.ResultType.self)
+                    
+                    if let locationID = dto.data.first?.locationID {
+                        return .success(locationID)
+                    }
+                    
+                    return .failure(.emptyResponse)
+                } catch {
+                    return .failure(.moyaError(.jsonMapping(response)))
                 }
-                
-                completion(.success(locationID))
-            case .failure(let error):
-                completion(.failure(.moyaError(error)))
             }
+            
+            completion(result)
         }
     }
 }
