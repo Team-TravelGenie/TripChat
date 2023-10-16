@@ -33,7 +33,7 @@ final class DefaultGoogleVisionRepository: GoogleVisionRepository {
     
     func requestLandmarkDetection(
         _ content: String,
-        completion: @escaping (Result<DetectedLandmark, Error>) -> Void)
+        completion: @escaping (Result<DetectedLandmark, ResponseError>) -> Void)
         -> Cancellable
     {
         let requestModel = GoogleVisionRequestModel(
