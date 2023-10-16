@@ -98,10 +98,9 @@ final class ChatViewModel {
             messages.removeLast()
         }
         
-
         let chat = createChat(with: messages)
         chatUseCase.save(chat: chat) { error in
-            print(error?.localizedDescription)
+            // TODO: 에러 로그 기록
         }
     }
     
