@@ -13,7 +13,7 @@ final class DefaultTranslateRepository: TranslateRepository {
     
     func translate(
         with keywords: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
+        completion: @escaping ((Result<String, ResponseError>) -> Void))
     {
         let requestModel = PapagoTranslateRequestModel(text: keywords)
         
