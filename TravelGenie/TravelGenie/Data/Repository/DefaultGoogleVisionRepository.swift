@@ -27,9 +27,9 @@ final class DefaultGoogleVisionRepository: GoogleVisionRepository {
             }.flatMap { response -> Result<DetectedImageLabel, ResponseError> in
                 do {
                     let dto = try response.map(GoogleVisionLabelDetectionAPI.ResultType.self)
-                    let mappedResponse = dto.mapToDetectedImageLabel()
+                    let detectedImageLabel = dto.mapToDetectedImageLabel()
                     
-                    return .success(mappedResponse)
+                    return .success(detectedImageLabel)
                 } catch {
                     return .failure(.moyaError(.jsonMapping(response)))
                 }
@@ -54,9 +54,9 @@ final class DefaultGoogleVisionRepository: GoogleVisionRepository {
             }.flatMap { response -> Result<DetectedLandmark, ResponseError> in
                 do {
                     let dto = try response.map(GoogleVisionLandmarkDetectionAPI.ResultType.self)
-                    let mappedResponse = dto.mapToDetectedLandmark()
+                    let detectedLandmark = dto.mapToDetectedLandmark()
                     
-                    return .success(mappedResponse)
+                    return .success(detectedLandmark)
                 } catch {
                     return .failure(.moyaError(.jsonMapping(response)))
                 }
