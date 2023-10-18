@@ -47,6 +47,7 @@
 
 ## 🗺️ [설계](https://github.com/Team-TravelGenie/TripChat/wiki/%EC%84%A4%EA%B3%84)
 1. [MVVM + Coordinator + Clean Architecture](https://github.com/Team-TravelGenie/TripChat/wiki/MVVM%E2%80%90C-with-Clean-Architecture)
+2. [CoreData를 활용한 채팅 기록 저장](https://github.com/Team-TravelGenie/TripChat/wiki/CoreData%EB%A5%BC-%ED%99%9C%EC%9A%A9%ED%95%9C-%EC%B1%84%ED%8C%85-%EA%B8%B0%EB%A1%9D-%EC%A0%80%EC%9E%A5)
 
 ## 🚀 [트러블슈팅](https://github.com/Team-TravelGenie/TripChat/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
 1. [이미지 압축 기능 구현](https://github.com/Team-TravelGenie/TripChat/wiki/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%95%95%EC%B6%95-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84)
