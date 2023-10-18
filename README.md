@@ -18,14 +18,8 @@
 
 ## 🛠️ Skills
 ### 개발환경
-<!--배지로 변경 가능한 것은 배지로 변경!-->
 ![Swift](https://img.shields.io/badge/Swift-5.8-F05138?logo=swift)
 ![Xcode](https://img.shields.io/badge/Xcode-14.3-147EFB?logo=xcode)
-
-### 협업 툴
-![Git](https://img.shields.io/badge/git-%23F05033.svg?logo=git&logoColor=white)
-![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?&logo=figma&logoColor=white)
-![Notion](https://img.shields.io/badge/Notion-%23000000.svg?&logo=notion&logoColor=white)
 
 ### Library
 ![Moya](https://img.shields.io/badge/Moya-15.0.3-FB1892)
@@ -40,8 +34,21 @@
 ![GoogleCloudVision](https://img.shields.io/badge/GoogleCloudVision-4285F4?&logo=googlecloud&logoColor=white)
 ![GoogleCustomSearch](https://img.shields.io/badge/GoogleCustomSearch-4285F4?&logo=google&logoColor=white)
 
+### 협업 툴
+![Git](https://img.shields.io/badge/git-%23F05033.svg?logo=git&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?&logo=figma&logoColor=white)
+![Notion](https://img.shields.io/badge/Notion-%23000000.svg?&logo=notion&logoColor=white)
+
 ### Architecture
 - MVVM + Coordinator
 - Clean Architecture
 
 <!-- ## ⭐️ Feature -->
+
+## 🗺️ [설계](https://github.com/Team-TravelGenie/TripChat/wiki/%EC%84%A4%EA%B3%84)
+1. [MVVM + Coordinator + Clean Architecture](https://github.com/Team-TravelGenie/TripChat/wiki/MVVM%E2%80%90C-with-Clean-Architecture)
+
+## 🚀 [트러블슈팅](https://github.com/Team-TravelGenie/TripChat/wiki/%ED%8A%B8%EB%9F%AC%EB%B8%94-%EC%8A%88%ED%8C%85)
+1. [이미지 압축 기능 구현](https://github.com/Team-TravelGenie/TripChat/wiki/%EC%9D%B4%EB%AF%B8%EC%A7%80-%EC%95%95%EC%B6%95-%EA%B8%B0%EB%8A%A5-%EA%B5%AC%ED%98%84)
+
+## 📔 [Wiki](https://github.com/Team-TravelGenie/TripChat/wiki)
