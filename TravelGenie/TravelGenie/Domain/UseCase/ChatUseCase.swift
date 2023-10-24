@@ -19,7 +19,7 @@ protocol ChatUseCase {
         completion: @escaping (Result<[Chat], Error>) -> Void)
     func deleteChat(
         with id: UUID,
-        completion: @escaping (Result<Bool, Error>) -> Void)
+        completion: @escaping (Error?) -> Void)
 }
 
 final class DefaultChatUseCase: ChatUseCase {
@@ -59,7 +59,7 @@ final class DefaultChatUseCase: ChatUseCase {
         }
     }
     
-    func deleteChat(with id: UUID, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func deleteChat(with id: UUID, completion: @escaping (Error?) -> Void) {
         chatRepository.deleteChat(with: id, completion: completion)
     }
 }

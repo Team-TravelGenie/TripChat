@@ -83,7 +83,7 @@ extension CoreDataChatStorage: ChatStorage {
     
     func deleteChat(
         with id: UUID,
-        completion: @escaping (Result<Bool, Error>) -> Void)
+        completion: @escaping (Error?) -> Void)
     {
         let request = ChatEntity.fetchRequest()
         let predicate = NSPredicate(format: "id == %@", id as CVarArg)
@@ -93,9 +93,8 @@ extension CoreDataChatStorage: ChatStorage {
             try targetObjects.forEach {
                 try coreDataService.delete(object: $0)
             }
-            completion(.success(true))
         } catch {
-            completion(.failure(StorageError.noResultForID))
+            completion(StorageError.noResultForID)
         }
     }
     

@@ -9,7 +9,7 @@ import Moya
 
 final class DefaultImageSearchRepository: ImageSearchRepository {
     
-    private let networkService = NetworkService()
+    private let provider = MultiMoyaProvider()
     
     func searchImage(
         with tags: [Tag],
@@ -18,19 +18,24 @@ final class DefaultImageSearchRepository: ImageSearchRepository {
     {
         let query = tags.map { $0.value }.joined(separator: " ")
         let requestModel = ImageSearchRequestModel(q: query, exactTerms: spot)
-        networkService.request(GoogleCustomSearchAPI.imageSearch(requestModel)) { result in
-            switch result {
-            case .success(let response):
-                guard let link = response.items.first?.link else {
-                    completion(.failure(.emptyResponse))
-                    return
+        
+        provider.request(.target(GoogleCustomSearchAPI.imageSearch(requestModel))) {
+            let result = $0.mapError { error -> ResponseError in
+                return .moyaError(error)
+            }.flatMap { response -> Result<[String], ResponseError> in
+                do {
+                    let dto = try response.map(GoogleCustomSearchAPI.ResultType.self)
+                    let links = dto.items.map { item in
+                        item.link
+                    }
+                    
+                    return links.isEmpty ? .failure(.emptyResponse) : .success(links)
+                } catch {
+                    return .failure(.moyaError(.jsonMapping(response)))
                 }
-                let links = response.items.map { $0.link }
-                
-                completion(.success(links))
-            case .failure(let error):
-                completion(.failure(.moyaError(error)))
             }
+            
+            completion(result)
         }
     }
 }

@@ -10,11 +10,11 @@ import Moya
 protocol GoogleVisionRepository {
     func requestImageLabelDetection(
         _ content: String,
-        completion: @escaping (Result<DetectedImageLabel, Error>) -> Void)
+        completion: @escaping (Result<DetectedImageLabel, ResponseError>) -> Void)
         -> Cancellable
     
     func requestLandmarkDetection(
         _ content: String,
-        completion: @escaping (Result<DetectedLandmark, Error>) -> Void)
+        completion: @escaping (Result<DetectedLandmark, ResponseError>) -> Void)
         -> Cancellable
 }

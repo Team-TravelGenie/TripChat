@@ -33,13 +33,13 @@ final class ChatListViewModel {
     
     func remove(at index: Int) {
         let id = chats[index].id
-        chatUseCase.deleteChat(with: id) { [weak self] result in
-            switch result {
-            case .success:
+        chatUseCase.deleteChat(with: id) { [weak self] error in
+            guard let error else {
                 self?.chats.remove(at: index)
-            case .failure(let error):
-                print(error)
+                return
             }
+            
+            print(error)
         }
     }
     

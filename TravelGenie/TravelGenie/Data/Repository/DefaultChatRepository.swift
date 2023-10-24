@@ -36,7 +36,7 @@ final class DefaultChatRepository: ChatRepository {
         chatStorage.fetchChats(with: keyword, completion: completion)
     }
     
-    func deleteChat(with id: UUID, completion: @escaping (Result<Bool, Error>) -> Void) {
+    func deleteChat(with id: UUID, completion: @escaping (Error?) -> Void) {
         chatStorage.deleteChat(with: id, completion: completion)
     }
 }

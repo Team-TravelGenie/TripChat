@@ -8,5 +8,5 @@
 protocol TranslateRepository {
     func translate(
         with keywords: String,
-        completion: @escaping ((Result<String, Error>) -> Void))
+        completion: @escaping ((Result<String, ResponseError>) -> Void))
 }
